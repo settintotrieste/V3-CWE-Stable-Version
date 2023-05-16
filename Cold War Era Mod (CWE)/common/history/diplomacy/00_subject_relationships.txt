@@ -14,12 +14,6 @@
 		}		
 	}
 	
-	#c:USA = {
-	#	create_diplomatic_pact = {
-	#		country = c:GBR
-	#		type = special_relationship
-	#	}
-	#}
 	c:USA = {
 		create_diplomatic_pact = {
 			country = c:ITA
@@ -59,6 +53,12 @@
 	c:USA = {
 		create_diplomatic_pact = {
 			country = c:SIR
+			type = protectorate
+		}
+	}
+	c:USA = {
+		create_diplomatic_pact = {
+			country = c:ICL
 			type = protectorate
 		}
 	}
@@ -313,6 +313,12 @@
 	#United Kingdom
 	c:GBR = {
 		create_diplomatic_pact = {
+			country = c:MLT
+			type = semi_autonomous_colony
+		}		
+	}
+	c:GBR = {
+		create_diplomatic_pact = {
 			country = c:POR
 			type = protectorate
 		}		
@@ -369,7 +375,7 @@
 	c:GBR = {
 		create_diplomatic_pact = {
 			country = c:CYR
-			type = protectorate
+			type = satellite
 		}		
 	}
 	
@@ -397,13 +403,19 @@
 			type = semi_autonomous_colony
 		}
 	}
-	
 	c:GBR = {
 		create_diplomatic_pact = {
-			country = c:HND
-			type = protectorate
+			country = c:ZAN
+			type = puppet
 		}
 	}
+	
+	#c:GBR = {
+	#	create_diplomatic_pact = {
+	#		country = c:HND
+	#		type = protectorate
+	#	}
+	#}
 	c:GBR = {
 		create_diplomatic_pact = {
 			country = c:PAK
@@ -419,7 +431,7 @@
 	c:GBR = {
 		create_diplomatic_pact = {
 			country = c:MLD
-			type = semi_autonomous_colony
+			type = puppet
 		}
 	}
 	
@@ -446,7 +458,7 @@
 	c:GBR = {
 		create_diplomatic_pact = {
 			country = c:TON
-			type = semi_autonomous_colony
+			type = puppet
 		}
 	}
 	
@@ -485,13 +497,19 @@
 	c:FRA = {
 		create_diplomatic_pact = {
 			country = c:LUX
-			type = protectorate
+			type = satellite
 		}	
 	}
 	c:FRA = {
 		create_diplomatic_pact = {
 			country = c:SWI
 			type = protectorate
+		}	
+	}
+	c:FRA = {
+		create_diplomatic_pact = {
+			country = c:SAR
+			type = mandate
 		}	
 	}
 	
@@ -523,6 +541,14 @@
 	c:FRA = {
 		create_diplomatic_pact = {
 			country = c:SVM
+			type = satellite
+		}	
+	}
+	
+	#Netherlands
+	c:NET = {	#Netherlands-Indonesia Confederal Union (1949 to 1956)
+		create_diplomatic_pact = {
+			country = c:IDO
 			type = protectorate
 		}	
 	}

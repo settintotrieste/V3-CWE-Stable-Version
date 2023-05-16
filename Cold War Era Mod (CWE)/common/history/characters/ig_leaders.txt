@@ -1,11 +1,32 @@
 CHARACTERS = {
 
+	### Non-ruler IG leaders ###
+
+	#United Kingdom
+	c:GBR = {
+		create_character = {
+			first_name = "winston_churchill_first_name"
+			last_name = "winston_churchill_last_name"
+			birth_date = 1874.11.30
+			ig_leader = yes
+			interest_group = ig_petty_bourgeoisie
+			ideology = ideology_elitist
+			culture = cu:english
+			traits = {
+				charismatic
+				bigoted
+				expensive_tastes
+			}
+		}
+	}
+	
+	#France
 	c:FRA = {
 		create_character = {
 			first_name = "René"
 			last_name = "Coty"
 			birth_date = 1882.3.20
-			interest_group = ig_professionals
+			interest_group = ig_petty_bourgeoisie
 			ideology = ideology_elitist
 			traits = {
 				reserved
@@ -25,7 +46,7 @@ CHARACTERS = {
 			first_name = "René"
 			last_name = "Pleven"
 			birth_date = 1901.4.15
-			interest_group = ig_judiciary
+			interest_group = ig_bureaucrats
 			ideology = ideology_democratic
 			traits = {
 				cautious
@@ -35,7 +56,7 @@ CHARACTERS = {
 			first_name = "Henri"
 			last_name = "Queuille"
 			birth_date = 1884.3.31
-			interest_group = ig_professionals
+			interest_group = ig_petty_bourgeoisie
 			ideology = ideology_elitist
 			traits = {
 				persistent
@@ -58,7 +79,7 @@ CHARACTERS = {
 			last_name = "Thorez"
 			birth_date = 1900.4.28
 			ig_leader = yes
-			interest_group = ig_trade_unions_mines_logging
+			interest_group = ig_trade_unions
 			ideology = ideology_autocratic
 			traits = {
 				charismatic
@@ -80,7 +101,7 @@ CHARACTERS = {
 			last_name = "Mollet"
 			birth_date = 1905.12.31
 			ig_leader = yes
-			interest_group = ig_trade_unions_factories
+			interest_group = ig_trade_unions
 			ideology = ideology_democratic
 			traits = {
 				tactful
@@ -95,6 +116,55 @@ CHARACTERS = {
 			ideology = ideology_autocratic
 			traits = {
 				bigoted
+			}
+		}
+	}
+	
+	#USSR
+	c:SOV = {
+		create_character = {
+			first_name = "georgy_k_zhukov_first_name"
+			last_name = "georgy_k_zhukov_last_name"
+			birth_date = 1896.12.1
+			ig_leader = yes
+			is_general = yes
+			hq = region_russia
+			commander_rank = commander_rank_5
+			interest_group = ig_armed_forces
+			ideology = ideology_power_hungry
+			culture = cu:russian
+			traits = {
+				ambitious
+				brave
+				direct
+			}
+		}
+		create_character = {
+			first_name = "lavrentiy_p_beria_first_name"
+			last_name = "lavrentiy_p_beria_last_name"
+			birth_date = 1899.3.29
+			ig_leader = yes
+			interest_group = ig_bureaucrats
+			ideology = ideology_autocratic
+			culture = cu:russian
+			traits = {
+				arrogant
+				cautious
+				meticulous
+			}
+		}
+		create_character = {
+			first_name = "nikita_s_khrushchev_first_name"
+			last_name = "nikita_s_khrushchev_last_name"
+			birth_date = 1894.4.15
+			ig_leader = yes
+			interest_group = ig_rural_folk
+			ideology = ideology_autocratic
+			culture = cu:ukrainian
+			traits = {
+				charismatic
+				reckless
+				persistent
 			}
 		}
 	}

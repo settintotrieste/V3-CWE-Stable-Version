@@ -484,7 +484,10 @@ TUN = { # Tunis
 		priority = 0
 		
 		trigger = {
-			NOT = { coa_def_monarchy_flag_trigger = yes }
+			OR = { 
+				NOT = { coa_def_monarchy_flag_trigger = yes }
+				scope:actor = { is_subject_of = c:FRA }
+			}
 		}
 	}
 }
@@ -668,10 +671,13 @@ SRL = {
 		name = dyn_c_british_sri_lanka
 		adjective = dyn_c_british_sri_lanka_adj
 		is_main_tag_only = yes
-		priority = 0
+		priority = 1
 		trigger = {
 			scope:actor = {
-				is_subject_of = c:GBR
+				OR = { 
+					is_subject_of = c:GBR
+					is_subject_type = subject_type_personal_union
+				}
 			}
 		}
 	}
@@ -724,6 +730,20 @@ RHO = {
 	dynamic_country_name = {
 		name = dyn_c_south_rhodesia
 		adjective = dyn_c_south_rhodesia_adj
+		is_main_tag_only = yes
+		priority = 0
+		trigger = {
+			scope:actor = {
+				is_subject_of = c:GBR
+			}
+		}
+	}
+}
+
+CAF = {
+	dynamic_country_name = {
+		name = dyn_c_rhodesia_nyasaland
+		adjective = dyn_c_rhodesia_nyasaland_adj
 		is_main_tag_only = yes
 		priority = 0
 		trigger = {

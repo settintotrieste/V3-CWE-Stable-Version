@@ -1,9 +1,65 @@
 on_monthly_pulse_country = {
 	
 	events = {
+	
 		united_nations.1
 		united_nations.2
 		united_nations.3
+		
+		revolution_system.1
+		
+		british_decolonisation.1
+		british_decolonisation.2
+		british_decolonisation.3
+		british_decolonisation.4
+		british_decolonisation.5
+		british_decolonisation.6
+		british_decolonisation.7
+		british_decolonisation.8
+		british_decolonisation.9
+		british_decolonisation.10
+		british_decolonisation.11
+		british_decolonisation.12
+		british_decolonisation.13
+		british_decolonisation.14
+		british_decolonisation.15
+		british_decolonisation.16
+		british_decolonisation.17
+		british_decolonisation.18
+		british_decolonisation.19
+		british_decolonisation.20
+		british_decolonisation.21
+		british_decolonisation.22
+		
+		french_decolonisation.1
+		french_decolonisation.2
+		french_decolonisation.3
+		french_decolonisation.4
+		french_decolonisation.5
+		french_decolonisation.6
+		french_decolonisation.7
+		french_decolonisation.8
+		french_decolonisation.9
+		french_decolonisation.10
+		
+		belgian_decolonisation.1
+		belgian_decolonisation.2
+		
+		dutch_decolonisation.1
+		dutch_decolonisation.2
+		
+		danish_decolonisation.1
+		
+		spanish_decolonisation.1
+		spanish_decolonisation.2
+		
+		portuguese_decolonisation.1
+		portuguese_decolonisation.2
+		portuguese_decolonisation.3
+		portuguese_decolonisation.4
+		portuguese_decolonisation.5
+		portuguese_decolonisation.6
+		
 	}
 	
 }

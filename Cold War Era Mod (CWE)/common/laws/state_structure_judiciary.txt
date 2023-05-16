@@ -1,6 +1,6 @@
 law_politicised_judiciary = {
 	group = lawgroup_judiciary
-	icon = "gfx/interface/icons/law_icons/politicised_judiciary.dds"
+	icon = "gfx/interface/icons/law_icons/presidential_republic.dds"
 	
 	modifier = {
 	
@@ -14,7 +14,7 @@ law_politicised_judiciary = {
 		country_decree_cost_mult = -0.50
 		
 		#More influential bureaucrats
-		interest_group_ig_judiciary_pol_str_mult = 0.20
+		interest_group_ig_bureaucrats_pol_str_mult = 0.20
 		
 	}
 	
@@ -29,7 +29,7 @@ law_politicised_judiciary = {
 
 law_partially_politicised_judiciary = {
 	group = lawgroup_judiciary
-	icon = "gfx/interface/icons/law_icons/partially_politicised_judiciary.dds"
+	icon = "gfx/interface/icons/law_icons/presidential_republic.dds"
 	
 	modifier = {
 	
@@ -43,7 +43,7 @@ law_partially_politicised_judiciary = {
 		country_decree_cost_mult = -0.25
 		
 		#More influential bureaucrats
-		interest_group_ig_judiciary_pol_str_mult = 0.20
+		interest_group_ig_bureaucrats_pol_str_mult = 0.20
 	}
 	
 	progressiveness = 0
@@ -57,7 +57,7 @@ law_partially_politicised_judiciary = {
 
 law_independent_judiciary = {
 	group = lawgroup_judiciary
-	icon = "gfx/interface/icons/law_icons/independent_judiciary.dds"
+	icon = "gfx/interface/icons/law_icons/presidential_republic.dds"
 	
 	modifier = {
 		
