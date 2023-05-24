@@ -25,8 +25,37 @@ conservative_party = {
 	}
 	
 	available_for_interest_group = {
-		owner = {
-			has_law = law_type:law_parties_allowed
+		OR = { 
+		
+			#Country allows more than 1 party
+			owner = { has_law = law_type:law_parties_allowed }
+			
+			#Country allows only 1 party
+			AND = {
+				owner = {
+					has_law = law_type:law_single_party_state
+					#has_variable = only_valid_party
+				}
+				OR = { 
+					owner.var:only_valid_party = {
+						is_party_type = conservative_party
+					}
+					owner = {
+						any_interest_group = {
+							OR = {
+								has_ideology = ideology:ideology_far_right_economy
+								has_ideology = ideology:ideology_right_economy
+							}
+							OR = { 
+								has_ideology = ideology:ideology_totalitarian
+								has_ideology = ideology:ideology_authoritarian
+							}
+							is_in_government = yes
+						}
+					}
+				}
+			}
+			
 		}
 	}
 	
@@ -41,9 +70,9 @@ conservative_party = {
 			limit = {
 				leader = {
 					OR = { 
-						has_ideology = ideology_power_hungry
-						has_ideology = ideology_elitist
-						has_ideology = ideology_democratic
+						has_ideology = ideology:ideology_power_hungry
+						has_ideology = ideology:ideology_elitist
+						has_ideology = ideology:ideology_democratic
 					}
 				}
 			}
@@ -57,8 +86,8 @@ conservative_party = {
 		if = {
 			limit = {
 				OR = { 
-					has_ideology = ideology_authoritarian
-					has_ideology = ideology_communitarian
+					has_ideology = ideology:ideology_authoritarian
+					has_ideology = ideology:ideology_communitarian
 				}
 			}
 			add = {
@@ -71,14 +100,14 @@ conservative_party = {
 		if = {
 			limit = {
 				OR = {
-					has_ideology = ideology_conservative
+					has_ideology = ideology:ideology_conservative
 					
-					has_ideology = ideology_militarist
-					has_ideology = ideology_monarchist
+					has_ideology = ideology:ideology_militarist
+					has_ideology = ideology:ideology_monarchist
 				}
 			}
 			add = {
-				value = 3
+				value = 4
 				desc = "from_correct_ig_specific_political_leaning"
 			}
 		}
@@ -87,12 +116,12 @@ conservative_party = {
 		if = {
 			limit = {
 				OR = {
-					has_ideology = ideology_far_right_economy
-					has_ideology = ideology_right_economy
+					has_ideology = ideology:ideology_far_right_economy
+					has_ideology = ideology:ideology_right_economy
 				}
 			}
 			add = {
-				value = 1
+				value = 4
 				desc = "from_correct_general_economic_leaning"
 			}
 		}
@@ -101,8 +130,8 @@ conservative_party = {
 		if = {
 			limit = {
 				OR = { 
-					has_ideology = ideology_nationalist
-					has_ideology = ideology_regionalist
+					has_ideology = ideology:ideology_nationalist
+					has_ideology = ideology:ideology_regionalist
 				}
 			}
 			add = {
@@ -115,8 +144,8 @@ conservative_party = {
 			limit = {
 				#THIS IG has a power hungry leader
 				OR = { 
-					has_ideology = ideology_autocratic
-					has_ideology = ideology_power_hungry
+					has_ideology = ideology:ideology_autocratic
+					has_ideology = ideology:ideology_power_hungry
 				}
 				
 				is_powerful = no
@@ -126,7 +155,7 @@ conservative_party = {
 				owner = {
 					any_interest_group = {
 						is_member_of_party = owner.py:conservative_party
-						is_powerful = yes
+						OR = { is_powerful = yes is_in_government = yes }
 					}
 				}
 			}

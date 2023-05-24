@@ -25,8 +25,37 @@ socialist_party = {
 	}
 	
 	available_for_interest_group = {
-		owner = {
-			has_law = law_type:law_parties_allowed
+		OR = { 
+		
+			#Country allows more than 1 party
+			owner = { has_law = law_type:law_parties_allowed }
+			
+			#Country allows only 1 party
+			AND = {
+				owner = {
+					has_law = law_type:law_single_party_state
+					#has_variable = only_valid_party
+				}
+				OR = { 
+					owner.var:only_valid_party = {
+						is_party_type = socialist_party
+					}
+					owner = {
+						any_interest_group = {
+							OR = {
+								has_ideology = ideology:ideology_left_economy
+								has_ideology = ideology:ideology_far_left_economy
+							}
+							OR = { 
+								has_ideology = ideology:ideology_authoritarian
+								has_ideology = ideology:ideology_communitarian
+							}
+							is_in_government = yes
+						}
+					}
+				}
+			}
+			
 		}
 	}
 	
@@ -41,8 +70,8 @@ socialist_party = {
 			limit = {
 				leader = {
 					OR = { 
-						has_ideology = ideology_elitist
-						has_ideology = ideology_democratic
+						has_ideology = ideology:ideology_elitist
+						has_ideology = ideology:ideology_democratic
 					}
 				}
 			}
@@ -56,8 +85,8 @@ socialist_party = {
 		if = {
 			limit = {
 				OR = { 
-					has_ideology = ideology_authoritarian
-					has_ideology = ideology_communitarian
+					has_ideology = ideology:ideology_authoritarian
+					has_ideology = ideology:ideology_communitarian
 				}
 			}
 			add = {
@@ -70,11 +99,11 @@ socialist_party = {
 		if = {
 			limit = {
 				OR = {
-					has_ideology = ideology_progressive
+					has_ideology = ideology:ideology_progressive
 					
-					has_ideology = ideology_communist
-					has_ideology = ideology_republican
-					has_ideology = ideology_militarist
+					has_ideology = ideology:ideology_communist
+					has_ideology = ideology:ideology_republican
+					has_ideology = ideology:ideology_militarist
 				}
 			}
 			add = {
@@ -87,8 +116,8 @@ socialist_party = {
 		if = {
 			limit = {
 				OR = {
-					has_ideology = ideology_left_economy
-					has_ideology = ideology_far_left_economy
+					has_ideology = ideology:ideology_left_economy
+					has_ideology = ideology:ideology_far_left_economy
 				}
 			}
 			add = {
@@ -101,8 +130,8 @@ socialist_party = {
 		if = {
 			limit = {
 				OR = { 
-					has_ideology = ideology_nationalist
-					has_ideology = ideology_regionalist
+					has_ideology = ideology:ideology_nationalist
+					has_ideology = ideology:ideology_regionalist
 				}
 			}
 			add = {
@@ -115,8 +144,8 @@ socialist_party = {
 			limit = {
 				#THIS IG has a power hungry leader
 				OR = { 
-					has_ideology = ideology_autocratic
-					has_ideology = ideology_power_hungry
+					has_ideology = ideology:ideology_autocratic
+					has_ideology = ideology:ideology_power_hungry
 				}
 				
 				is_powerful = no
@@ -126,7 +155,7 @@ socialist_party = {
 				owner = {
 					any_interest_group = {
 						is_member_of_party = owner.py:socialist_party
-						is_powerful = yes
+						OR = { is_powerful = yes is_in_government = yes }
 					}
 				}
 			}

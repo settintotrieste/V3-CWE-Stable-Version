@@ -30,6 +30,54 @@ on_monthly_pulse_country = {
 		british_decolonisation.20
 		british_decolonisation.21
 		british_decolonisation.22
+		british_decolonisation.23
+		british_decolonisation.24
+		british_decolonisation.25
+		british_decolonisation.26
+		
+		british_decolonisation_indy.1
+		british_decolonisation_indy.2
+		british_decolonisation_indy.3
+		british_decolonisation_indy.4
+		british_decolonisation_indy.5
+		british_decolonisation_indy.6
+		british_decolonisation_indy.7
+		british_decolonisation_indy.8
+		british_decolonisation_indy.9
+		british_decolonisation_indy.10
+		british_decolonisation_indy.11
+		british_decolonisation_indy.12
+		british_decolonisation_indy.13
+		british_decolonisation_indy.14
+		british_decolonisation_indy.15
+		british_decolonisation_indy.16
+		british_decolonisation_indy.17
+		british_decolonisation_indy.18
+		british_decolonisation_indy.19
+		british_decolonisation_indy.20
+		british_decolonisation_indy.21
+		british_decolonisation_indy.22
+		british_decolonisation_indy.23
+		british_decolonisation_indy.24
+		british_decolonisation_indy.25
+		british_decolonisation_indy.26
+		british_decolonisation_indy.27
+		british_decolonisation_indy.28
+		british_decolonisation_indy.29
+		british_decolonisation_indy.30
+		british_decolonisation_indy.31
+		british_decolonisation_indy.32
+		british_decolonisation_indy.33
+		british_decolonisation_indy.34
+		british_decolonisation_indy.35
+		british_decolonisation_indy.36
+		british_decolonisation_indy.37
+		british_decolonisation_indy.38
+		british_decolonisation_indy.39
+		
+		australian_decolonisation.1
+		
+		australian_decolonisation_indy.1
 		
 		french_decolonisation.1
 		french_decolonisation.2
@@ -42,16 +90,42 @@ on_monthly_pulse_country = {
 		french_decolonisation.9
 		french_decolonisation.10
 		
+		french_decolonisation_indy.1
+		french_decolonisation_indy.2
+		french_decolonisation_indy.3
+		french_decolonisation_indy.4
+		french_decolonisation_indy.5
+		french_decolonisation_indy.6
+		french_decolonisation_indy.7
+		french_decolonisation_indy.8
+		french_decolonisation_indy.9
+		french_decolonisation_indy.10
+		french_decolonisation_indy.11
+		french_decolonisation_indy.12
+		french_decolonisation_indy.13
+		french_decolonisation_indy.14
+		french_decolonisation_indy.15
+		french_decolonisation_indy.16
+		french_decolonisation_indy.17
+		french_decolonisation_indy.18
+		french_decolonisation_indy.19
+		french_decolonisation_indy.20
+		french_decolonisation_indy.21
+		
 		belgian_decolonisation.1
 		belgian_decolonisation.2
 		
 		dutch_decolonisation.1
 		dutch_decolonisation.2
 		
+		dutch_decolonisation_indy.1
+		
 		danish_decolonisation.1
 		
 		spanish_decolonisation.1
 		spanish_decolonisation.2
+		
+		spanish_decolonisation_indy.1
 		
 		portuguese_decolonisation.1
 		portuguese_decolonisation.2
@@ -59,6 +133,33 @@ on_monthly_pulse_country = {
 		portuguese_decolonisation.4
 		portuguese_decolonisation.5
 		portuguese_decolonisation.6
+		
+		american_decolonisation.1
+		
+		american_decolonisation_indy.1
+		american_decolonisation_indy.2
+		
+		historical_territorial_transfers.2
+		historical_territorial_transfers.3
+		historical_territorial_transfers.4
+		historical_territorial_transfers.5
+		historical_territorial_transfers.6
+		historical_territorial_transfers.7
+		historical_territorial_transfers.8
+		historical_territorial_transfers.9
+		historical_territorial_transfers.10
+		historical_territorial_transfers.11
+		historical_territorial_transfers.12
+		historical_territorial_transfers.13
+		historical_territorial_transfers.14
+		historical_territorial_transfers.15
+		historical_territorial_transfers.16
+		
+		historical_union_dissolution.1
+		historical_union_dissolution.2
+		
+		historical_interstate_wars.1
+		historical_interstate_wars.2
 		
 	}
 	

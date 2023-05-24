@@ -24,6 +24,18 @@ is_not_sufficiently_independent = {
 	
 }
 
+is_in_our_sphere_of_influence = {
+
+	is_direct_subject_of = THIS
+	OR = {
+		is_subject_type = subject_type_protectorate
+		is_subject_type = subject_type_satellite
+		is_subject_type = subject_type_personal_union
+		is_subject_type = subject_type_dominion
+	}
+	
+}
+
 is_a_democracy = {
 
 	OR = {
@@ -50,6 +62,71 @@ is_a_democratic_monarchy = {
 	OR = {
 		has_government_type = gov_constitutional_monarchy
 		has_government_type = gov_semi_constitutional_monarchy
+	}
+	
+}
+
+is_a_regime_monarchy = {
+
+	OR = {
+		has_government_type = gov_semi_constitutional_monarchy
+		has_government_type = gov_absolute_monarchy
+	}
+	
+}
+
+is_a_monarchy = {
+
+	OR = {
+		has_government_type = gov_constitutional_monarchy
+		has_government_type = gov_semi_constitutional_monarchy
+		has_government_type = gov_absolute_monarchy
+	}
+	
+}
+
+is_not_a_monarchy = {
+
+	NOR = {
+		has_government_type = gov_constitutional_monarchy
+		has_government_type = gov_semi_constitutional_monarchy
+		has_government_type = gov_absolute_monarchy
+	}
+	
+}
+
+is_a_nationalist_government = {
+
+	OR = {
+		has_government_type = gov_nationalist_dictatorship
+		has_government_type = gov_nationalist_regime
+	}
+	
+}
+
+is_a_communist_government = {
+
+	OR = {
+		has_government_type = gov_soviet_dictatorship
+		has_government_type = gov_soviet_republic
+	}
+	
+}
+
+can_go_to_war = {
+
+	#THIS does not have restricted war rights
+	NOR = { 
+		has_law = law_type:law_no_war
+		has_law = law_type:law_defensive_war
+	}
+	
+	#Ruler is jingoistic
+	ruler = {
+		OR = {
+			has_ideology = ideology:ideology_autocratic
+			has_ideology = ideology:ideology_power_hungry
+		}
 	}
 	
 }

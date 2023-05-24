@@ -25,8 +25,34 @@ liberal_party = {
 	}
 	
 	available_for_interest_group = {
-		owner = {
-			has_law = law_type:law_parties_allowed
+		OR = { 
+		
+			#Country allows more than 1 party
+			owner = { has_law = law_type:law_parties_allowed }
+			
+			#Country allows only 1 party
+			AND = {
+				owner = {
+					has_law = law_type:law_single_party_state
+					#has_variable = only_valid_party
+				}
+				OR = { 
+					owner.var:only_valid_party = {
+						is_party_type = liberal_party
+					}
+					owner = {
+						any_interest_group = {
+							OR = {
+								has_ideology = ideology:ideology_far_right_economy
+								has_ideology = ideology:ideology_right_economy
+							}
+							has_ideology = ideology:ideology_individualist
+							is_in_government = yes
+						}
+					}
+				}
+			}
+			
 		}
 	}
 	
@@ -41,8 +67,8 @@ liberal_party = {
 			limit = {
 				leader = {
 					OR = { 
-						has_ideology = ideology_democratic
-						has_ideology = ideology_liberal
+						has_ideology = ideology:ideology_democratic
+						has_ideology = ideology:ideology_liberal
 					}
 				}
 			}
@@ -55,7 +81,7 @@ liberal_party = {
 		#IG has correct IG general political leaning
 		if = {
 			limit = {
-				has_ideology = ideology_individualist
+				has_ideology = ideology:ideology_individualist
 			}
 			add = {
 				value = 3
@@ -67,9 +93,9 @@ liberal_party = {
 		if = {
 			limit = {
 				OR = {
-					has_ideology = ideology_progressive
+					has_ideology = ideology:ideology_progressive
 					
-					has_ideology = ideology_republican
+					has_ideology = ideology:ideology_republican
 				}
 			}
 			add = {
@@ -82,12 +108,12 @@ liberal_party = {
 		if = {
 			limit = {
 				OR = {
-					has_ideology = ideology_far_right_economy
-					has_ideology = ideology_right_economy
+					has_ideology = ideology:ideology_far_right_economy
+					has_ideology = ideology:ideology_right_economy
 				}
 			}
 			add = {
-				value = 1
+				value = 2
 				desc = "from_correct_general_economic_leaning"
 			}
 		}
@@ -96,8 +122,8 @@ liberal_party = {
 		if = {
 			limit = {
 				OR = { 
-					has_ideology = ideology_regionalist
-					has_ideology = ideology_globalist
+					has_ideology = ideology:ideology_regionalist
+					has_ideology = ideology:ideology_globalist
 				}
 			}
 			add = {
@@ -110,8 +136,8 @@ liberal_party = {
 			limit = {
 				#THIS IG has a power hungry leader
 				OR = { 
-					has_ideology = ideology_autocratic
-					has_ideology = ideology_power_hungry
+					has_ideology = ideology:ideology_autocratic
+					has_ideology = ideology:ideology_power_hungry
 				}
 				
 				is_powerful = no
@@ -121,7 +147,7 @@ liberal_party = {
 				owner = {
 					any_interest_group = {
 						is_member_of_party = owner.py:liberal_party
-						is_powerful = yes
+						OR = { is_powerful = yes is_in_government = yes }
 					}
 				}
 			}

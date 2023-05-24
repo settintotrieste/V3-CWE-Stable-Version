@@ -25,8 +25,34 @@ traditionalist_party = {
 	}
 	
 	available_for_interest_group = {
-		owner = {
-			has_law = law_type:law_parties_allowed
+		OR = { 
+		
+			#Country allows more than 1 party
+			owner = { has_law = law_type:law_parties_allowed }
+			
+			#Country allows only 1 party
+			AND = {
+				owner = {
+					has_law = law_type:law_single_party_state
+					#has_variable = only_valid_party
+				}
+				OR = { 
+					owner.var:only_valid_party = {
+						is_party_type = traditionalist_party
+					}
+					owner = {
+						any_interest_group = {
+							OR = {
+								has_ideology = ideology:ideology_traditionalist
+								has_ideology = ideology:ideology_monarchist
+								has_ideology = ideology:ideology_theocrat
+							}
+							is_in_government = yes
+						}
+					}
+				}
+			}
+			
 		}
 	}
 	
@@ -41,8 +67,8 @@ traditionalist_party = {
 			limit = {
 				leader = {
 					OR = { 
-						has_ideology = ideology_autocratic
-						has_ideology = ideology_power_hungry
+						has_ideology = ideology:ideology_autocratic
+						has_ideology = ideology:ideology_power_hungry
 					}
 				}
 			}
@@ -56,8 +82,8 @@ traditionalist_party = {
 		if = {
 			limit = {
 				OR = { 
-					has_ideology = ideology_totalitarian
-					has_ideology = ideology_authoritarian
+					has_ideology = ideology:ideology_totalitarian
+					has_ideology = ideology:ideology_authoritarian
 				}
 			}
 			add = {
@@ -70,15 +96,14 @@ traditionalist_party = {
 		if = {
 			limit = {
 				OR = {
-					has_ideology = ideology_traditionalist
+					has_ideology = ideology:ideology_traditionalist
 					
-					has_ideology = ideology_monarchist
-					has_ideology = ideology_theocrat
-					has_ideology = ideology_militarist
+					has_ideology = ideology:ideology_monarchist
+					has_ideology = ideology:ideology_theocrat
 				}
 			}
 			add = {
-				value = 2
+				value = 4
 				desc = "from_correct_ig_specific_political_leaning"
 			}
 		}
@@ -86,7 +111,7 @@ traditionalist_party = {
 		#IG has correct IG general economic leaning
 		if = {
 			limit = {
-				has_ideology = ideology_right_economy
+				has_ideology = ideology:ideology_right_economy
 			}
 			add = {
 				value = 1
@@ -98,8 +123,8 @@ traditionalist_party = {
 		if = {
 			limit = {
 				OR = { 
-					has_ideology = ideology_nationalist
-					has_ideology = ideology_regionalist
+					has_ideology = ideology:ideology_nationalist
+					has_ideology = ideology:ideology_regionalist
 				}
 			}
 			add = {
@@ -112,8 +137,8 @@ traditionalist_party = {
 			limit = {
 				#THIS IG has a power hungry leader
 				OR = { 
-					has_ideology = ideology_autocratic
-					has_ideology = ideology_power_hungry
+					has_ideology = ideology:ideology_autocratic
+					has_ideology = ideology:ideology_power_hungry
 				}
 				
 				is_powerful = no
@@ -123,7 +148,7 @@ traditionalist_party = {
 				owner = {
 					any_interest_group = {
 						is_member_of_party = owner.py:traditionalist_party
-						is_powerful = yes
+						OR = { is_powerful = yes is_in_government = yes }
 					}
 				}
 			}

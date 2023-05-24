@@ -67,7 +67,7 @@ law_technocratic_legislature = { #Semi-Elected Legislature
 		country_voting_power_from_literacy_add = 50
 		state_political_strength_from_wealth_mult = 0.25
 		
-		country_voting_power_base_add = 10
+		country_voting_power_base_add = 0.5
 		
 		#Easier to pass decrees
 		country_decree_cost_mult = -0.10
@@ -77,7 +77,8 @@ law_technocratic_legislature = { #Semi-Elected Legislature
 		country_legitimacy_govt_total_votes_add = 50
 		
 		#Ideological incoherence
-		#country_legitimacy_govt_size_mult = 0.25
+		country_legitimacy_govt_size_add = 2
+		country_legitimacy_ideological_incoherence_mult = -0.05
 		
 		country_authority_add = 50
 	}
@@ -111,13 +112,14 @@ law_democratic_legislature = {
 	
 	modifier = {
 	
-		country_voting_power_base_add = 20
+		country_voting_power_base_add = 1
 		
 		#More government strength
 		country_legitimacy_govt_total_votes_add = 100
 		
 		#Ideological incoherence
-		#country_legitimacy_govt_size_mult = 0.50
+		country_legitimacy_govt_size_add = 4
+		country_legitimacy_ideological_incoherence_mult = -0.10
 		
 	}
 	

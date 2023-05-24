@@ -1,9 +1,9 @@
 {
   "name" : "Cold War Era Mod (CWE)",
   "id" : "CWE",
-  "version" : "0.5",
-  "supported_game_version" : "",
-  "short_description" : "",
+  "version" : "0.7",
+  "supported_game_version" : "1.3",
+  "short_description" : "This mod bring Victoria 3 into the Cold War era and beyond.",
   "tags" : [],
   "relationships" : [],
   "game_custom_data" : {
@@ -16,6 +16,7 @@
 	  "common/technology",
 	  "common/technology/eras",
 	  "common/technology/technologies",
+	  "common/history/ai",
       "common/history/buildings",
       "common/history/characters",
       "common/history/diplomacy",
@@ -29,6 +30,7 @@
       "common/strategic_regions",
       "common/laws",
       "common/parties",
+	  "common/ideologies",
       "common/building_groups",
       "common/buildings",
       "common/interest_group_traits",
@@ -41,6 +43,7 @@
       "events/law_events",
       "events/tech_events",
       "events/election_events",
+	  "events/agitators_events",
       "events/american_civil_war"
     ]
   }

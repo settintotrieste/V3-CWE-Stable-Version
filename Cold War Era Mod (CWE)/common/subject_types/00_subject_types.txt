@@ -244,6 +244,7 @@ subject_type_special_administrative_region = {
 	valid_overlord_country_types = {
 		recognized
 		colonial
+		unrecognized
 	}
 	
 	valid_subject_country_types = {
@@ -278,7 +279,7 @@ subject_type_special_administrative_region = {
 #### Colonial puppets ####
 
 subject_type_personal_union = {
-	allow_change_country_flag = yes
+	allow_change_country_flag = no
 	use_overlord_map_color = no
 	use_overlord_ruler = no
 	annex_on_country_formation = yes

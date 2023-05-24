@@ -13,6 +13,12 @@
 			type = mandate
 		}		
 	}
+	c:USA = {
+		create_diplomatic_pact = {
+			country = c:TRE
+			type = mandate
+		}
+	}
 	
 	c:USA = {
 		create_diplomatic_pact = {
@@ -110,6 +116,25 @@
 		create_diplomatic_pact = {
 			country = c:HAI
 			type = protectorate
+		}		
+	}
+	
+	c:USA = {
+		create_diplomatic_pact = {
+			country = c:PUR
+			type = semi_autonomous_colony
+		}		
+	}
+	c:USA = {
+		create_diplomatic_pact = {
+			country = c:LSK
+			type = semi_autonomous_colony
+		}		
+	}
+	c:USA = {
+		create_diplomatic_pact = {
+			country = c:HAW
+			type = semi_autonomous_colony
 		}		
 	}
 	
@@ -393,6 +418,12 @@
 	}
 	c:GBR = {
 		create_diplomatic_pact = {
+			country = c:SOM
+			type = mandate
+		}
+	}
+	c:GBR = {
+		create_diplomatic_pact = {
 			country = c:SAF
 			type = dominion
 		}
@@ -512,6 +543,12 @@
 			type = mandate
 		}	
 	}
+	c:FRA = {
+		create_diplomatic_pact = {
+			country = c:IAR
+			type = mandate
+		}	
+	}
 	
 	c:FRA = {
 		create_diplomatic_pact = {
@@ -573,6 +610,14 @@
 	c:SPA = {
 		create_diplomatic_pact = {
 			country = c:TGZ
+			type = special_administrative_region
+		}
+	}
+	
+	#Denmark
+	c:DEN = {
+		create_diplomatic_pact = {
+			country = c:FAR
 			type = special_administrative_region
 		}
 	}

@@ -20,8 +20,34 @@ fascist_party = {
 	}
 	
 	available_for_interest_group = {
-		owner = {
-			has_law = law_type:law_parties_allowed
+		OR = { 
+		
+			#Country allows more than 1 party
+			owner = { has_law = law_type:law_parties_allowed }
+			
+			#Country allows only 1 party
+			AND = {
+				owner = {
+					has_law = law_type:law_single_party_state
+					#has_variable = only_valid_party
+				}
+				OR = { 
+					owner.var:only_valid_party = {
+						is_party_type = fascist_party
+					}
+					owner = {
+						any_interest_group = {
+							has_ideology = ideology:ideology_militarist
+							OR = { 
+								has_ideology = ideology:ideology_totalitarian
+								has_ideology = ideology:ideology_authoritarian
+							}
+							is_in_government = yes
+						}
+					}
+				}
+			}
+			
 		}
 	}
 	
@@ -36,8 +62,8 @@ fascist_party = {
 			limit = {
 				leader = {
 					OR = { 
-						has_ideology = ideology_autocratic
-						has_ideology = ideology_power_hungry
+						has_ideology = ideology:ideology_autocratic
+						has_ideology = ideology:ideology_power_hungry
 					}
 				}
 			}
@@ -51,8 +77,8 @@ fascist_party = {
 		if = {
 			limit = {
 				OR = { 
-					has_ideology = ideology_totalitarian
-					has_ideology = ideology_authoritarian
+					has_ideology = ideology:ideology_totalitarian
+					has_ideology = ideology:ideology_authoritarian
 				}
 			}
 			add = {
@@ -64,12 +90,7 @@ fascist_party = {
 		#IG has correct IG specific political leaning
 		if = {
 			limit = {
-				OR = {
-					has_ideology = ideology_traditionalist
-					has_ideology = ideology_conservative
-					
-					has_ideology = ideology_militarist
-				}
+				has_ideology = ideology:ideology_militarist
 			}
 			add = {
 				value = 3
@@ -81,9 +102,9 @@ fascist_party = {
 		if = {
 			limit = {
 				OR = {
-					has_ideology = ideology_right_economy
-					has_ideology = ideology_centre_economy
-					has_ideology = ideology_left_economy
+					has_ideology = ideology:ideology_right_economy
+					has_ideology = ideology:ideology_centre_economy
+					has_ideology = ideology:ideology_left_economy
 				}
 			}
 			add = {
@@ -95,7 +116,7 @@ fascist_party = {
 		#IG has correct IG specific economic leaning
 		if = {
 			limit = {
-				has_ideology = ideology_nationalist
+				has_ideology = ideology:ideology_nationalist
 			}
 			add = {
 				value = 1
@@ -107,8 +128,8 @@ fascist_party = {
 			limit = {
 				#THIS IG has a power hungry leader
 				OR = { 
-					has_ideology = ideology_autocratic
-					has_ideology = ideology_power_hungry
+					has_ideology = ideology:ideology_autocratic
+					has_ideology = ideology:ideology_power_hungry
 				}
 				
 				is_powerful = no
@@ -118,7 +139,7 @@ fascist_party = {
 				owner = {
 					any_interest_group = {
 						is_member_of_party = owner.py:fascist_party
-						is_powerful = yes
+						OR = { is_powerful = yes is_in_government = yes }
 					}
 				}
 			}
