@@ -5,8 +5,6 @@ law_unitary_state = {
 	
 	modifier = {
 	
-		#Unitary system = less legitimacy
-		
 		#Less united state = more bureaucracy
 	
 		#More united state = more authority & faster conscription
@@ -14,13 +12,27 @@ law_unitary_state = {
 		country_authority_mult = 0.25
 		
 		country_authority_add = 100
-		country_legitimacy_headofstate_add = 10
+		country_legitimacy_govt_total_clout_add = 50
 	}
 	
 	possible_political_movements = {
 		#law_unitary_state
 		law_federal_state
 	}
+	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
+	}
+	
 }
 
 law_federal_state = {
@@ -32,8 +44,10 @@ law_federal_state = {
 	
 	modifier = {
 	
-		#Federal system = more legitimacy
-		country_legitimacy_base_add = 0.20
+		#Federal system = less power to the executive
+		country_legitimacy_ideological_incoherence_mult = 0.25
+		country_authority_mult = -0.25
+		
 		state_radicals_from_discrimination_mult = -0.20
 		political_movement_radicalism_add = -0.10
 		political_movement_radicalism_mult = -0.10
@@ -43,10 +57,25 @@ law_federal_state = {
 		state_tax_capacity_mult = -0.25
 		
 		#Less united state = less authority & faster conscription
+		country_legitimacy_govt_total_clout_add = 25
 	}
 	
 	possible_political_movements = {
 		law_federal_state
 		#law_unitary_state
 	}
+	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
+	}
+	
 }

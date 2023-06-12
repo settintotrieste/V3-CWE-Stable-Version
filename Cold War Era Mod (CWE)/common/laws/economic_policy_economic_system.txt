@@ -26,7 +26,13 @@ law_command_economy = {
 		country_authority_mult = 0.25	
 		
 		#More influential bureaucrats
-		interest_group_ig_bureaucrats_pol_str_mult = 0.2
+		interest_group_ig_bureaucrats_pol_str_mult = 0.60
+		country_bureaucrats_pol_str_mult = 0.60
+		
+		#More influential workers
+		interest_group_ig_trade_unions_pol_str_mult = 0.60
+		country_laborers_pol_str_mult = 0.60
+		country_machinists_pol_str_mult = 0.60
 		
 		#More bureaucracy required
 		country_bureaucracy_mult = -0.20
@@ -49,6 +55,19 @@ law_command_economy = {
 		law_state_capitalism
 		law_interventionism
 		law_laissez_faire
+	}
+	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
 	}
 	
 }
@@ -77,7 +96,13 @@ law_semi_command_economy = {
 		country_authority_mult = 0.25
 		
 		#More influential bureaucrats
-		interest_group_ig_bureaucrats_pol_str_mult = 0.15
+		interest_group_ig_bureaucrats_pol_str_mult = 0.30
+		country_bureaucrats_pol_str_mult = 0.30
+		
+		#More influential workers
+		interest_group_ig_trade_unions_pol_str_mult = 0.30
+		country_laborers_pol_str_mult = 0.30
+		country_machinists_pol_str_mult = 0.30
 		
 		#More bureaucracy required
 		country_bureaucracy_mult = -0.10
@@ -100,6 +125,19 @@ law_semi_command_economy = {
 		law_state_capitalism
 		law_interventionism
 		law_laissez_faire
+	}
+	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
 	}
 	
 }
@@ -131,7 +169,15 @@ law_state_capitalism = {
 		country_authority_mult = 0.15
 		
 		#More influential bureaucrats
-		interest_group_ig_bureaucrats_pol_str_mult = 0.1
+		interest_group_ig_bureaucrats_pol_str_mult = 0.15
+		country_bureaucrats_pol_str_mult = 0.15
+		interest_group_ig_industrialists_pol_str_mult = 0.15
+		country_capitalists_pol_str_mult = 0.15
+		
+		#More influential workers
+		interest_group_ig_trade_unions_pol_str_mult = 0.15
+		country_laborers_pol_str_mult = 0.15
+		country_machinists_pol_str_mult = 0.15
 		
 		#More bureaucracy required
 		country_bureaucracy_mult = -0.05
@@ -154,6 +200,19 @@ law_state_capitalism = {
 		#law_state_capitalism
 		law_interventionism
 		law_laissez_faire
+	}
+	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
 	}
 	
 }
@@ -180,7 +239,8 @@ law_interventionism = {
 		country_private_construction_allocation_mult = 0.5
 		
 		#More influential industrialists
-		interest_group_ig_industrialists_pol_str_mult = 0.1
+		interest_group_ig_industrialists_pol_str_mult = 0.30
+		country_capitalists_pol_str_mult = 0.30
 	}
 
 	build_from_investment_pool = {
@@ -198,6 +258,19 @@ law_interventionism = {
 		law_state_capitalism
 		#law_interventionism
 		law_laissez_faire
+	}
+	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
 	}
 	
 }
@@ -228,7 +301,8 @@ law_laissez_faire = {
 		country_private_buildings_protected = yes
 		
 		#More influential industrialists
-		interest_group_ig_industrialists_pol_str_mult = 0.2
+		interest_group_ig_industrialists_pol_str_mult = 0.60
+		country_capitalists_pol_str_mult = 0.60
 	}
 
 	build_from_investment_pool = {
@@ -246,6 +320,19 @@ law_laissez_faire = {
 		law_state_capitalism
 		law_interventionism
 		#law_laissez_faire
+	}
+	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
 	}
 	
 }

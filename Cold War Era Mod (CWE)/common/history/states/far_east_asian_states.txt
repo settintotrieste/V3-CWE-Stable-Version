@@ -23,7 +23,7 @@ STATES = {
 		}
 		
 		add_claim = c:KOR add_homeland = korean
-		add_claim = NKO
+		add_claim = c:NKO
 	}
 	s:STATE_YANGHO = {
 		create_state = {
@@ -34,7 +34,7 @@ STATES = {
 		}
 		
 		add_claim = c:KOR add_homeland = korean
-		add_claim = NKO
+		add_claim = c:NKO
 	}
 	s:STATE_SARIWON = {
 		create_state = {
@@ -45,7 +45,7 @@ STATES = {
 		}
 		
 		add_claim = c:KOR add_homeland = korean
-		add_claim = SKO
+		add_claim = c:SKO
 	}
 	s:STATE_PYONGYANG = {
 		create_state = {
@@ -62,7 +62,7 @@ STATES = {
 		}
 		
 		add_claim = c:KOR add_homeland = korean
-		add_claim = SKO
+		add_claim = c:SKO
 	}
 
 	s:STATE_HOKKAIDO = {
@@ -111,17 +111,23 @@ STATES = {
 	s:STATE_KYUSHU = {
 		create_state = {
 			country = c:JAP
-			owned_provinces = { x70CF00 xF0D000 x73414A xAE5874 xE16F98 x705080 x906F1E xEF5080 xCEA020 x1F0D2C x5C7980 x70D080 x800111 xEF50C0 }
+			owned_provinces = { x70CF00 xF0D000 x73414A xAE5874 xE16F98 x705080 x906F1E xEF5080 xCEA020 x1F0D2C x5C7980 x70D080 }
+		}
+		create_state = {
+			country = c:USA
+			state_type = unincorporated
+			owned_provinces = { x800111 xEF50C0 }
 		}
 		
 		add_claim = c:JAP add_homeland = japanese
 	}
 	s:STATE_RYUKYU_ISLANDS = {
 		create_state = {
-			country = c:JAP
+			country = c:USA
+			state_type = unincorporated
 			owned_provinces = { xf0f061 xf0d080 }
 		}
-			
+		
 		add_claim = c:JAP add_homeland = japanese
 	}
 	s:STATE_CHUGOKU = {
@@ -175,8 +181,9 @@ STATES = {
 			state_type = unincorporated
 		}
 		
+		add_claim = c:CHI add_homeland = chinese
 		add_claim = c:ETS add_homeland = uighur
-		add_claim = c:XIJ
+		#add_claim = c:XIJ
 	}
 	s:STATE_TIANSHAN = {
 		create_state = {
@@ -185,8 +192,9 @@ STATES = {
 			state_type = unincorporated
 		}
 		
+		add_claim = c:CHI add_homeland = chinese
 		add_claim = c:ETS add_homeland = uighur
-		add_claim = c:XIJ
+		#add_claim = c:XIJ
 	}
 	s:STATE_SICHUAN = {
 		create_state = {
@@ -233,6 +241,7 @@ STATES = {
 			state_type = unincorporated
 		}
 		
+		add_claim = c:CHI add_homeland = chinese
 		add_claim = c:MGL add_homeland = mongol
 	}	
 	s:STATE_HINGGAN = {
@@ -244,6 +253,7 @@ STATES = {
 			state_type = unincorporated
 		}
 		
+		add_claim = c:CHI add_homeland = chinese
 		add_claim = c:MGL add_homeland = mongol
 	}
 	s:STATE_GUANGXI = {
@@ -348,7 +358,7 @@ STATES = {
 			state_type = unincorporated			
 		}
 		
-		add_claim = c:MGL add_homeland = mongol
+		add_claim = c:CHI add_homeland = chinese
 		add_claim = c:TIB add_homeland = tibetan
 	}
 	s:STATE_CHONGQING = {

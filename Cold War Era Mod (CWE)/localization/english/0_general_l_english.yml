@@ -1,5 +1,16 @@
 ﻿l_english:
  
+    HUMAN_RIGHTS:0 "Politics"
+    
+    dp_un_peacekeeping:0 "UN Peacekeeping Mission"
+    
+    dp_annex_war_historical:0 "Annex Country"
+    dp_annex_war_historical_tooltip:0 "Start an $dp_annex_war$ [concept_diplomatic_play]"
+    
+    dp_return_state_historical:0 "$war_goal_return_state_type_name$"
+    dp_return_state_historical_tooltip:1 "#header Start a $dp_return_state$ [concept_diplomatic_play]#!\n$TOOLTIP_DELIMITER$\n$dp_return_state_desc$"
+    dp_return_state_historical_desc:0 "Sets the initiating [concept_war_goal] to force the targeted [concept_country] to return the specified [concept_state] to you."
+    
     unrecognized:0 "Non UN Recognised Country"
     recognized:0 "UN Recognised Country"
  
@@ -31,6 +42,30 @@
     superstate_member:0 "Superstate Member"
     satellite:0 "Satellite State"
     trade_agreement:0 "Free Trade Agreement"
+    
+    nuclear_damage_1:0 "Very Low Nuclear Damage"
+    nuclear_damage_2:0 "Low Nuclear Damage"
+    nuclear_damage_3:0 "Medium Nuclear Damage"
+    nuclear_damage_4:0 "High Nuclear Damage"
+    nuclear_damage_5:0 "Very High Nuclear Damage"
+    nuclear_attack_cooldown:0 "Nuclear Weapons Stockpile Exhausted"
+    
+    tiny_nuclear_damage_custom_tooltip:0 "Capital only Nuclear Strike"
+    very_low_nuclear_damage_custom_tooltip:0 "Very Weak Nuclear Strike"
+    low_nuclear_damage_custom_tooltip:0 "Weak Nuclear Strike"
+    medium_nuclear_damage_custom_tooltip:0 "Moderate Nuclear Strike"
+    high_nuclear_damage_custom_tooltip:0 "Strong Nuclear Strike"
+    very_high_nuclear_damage_custom_tooltip:0 "Very Strong Nuclear Strike"
+    
+    nuclear_ultimatum_white_peace:0 "Give Nuclear Ultimatum (White Peace)"
+    nuclear_ultimatum_white_peace_action_name:0 "Give Nuclear Ultimatum (White Peace)"
+    nuclear_ultimatum_white_peace_action_propose_name:0 "Nuclear Ultimatum (White Peace)"
+    nuclear_ultimatum_white_peace_desc:3 "This diplomatic action demands that the recipient agrees to a White Peace (ie. the status quo) or be attacked with nuclear weapons. Note that the recipient will launch a retaliatory strike against the proposer if it has nuclear weapons."
+    nuclear_ultimatum_white_peace_action_notification_name:0 "Struck by [INITIATOR_COUNTRY.GetAdjectiveNoFlag] Nuclear Weapons"
+    nuclear_ultimatum_white_peace_action_notification_desc:2 "[INITIATOR_COUNTRY.GetName] has attacked [TARGET_COUNTRY.GetName] with nuclear weapons. The damage that [TARGET_COUNTRY.GetName] received to its provinces depended on the level of civil defence and anti-ballistic missile defence systems that each state region had."
+    nuclear_ultimatum_white_peace_proposal_notification_name:0 "Nuclear Ultimatum (White Peace)"
+    nuclear_ultimatum_white_peace_proposal_notification_desc:3 "[INITIATOR_COUNTRY.GetName] demands that [TARGET_COUNTRY.GetName] agree to a White Peace (ie. the status quo) or be attacked with nuclear weapons." 
+    nuclear_ultimatum_white_peace_proposal_notification_effects_desc:0 "[TARGET_COUNTRY.GetName] will launch a retaliatory strike against [INITIATOR_COUNTRY.GetName] if it has nuclear weapons."
     
     concept_semi_autonomous_colony:0 "Self-Governing Colony"
     concept_semi_autonomous_colonys:0 "Self-Governing Colonies"
@@ -179,7 +214,7 @@
 
     concept_culture:0 "Identity"
     concept_cultures:1 "Identities"
-    concept_culture_possessive:1 "Identitie\\s'"
+    concept_culture_possessive:1 "Identity\\'s"
     concept_culture_desc:2 "All [Concept('concept_pop', '$concept_pops$')] have a $concept_culture$, which can only change through [concept_assimilation]. Their $concept_culture$ determines which [Concept('concept_state_region','$concept_state_regions$')] they consider their [Concept('concept_homeland','$concept_homelands$')] and whether they are [Concept('concept_discrimination','$concept_discriminated_against$')] in their [concept_country] or not."
 
     concept_accepted_culture:0 "Accepted Identity"
@@ -190,8 +225,6 @@
 
     concept_primary_cultures:0 "Primary Identities"
     concept_primary_culture:0 "Primary Identity"
-    concept_primary_cultures_desc:4 "The [concept_culture] or $concept_cultures$ a [Concept('concept_country','$concept_country_nation_state$')] is primarily associated with. If a $concept_country$ [Concept('concept_nation_formation','forms a different')] $concept_country$ its $concept_primary_cultures$ may change, but will otherwise remain the same.[AddLocalizationIf(GetPlayer.IsValid,'concept_primary_cultures_ingame_added')]"
-    concept_primary_cultures_ingame_added:1 "\n\nThe $concept_primary_cultures$ in [GetPlayer.GetName] are [GetPlayer.GetPrimaryIdentitiesDesc]."
 
     concept_cultural_trait:0 "Cultural Trait"
     concept_cultural_traits:1 "Cultural Traits"
@@ -285,7 +318,7 @@
     mobile_devices:0 "Mobile Devices"
     computers:0 "Computers"
     pharmaceuticals:0 "Pharmaceuticals"
-    space_rockets:0 "Orbital Rockets"
+    space_rockets:0 "Space Rockets"
     industrial_robots:0 "Industrial Automata"
     tools:0 "Tools"
     engines:0 "Heavy Machinery"
@@ -314,6 +347,7 @@
     
     egyptian:0 "Egyptian"
     algerian:0 "Algerian"
+    honduran:0 "Honduran"
     pan_arab:0 "Arab"
     djibouti:0 "Djibouti"
     liberian:0 "Liberian"
@@ -460,6 +494,7 @@
     tongan:0 "Tongan"
     niue:0 "Niue"
     bougainvillean:0 "Bougainvillean"
+    new_zealander:0 "New Zealander"
     
     STATE_KALININGRAD:0 "Kaliningrad"
     STATE_LUBUSZ:0 "Lubusz"

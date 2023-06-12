@@ -36,6 +36,19 @@ law_no_voting = {
 		deactivate_law = law_type:law_democratic_legislature
 		deactivate_law = law_type:law_technocratic_legislature
 	}
+	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
+	}
 }
 
 law_rigged_voting = {
@@ -77,6 +90,19 @@ law_rigged_voting = {
 	on_activate = {
 		deactivate_law = law_type:law_parties_not_allowed
 	}
+	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
+	}
 }
 
 law_gerrymandered_voting = {
@@ -114,6 +140,19 @@ law_gerrymandered_voting = {
 	on_activate = {
 		deactivate_law = law_type:law_parties_not_allowed
 	}
+	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
+	}
 }
 
 law_harassment_voting = {
@@ -134,8 +173,8 @@ law_harassment_voting = {
 		country_voting_power_wealth_threshold_add = 1
 		country_voting_power_base_add = 0.75
 		
-		country_legitimacy_govt_total_votes_add = 30
-		country_legitimacy_govt_total_clout_add = 20
+		country_legitimacy_govt_total_votes_add = 40
+		country_legitimacy_govt_total_clout_add = 10
 		
 		state_political_strength_from_wealth_mult = 0.10
 	}
@@ -150,6 +189,19 @@ law_harassment_voting = {
 
 	on_activate = {
 		deactivate_law = law_type:law_parties_not_allowed
+	}
+	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
 	}
 }
 
@@ -182,5 +234,18 @@ law_fair_voting = {
 
 	on_activate = {
 		deactivate_law = law_type:law_parties_not_allowed
+	}
+	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
 	}
 }

@@ -17,8 +17,10 @@ law_HOS_monarch = {
 	modifier = {
 	
 		#Head of State boosts certain IGs
-		interest_group_ig_landowners_pol_str_mult = 0.25
+		interest_group_ig_landowners_pol_str_mult = 0.50
 		interest_group_ig_devout_pol_str_mult = 0.25
+		country_aristocrats_pol_str_mult = 0.50
+		country_clergymen_pol_str_mult = 0.25
 		
 		#Head of State type increases authority
 		country_authority_add = 100
@@ -33,6 +35,28 @@ law_HOS_monarch = {
 		law_HOS_religious_leader
 		law_HOS_nationalist_leader
 		law_HOS_communist_leader
+	}
+	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
+		if = {
+			limit = { 
+				has_modifier = traditionalist_ruling_party_ideology
+				has_variable = stamped_out_monarchy_var
+                
+			}
+			add = 750
+		}
+		
 	}
 	
 }
@@ -55,9 +79,6 @@ law_HOS_president = {
 		
 		#Head of State type increases authority
 		
-		#Ideological incoherence
-		country_legitimacy_ideological_incoherence_mult = -0.2
-		
 	}
 	
 	possible_political_movements = {
@@ -66,6 +87,19 @@ law_HOS_president = {
 		law_HOS_religious_leader
 		law_HOS_nationalist_leader
 		law_HOS_communist_leader
+	}
+	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
 	}
 	
 }
@@ -86,6 +120,10 @@ law_HOS_religious_leader = {
 	
 		#Head of State boosts certain IGs
 		interest_group_ig_devout_pol_str_mult = 0.50
+		interest_group_ig_landowners_pol_str_mult = 0.25
+		interest_group_ig_petty_bourgeoisie_pol_str_mult = -0.50
+		country_clergymen_pol_str_mult = 0.50
+		country_aristocrats_pol_str_mult = 0.25
 		
 		#Head of State type increases authority
 		country_authority_add = 100
@@ -107,6 +145,19 @@ law_HOS_religious_leader = {
 		deactivate_law = law_type:law_democratic_legislature
 	}
 	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
+	}
+	
 }
 
 #For Nationalist Regimes
@@ -125,6 +176,8 @@ law_HOS_nationalist_leader = {
 	
 		#Head of State boosts certain IGs
 		interest_group_ig_armed_forces_pol_str_mult = 0.50
+		interest_group_ig_bureaucrats_pol_str_mult = 0.25
+		interest_group_ig_petty_bourgeoisie_pol_str_mult = -0.50
 		
 		#Head of State type increases authority
 		country_authority_add = 100
@@ -146,6 +199,19 @@ law_HOS_nationalist_leader = {
 		deactivate_law = law_type:law_democratic_legislature
 	}
 	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
+	}
+	
 }
 
 #For Socialist Regimes
@@ -163,9 +229,10 @@ law_HOS_communist_leader = {
 	modifier = {
 	
 		#Head of State boosts certain IGs
-		interest_group_ig_trade_unions_mines_pol_str_mult = 0.50
 		interest_group_ig_trade_unions_pol_str_mult = 0.50
-		interest_group_ig_trade_unions_infrastructure_pol_str_mult = 0.50
+		interest_group_ig_petty_bourgeoisie_pol_str_mult = -0.50
+		country_laborers_pol_str_mult = 0.50
+		country_machinists_pol_str_mult = 0.50
 		
 		#Head of State type increases authority
 		country_authority_add = 100
@@ -185,6 +252,19 @@ law_HOS_communist_leader = {
 	
 	on_activate = {
 		deactivate_law = law_type:law_democratic_legislature
+	}
+	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
 	}
 	
 }

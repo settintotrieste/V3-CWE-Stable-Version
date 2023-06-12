@@ -7,6 +7,8 @@ join_unga_decision = {
 	possible = {
 	
 		NOT = { has_modifier = unga_member }
+		
+		is_at_war = no
 	
 		#THIS will join the UNGA UNLESS vetoed by the UNSC permanent members
 		OR = {
@@ -45,18 +47,45 @@ join_unga_decision = {
 		#THIS must not be a revolutionary
 		is_revolutionary = no
 		
+		#THIS is not a pariah
+		infamy < infamy_threshold:pariah
+		
 		### Special Conditions ###
 		
 		#One China Policy
 		NAND = { 
-			this = c:PRC
 			exists = c:ROC
-			c:ROC = { is_country_type = recognized }
+			c:PRC ?= this
+			c:ROC ?= { is_country_type = recognized }
 		}
 		NAND = { 
-			this = c:ROC
 			exists = c:PRC
-			c:PRC = { is_country_type = recognized }
+			c:ROC ?= this
+			c:PRC ?= { is_country_type = recognized }
+		}
+		
+		#Divided Germany
+		NAND = { 
+			c:WGR ?= this
+			cold_war_ongoing = yes
+			game_date < 1973.9.18
+		}
+		NAND = { 
+			c:EGR ?= this
+			cold_war_ongoing = yes
+			game_date < 1973.9.18
+		}
+		
+		#Divided Korea
+		NAND = { 
+			c:SKO ?= this
+			cold_war_ongoing = yes
+			game_date < 1991.9.17
+		}
+		NAND = { 
+			c:NKO ?= this
+			cold_war_ongoing = yes
+			game_date < 1991.9.17
 		}
 		
 	}
@@ -86,8 +115,14 @@ join_unsc_perm_decision = {
 	
 		has_technology_researched = tech_geopolitics_4
 	
-		NOT = { has_modifier = unsc_permanent_member }
+		#Is in the UN
 		has_modifier = unga_member
+		
+		#Is currently in the UNSC but not a permanent member
+		NOT = { has_modifier = unsc_permanent_member }
+		has_modifier = unsc_non_permanent_member
+		
+		is_at_war = no
 	
 		#THIS must either be a Superpower or a GP
 		OR = { 
@@ -101,11 +136,11 @@ join_unsc_perm_decision = {
 				exists = yes
 				OR = { 
 					has_modifier = unsc_permanent_member 
-					has_modifier = unsc_member
+					has_modifier = unsc_non_permanent_member
 				}
 				has_attitude = {
 					who = ROOT
-					attitude <= antagonistic
+					attitude < cooperative
 				}
 			}
 		}
@@ -121,18 +156,221 @@ join_unsc_perm_decision = {
 		#THIS must not be a revolutionary
 		is_revolutionary = no
 		
+		#THIS is not a pariah
+		infamy < infamy_threshold:pariah
+		
 	}
 	
 	when_taken = {
 	
 		#THIS joins the UNSC as a permanent member
 		add_modifier = { name = unsc_permanent_member }
-		remove_modifier = unsc_member
+		remove_modifier = unsc_non_permanent_member
 		
 	}
 
 	ai_chance = {
 		base = 50		
+	}
+	
+}
+
+request_un_peacekeeping_decision = {
+
+	is_shown = {
+		has_modifier = unga_member
+		
+		#THIS is part of a diplomatic play
+		is_diplomatic_play_committed_participant = yes
+		
+		#THIS is not an aggressor (ie. the one who started it) in a diplomatic play
+		is_diplomatic_play_initiator = no
+		
+		#Has not already fired this decision
+		NOT = { has_variable = un_peacekeeping_applicant_var }
+		
+		#Cannot trigger resolution too frequently
+		NOT = { has_variable = un_peackeeping_timer }
+		
+		#Aggressor has not already faced a successful UN vote
+		NOT = { 
+			any_country = {
+				is_diplomatic_play_enemy_of = ROOT
+				is_diplomatic_play_initiator = yes
+				has_war_with = ROOT
+				has_variable = un_peacekeeping_resolution_passed
+			}
+		}
+	}
+
+	possible = {
+		
+		#UN is not pre-occupied with any other peacekeeping requests
+		NOT = { 
+			any_country = { 
+				exists = yes 
+				has_variable = un_peacekeeping_applicant_var 
+			} 
+		}
+		
+		#War must have already started
+		is_at_war = yes
+		
+		#Aggressor is not revolutionary
+		any_country = {
+			is_revolutionary = no
+			is_diplomatic_play_enemy_of = ROOT
+		}
+		
+		#THIS is not a pariah
+		infamy < infamy_threshold:pariah
+		
+		#THIS must not be a revolutionary
+		is_revolutionary = no
+		
+		#Ruler is not jingoistic
+		ruler = {
+			NOR = {
+				has_ideology = ideology:ideology_autocratic
+				has_ideology = ideology:ideology_power_hungry
+				has_ideology = ideology:ideology_elitist
+			}
+		}
+		
+	}
+	
+	when_taken = {
+	
+		#THIS applies for UN peacekeeping (resolution expires in 1 year)
+		set_variable = {
+			name = un_peacekeeping_applicant_var
+			months = 12
+		}
+		
+		#Create global variable for vote
+		set_global_variable = { name = unsc_peackeeping_vote_count_var value = 0 }
+		set_global_variable = { name = unga_peackeeping_vote_count_var value = 0 }
+		
+		#Round 1 voting (1 month of voting time)
+		add_modifier = { name = un_peacekeeping_unsc_stage_var days = 30 }
+		
+		#Send out vote choice event to UNSC members
+		every_country = {
+			limit = {
+				exists = yes
+				NOT = { THIS = ROOT }
+				OR = { 
+					has_modifier = unsc_non_permanent_member 
+					has_modifier = unsc_permanent_member 
+				}
+			}
+			trigger_event = { id = united_nations.6 }
+		}
+		
+		#Timer
+		set_variable = { name = un_peackeeping_timer months = 12 }
+		
+	}
+
+	ai_chance = {
+		base = 1
+	}
+	
+}
+
+request_imf_loan_decision = {
+
+	is_shown = {
+	
+		#THIS is a member of the UN
+		has_modifier = unga_member
+		
+		#THIS has not already taken out a loan
+		NOT = { has_modifier = imf_loan_debtor }
+		
+		#Is irretrievably insolvent OR is bordering on insolvency OR is a weak wartime economy
+		OR = { 
+		
+			#is_player = yes
+		
+			AND = { 
+				OR = { in_default = yes taking_loans = yes } 
+				has_healthy_economy = no
+			}
+			
+			AND = { 
+				has_healthy_economy = no
+				is_at_war = yes
+			}
+			
+		}
+		
+		#Government is willing to get help from capitalist creditors
+		NOT = { is_a_communist_government = yes }
+		
+		#THIS has not recently called for a loan
+		NOT = { has_variable = imf_loan_timer }
+		
+		#UN can only take 1 request at a time
+		NOT = { any_country = { has_variable = imf_loan_applicant } }
+		
+	}
+
+	possible = {
+	
+		#Not in an election campaign
+		in_election_campaign = no
+		
+		#THIS is not a pariah
+		infamy < infamy_threshold:pariah
+		
+		#There is a higher ranked country willing to lend & is not already lending
+		any_country = {
+			has_modifier = unga_member
+			
+			NOT = { is_a_communist_government = yes }
+			
+			has_healthy_economy = yes
+			in_default = no
+			
+			NOT = { has_diplomatic_pact = { who = ROOT type = bankroll is_initiator = yes } }
+			
+			country_rank > root.country_rank
+			
+			relations:root >= relations_threshold:amicable
+		}
+		
+	}
+	
+	when_taken = {
+	
+		#Mark THIS as the potential debtor
+		set_variable = { name = imf_loan_applicant months = 6 }
+		
+		#Get some baseline IMF support
+		add_modifier = { name = imf_loan_debtor months = 60 }
+	
+		#Send out invitation to bankroll THIS
+		every_country = {
+			limit = { 
+				has_modifier = unga_member
+				NOT = { is_a_communist_government = yes }
+				has_healthy_economy = yes
+				in_default = no
+				NOT = { has_diplomatic_pact = { who = ROOT type = bankroll is_initiator = yes } }
+				country_rank > root.country_rank
+				relations:root >= relations_threshold:amicable
+			}
+			trigger_event = { id = united_nations.19 }
+		}
+	
+		#Timer
+		set_variable = { name = imf_loan_timer months = 12 }
+		
+	}
+
+	ai_chance = {
+		base = 100		
 	}
 	
 }

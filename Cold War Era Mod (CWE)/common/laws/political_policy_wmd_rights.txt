@@ -13,9 +13,26 @@ law_wmd_banned = {
 		
 	}
 	
+	on_activate = {
+		remove_variable = nuclear_program_started
+	}
+	
 	possible_political_movements = {
 		#law_wmd_banned
 		law_wmd_allowed
+	}
+	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
 	}
 	
 }
@@ -33,11 +50,25 @@ law_wmd_allowed = {
 
 	modifier = {
 		state_building_nuclear_weapons_silo_max_level_add = 1
+		state_building_nuclear_naval_base_max_level_add = 1
 	}
 	
 	possible_political_movements = {
 		law_wmd_banned
 		#law_wmd_allowed
+	}
+	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
 	}
 	
 }

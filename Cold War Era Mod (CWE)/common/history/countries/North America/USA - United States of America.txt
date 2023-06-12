@@ -2,15 +2,10 @@
 	c:USA = {
 		set_next_election_date = 1950.11.7
 		
-		ig:ig_landowners = { add_ruling_interest_group = yes }
 		ig:ig_industrialists = { add_ruling_interest_group = yes }
-		ig:ig_corporations = { add_ruling_interest_group = yes }
-		ig:ig_devout = { add_ruling_interest_group = yes }
 		ig:ig_petty_bourgeoisie = { add_ruling_interest_group = yes }
-		ig:ig_intelligentsia = { add_ruling_interest_group = yes }
 		
-		ig:ig_bureaucrats = { add_ruling_interest_group = yes }
-		ig:ig_armed_forces = { add_ruling_interest_group = yes }
+		ig:ig_trade_unions = { set_ig_suppression = yes }
 
 		set_tax_level = low
 		
@@ -47,8 +42,15 @@
 		#International Memberships
 		add_modifier = { name = unga_member }
 		add_modifier = { name = unsc_permanent_member }
+		add_modifier = { name = nato_leader }
+		add_modifier = { name = rio_pact_leader }
 		
 		#Extra prestige for winning WW2
 		add_modifier = { name = ww2_victor months = 60 is_decaying = yes }
+		
+		#Nuclear capability
+		add_modifier = { name = nuclear_capability }
+		set_variable = nuclear_program_started
+		
 	}
 }

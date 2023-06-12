@@ -16,7 +16,7 @@ pm_real_estate_1 = {
 	building_modifiers = { 
 		level_scaled = {
 			building_input_construction_services_add = 10
-			building_output_real_estate_add = 50
+			building_output_real_estate_add = 25
 		}
 	}
 }
@@ -37,7 +37,7 @@ pm_real_estate_2 = {
 	building_modifiers = { 
 		level_scaled = {
 			building_input_construction_services_add = 20
-			building_output_real_estate_add = 100
+			building_output_real_estate_add = 50
 		}
 	}
 }
@@ -58,7 +58,7 @@ pm_real_estate_3 = {
 	building_modifiers = { 
 		level_scaled = {
 			building_input_construction_services_add = 40
-			building_output_real_estate_add = 200
+			building_output_real_estate_add = 100
 		}
 	}
 }
@@ -747,14 +747,9 @@ pm_city_greeness_5 = {
 pm_yes_city_clergy = {
 	texture = "gfx/interface/icons/production_method_icons/ownership_clergy.dds"
 	
-	disallowing_laws = {
-		law_total_separation
-		law_state_atheism
-	}
-	
 	state_modifiers = {
-		workforce_scaled = {
-			state_turmoil_effects_mult = -0.01
+		unscaled = {
+			state_turmoil_effects_mult = -0.05
 		}
 	}
 	
@@ -775,8 +770,8 @@ pm_yes_city_clergy = {
 pm_no_city_clergy = {
 	texture = "gfx/interface/icons/production_method_icons/ownership_bureacrats.dds"
 	
-	disallowing_laws = {
-		law_state_religion
+	unlocking_laws = {
+		law_state_atheism
 	}
 	
 }

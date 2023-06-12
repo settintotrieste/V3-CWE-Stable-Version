@@ -29,6 +29,19 @@ law_parties_not_allowed = {
 		law_parties_allowed
 	}
 	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
+	}
+	
 }
 
 law_single_party_state = {
@@ -42,34 +55,30 @@ law_single_party_state = {
 		country_legitimacy_ideological_incoherence_mult = -0.25
 		country_authority_add = 50
 		
-		interest_group_in_government_attraction_mult = 0.10
+		interest_group_in_government_attraction_mult = 0.20
 	}
 
 	on_activate = {
-		
-		hidden_effect = { #Clears all currently active parties
-			deactivate_parties = yes
-		}
-		
-		if = {
-			limit = {
-				NOT = {
-					any_active_party = {
-						exists = this
-					}
-				}
-			}
-			root = { gen_ruler_party = yes }
-		}
-		
-		update_party_support = yes #Reactivates precisely one legal party
-		
+		scripted_effect_parties_emergence = yes
 	}
 	
 	possible_political_movements = {
 		law_parties_not_allowed
 		#law_single_party_state
 		law_parties_allowed
+	}
+	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
 	}
 	
 }
@@ -87,7 +96,7 @@ law_parties_allowed = {
 	
 	modifier = {
 		#Less ideological incoherence
-		country_legitimacy_ideological_incoherence_mult = -0.50
+		country_legitimacy_ideological_incoherence_mult = -0.40
 		
 		interest_group_in_government_attraction_mult = 0.20
 	}
@@ -97,4 +106,18 @@ law_parties_allowed = {
 		law_single_party_state
 		#law_parties_allowed
 	}
+	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
+	}
+	
 }

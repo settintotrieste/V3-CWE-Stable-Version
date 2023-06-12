@@ -191,13 +191,13 @@ gov_colonial_administration_dictatorial = {
 	possible = {
 		
 		#Applies to all colonies
-		OR = {
-			is_subject_type = subject_type_semi_autonomous_colony
-			#is_subject_type = subject_type_mandate
-		}
+		is_subject_type = subject_type_semi_autonomous_colony
 		
-		#Legislature is not elected
-		has_law = law_type:law_appointed_legislature
+		#Legislature is not fully elected
+		OR = { 
+			has_law = law_type:law_appointed_legislature
+			has_law = law_type:law_technocratic_legislature
+		}
 		
 	}
 	
@@ -216,16 +216,10 @@ gov_colonial_administration_elective = {
 	possible = {
 		
 		#Applies to all colonies
-		OR = {
-			is_subject_type = subject_type_semi_autonomous_colony
-			#is_subject_type = subject_type_mandate
-		}
+		is_subject_type = subject_type_semi_autonomous_colony
 		
 		#Legislature is somewhat elected
-		OR = { 
-			has_law = law_type:law_technocratic_legislature
-			has_law = law_type:law_democratic_legislature
-		}
+		has_law = law_type:law_democratic_legislature
 		
 	}
 	

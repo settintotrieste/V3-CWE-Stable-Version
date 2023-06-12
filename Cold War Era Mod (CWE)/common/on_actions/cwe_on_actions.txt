@@ -5,8 +5,62 @@ on_monthly_pulse_country = {
 		united_nations.1
 		united_nations.2
 		united_nations.3
+		united_nations.4
+		united_nations.7
+		united_nations.9
+		united_nations.11
+		united_nations.12
+		united_nations.13
+		united_nations.14
+		united_nations.16
+		united_nations.17
+		united_nations.20
 		
 		revolution_system.1
+		
+		ruling_party_ideology.1
+		
+		country_tag_clean_up_system.1
+		
+		nuclear_warfare_system.1
+		nuclear_warfare_system.2
+		nuclear_warfare_system.3
+		nuclear_warfare_system.5
+		
+		commonwealth_system.1
+		commonwealth_system.2
+		commonwealth_system.3
+		
+		francophonie_system.1
+		francophonie_system.2
+		francophonie_system.3
+		
+		ibero_american_organisation_system.1
+		ibero_american_organisation_system.2
+		ibero_american_organisation_system.3
+		
+		OECD_system.1
+		OECD_system.2
+		OECD_system.3
+		
+		COMECON_system.1
+		COMECON_system.2
+		COMECON_system.3
+		
+		nato_system.1
+		nato_system.2
+		nato_system.3
+		nato_system.4
+		
+		rio_pact_system.1
+		rio_pact_system.2
+		rio_pact_system.3
+		rio_pact_system.4
+		
+		warsaw_pact_system.1
+		warsaw_pact_system.2
+		warsaw_pact_system.3
+		warsaw_pact_system.4
 		
 		british_decolonisation.1
 		british_decolonisation.2
@@ -138,6 +192,12 @@ on_monthly_pulse_country = {
 		
 		american_decolonisation_indy.1
 		american_decolonisation_indy.2
+		american_decolonisation_indy.3
+		american_decolonisation_indy.4
+		
+		italian_decolonisation_indy.1
+		
+		eastern_europe_indy.1
 		
 		historical_territorial_transfers.2
 		historical_territorial_transfers.3
@@ -160,7 +220,32 @@ on_monthly_pulse_country = {
 		
 		historical_interstate_wars.1
 		historical_interstate_wars.2
+		historical_interstate_wars.3
+		historical_interstate_wars.5
+		historical_interstate_wars.7
+		historical_interstate_wars.8
+		historical_interstate_wars.9
+		historical_interstate_wars.10
 		
+		historical_colonial_wars.1
+		historical_colonial_wars.2
+		historical_colonial_wars.3
+		historical_colonial_wars.4
+		historical_colonial_wars.5
+		historical_colonial_wars.6
+		historical_colonial_wars.7
+		historical_colonial_wars.8
+		
+		austria_formation.1
+		
+		united_states_formation.1
+		united_states_formation.3
+		
+		tanzania_formation.1
+		
+		india_formation.1
+		
+		EGY_gov_changes.1
 	}
 	
 }

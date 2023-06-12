@@ -24,14 +24,36 @@ is_not_sufficiently_independent = {
 	
 }
 
+is_in_our_personal_union = {
+
+	is_direct_subject_of = ROOT
+	OR = {
+		is_subject_type = subject_type_personal_union
+		is_subject_type = subject_type_dominion
+	}
+	
+}
+
 is_in_our_sphere_of_influence = {
 
-	is_direct_subject_of = THIS
+	is_direct_subject_of = ROOT
 	OR = {
 		is_subject_type = subject_type_protectorate
 		is_subject_type = subject_type_satellite
 		is_subject_type = subject_type_personal_union
 		is_subject_type = subject_type_dominion
+	}
+	
+}
+
+is_already_in_a_customs_union = {
+
+	OR = {
+		is_subject_type = subject_type_satellite
+		is_subject_type = subject_type_puppet
+		is_subject_type = subject_type_special_administrative_region
+		is_subject_type = subject_type_semi_autonomous_colony
+		is_subject_type = subject_type_mandate
 	}
 	
 }
@@ -47,11 +69,54 @@ is_a_democracy = {
 	
 }
 
+is_some_kind_of_democracy = {
+
+	OR = {
+		has_government_type = gov_constitutional_monarchy
+		has_government_type = gov_semi_constitutional_monarchy
+		has_government_type = gov_presidential_democracy
+		has_government_type = gov_semi_presidential_democracy
+		has_government_type = gov_presidential_regime
+		has_government_type = gov_parliamentary_democracy
+		has_government_type = gov_parliamentary_regime
+	}
+	
+}
+
+is_a_dictatorship = {
+
+	OR = {
+		has_government_type = gov_absolute_kingdom
+		has_government_type = gov_presidential_dictatorship
+		has_government_type = gov_presidential_regime
+		has_government_type = gov_parliamentary_dictatorship
+		has_government_type = gov_parliamentary_regime
+		has_government_type = gov_nationalist_dictatorship
+		has_government_type = gov_nationalist_regime
+		has_government_type = gov_soviet_dictatorship
+		has_government_type = gov_soviet_republic
+		has_government_type = gov_theocratic_dictatorship
+		has_government_type = gov_theocratic_democracy
+	}
+	
+}
+
 is_a_republican_democracy = {
 
 	OR = {
 		has_government_type = gov_presidential_democracy
 		has_government_type = gov_semi_presidential_democracy
+		has_government_type = gov_parliamentary_democracy
+	}
+	
+}
+
+is_a_parliamentary_government = {
+
+	OR = {
+		has_government_type = gov_constitutional_monarchy
+		has_government_type = gov_parliamentary_dictatorship
+		has_government_type = gov_parliamentary_regime
 		has_government_type = gov_parliamentary_democracy
 	}
 	
@@ -113,6 +178,24 @@ is_a_communist_government = {
 	
 }
 
+is_a_theocratic_government = {
+
+	OR = {
+		has_government_type = gov_theocratic_dictatorship
+		has_government_type = gov_theocratic_democracy
+	}
+	
+}
+
+is_a_colonial_government = {
+
+	OR = {
+		has_government_type = gov_colonial_administration_dictatorial
+		has_government_type = gov_colonial_administration_elective
+	}
+	
+}
+
 can_go_to_war = {
 
 	#THIS does not have restricted war rights
@@ -129,4 +212,52 @@ can_go_to_war = {
 		}
 	}
 	
+}
+
+has_jingoistic_ruler = {
+	ruler = {
+		OR = {
+			has_ideology = ideology:ideology_autocratic
+			has_ideology = ideology:ideology_power_hungry
+			has_ideology = ideology:ideology_elitist
+		}
+	}
+}
+
+is_not_neutral = {
+
+	#THIS does not have restricted war rights
+	NOT = { has_law = law_type:law_no_war }
+	
+}
+
+is_neutral = {
+
+	#THIS has restricted war rights
+	has_law = law_type:law_no_war
+	
+}
+
+cold_war_ongoing = {
+	any_country = {
+		country_rank = rank_value:super_power
+		is_a_communist_government = yes
+	}
+	any_country = {
+		country_rank = rank_value:super_power
+		is_a_democracy = yes
+	}
+}
+
+is_a_superpower = {
+	country_rank = rank_value:super_power
+}
+
+left_wing_ruling_coalition = {
+	OR = { 
+		has_modifier = communist_ruling_party_ideology
+		has_modifier = market_socialist_ruling_party_ideology
+		has_modifier = socialist_ruling_party_ideology
+		has_modifier = social_democratic_ruling_party_ideology
+	}
 }

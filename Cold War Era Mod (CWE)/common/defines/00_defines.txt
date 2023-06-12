@@ -1066,7 +1066,7 @@ NEconomy = {
 	MARKET_SHARE_MARKET_ACCESS_SCALED = 0.5		# How much of market points is gained based on market access
 
 	COUNTRY_MIN_CREDIT_BASE = 100000			# Added to the total Building Cash Reserves to determine credit limit (base)
-	COUNTRY_MIN_CREDIT_SCALED = 0.05 			# Added to the total Building Cash Reserves to determine credit limit (multiplied by GDP)
+	COUNTRY_MIN_CREDIT_SCALED = 0.20 			# Added to the total Building Cash Reserves to determine credit limit (multiplied by GDP)
 	CREDIT_RATIO_MAX_OVERRUN = 0.01 			# Countries can accumulate this percentage more of a debt "hole" than their credit limit when in default
 	GOLD_RESERVE_RATIO_AT_START = 0.5			# Unless a country history's 'treasury' parameter is set to a non-zero value, countries start with this ratio of their gold reserve in gold
 	BUILDING_INITIAL_WAGE_WEEKS = 2				# A building will not adjust its wages for the first this many weeks of its existence
@@ -1680,7 +1680,7 @@ NCharacters = {
 
 	AGITATOR_EXPECTED_SPAWN_INTERVAL_0_LITERACY = 12 # At 0% literacy, a new agitator is expected to spawn in a given country once every this many years. (supports decimal values)
 	AGITATOR_EXPECTED_SPAWN_INTERVAL_100_LITERACY = 2 # At 100% literacy, a new agitator is expected to spawn in a given country once every this many years. (supports decimal values)
-	AGITATOR_MOVEMENT_SUPPORT_WEIGHT = 0.75 # Political movements will gain support from agitators' popularity multiplied by this weight
+	AGITATOR_MOVEMENT_SUPPORT_WEIGHT = 0.4 # Political movements will gain support from agitators' popularity multiplied by this weight
 	AGITATOR_MOVEMENT_POPULARITY_THRESHOLD = 15 # Agitators whose popularity is at or lower than this threshold will not be considered when starting/joining political movements
 
 	### TRAIT GENERATION

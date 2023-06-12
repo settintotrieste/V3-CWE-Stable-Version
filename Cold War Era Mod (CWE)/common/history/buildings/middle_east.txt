@@ -1,5 +1,17 @@
 BUILDINGS = {
 	
+	c:TUR = {
+		every_scope_state = {
+			 effect_starting_buildings_2 = yes
+		}
+	}
+	
+	c:LEB = {
+		every_scope_state = {
+			 effect_starting_buildings_1 = yes
+		}
+	}
+	
 	c:BHR = {
 		every_scope_state = {
 			 effect_starting_buildings_1 = yes
@@ -55,6 +67,12 @@ BUILDINGS = {
 	}
 	
 	c:QAT = {
+		every_scope_state = {
+			 effect_starting_buildings_1 = yes
+		}
+	}
+	
+	c:UAE = {
 		every_scope_state = {
 			 effect_starting_buildings_1 = yes
 		}

@@ -74,7 +74,15 @@ dp_regime_change = {
 
 	on_war_begins = {}
 
-	on_war_end = {}
+	on_war_end = {
+	
+		#Change gov type based on ruling interest group
+		scope:target_country = {
+			trigger_event = { id = revolution_system.1 }
+		}
+		
+	}
+	
 }
 
 dp_ban_slavery = {
@@ -189,6 +197,27 @@ dp_return_state = {
 			}
 		}
 	}
+	
+	on_weekly_pulse = {}
+	
+	on_war_begins = {}
+
+	on_war_end = {}
+}
+
+dp_return_state_historical = {
+	war_goal = return_state
+	requires_interest_marker = no
+	initiator_can_add_war_goals = no
+	target_can_add_war_goals = no
+	
+	texture = "gfx/interface/icons/war_goals/return_state.dds"
+	
+	selectable_in_lens = {
+		always = no
+	}
+	
+	possible = {}
 	
 	on_weekly_pulse = {}
 	
@@ -470,7 +499,7 @@ dp_annex_subject = {
 		}
 
 		#THIS does not have restricted war rights
-		NOR = { 
+		NOT = { 
 			has_law = law_type:law_no_war
 		}
 		#Ruler is jingoistic
@@ -481,55 +510,6 @@ dp_annex_subject = {
 				has_ideology = ideology:ideology_elitist
 			}
 		}		
-	}
-	
-	on_weekly_pulse = {}
-	
-	on_war_begins = {}
-
-	on_war_end = {}
-}
-
-dp_force_recognition = {
-	requires_interest_marker = no
-	
-	war_goal = force_recognition
-	
-	texture = "gfx/interface/icons/war_goals/force_recognition.dds"
-	
-	selectable_in_lens = {
-		is_country_type = unrecognized
-	}
-	
-	possible = {
-		is_country_type = unrecognized
-		aggressive_diplomatic_plays_permitted = yes
-		NOT = { is_subject_of = scope:target_country }
-		scope:target_country = {
-			OR = {
-				is_country_type = recognized
-				is_country_type = colonial
-			}		
-			NOT = { is_subject_of = root }
-		}	
-		custom_tooltip = {
-			text = DIPLO_ACTION_RELATIONS_CORDIAL_OR_GREATER_NOT
-			scope:target_country.relations:root < relations_threshold:cordial
-		}
-
-		#THIS does not have restricted war rights
-		NOR = { 
-			has_law = law_type:law_no_war
-			has_law = law_type:law_defensive_war
-		}
-		#Ruler is jingoistic
-		ruler = {
-			OR = {
-				has_ideology = ideology:ideology_autocratic
-				has_ideology = ideology:ideology_power_hungry
-				has_ideology = ideology:ideology_elitist
-			}
-		}
 	}
 	
 	on_weekly_pulse = {}
@@ -653,23 +633,27 @@ dp_contain_threat = {
 	
 	possible = {
 		NOT = { is_country_type = decentralized }
+		
 		aggressive_diplomatic_plays_permitted = yes
+		
 		NOT = { is_subject_of = scope:target_country }
 		scope:target_country = {
 			NOT = { is_country_type = decentralized }
 			NOT = { is_subject_of = root }
 		}	
-		custom_tooltip = {
-			text = DIPLO_PLAY_GREAT_POWER_TRIGGER
-			country_rank >= rank_value:great_power
-		}	
+		
+		#custom_tooltip = {
+		#	text = DIPLO_PLAY_GREAT_POWER_TRIGGER
+		#	country_rank >= rank_value:great_power
+		#}	
+		
 		custom_tooltip = {
 			text = DIPLO_PLAY_OUTRAGED_TRIGGER
 			"scope:target_country.infamy" >= infamy_threshold:pariah
 		}
 		
 		#THIS does not have restricted war rights
-		NOR = { 
+		NOT = { 
 			has_law = law_type:law_no_war
 		}
 	}
@@ -685,6 +669,30 @@ dp_contain_threat = {
 	on_war_begins = {}
 
 	on_war_end = {}
+	
+}
+
+dp_un_peacekeeping = {
+	war_goal = annex_country
+	requires_interest_marker = no
+	initiator_can_add_war_goals = no
+	target_can_add_war_goals = no
+	add_infamy_for_starting_initiator_wargoals = no
+	
+	texture = "gfx/interface/icons/war_goals/contain_threat.dds"
+	
+	selectable_in_lens = {
+		always = no
+	}
+	
+	possible = {}
+	
+	on_weekly_pulse = {}
+	
+	on_war_begins = {}
+
+	on_war_end = {}
+	
 }
 
 dp_native_uprising = {
@@ -714,6 +722,26 @@ dp_native_uprising = {
 
 dp_annex_war = {
 	war_goal = annex_country
+	
+	texture = "gfx/interface/icons/war_goals/annex_country.dds"
+	
+	selectable_in_lens = {
+		always = no
+	}
+	
+	possible = {}
+	
+	on_weekly_pulse = {}
+	
+	on_war_begins = {}
+
+	on_war_end = {}
+}
+
+dp_annex_war_historical = {
+	war_goal = annex_country
+	initiator_can_add_war_goals = no
+	target_can_add_war_goals = no
 	
 	texture = "gfx/interface/icons/war_goals/annex_country.dds"
 	

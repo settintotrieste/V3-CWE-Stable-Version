@@ -1,0 +1,430 @@
+namespace = rio_pact_system
+
+#Set Rio Pact leader
+rio_pact_system.1 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		
+		OR = {
+		
+			#No Rio Pact leader and there is an eligible one
+			AND = { 
+			
+				NOT = { any_country = { has_modifier = rio_pact_leader } }
+				
+				any_country = { 
+					has_modifier = rio_pact_member 
+					OR = { 
+						country_is_in_south_america = yes
+						country_is_in_north_america = yes
+					}
+					is_a_democracy = yes
+					country_rank = rank_value:super_power
+				}
+				
+			}
+			
+			#Rio Pact leader is wrong
+			AND = { 
+				has_modifier = rio_pact_leader 
+				OR = {
+					NOT = { is_sufficiently_independent = yes }
+					NOT = { is_not_neutral = yes }
+					NOT = { country_rank = rank_value:super_power }
+				}
+			}
+			
+			#Overlapping modifiers
+			any_country = { has_modifier = rio_pact_leader has_modifier = rio_pact_member }
+			
+		}
+		
+	}
+
+	immediate = {
+		
+		#Clear Rio Pact leader
+		every_country = {
+			limit = { has_modifier = rio_pact_leader }
+			remove_modifier = rio_pact_leader
+			add_modifier = { name = rio_pact_member }
+		}
+	
+		#Set Rio Pact leader
+		if = {
+			limit = { 
+				NOT = { any_country = { has_modifier = rio_pact_leader } }
+				
+				any_country = { 
+					has_modifier = rio_pact_member 
+					OR = { 
+						country_is_in_south_america = yes
+						country_is_in_north_america = yes
+					}
+					is_a_democracy = yes
+					country_rank = rank_value:super_power
+				}
+			}
+			random_country = {
+				limit = {
+					has_modifier = rio_pact_member 
+					OR = { 
+						country_is_in_south_america = yes
+						country_is_in_north_america = yes
+					}
+					is_a_democracy = yes
+					country_rank = rank_value:super_power
+				}
+				add_modifier = { name = rio_pact_leader }
+			}
+		}
+		else_if = {
+			limit = {
+				has_modifier = rio_pact_leader 
+				OR = {
+					NOT = { is_sufficiently_independent = yes }
+					NOT = { is_not_neutral = yes }
+					NOT = { country_rank = rank_value:super_power }
+				}
+			}
+			random_country = {
+				limit = {
+					has_modifier = rio_pact_member 
+					OR = { 
+						country_is_in_south_america = yes
+						country_is_in_north_america = yes
+					}
+					is_a_democracy = yes
+					country_rank = rank_value:super_power
+				}
+				add_modifier = { name = rio_pact_leader }
+			}
+		}
+		
+		#Clean up memberships
+		if = { 
+			limit = { has_modifier = rio_pact_leader has_modifier = rio_pact_member }
+			remove_modifier = rio_pact_member
+		}
+		
+	}
+
+}
+
+#Set Rio Pact relations
+rio_pact_system.2 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		
+		OR = { has_modifier = rio_pact_member has_modifier = rio_pact_leader }
+		
+		any_country = { 
+			OR = { has_modifier = rio_pact_member has_modifier = rio_pact_leader }
+			NOR = { has_diplomatic_pact = { who = ROOT type = defensive_pact } has_diplomatic_pact = { who = ROOT type = alliance } }
+		}
+		
+	}
+
+	immediate = {
+		
+		#Force defensive pact on Rio Pact members
+		every_country = { 
+			limit = { 
+				OR = { has_modifier = rio_pact_member has_modifier = rio_pact_leader }
+				NOR = { has_diplomatic_pact = { who = ROOT type = defensive_pact } has_diplomatic_pact = { who = ROOT type = alliance } }
+			}
+			create_diplomatic_pact = {
+				country = ROOT
+				type = defensive_pact
+			}
+		}
+		
+	}
+
+}
+
+#Dissolve Rio Pact
+rio_pact_system.3 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		
+		OR = { 
+		
+			#THIS is the sole member of Rio Pact
+			AND = { 
+				OR = { has_modifier = rio_pact_member has_modifier = rio_pact_leader }
+				NOT = { any_country = { has_modifier = rio_pact_member } }
+			}
+			
+			#No Rio Pact leader
+			AND = { 
+				NOT = { has_modifier = rio_pact_leader }
+				NOT = { any_country = { has_modifier = rio_pact_leader } }
+			}
+			
+		}
+		
+	}
+
+	immediate = {
+		
+		#Everyone leaves Rio Pact
+		remove_modifier = rio_pact_member
+		remove_modifier = rio_pact_leader
+		
+		every_country = {
+			remove_modifier = rio_pact_member
+			remove_modifier = rio_pact_leader
+		}
+		
+	}
+
+}
+
+#Kick ineligible countries out of Rio Pact
+rio_pact_system.4 = {
+	type = country_event
+	title = rio_pact_expulsion.t 					# Title of the event; ADD LOCALISATION
+    desc = rio_pact_expulsion.d 					# Description of the event; ADD LOCALISATION
+    flavor = rio_pact_expulsion.f 					# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+	trigger = {
+		
+		OR = { 
+			has_modifier = rio_pact_member
+			has_modifier = rio_pact_leader
+			has_variable = rio_pact_application_var
+		}
+		
+		OR = { 
+			NOT = { is_sufficiently_independent = yes }
+			NOT = { is_not_neutral = yes }
+			is_a_communist_government = yes
+		}
+		
+	}
+
+	immediate = {
+	
+		#THIS leaves Rio Pact
+		remove_modifier = rio_pact_member
+		remove_modifier = rio_pact_leader
+		
+		#Terminate any applications
+		remove_variable = rio_pact_application_var
+		
+		#Remove defensive alliance with Rio Pact members
+		every_country = {
+			limit = { OR = { has_modifier = rio_pact_member has_modifier = rio_pact_leader } }
+			remove_diplomatic_pact = {
+				country = ROOT
+				type = defensive_pact
+			}
+		}
+		
+		#Block reapplication for 5 years
+		set_variable = {
+			name = left_rio_pact_var
+			months = 60
+		}
+		
+	}
+
+}
+
+#Option for Rio Pact leader to accept or reject application for membership
+rio_pact_system.5 = {
+	title = rio_pact_application_choice.t 					# Title of the event; ADD LOCALISATION
+    desc = rio_pact_application_choice.d 					# Description of the event; ADD LOCALISATION
+    #flavor = rio_pact_application_choice.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/unspecific_military_parade.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+
+	trigger = {
+		
+		has_modifier = rio_pact_leader
+		
+		any_country = {
+			has_variable = rio_pact_application_var
+			
+			is_sufficiently_independent = yes
+			is_not_neutral = yes
+			is_at_war = no
+		}
+		
+	}
+
+	immediate = {
+	
+		random_country = {
+			limit = { has_variable = rio_pact_application_var }
+			
+			remove_variable = rio_pact_application_var
+			
+			save_scope_as = rio_pact_applicant
+		}
+		
+		ROOT = {
+			save_scope_as = rio_pact_leader
+		}
+		
+	}
+
+	option = {
+        name = rio_pact_application_choice.option.1			# Accept application from PREV
+        highlighted_option = yes
+		
+		#Accept FROM into Rio Pact
+		scope:rio_pact_applicant = {
+			#FROM joins Rio Pact
+			add_modifier = { name = rio_pact_member }
+		}
+		
+		#Create defensive alliance with FROM
+		every_country = {
+			limit = { 
+				OR = { has_modifier = rio_pact_member has_modifier = rio_pact_leader } 
+				NOR = { has_diplomatic_pact = { who = ROOT type = defensive_pact } has_diplomatic_pact = { who = ROOT type = alliance } }
+			}
+			create_diplomatic_pact = {
+				country = scope:rio_pact_applicant
+				type = defensive_pact
+			}
+			set_relations = {
+				country = scope:rio_pact_applicant
+				value = 50
+			}
+		}
+		
+		#Inform applicant of successful outcome
+		scope:rio_pact_applicant = { trigger_event = { id = rio_pact_system.7 } }
+		
+		#FROM is happy with THIS
+		set_relations = {
+			country = scope:rio_pact_applicant
+			value = 50
+		}
+		
+		#Hostile countries become more hostile
+		every_country = {
+			limit = { 
+				has_attitude = {
+					who = ROOT
+					attitude <= antagonistic
+				}
+			}
+			set_relations = {
+				country = root
+				value = -25
+			}
+		}
+		
+		ai_chance = { 
+			base = 99
+		}
+		
+    }
+	
+	option = {
+        name = rio_pact_application_choice.option.2 # Refuse application from PREV
+		default_option = yes
+		
+		#Inform applicant of unsuccessful outcome
+		scope:rio_pact_applicant = { trigger_event = { id = rio_pact_system.6 } }
+		
+		#FROM is angry!
+		change_relations = {
+			country = scope:rio_pact_applicant
+			value = -50
+		}
+		
+		#Hostile countries become less hostile
+		every_country = {
+			limit = { 
+				has_attitude = {
+					who = ROOT
+					attitude <= antagonistic
+				}
+			}
+			set_relations = {
+				country = root
+				value = 25
+			}
+		}
+		
+		ai_chance = { 
+			base = 1
+		}
+		
+    }
+
+}
+
+#Notification of rejection
+rio_pact_system.6 = {
+	title = rio_pact_application_rejection.t 				# Title of the event; ADD LOCALISATION
+    desc = rio_pact_application_rejection.d 				# Description of the event; ADD LOCALISATION
+    #flavor = rio_pact_application_rejection.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/unspecific_military_parade.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+
+	immediate = {
+	
+		random_country = {
+			limit = { has_modifier = rio_pact_leader }
+			save_scope_as = rio_pact_leader
+		}
+		
+	}
+
+	option = {
+        name = rio_pact_application_rejection.1				# Unfortunate
+		
+    }
+
+}
+
+#Notification of acceptance
+rio_pact_system.7 = {
+	title = rio_pact_application_acceptance.t 				# Title of the event; ADD LOCALISATION
+    desc = rio_pact_application_acceptance.d 				# Description of the event; ADD LOCALISATION
+    #flavor = rio_pact_application_acceptance.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/unspecific_military_parade.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+
+	immediate = {
+	
+		random_country = {
+			limit = { has_modifier = rio_pact_leader }
+			save_scope_as = rio_pact_leader
+		}
+		
+	}
+
+	option = {
+        name = rio_pact_application_acceptance.1				# Fortunate
+		
+    }
+
+}

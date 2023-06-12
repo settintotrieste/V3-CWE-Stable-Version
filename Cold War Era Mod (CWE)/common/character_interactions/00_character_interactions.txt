@@ -64,9 +64,9 @@ grant_command_to_ruler = {
 		}
 		if = {
 			limit = {
-				is_interest_group_type = ig_armed_forces
+				NOT = { is_interest_group_type = ig_armed_forces }
 			}
-			add = 25
+			add = -50
 		}
 		if = {
 			limit = {
@@ -149,6 +149,18 @@ grant_leadership_to_agitator = {
 		interest_group = {
 			is_in_government = yes
 		}
+		
+		# Foreigners cannot be IG leaders unless the country is multicultural
+		owner = {
+			has_law = law_type:law_multicultural
+		}
+		
+		# Cannot give leadership if character is a culturally discriminated exile
+		NOT = {
+			culture = {
+				culture_is_discriminated_in = scope:actor
+			}
+		}
 	}
 
 	effect = {
@@ -215,6 +227,18 @@ grant_command_to_agitator = {
 		age >= define:NCharacters|ADULT_AGE
 		is_female = no
 		exists = owner.capital.land_hq
+		
+		#Foreigners cannot be military leaders unless the country is multicultural
+		owner = {
+			has_law = law_type:law_multicultural
+		}
+		
+		# Cannot give leadership if character is a culturally discriminated exile
+		NOT = {
+			culture = {
+				culture_is_discriminated_in = scope:actor
+			}
+		}
 	}
 
 	effect = {
@@ -275,7 +299,7 @@ marry_ruler_or_heir = {
 			is_heir = yes
 		}
 		scope:actor ?= {
-			has_law = law_type:law_HOS_monarch
+			has_law = law_type:law_HOS_monarch OR = { has_law = law_type:law_HOG_none has_law = law_type:law_HOG_president_prime_minister }
 			religion = {
 				has_discrimination_trait = christian
 			}
@@ -288,7 +312,7 @@ marry_ruler_or_heir = {
 	possible = {
 		any_country = {
 			NOT = { THIS = scope:actor }
-			has_law = law_type:law_HOS_monarch
+			has_law = law_type:law_HOS_monarch OR = { has_law = law_type:law_HOG_none has_law = law_type:law_HOG_president_prime_minister }
 			religion = scope:actor.religion
 			ruler = {
 				age > 36
@@ -316,11 +340,10 @@ abdicate_monarch = {
 	clicksound = "event:/SFX/UI/Military/command_grant"
 
 	potential = {
-		has_dlc_feature = voice_of_the_people_content
 		owner = scope:actor
 		is_ruler = yes
 		owner = {
-			has_law = law_type:law_HOS_monarch
+			has_law = law_type:law_HOS_monarch OR = { has_law = law_type:law_HOG_none has_law = law_type:law_HOG_president_prime_minister }
 		}
 		exists = owner.heir
 	}
@@ -347,7 +370,7 @@ abdicate_monarch = {
 			kill_character = yes
 		}
 		owner = {
-			trigger_event = { id = wedding.3 popup = yes}
+			trigger_event = { id = wedding.3 popup = yes }
 		}
 	}
 
@@ -417,8 +440,9 @@ exile_character = {
 
 	possible = {
 		owner = {
-			NOT = {
+			NOR = {
 				has_law = law_type:law_full_free_speech
+				has_law = law_type:law_closed_borders
 			}
 		}
 		OR = {

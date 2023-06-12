@@ -1,0 +1,200 @@
+namespace = nuclear_warfare_system
+
+#THIS gains nuclear capability
+nuclear_warfare_system.1 = {
+	type = country_event
+
+	title = gained_nuclear_capability.t
+	desc = gained_nuclear_capability.d
+	flavor = gained_nuclear_capability.f
+
+	event_image = { video = "gfx/event_pictures/unspecific_military_parade.bk2" }
+
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/leader_speaking_to_a_group_of_people"
+
+	duration = 1
+
+	trigger = {
+	
+		NOT = { has_modifier = nuclear_capability }
+		
+		#Has nuclear weapons law
+		has_law = law_type:law_wmd_allowed
+		
+		#Has nuclear weapons tech
+		has_technology_researched = tech_military_nuclear_3
+		
+		#Has at least 1 functional nuclear weapons building
+		any_scope_state = {
+			any_scope_building = {
+				is_building_type = building_nuclear_weapons_silo
+				level >= 1
+				building_has_goods_shortage = no
+			}
+		}
+		
+		#Must be a sovereign state
+		is_sufficiently_independent = yes
+		
+	}
+
+	immediate = {
+		add_modifier = { name = nuclear_capability }
+		
+		save_scope_as = nuclear_country
+	}
+
+	option = {
+		name = gained_nuclear_capability.option 	#The world shall tremble at our might!
+		
+	}
+	
+}
+
+#THIS loses nuclear capability
+nuclear_warfare_system.2 = {
+	type = country_event
+
+	title = lost_nuclear_capability.t
+	desc = lost_nuclear_capability.d
+	flavor = lost_nuclear_capability.f
+
+	event_image = { video = "gfx/event_pictures/unspecific_military_parade.bk2" }
+
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/leader_speaking_to_a_group_of_people"
+
+	duration = 1
+
+	trigger = {
+	
+		has_modifier = nuclear_capability
+		
+		OR = { 
+		
+			#Does not have nuclear weapons law
+			NOT = { has_law = law_type:law_wmd_allowed }
+		
+			#Does not have at least 1 functional nuclear weapons building
+			NOT = { 
+				any_scope_state = {
+					any_scope_building = {
+						is_building_type = building_nuclear_weapons_silo
+						level >= 1
+						building_has_goods_shortage = no
+					}
+				}
+			}
+			
+			#NOT a sovereign state
+			NOT = { is_sufficiently_independent = yes }
+			
+		}
+		
+	}
+
+	immediate = {
+		remove_modifier = nuclear_capability
+		
+		save_scope_as = nuclear_country
+	}
+
+	option = {
+		name = lost_nuclear_capability.option 	#The world shall tremble at our might!
+		
+	}
+	
+}
+
+#Clean up nuclear buildings
+nuclear_warfare_system.3 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		
+		#Not a nuclear capable country
+		NOT = { has_modifier = nuclear_capability }
+		
+		#Has Nuclear Weapons Silo OR Nuclear Submarine Base
+		any_scope_building = { 
+			OR = { 
+				is_building_type = building_nuclear_weapons_silo
+				is_building_type = building_nuclear_naval_base
+			}
+		}
+		
+	}
+
+	immediate = {
+		
+		#Clear nuclear buildings
+		every_scope_state = { 
+			limit = { has_building = building_nuclear_weapons_silo }
+			remove_building = building_nuclear_weapons_silo
+		}
+		every_scope_state = { 
+			limit = { has_building = building_nuclear_naval_base }
+			remove_building = building_nuclear_naval_base
+		}
+		
+	}
+	
+}
+
+#THIS has been struck by nuclear weapons
+nuclear_warfare_system.4 = {
+	type = country_event
+
+	title = nuclear_attack.t
+	desc = nuclear_attack.d
+	flavor = nuclear_attack.f
+
+	event_image = { video = "gfx/event_pictures/unspecific_devastation.bk2" }
+
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/leader_speaking_to_a_group_of_people"
+
+	duration = 1
+
+	immediate = {
+		save_scope_as = nuclear_country
+	}
+
+	option = {
+		name = nuclear_attack.option 	#The world shall tremble at our might!
+		
+	}
+	
+}
+
+#Clean up nuclear weapons program variable
+nuclear_warfare_system.5 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		
+		#Has nuclear program
+		has_variable = nuclear_program_started
+		
+		#THIS no longer allows WMDs or has become an insufficiently independent subject
+		OR = {
+			NOT = { has_law = law_type:law_wmd_allowed }
+			NOT = { is_sufficiently_independent = yes }
+		}
+		
+	}
+
+	immediate = {
+		remove_variable = nuclear_program_started
+	}
+	
+}

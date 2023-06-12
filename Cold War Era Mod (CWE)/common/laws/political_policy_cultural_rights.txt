@@ -26,8 +26,6 @@ law_ethnostate = { #Cultural Supremacy
 		state_radicals_from_sol_change_accepted_culture_mult = -0.2
 		state_loyalists_from_sol_change_accepted_culture_mult = 0.2
 		state_radicals_from_discrimination_mult = 0.20
-		
-		interest_group_ig_minority_groups_pol_str_mult = -1.0
 	}
 	
 	possible_political_movements = {
@@ -35,6 +33,20 @@ law_ethnostate = { #Cultural Supremacy
 		law_national_supremacy
 		law_multicultural
 	}
+	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
+	}
+	
 }
 
 law_national_supremacy = { #National Supremacy
@@ -60,8 +72,6 @@ law_national_supremacy = { #National Supremacy
 		state_radicals_from_sol_change_accepted_culture_mult = -0.1
 		state_loyalists_from_sol_change_accepted_culture_mult = 0.1
 		state_radicals_from_discrimination_mult = 0.10
-		
-		interest_group_ig_minority_groups_pol_str_mult = -0.5
 	}
 	
 	possible_political_movements = {
@@ -69,6 +79,20 @@ law_national_supremacy = { #National Supremacy
 		#law_national_supremacy
 		law_multicultural
 	}
+	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
+	}
+	
 }
 
 law_multicultural = { #Multiculturalism
@@ -116,4 +140,18 @@ law_multicultural = { #Multiculturalism
 			}			
 		}
 	}
+	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
+	}
+	
 }

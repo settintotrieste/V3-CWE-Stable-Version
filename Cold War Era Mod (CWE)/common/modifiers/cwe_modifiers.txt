@@ -1,3 +1,5 @@
+### UN System ###
+
 unga_member = {
 	icon = gfx/interface/icons/diplo_icons/united_nations_UNGA.dds
 	country_influence_mult = 0.05
@@ -10,23 +12,337 @@ unsc_permanent_member = {
 	country_prestige_mult = 0.05
 }
 
-unsc_member = {
-	icon = gfx/interface/icons/diplo_icons/united_nations.dds
+unsc_non_permanent_member = {
+	icon = gfx/interface/icons/diplo_icons/united_nations_UNSC_non_perm.dds
+	country_influence_mult = 0.025
+	country_prestige_mult = 0.025
+}
+
+unsg_country = {
+	icon = gfx/interface/icons/diplo_icons/unsg_country.dds
 	country_influence_mult = 0.05
 	country_prestige_mult = 0.05
 }
 
+un_peacekeeping_unsc_stage_var = {
+	icon = gfx/interface/icons/diplo_icons/united_nations_peacekeeping.dds
+	
+}
+
+un_peacekeeping_unga_stage_var = {
+	icon = gfx/interface/icons/diplo_icons/united_nations_peacekeeping.dds
+	
+}
+
+un_peackeeping_timer = {
+	icon = gfx/interface/icons/diplo_icons/united_nations_peacekeeping_timer.dds
+	
+}
+
+un_potential_mandate_marker = {
+	icon = gfx/interface/icons/diplo_icons/united_nations_peacekeeping.dds
+	
+}
+
+un_potential_mandate_timer = {
+	icon = gfx/interface/icons/diplo_icons/united_nations_peacekeeping.dds
+	
+}
+
+imf_loan_debtor = {
+	icon = gfx/interface/icons/diplo_icons/imf_loan_debtor.dds
+	country_loan_interest_rate_mult = -0.5
+	
+}
+
+imf_loan_creditor = {
+	icon = gfx/interface/icons/diplo_icons/imf_loan_creditor.dds
+	country_loan_interest_rate_mult = -0.25
+	country_minting_mult = 0.25
+}
+
+### Effects of WW2 ###
+
 ww2_victor = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
+	icon = gfx/interface/icons/diplo_icons/ww2_victor.dds
 	country_prestige_mult = 2
 	state_radicals_from_sol_change_mult = -0.50
 	political_movement_radicalism_mult = -0.50
 	country_minting_mult = 0.50
 }
 
+### Colonial System ###
+
 nationalist_agitation = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
 	state_radicals_from_discrimination_mult = 0.25
 	state_radicals_from_sol_change_mult = 0.25
 	state_turmoil_effects_mult = 0.25
+}
+
+### Generic Domestic Events ###
+
+stirrings_of_revolution = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fire_negative.dds
+	state_radicals_from_discrimination_mult = 0.25
+	state_radicals_from_sol_change_mult = 0.25
+	state_turmoil_effects_mult = 0.25
+	interest_group_in_opposition_approval_add = -10
+}
+
+### Generic Diplomatic Events ###
+
+national_humiliation = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
+	country_influence_mult = -0.50
+	country_prestige_mult = -0.50
+}
+
+### Ruling Party Ideology System ###
+
+communist_ruling_party_ideology = {
+	icon = gfx/interface/icons/ideology_icons/vanguardist.dds
+	
+}
+
+market_socialist_ruling_party_ideology = {
+	icon = gfx/interface/icons/ideology_icons/communist.dds
+	
+}
+
+socialist_ruling_party_ideology = {
+	icon = gfx/interface/icons/ideology_icons/socialist.dds
+	
+}
+
+social_democratic_ruling_party_ideology = {
+	icon = gfx/interface/icons/ideology_icons/social_democrat.dds
+	
+}
+
+progressive_ruling_party_ideology = {
+	icon = gfx/interface/icons/ideology_icons/reformer.dds
+	
+}
+
+traditionalist_ruling_party_ideology = {
+	icon = gfx/interface/icons/ideology_icons/traditionalist.dds
+	
+}
+
+fascist_ruling_party_ideology = {
+	icon = gfx/interface/icons/ideology_icons/fascist.dds
+	
+}
+
+conservative_ruling_party_ideology = {
+	icon = gfx/interface/icons/ideology_icons/stratocratic.dds
+	
+}
+
+liberal_ruling_party_ideology = {
+	icon = gfx/interface/icons/ideology_icons/liberal.dds
+	
+}
+
+libertarian_ruling_party_ideology = {
+	icon = gfx/interface/icons/ideology_icons/individualist.dds
+	
+}
+
+centrist_ruling_party_ideology = {
+	icon = gfx/interface/icons/ideology_icons/no_ideology.dds
+	
+}
+
+### NATO ###
+
+nato_member = {
+	icon = gfx/interface/icons/diplo_icons/nato_member.dds
+	country_prestige_mult = 0.05
+}
+
+nato_leader = {
+	icon = gfx/interface/icons/diplo_icons/nato_member.dds
+	country_prestige_mult = 0.10
+}
+
+### Rio Pact ###
+
+rio_pact_member = {
+	icon = gfx/interface/icons/diplo_icons/rio_pact_member.dds
+	country_prestige_mult = 0.05
+}
+
+rio_pact_leader = {
+	icon = gfx/interface/icons/diplo_icons/rio_pact_member.dds
+	country_prestige_mult = 0.10
+}
+
+### Warsaw Pact ###
+
+warsaw_pact_member = {
+	icon = gfx/interface/icons/diplo_icons/warsaw_pact_member.dds
+	country_prestige_mult = 0.05
+}
+
+warsaw_pact_leader = {
+	icon = gfx/interface/icons/diplo_icons/warsaw_pact_member.dds
+	country_prestige_mult = 0.10
+}
+
+### Commonwealth of Nations ###
+
+commonwealth_member = {
+	icon = gfx/interface/icons/diplo_icons/commonwealth_member.dds
+	country_prestige_mult = 0.025
+	country_tech_spread_mult = 0.05
+	country_trade_route_cost_mult = -0.05
+	country_trade_route_competitiveness_mult = 0.05
+	state_radicals_from_discrimination_mult = 0.05
+}
+
+commonwealth_leader = {
+	icon = gfx/interface/icons/diplo_icons/commonwealth_member.dds
+	country_prestige_mult = 0.05
+	country_tech_spread_mult = 0.05
+	country_trade_route_cost_mult = -0.05
+	country_trade_route_competitiveness_mult = 0.10
+	state_radicals_from_discrimination_mult = 0.05
+}
+
+### Francophonie ###
+
+francophonie_member = {
+	icon = gfx/interface/icons/diplo_icons/francophonie_member.dds
+	country_prestige_mult = 0.025
+	country_tech_spread_mult = 0.05
+	country_trade_route_cost_mult = -0.05
+	country_trade_route_competitiveness_mult = 0.05
+	state_radicals_from_discrimination_mult = 0.05
+}
+
+francophonie_leader = {
+	icon = gfx/interface/icons/diplo_icons/francophonie_member.dds
+	country_prestige_mult = 0.05
+	country_tech_spread_mult = 0.05
+	country_trade_route_cost_mult = -0.05
+	country_trade_route_competitiveness_mult = 0.10
+	state_radicals_from_discrimination_mult = 0.05
+}
+
+### Organisation of Ibero-American States ###
+
+ibero_american_organisation_member = {
+	icon = gfx/interface/icons/diplo_icons/ibero_american_organisation_member.dds
+	country_prestige_mult = 0.025
+	country_tech_spread_mult = 0.05
+	country_trade_route_cost_mult = -0.05
+	country_trade_route_competitiveness_mult = 0.05
+	state_radicals_from_discrimination_mult = 0.05
+}
+
+ibero_american_organisation_leader = {
+	icon = gfx/interface/icons/diplo_icons/ibero_american_organisation_member.dds
+	country_prestige_mult = 0.05
+	country_tech_spread_mult = 0.05
+	country_trade_route_cost_mult = -0.05
+	country_trade_route_competitiveness_mult = 0.10
+	state_radicals_from_discrimination_mult = 0.05
+}
+
+### OECD ###
+
+OECD_member = {
+	icon = gfx/interface/icons/diplo_icons/OECD_member.dds
+	country_prestige_mult = 0.025
+	country_tech_spread_mult = 0.05
+	country_trade_route_cost_mult = -0.05
+	country_trade_route_competitiveness_mult = 0.05
+	country_loan_interest_rate_mult = -0.10
+	state_radicals_from_discrimination_mult = 0.05
+}
+
+OECD_leader = {
+	icon = gfx/interface/icons/diplo_icons/OECD_member.dds
+	country_prestige_mult = 0.05
+	country_tech_spread_mult = 0.05
+	country_trade_route_cost_mult = -0.05
+	country_trade_route_competitiveness_mult = 0.10
+	country_loan_interest_rate_mult = -0.20
+	state_radicals_from_discrimination_mult = 0.05
+}
+
+### COMECON ###
+
+COMECON_member = {
+	icon = gfx/interface/icons/diplo_icons/COMECON_member.dds
+	country_prestige_mult = 0.025
+	country_tech_spread_mult = 0.05
+	country_trade_route_cost_mult = -0.05
+	country_trade_route_competitiveness_mult = 0.05
+	country_loan_interest_rate_mult = -0.10
+	state_radicals_from_sol_change_mult = 0.05
+}
+
+COMECON_leader = {
+	icon = gfx/interface/icons/diplo_icons/COMECON_member.dds
+	country_prestige_mult = 0.05
+	country_tech_spread_mult = 0.05
+	country_trade_route_cost_mult = -0.05
+	country_trade_route_competitiveness_mult = 0.10
+	country_loan_interest_rate_mult = -0.20
+	state_radicals_from_sol_change_mult = 0.05
+}
+
+### Nuclear Capability ###
+
+nuclear_capability = {
+	icon = gfx/interface/icons/diplo_icons/nuclear_capability.dds
+	country_prestige_mult = 0.05
+}
+
+nuclear_attack_cooldown = {
+	icon = gfx/interface/icons/diplo_icons/nuclear_capability.dds
+	
+}
+
+nuclear_damage_1 = {
+	icon = gfx/interface/icons/diplo_icons/nuclear_capability.dds
+	state_infrastructure_mult = -0.20
+	state_urbanization_mult = -0.20
+	state_migration_push_mult = 0.20
+	state_mortality_mult = 0.20
+}
+
+nuclear_damage_2 = {
+	icon = gfx/interface/icons/diplo_icons/nuclear_capability.dds
+	state_infrastructure_mult = -0.40
+	state_urbanization_mult = -0.40
+	state_migration_push_mult = 0.40
+	state_mortality_mult = 0.40
+}
+
+nuclear_damage_3 = {
+	icon = gfx/interface/icons/diplo_icons/nuclear_capability.dds
+	state_infrastructure_mult = -0.60
+	state_urbanization_mult = -0.60
+	state_migration_push_mult = 0.60
+	state_mortality_mult = 0.60
+}
+
+nuclear_damage_4 = {
+	icon = gfx/interface/icons/diplo_icons/nuclear_capability.dds
+	state_infrastructure_mult = -0.80
+	state_urbanization_mult = -0.80
+	state_migration_push_mult = 0.80
+	state_mortality_mult = 0.80
+}
+
+nuclear_damage_5 = {
+	icon = gfx/interface/icons/diplo_icons/nuclear_capability.dds
+	state_infrastructure_mult = -1.0
+	state_urbanization_mult = -1.0
+	state_migration_push_mult = 1.0
+	state_mortality_mult = 1.0
 }

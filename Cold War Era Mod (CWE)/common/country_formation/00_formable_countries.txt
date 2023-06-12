@@ -29,6 +29,22 @@ GER = {
 	ai_will_do = { always = yes }
 }
 
+AUS = {
+	use_culture_states = yes
+
+	required_states_fraction = 1
+	
+	ai_will_do = { always = yes }
+}
+
+DAI = {
+	use_culture_states = yes
+
+	required_states_fraction = 1
+	
+	ai_will_do = { always = yes }
+}
+
 MSY = {
 	use_culture_states = yes
 
@@ -68,7 +84,6 @@ RUS = {
 	
 	ai_will_do = { always = yes }
 }
-
 
 IRE = {
 	use_culture_states = yes
@@ -129,9 +144,13 @@ LAO = {
 }
 
 CHI = {
-	use_culture_states = yes
 
-	required_states_fraction = 1.0
+	states = { 
+		STATE_BEIJING
+		STATE_FORMOSA
+	}
+
+	required_states_fraction = 1
 	
 	ai_will_do = { always = yes }
 }

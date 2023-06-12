@@ -19,12 +19,26 @@ law_nepotistic_cabinet = {
 		#More government strength
 		country_legitimacy_headofstate_add = 20
 		
+		interest_group_in_opposition_approval_add = -2
 	}
 	
 	possible_political_movements = {
 		#law_nepotistic_cabinet
 		law_semi_nepotistic_cabinet
 		law_meritocratic_cabinet
+	}
+	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
 	}
 	
 }
@@ -52,12 +66,26 @@ law_semi_nepotistic_cabinet = {
 		country_legitimacy_headofstate_add = 10
 		#country_legitimacy_govt_size_mult = 0.1
 		
+		interest_group_in_opposition_approval_add = -1
 	}
 	
 	possible_political_movements = {
 		law_nepotistic_cabinet
 		#law_semi_nepotistic_cabinet
 		law_meritocratic_cabinet
+	}
+	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
 	}
 	
 }
@@ -86,6 +114,19 @@ law_meritocratic_cabinet = {
 		law_nepotistic_cabinet
 		law_semi_nepotistic_cabinet
 		#law_meritocratic_cabinet
+	}
+	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
 	}
 	
 }

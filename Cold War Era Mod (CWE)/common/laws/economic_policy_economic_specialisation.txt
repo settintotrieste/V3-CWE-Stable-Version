@@ -20,6 +20,19 @@ law_no_economic_specialisation = {
 		law_services_focus
 	}
 	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
+	}
+	
 }
 
 law_natural_resource_focus = {
@@ -47,9 +60,9 @@ law_natural_resource_focus = {
 		building_group_bg_fishing_throughput_mult = 0.25
 		building_group_bg_oil_extraction_throughput_mult = 0.25
 		
-		#Boost Farmers & Workers
-		interest_group_ig_trade_unions_pol_str_mult = 0.20
-		interest_group_ig_rural_folk_pol_str_mult = 0.20
+		#Boost Landowners
+		interest_group_ig_landowners_pol_str_mult = 0.50
+		country_aristocrats_pol_str_mult = 0.50
 	}
 	
 	possible_political_movements = {
@@ -57,6 +70,41 @@ law_natural_resource_focus = {
 		#law_natural_resource_focus
 		law_manufacturing_focus
 		law_services_focus
+	}
+	
+	pop_support = {
+		value = 0
+		
+		add = {
+			desc = "POP_POVERTY"
+			if = {
+				limit = { 
+					standard_of_living < 15
+				}
+				value = 100
+			}
+		}
+	}
+	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
+		
+		if = {
+			limit = { 
+				average_sol < 15
+			}
+			add = 500
+		}
+		
 	}
 	
 }
@@ -80,7 +128,8 @@ law_manufacturing_focus = {
 		building_group_bg_infrastructure_throughput_mult = 0.25
 		
 		#Boost Urban Upper Class
-		interest_group_ig_industrialists_pol_str_mult = 0.20
+		interest_group_ig_industrialists_pol_str_mult = 0.50
+		country_capitalists_pol_str_mult = 0.50
 	}
 	
 	possible_political_movements = {
@@ -88,6 +137,43 @@ law_manufacturing_focus = {
 		law_natural_resource_focus
 		#law_manufacturing_focus
 		law_services_focus
+	}
+	
+	pop_support = {
+		value = 0
+		
+		add = {
+			desc = "POP_POVERTY"
+			if = {
+				limit = { 
+					standard_of_living >= 15
+					standard_of_living < 25
+				}
+				value = 100
+			}
+		}
+	}
+	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
+		
+		if = {
+			limit = { 
+				average_sol >= 15
+				average_sol < 25
+			}
+			add = 500
+		}
+		
 	}
 	
 }
@@ -111,7 +197,9 @@ law_services_focus = {
 		building_group_bg_infrastructure_throughput_mult = 0.25
 		
 		#Boost Urban Middle Class
-		interest_group_ig_petty_bourgeoisie_pol_str_mult = 0.20
+		interest_group_ig_petty_bourgeoisie_pol_str_mult = 0.50
+		country_shopkeepers_pol_str_mult = 0.50
+		country_engineers_pol_str_mult = 0.50
 	}
 	
 	possible_political_movements = {
@@ -119,6 +207,41 @@ law_services_focus = {
 		law_natural_resource_focus
 		law_manufacturing_focus
 		#law_services_focus
+	}
+	
+	pop_support = {
+		value = 0
+		
+		add = {
+			desc = "POP_POVERTY"
+			if = {
+				limit = {
+					standard_of_living >= 25
+				}
+				value = 100
+			}
+		}
+	}
+	
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
+		
+		if = {
+			limit = { 
+				average_sol >= 25
+			}
+			add = 500
+		}
+		
 	}
 	
 }

@@ -1,0 +1,3699 @@
+namespace = british_decolonisation_indy
+
+### Dominions ###
+
+#Canada
+british_decolonisation_indy.1 = {
+    type = country_event
+
+    title = british_canada.indy.t 					# Title of the event; ADD LOCALISATION
+    desc = british_canada.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_canada.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1982.4.17									# START DATE: Date colony became self governing ****
+		game_date < 1992.4.17									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:CAN = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_subject_type = subject_type_dominion
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_canada_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:CAN = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:CAN										# Change TAG ****
+			type = personal_union
+		}
+		
+		# Fire only once
+		set_variable = british_canada_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:CAN = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_canada_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#Australia
+british_decolonisation_indy.2 = {
+    type = country_event
+
+    title = british_australia.indy.t 				# Title of the event; ADD LOCALISATION
+    desc = british_australia.indy.d 				# Description of the event; ADD LOCALISATION
+    #flavor = british_australia.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1986.3.3									# START DATE: Date colony became self governing ****
+		game_date < 1996.3.3									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:AST = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_subject_type = subject_type_dominion
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_australia_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:AST = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:AST										# Change TAG ****
+			type = personal_union
+		}
+		
+		# Fire only once
+		set_variable = british_australia_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:AST = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_australia_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#New Zealand
+british_decolonisation_indy.3 = {
+    type = country_event
+
+    title = british_new_zealand.indy.t 				# Title of the event; ADD LOCALISATION
+    desc = british_new_zealand.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_new_zealand.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1987.1.1									# START DATE: Date colony became self governing ****
+		game_date < 1997.1.1									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:NZL = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_subject_type = subject_type_dominion
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_new_zealand_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:NZL = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:NZL										# Change TAG ****
+			type = personal_union
+		}
+		
+		# Fire only once
+		set_variable = british_new_zealand_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:NZL = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_new_zealand_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+### Europe ###
+
+#Cyprus
+british_decolonisation_indy.4 = {
+    type = country_event
+
+    title = british_cyprus.indy.t 					# Title of the event; ADD LOCALISATION
+    desc = british_cyprus.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_cyprus.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1960.8.16									# START DATE: Date colony became self governing ****
+		game_date < 1970.8.16									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		NOT = { 												# Colony to be released must not already exist on the map
+			exists = c:CYP										# Change TAG of the colony ****
+		}
+		any_scope_state = { 									# Overlord owns the states of the colony to be released
+			state_region = { is_homeland = cu:cypriot }			# Change homeland identity to match colony to be released ****
+			is_incorporated = no								# State is a colony
+			#owner = THIS										# Overlord must own the state to be released
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_cyprus_indy }			# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Generate list of provinces to be released				# DO NOT TOUCH THIS SECTION
+		every_scope_state = {
+			limit = {
+				state_region = { is_homeland = cu:cypriot }	# Change homeland identity to match colony to be released ****
+				is_incorporated = no							# State is a colony
+				#contains_capital_of = c:CYP					# State is the capital of colony ****
+			}
+			save_scope_as = colonial_state
+		}
+		
+	}
+    
+    option = {
+        name = british_decolonisation.option.1				#Grant them self-government
+        default_option = yes highlighted_option = yes
+		
+		#Release country
+		create_country = {
+			tag = CYP										# Change TAG of country being released ****
+			origin = THIS									# TAG where the created country takes tech from
+			state = scope:colonial_state
+			
+			on_created = {									# Set government laws & rulers here
+				
+				# SET laws for colony ****
+				effect_starting_politics_presidential_republic = yes
+				effect_starting_politics_democratic = yes
+				effect_starting_politics_constitutional_unitary_state = yes
+				effect_starting_politics_war_policy_anti_military = yes
+				effect_starting_politics_economic_policy_interventionism = yes
+				effect_starting_politics_trade_policy_protectionism = yes
+				effect_starting_politics_anti_nuclear_policy = yes
+				
+				# CREATE leader for colony ****
+				create_character = {
+					first_name = "guy_incognito_first_name"		# CHANGE
+					last_name = "guy_incognito_last_name"		# CHANGE
+					ruler = yes
+					#birth_date = 1910.1.1						# CHANGE
+					interest_group = ig_rural_folk				# CHANGE
+					ideology = ideology_democratic				# CHANGE
+					traits = {
+						charismatic								# CHANGE
+						persistent								# CHANGE
+						meticulous								# CHANGE
+					}
+				}
+				
+				# Set diplomatic recognition
+				set_country_type = unrecognized
+			}
+		}
+		every_scope_state = {
+			limit = {
+		 		state_region = { is_homeland = cu:cypriot }	# Change homeland identity to match colony to be released ****
+				is_incorporated = no							# State is a colony
+		 	}
+			set_state_owner = c:CYP								# Change TAG to colony ****
+		}
+		
+		# Fire only once
+		set_variable = british_cyprus_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation.option.2					# REFUSE
+		
+		# Natives are angry!
+		every_scope_state = {
+			limit = {
+		 		state_region = { is_homeland = cu:cypriot }	# Change homeland identity to match colony to be released ****
+		 	}
+			add_radicals = {
+				culture = cu:cypriot							# Change culture ****
+				value = large_radicals
+			}
+			add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+		}
+		
+		# Fire only once
+		set_variable = british_cyprus_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#Malta
+british_decolonisation_indy.5 = {
+    type = country_event
+
+    title = british_malta.indy.t 				# Title of the event; ADD LOCALISATION
+    desc = british_malta.indy.d 				# Description of the event; ADD LOCALISATION
+    #flavor = british_malta.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1964.9.21									# START DATE: Date colony became self governing ****
+		game_date < 1974.9.21									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:MLT = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_malta_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:MLT = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:MLT										# Change TAG ****
+			type = personal_union
+		}
+		
+		# Fire only once
+		set_variable = british_malta_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:MLT = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_malta_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+### Asia ###
+
+#Malaya
+british_decolonisation_indy.6 = {
+    type = country_event
+
+    title = british_malaya.indy.t 					# Title of the event; ADD LOCALISATION
+    desc = british_malaya.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_malaya.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1957.8.31									# START DATE: Date colony became self governing ****
+		game_date < 1967.8.31									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:MLY = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_malaya_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:MLY = { 												# Change TAG of the colony ****
+			make_independent = yes
+			effect_starting_politics_constitutional_monarchy = yes
+			effect_starting_politics_constitutional_federal_state = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:MLY										# Change TAG ****
+			type = protectorate
+		}
+		
+		# Fire only once
+		set_variable = british_malaya_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:MLY = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_malaya_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#Brunei
+british_decolonisation_indy.7 = {
+    type = country_event
+
+    title = british_brunei.indy.t 				# Title of the event; ADD LOCALISATION
+    desc = british_brunei.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_brunei.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1984.1.1									# START DATE: Date colony became self governing ****
+		game_date < 1994.1.1									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:BRU = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_brunei_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:BRU = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:BRU										# Change TAG ****
+			type = protectorate
+		}
+		
+		# Fire only once
+		set_variable = british_brunei_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:BRU = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_brunei_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#Solomon Islands
+british_decolonisation_indy.8 = {
+    type = country_event
+
+    title = british_solomon_islands.indy.t 					# Title of the event; ADD LOCALISATION
+    desc = british_solomon_islands.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_solomon_islands.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1978.7.7									# START DATE: Date colony became self governing ****
+		game_date < 1988.7.7									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:SOL = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_solomon_islands_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:SOL = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:SOL										# Change TAG ****
+			type = personal_union
+		}
+		
+		# Fire only once
+		set_variable = british_solomon_islands_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:SOL = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Add Infamy because doing this is against international law
+		change_infamy = 10
+		
+		# Fire only once
+		set_variable = british_solomon_islands_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#Vanuatu
+british_decolonisation_indy.9 = {
+    type = country_event
+
+    title = british_vanuatu.indy.t 				# Title of the event; ADD LOCALISATION
+    desc = british_vanuatu.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_vanuatu.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1980.7.30									# START DATE: Date colony became self governing ****
+		game_date < 1990.7.30									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:VAN = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_vanuatu_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:VAN = { 												# Change TAG of the colony ****
+			make_independent = yes
+			effect_starting_politics_presidential_republic = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:VAN										# Change TAG ****
+			type = protectorate
+		}
+		
+		# Fire only once
+		set_variable = british_vanuatu_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:VAN = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_vanuatu_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#Fiji
+british_decolonisation_indy.10 = {
+    type = country_event
+
+    title = british_fiji.indy.t 				# Title of the event; ADD LOCALISATION
+    desc = british_fiji.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_fiji.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1970.10.10									# START DATE: Date colony became self governing ****
+		game_date < 1980.10.10									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:FIJ = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_fiji_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:FIJ = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:FIJ										# Change TAG ****
+			type = personal_union
+		}
+		
+		# Fire only once
+		set_variable = british_fiji_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:FIJ = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_fiji_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#Tonga
+british_decolonisation_indy.11 = {
+    type = country_event
+
+    title = british_tonga.indy.t 				# Title of the event; ADD LOCALISATION
+    desc = british_tonga.indy.d 				# Description of the event; ADD LOCALISATION
+    #flavor = british_tonga.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1970.6.4									# START DATE: Date colony became self governing ****
+		game_date < 1980.6.4									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:TON = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_tonga_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:TON = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:TON										# Change TAG ****
+			type = protectorate
+		}
+		
+		# Fire only once
+		set_variable = british_tonga_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:TON = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_tonga_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#Kiribati
+british_decolonisation_indy.12 = {
+    type = country_event
+
+    title = british_kiribati.indy.t 				# Title of the event; ADD LOCALISATION
+    desc = british_kiribati.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_kiribati.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1979.7.12									# START DATE: Date colony became self governing ****
+		game_date < 1989.7.12									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:KIR = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_kiribati_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:KIR = { 												# Change TAG of the colony ****
+			make_independent = yes
+			effect_starting_politics_presidential_republic = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:KIR										# Change TAG ****
+			type = protectorate
+		}
+		
+		# Fire only once
+		set_variable = british_kiribati_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:KIR = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_kiribati_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+### North America ###
+
+#Belize
+british_decolonisation_indy.13 = {
+    type = country_event
+
+    title = british_belize.indy.t 				# Title of the event; ADD LOCALISATION
+    desc = british_belize.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_belize.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1981.9.21									# START DATE: Date colony became self governing ****
+		game_date < 1991.9.21									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:BLZ = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_belize_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:BLZ = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:BLZ										# Change TAG ****
+			type = personal_union
+		}
+		
+		# Fire only once
+		set_variable = british_belize_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:BLZ = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_belize_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+### Africa ###
+
+#Maldives
+british_decolonisation_indy.14 = {
+    type = country_event
+
+    title = british_maldives.indy.t 				# Title of the event; ADD LOCALISATION
+    desc = british_maldives.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_maldives.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1965.7.26									# START DATE: Date colony became self governing ****
+		game_date < 1975.7.26									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:MLD = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_maldives_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:MLD = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:MLD										# Change TAG ****
+			type = protectorate
+		}
+		
+		# Fire only once
+		set_variable = british_maldives_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:MLD = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_maldives_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#Seychelles
+british_decolonisation_indy.15 = {
+    type = country_event
+
+    title = british_seychelles.indy.t 					# Title of the event; ADD LOCALISATION
+    desc = british_seychelles.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_seychelles.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1976.6.29									# START DATE: Date colony became self governing ****
+		game_date < 1986.6.29									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:SEY = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_seychelles_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:SEY = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:SEY										# Change TAG ****
+			type = personal_union
+		}
+		
+		# Fire only once
+		set_variable = british_seychelles_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:SEY = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_seychelles_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#Mauritius
+british_decolonisation_indy.16 = {
+    type = country_event
+
+    title = british_mauritius.indy.t 				# Title of the event; ADD LOCALISATION
+    desc = british_mauritius.indy.d 				# Description of the event; ADD LOCALISATION
+    #flavor = british_mauritius.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1968.3.12									# START DATE: Date colony became self governing ****
+		game_date < 1978.3.12									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:MRT = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_mauritius_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:MRT = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:MRT										# Change TAG ****
+			type = personal_union
+		}
+		
+		# Fire only once
+		set_variable = british_mauritius_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:MRT = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_mauritius_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#Sudan
+british_decolonisation_indy.17 = {
+    type = country_event
+
+    title = british_sudan.indy.t 				# Title of the event; ADD LOCALISATION
+    desc = british_sudan.indy.d 				# Description of the event; ADD LOCALISATION
+    #flavor = british_sudan.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1956.1.1									# START DATE: Date colony became self governing ****
+		game_date < 1966.1.1									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:SUD = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_sudan_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:SUD = { 												# Change TAG of the colony ****
+			make_independent = yes
+			effect_starting_politics_presidential_republic = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:SUD										# Change TAG ****
+			type = protectorate
+		}
+		
+		# Fire only once
+		set_variable = british_sudan_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:SUD = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Add Infamy because doing this is against international law
+		change_infamy = 10
+		
+		# Fire only once
+		set_variable = british_sudan_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#Kenya
+british_decolonisation_indy.18 = {
+    type = country_event
+
+    title = british_kenya.indy.t 				# Title of the event; ADD LOCALISATION
+    desc = british_kenya.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_kenya.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1963.12.12									# START DATE: Date colony became self governing ****
+		game_date < 1973.12.12									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:KEN = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_kenya_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:KEN = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:KEN										# Change TAG ****
+			type = personal_union
+		}
+		
+		# Fire only once
+		set_variable = british_kenya_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:KEN = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_kenya_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#Uganda
+british_decolonisation_indy.19 = {
+    type = country_event
+
+    title = british_uganda.indy.t 				# Title of the event; ADD LOCALISATION
+    desc = british_uganda.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_uganda.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1962.10.9									# START DATE: Date colony became self governing ****
+		game_date < 1972.10.9									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:UGA = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_uganda_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:UGA = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:UGA										# Change TAG ****
+			type = personal_union
+		}
+		
+		# Fire only once
+		set_variable = british_uganda_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:UGA = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_uganda_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#Tanganyika
+british_decolonisation_indy.20 = {
+    type = country_event
+
+    title = british_tanganyika.indy.t 				# Title of the event; ADD LOCALISATION
+    desc = british_tanganyika.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_tanganyika.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1961.12.9									# START DATE: Date colony became self governing ****
+		game_date < 1971.12.9									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:TGY = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_tanganyika_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:TGY = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:TGY										# Change TAG ****
+			type = personal_union
+		}
+		
+		# Fire only once
+		set_variable = british_tanganyika_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:TGY = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Add Infamy because doing this is against international law
+		change_infamy = 10
+		
+		# Fire only once
+		set_variable = british_tanganyika_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#Botswana
+british_decolonisation_indy.21 = {
+    type = country_event
+
+    title = british_botswana.indy.t 				# Title of the event; ADD LOCALISATION
+    desc = british_botswana.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_botswana.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1966.9.30									# START DATE: Date colony became self governing ****
+		game_date < 1976.9.30									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:BOT = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_botswana_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:BOT = { 												# Change TAG of the colony ****
+			make_independent = yes
+			effect_starting_politics_presidential_republic = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:BOT										# Change TAG ****
+			type = protectorate
+		}
+		
+		# Fire only once
+		set_variable = british_botswana_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:BOT = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_botswana_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#Nigeria
+british_decolonisation_indy.22 = {
+    type = country_event
+
+    title = british_nigeria.indy.t 					# Title of the event; ADD LOCALISATION
+    desc = british_nigeria.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_nigeria.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1960.10.1									# START DATE: Date colony became self governing ****
+		game_date < 1970.10.1									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:NGE = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_nigeria_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:NGE = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:NGE										# Change TAG ****
+			type = personal_union
+		}
+		
+		# Fire only once
+		set_variable = british_nigeria_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:NGE = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_nigeria_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#Ghana
+british_decolonisation_indy.23 = {
+    type = country_event
+
+    title = british_ghana.indy.t 					# Title of the event; ADD LOCALISATION
+    desc = british_ghana.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_ghana.indy.f 					# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1957.3.6									# START DATE: Date colony became self governing ****
+		game_date < 1967.3.6									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:GHA = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_ghana_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:GHA = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:GHA										# Change TAG ****
+			type = personal_union
+		}
+		
+		# Fire only once
+		set_variable = british_ghana_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:GHA = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_ghana_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#Sierra Leone
+british_decolonisation_indy.24 = {
+    type = country_event
+
+    title = british_sierra_leone.indy.t 				# Title of the event; ADD LOCALISATION
+    desc = british_sierra_leone.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_sierra_leone.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1961.4.27									# START DATE: Date colony became self governing ****
+		game_date < 1971.4.27									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:SIL = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_sierra_leone_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:SIL = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:SIL										# Change TAG ****
+			type = personal_union
+		}
+		
+		# Fire only once
+		set_variable = british_sierra_leone_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:SIL = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_sierra_leone_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#The Gambia
+british_decolonisation_indy.25 = {
+    type = country_event
+
+    title = british_gambia.indy.t 					# Title of the event; ADD LOCALISATION
+    desc = british_gambia.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_gambia.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1965.2.18									# START DATE: Date colony became self governing ****
+		game_date < 1975.2.18									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:GAM = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_gambia_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:GAM = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:GAM										# Change TAG ****
+			type = personal_union
+		}
+		
+		# Fire only once
+		set_variable = british_gambia_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:GAM = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_gambia_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#Lesotho
+british_decolonisation_indy.26 = {
+    type = country_event
+
+    title = british_lesotho.indy.t 				# Title of the event; ADD LOCALISATION
+    desc = british_lesotho.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_lesotho.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1966.10.4									# START DATE: Date colony became self governing ****
+		game_date < 1976.10.4									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:LES = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_lesotho_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:LES = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:LES										# Change TAG ****
+			type = protectorate
+		}
+		
+		# Fire only once
+		set_variable = british_lesotho_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:LES = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_lesotho_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#Swaziland
+british_decolonisation_indy.27 = {
+    type = country_event
+
+    title = british_swaziland.indy.t 				# Title of the event; ADD LOCALISATION
+    desc = british_swaziland.indy.d 				# Description of the event; ADD LOCALISATION
+    #flavor = british_swaziland.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1968.9.6									# START DATE: Date colony became self governing ****
+		game_date < 1978.9.6									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:ESW = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_swaziland_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:ESW = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:ESW										# Change TAG ****
+			type = protectorate
+		}
+		
+		# Fire only once
+		set_variable = british_swaziland_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:ESW = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_swaziland_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#South Africa
+british_decolonisation_indy.28 = {
+    type = country_event
+
+    title = british_south_africa.indy.t 				# Title of the event; ADD LOCALISATION
+    desc = british_south_africa.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_south_africa.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1961.5.31									# START DATE: Date colony became self governing ****
+		game_date < 1971.5.31									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:SAF = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_subject_type = subject_type_dominion
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_south_africa_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:SAF = { 												# Change TAG of the colony ****
+			make_independent = yes
+			
+			effect_starting_politics_parliamentary_republic = yes
+			effect_starting_politics_regime = yes
+		}
+		
+		
+		
+		# Fire only once
+		set_variable = british_south_africa_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:SAF = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_south_africa_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+### South America ###
+
+#Guyana
+british_decolonisation_indy.29 = {
+    type = country_event
+
+    title = british_guyana.indy.t 					# Title of the event; ADD LOCALISATION
+    desc = british_guyana.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_guyana.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1966.5.26									# START DATE: Date colony became self governing ****
+		game_date < 1976.5.26									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:GUY = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_guyana_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:GUY = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:GUY										# Change TAG ****
+			type = personal_union
+		}
+		
+		# Fire only once
+		set_variable = british_guyana_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:GUY = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_guyana_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#Bahamas
+british_decolonisation_indy.30 = {
+    type = country_event
+
+    title = british_bahamas.indy.t 					# Title of the event; ADD LOCALISATION
+    desc = british_bahamas.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_bahamas.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1973.7.10									# START DATE: Date colony became self governing ****
+		game_date < 1983.7.10									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:BAH = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_bahamas_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:BAH = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:BAH										# Change TAG ****
+			type = personal_union
+		}
+		
+		# Fire only once
+		set_variable = british_bahamas_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:BAH = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_bahamas_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+### Middle East ###
+
+#South Yemen
+british_decolonisation_indy.31 = {
+    type = country_event
+
+    title = british_south_yemen.indy.t 				# Title of the event; ADD LOCALISATION
+    desc = british_south_yemen.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_south_yemen.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1967.11.30									# START DATE: Date colony became self governing ****
+		game_date < 1977.11.30									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:SYE = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_south_yemen_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:SYE = { 												# Change TAG of the colony ****
+			make_independent = yes
+			effect_starting_politics_presidential_republic = yes
+			effect_starting_politics_constitutional_unitary_state = yes
+		}
+		
+		# Fire only once
+		set_variable = british_south_yemen_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:SYE = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_south_yemen_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#Trucial States
+british_decolonisation_indy.32 = {
+    type = country_event
+
+    title = british_trucial_states.indy.t 				# Title of the event; ADD LOCALISATION
+    desc = british_trucial_states.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_trucial_states.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1971.12.1									# START DATE: Date colony became self governing ****
+		game_date < 1981.12.1									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:UAE = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_trucial_states_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:UAE = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:UAE										# Change TAG ****
+			type = protectorate
+		}
+		
+		# Fire only once
+		set_variable = british_trucial_states_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:UAE = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_trucial_states_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#Qatar
+british_decolonisation_indy.33 = {
+    type = country_event
+
+    title = british_qatar.indy.t 					# Title of the event; ADD LOCALISATION
+    desc = british_qatar.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_qatar.indy.f 					# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1971.9.3									# START DATE: Date colony became self governing ****
+		game_date < 1981.9.3									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:QAT = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_qatar_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:QAT = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:QAT										# Change TAG ****
+			type = protectorate
+		}
+		
+		# Fire only once
+		set_variable = british_qatar_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:QAT = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_qatar_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#Bahrain
+british_decolonisation_indy.34 = {
+    type = country_event
+
+    title = british_bahrain.indy.t 					# Title of the event; ADD LOCALISATION
+    desc = british_bahrain.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_bahrain.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1971.8.15									# START DATE: Date colony became self governing ****
+		game_date < 1981.8.15									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:BHR = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_bahrain_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:BHR = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:BHR										# Change TAG ****
+			type = protectorate
+		}
+		
+		# Fire only once
+		set_variable = british_bahrain_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:BHR = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_bahrain_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#Kuwait
+british_decolonisation_indy.35 = {
+    type = country_event
+
+    title = british_kuwait.indy.t 					# Title of the event; ADD LOCALISATION
+    desc = british_kuwait.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_kuwait.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1961.6.19									# START DATE: Date colony became self governing ****
+		game_date < 1971.6.19									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:KUW = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_kuwait_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:KUW = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:KUW										# Change TAG ****
+			type = protectorate
+		}
+		
+		# Fire only once
+		set_variable = british_kuwait_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:KUW = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_kuwait_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#Oman
+british_decolonisation_indy.36 = {
+    type = country_event
+
+    title = british_oman.indy.t 				# Title of the event; ADD LOCALISATION
+    desc = british_oman.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_oman.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1951.12.20									# START DATE: Date colony became self governing ****
+		game_date < 1961.12.20									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:OMA = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			OR = { is_not_sufficiently_independent = yes is_subject_type = subject_type_satellite }
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_oman_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:OMA = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:OMA										# Change TAG ****
+			type = protectorate
+		}
+		
+		# Fire only once
+		set_variable = british_oman_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:OMA = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_oman_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+### Rhodesia & Nyasaland ###
+
+#Malawi
+british_decolonisation_indy.37 = {
+    type = country_event
+
+    title = british_malawi.indy.t 					# Title of the event; ADD LOCALISATION
+    desc = british_malawi.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_malawi.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1964.7.6									# START DATE: Date colony became self governing ****
+		game_date < 1974.7.6									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:MLW = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_malawi_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:MLW = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:MLW										# Change TAG ****
+			type = personal_union
+		}
+		
+		# Fire only once
+		set_variable = british_malawi_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:MLW = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_malawi_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#Zambia
+british_decolonisation_indy.38 = {
+    type = country_event
+
+    title = british_zambia.indy.t 					# Title of the event; ADD LOCALISATION
+    desc = british_zambia.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_zambia.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1964.10.24									# START DATE: Date colony became self governing ****
+		game_date < 1974.10.24									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:ZAM = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_zambia_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:ZAM = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:ZAM										# Change TAG ****
+			type = personal_union
+		}
+		
+		# Fire only once
+		set_variable = british_zambia_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:ZAM = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_zambia_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
+
+#Zanzibar
+british_decolonisation_indy.39 = {
+    type = country_event
+
+    title = british_zanzibar.indy.t 				# Title of the event; ADD LOCALISATION
+    desc = british_zanzibar.indy.d 					# Description of the event; ADD LOCALISATION
+    #flavor = british_zanzibar.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1963.12.10									# START DATE: Date colony became self governing ****
+		game_date < 1973.12.10									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Colony conditions
+		c:ZAN = { 												# Change TAG of the colony ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = british_zanzibar_indy }			# CHANGE ****
+		
+    }
+    
+    option = {
+        name = british_decolonisation_indy.option.1				# Grant them independence
+        highlighted_option = yes
+		
+		# Colony becomes independent
+		c:ZAN = { 												# Change TAG of the colony ****
+			make_independent = yes
+		}
+		
+		# Overlord create client state pact with colony
+		create_diplomatic_pact = {
+			country = c:ZAN										# Change TAG ****
+			type = protectorate
+		}
+		
+		# Fire only once
+		set_variable = british_zanzibar_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = british_decolonisation_indy.option.2					# REFUSE
+		default_option = yes
+		
+		c:ZAN = {
+		
+			# Natives are angry!
+			every_scope_state = {
+				add_radicals = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+			#Colony is angry
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		
+		# Fire only once
+		set_variable = british_zanzibar_indy						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 
+		}
+		
+    }
+
+}
