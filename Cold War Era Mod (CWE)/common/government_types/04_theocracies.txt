@@ -18,13 +18,21 @@
 			is_subject_type = subject_type_special_administrative_region
 		}
 	}
+	
+	on_government_type_change = {
+		change_to_dictatorial = yes
+	}
+	on_post_government_type_change = {
+		post_change_to_dictatorial = yes
+	}
+	
 }
 
 gov_theocratic_democracy = { #Theocratic Republic
-	transfer_of_power = presidential_elective
+	transfer_of_power = dictatorial
 	new_leader_on_reform_government = no
 
-	male_ruler = "RULER_HIGH_PRIEST"
+	male_ruler = "RULER_TITLE_PRESIDENT"
 	female_ruler = "" # Empty on purpose
 	
 	possible = {
@@ -32,7 +40,7 @@ gov_theocratic_democracy = { #Theocratic Republic
 		has_law = law_type:law_HOS_religious_leader
 		
 		#Legislature is semi-elected
-		has_law = law_type:law_technocratic_legislature
+		NOT = { has_law = law_type:law_appointed_legislature }
 		
 		#Not a colony or SAR
 		NOR = {
@@ -43,6 +51,10 @@ gov_theocratic_democracy = { #Theocratic Republic
 	}
 	
 	on_government_type_change = {
-		change_to_presidential_elective = yes
+		change_to_dictatorial = yes
 	}
+	on_post_government_type_change = {
+		post_change_to_dictatorial = yes
+	}
+	
 }

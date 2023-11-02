@@ -5,7 +5,7 @@
 law_taxation_1 = {
 	group = lawgroup_taxation
 	
-	progressiveness = -100
+	#progressiveness = -100
 	
 	icon = "gfx/interface/icons/law_icons/graduated_taxation.dds"
 	
@@ -13,34 +13,46 @@ law_taxation_1 = {
 		
 	}
 	
+	can_enact = {
+	
+		#Constitutional Laws system (Requires simple majority to amend constitutional laws)
+		government_has_legislative_simple_majority = yes
+		
+	}
+	
 	tax_modifier_very_low = {
-		tax_land_add = 0.10
-		tax_consumption_add = 0.10
-		tax_per_capita_add = 0.10
+		tax_income_add = 0.10
+		tax_dividends_add = 0.01
+		tax_consumption_add = 0.2
+		tax_per_capita_add = 0.2
 	}	
 	
 	tax_modifier_low = {
-		tax_land_add = 0.20
-		tax_consumption_add = 0.20
-		tax_per_capita_add = 0.20
+		tax_income_add = 0.20
+		tax_dividends_add = 0.05
+		tax_consumption_add = 0.4
+		tax_per_capita_add = 0.4
 	}
 	
 	tax_modifier_medium = {
-		tax_land_add = 0.30
-		tax_consumption_add = 0.30
-		tax_per_capita_add = 0.30
+		tax_income_add = 0.40
+		tax_dividends_add = 0.10
+		tax_consumption_add = 0.6
+		tax_per_capita_add = 0.6
 	}	
 	
 	tax_modifier_high = {
-		tax_land_add = 0.40
-		tax_consumption_add = 0.40
-		tax_per_capita_add = 0.40
+		tax_income_add = 0.60
+		tax_dividends_add = 0.15
+		tax_consumption_add = 0.8
+		tax_per_capita_add = 0.8
 	}
 	
 	tax_modifier_very_high = {
-		tax_land_add = 0.50
-		tax_consumption_add = 0.50
-		tax_per_capita_add = 0.50
+		tax_income_add = 0.80
+		tax_dividends_add = 0.20
+		tax_consumption_add = 1.0
+		tax_per_capita_add = 0.10
 	}
 
 	possible_political_movements = {
@@ -69,7 +81,7 @@ law_taxation_1 = {
 law_taxation_2 = {
 	group = lawgroup_taxation
 	
-	progressiveness = -50
+	#progressiveness = -50
 	
 	icon = "gfx/interface/icons/law_icons/graduated_taxation.dds"
 	
@@ -77,39 +89,46 @@ law_taxation_2 = {
 		
 	}
 	
+	can_enact = {
+	
+		#Constitutional Laws system (Requires simple majority to amend constitutional laws)
+		government_has_legislative_simple_majority = yes
+		
+	}
+	
 	tax_modifier_very_low = {
 		tax_income_add = 0.05
-		tax_land_add = 0.05
+		tax_dividends_add = 0.05
 		tax_consumption_add = 0.10
-		tax_per_capita_add = 0.10
+		tax_per_capita_add = 0.1
 	}	
 	
 	tax_modifier_low = {
 		tax_income_add = 0.10
-		tax_land_add = 0.10
+		tax_dividends_add = 0.10
 		tax_consumption_add = 0.20
-		tax_per_capita_add = 0.20
+		tax_per_capita_add = 0.2
 	}
 	
 	tax_modifier_medium = {
-		tax_income_add = 0.15
-		tax_land_add = 0.15
-		tax_consumption_add = 0.30
-		tax_per_capita_add = 0.30
+		tax_income_add = 0.20
+		tax_dividends_add = 0.20
+		tax_consumption_add = 0.40
+		tax_per_capita_add = 0.4
 	}	
 	
 	tax_modifier_high = {
-		tax_income_add = 0.20
-		tax_land_add = 0.20
-		tax_consumption_add = 0.40
-		tax_per_capita_add = 0.40
+		tax_income_add = 0.30
+		tax_dividends_add = 0.30
+		tax_consumption_add = 0.60
+		tax_per_capita_add = 0.6
 	}
 	
 	tax_modifier_very_high = {
-		tax_income_add = 0.25
-		tax_land_add = 0.25
-		tax_consumption_add = 0.50
-		tax_per_capita_add = 0.50
+		tax_income_add = 0.40
+		tax_dividends_add = 0.40
+		tax_consumption_add = 0.80
+		tax_per_capita_add = 0.8
 	}
 
 	possible_political_movements = {
@@ -138,7 +157,7 @@ law_taxation_2 = {
 law_taxation_3 = {
 	group = lawgroup_taxation
 	
-	progressiveness = 0
+	#progressiveness = 0
 	
 	icon = "gfx/interface/icons/law_icons/graduated_taxation.dds"
 	
@@ -146,44 +165,46 @@ law_taxation_3 = {
 		
 	}
 	
+	can_enact = {
+	
+		#Constitutional Laws system (Requires simple majority to amend constitutional laws)
+		government_has_legislative_simple_majority = yes
+		
+	}
+	
 	tax_modifier_very_low = {
-		tax_income_add = 0.05
-		tax_land_add = 0.05
-		tax_consumption_add = 0.10
+		tax_income_add = 0.04
+		tax_dividends_add = 0.20
+		tax_consumption_add = 0.05
 		tax_per_capita_add = 0.05
-		tax_dividends_add = 0.05
 	}	
 	
 	tax_modifier_low = {
-		tax_income_add = 0.10
-		tax_land_add = 0.10
-		tax_consumption_add = 0.20
-		tax_per_capita_add = 0.10
-		tax_dividends_add = 0.10
+		tax_income_add = 0.08
+		tax_dividends_add = 0.30
+		tax_consumption_add = 0.10
+		tax_per_capita_add = 0.1
 	}
 	
 	tax_modifier_medium = {
-		tax_income_add = 0.15
-		tax_land_add = 0.15
-		tax_consumption_add = 0.30
-		tax_per_capita_add = 0.15
-		tax_dividends_add = 0.15
+		tax_income_add = 0.12
+		tax_dividends_add = 0.40
+		tax_consumption_add = 0.20
+		tax_per_capita_add = 0.2
 	}	
 	
 	tax_modifier_high = {
-		tax_income_add = 0.20
-		tax_land_add = 0.20
+		tax_income_add = 0.16
+		tax_dividends_add = 0.50
 		tax_consumption_add = 0.40
-		tax_per_capita_add = 0.20
-		tax_dividends_add = 0.20
+		tax_per_capita_add = 0.3
 	}
 	
 	tax_modifier_very_high = {
-		tax_income_add = 0.25
-		tax_land_add = 0.25
-		tax_consumption_add = 0.50
-		tax_per_capita_add = 0.25
-		tax_dividends_add = 0.25
+		tax_income_add = 0.20
+		tax_dividends_add = 0.60
+		tax_consumption_add = 0.60
+		tax_per_capita_add = 0.4
 	}
 
 	possible_political_movements = {
@@ -212,7 +233,7 @@ law_taxation_3 = {
 law_taxation_4 = {
 	group = lawgroup_taxation
 	
-	progressiveness = 50
+	#progressiveness = 50
 	
 	icon = "gfx/interface/icons/law_icons/graduated_taxation.dds"
 	
@@ -220,39 +241,45 @@ law_taxation_4 = {
 		
 	}
 	
+	can_enact = {
+	
+		#Constitutional Laws system (Requires simple majority to amend constitutional laws)
+		government_has_legislative_simple_majority = yes
+		
+	}
+	
 	tax_modifier_very_low = {
-		tax_income_add = 0.10
-		tax_consumption_add = 0.10
-		tax_per_capita_add = 0.05
-		tax_dividends_add = 0.05
+		tax_income_add = 0.02
+		tax_dividends_add = 0.10
+		tax_consumption_add = 0.05
 	}	
 	
 	tax_modifier_low = {
-		tax_income_add = 0.20
-		tax_consumption_add = 0.20
-		tax_per_capita_add = 0.10
-		tax_dividends_add = 0.10
+		tax_income_add = 0.04
+		tax_dividends_add = 0.20
+		tax_consumption_add = 0.10
+		tax_per_capita_add = 0.025
 	}
 	
 	tax_modifier_medium = {
-		tax_income_add = 0.30
-		tax_consumption_add = 0.30
-		tax_per_capita_add = 0.15
-		tax_dividends_add = 0.15
+		tax_income_add = 0.06
+		tax_dividends_add = 0.40
+		tax_consumption_add = 0.20
+		tax_per_capita_add = 0.05
 	}	
 	
 	tax_modifier_high = {
-		tax_income_add = 0.40
-		tax_consumption_add = 0.40
-		tax_per_capita_add = 0.20
-		tax_dividends_add = 0.20
+		tax_income_add = 0.08
+		tax_dividends_add = 0.60
+		tax_consumption_add = 0.30
+		tax_per_capita_add = 0.1
 	}
 	
 	tax_modifier_very_high = {
-		tax_income_add = 0.50
-		tax_consumption_add = 0.50
-		tax_per_capita_add = 0.25
-		tax_dividends_add = 0.25
+		tax_income_add = 0.10
+		tax_dividends_add = 0.80
+		tax_consumption_add = 0.40
+		tax_per_capita_add = 0.2
 	}
 
 	possible_political_movements = {
@@ -281,7 +308,7 @@ law_taxation_4 = {
 law_taxation_5 = {
 	group = lawgroup_taxation
 	
-	progressiveness = 100
+	#progressiveness = 100
 	
 	icon = "gfx/interface/icons/law_icons/graduated_taxation.dds"
 	
@@ -289,34 +316,41 @@ law_taxation_5 = {
 		
 	}
 	
+	can_enact = {
+	
+		#Constitutional Laws system (Requires simple majority to amend constitutional laws)
+		government_has_legislative_simple_majority = yes
+		
+	}
+	
 	tax_modifier_very_low = {
-		tax_income_add = 0.10
-		tax_consumption_add = 0.10
-		tax_dividends_add = 0.10
+		tax_income_add = 0.01
+		tax_dividends_add = 0.20
+		tax_consumption_add = 0.025
 	}	
 	
 	tax_modifier_low = {
-		tax_income_add = 0.20
-		tax_consumption_add = 0.20
-		tax_dividends_add = 0.20
+		tax_income_add = 0.02
+		tax_dividends_add = 0.40
+		tax_consumption_add = 0.05
 	}
 	
 	tax_modifier_medium = {
-		tax_income_add = 0.30
-		tax_consumption_add = 0.30
-		tax_dividends_add = 0.30
+		tax_income_add = 0.03
+		tax_dividends_add = 0.60
+		tax_consumption_add = 0.10
 	}	
 	
 	tax_modifier_high = {
-		tax_income_add = 0.40
-		tax_consumption_add = 0.40
-		tax_dividends_add = 0.40
+		tax_income_add = 0.04
+		tax_dividends_add = 0.80
+		tax_consumption_add = 0.15
 	}
 	
 	tax_modifier_very_high = {
-		tax_income_add = 0.50
-		tax_consumption_add = 0.50
-		tax_dividends_add = 0.50
+		tax_income_add = 0.05
+		tax_dividends_add = 1.0
+		tax_consumption_add = 0.20
 	}
 
 	possible_political_movements = {

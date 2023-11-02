@@ -1,0 +1,71 @@
+﻿je_apartheid = {
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	possible = {
+		
+		#Has Apartheid
+		OR = { 
+			has_law = law_type:law_ethnostate
+			has_law = law_type:law_national_supremacy
+			has_law = law_type:law_racial_segregation
+		}
+		
+	}
+
+	immediate = {
+		
+		#Remove disciminated cultures
+		if = {
+			limit = { c:USA ?= this }
+			remove_primary_culture = cu:afro_american
+		}
+		
+	}
+
+	fail = {
+	
+		#Abolished Apartheid
+		has_law = law_type:law_multicultural
+		
+	}
+	
+	on_fail = {
+		
+		#Change country tags if applicable
+		if = {
+			limit = { c:SAF ?= this }
+			change_tag = RSA
+			add_primary_culture = cu:south_african
+			remove_primary_culture = cu:british
+		}
+		if = {
+			limit = { c:RHO ?= this }
+			change_tag = ZIM
+			add_primary_culture = cu:zimbabwean
+			remove_primary_culture = cu:rhodesian
+			remove_primary_culture = cu:british
+		}
+		
+		#Add disciminated cultures
+		if = {
+			limit = { c:USA ?= this }
+			add_primary_culture = cu:afro_american
+		}
+		
+		#National Reconciliation
+		add_modifier = { 
+			name = national_reconciliation
+			years = 5
+			is_decaying = yes 
+		}
+		
+	}
+
+	weight = 100
+
+	should_be_pinned_by_default = yes
+
+	transferable = no
+
+	progressbar = no
+}

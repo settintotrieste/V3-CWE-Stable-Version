@@ -28,6 +28,10 @@
 				has_ideology = ideology:ideology_power_hungry
 			}
 		}
+		
+		#No non-aggression_pact with TARGET
+		has_no_non_aggression_pact_with_target = yes
+		
 	}
 
 	on_weekly_pulse = {}
@@ -68,6 +72,9 @@ dp_regime_change = {
 				has_ideology = ideology:ideology_elitist
 			}
 		}
+		
+		#No non-aggression_pact with TARGET
+		has_no_non_aggression_pact_with_target = yes
 	}
 
 	on_weekly_pulse = {}
@@ -115,6 +122,9 @@ dp_ban_slavery = {
 				has_ideology = ideology:ideology_elitist
 			}
 		}	
+		
+		#No non-aggression_pact with TARGET
+		has_no_non_aggression_pact_with_target = yes
 	}
 
 	on_weekly_pulse = {}
@@ -154,6 +164,55 @@ dp_conquer_state = {
 				has_ideology = ideology:ideology_power_hungry
 			}
 		}
+		
+		#No non-aggression_pact with TARGET
+		has_no_non_aggression_pact_with_target = yes
+	}
+	
+	on_weekly_pulse = {}
+	
+	on_war_begins = {}
+
+	on_war_end = {}
+}
+
+dp_conquer_state_historical = {
+	requires_interest_marker = no
+	initiator_can_add_war_goals = no
+	target_can_add_war_goals = no
+	
+	war_goal = conquer_state
+	
+	texture = "gfx/interface/icons/war_goals/conquer_state.dds"
+	
+	possible = {
+		NOT = { is_country_type = decentralized }
+		aggressive_diplomatic_plays_permitted = yes
+		NOT = { is_subject_of = scope:target_country }
+		scope:target_country = {
+			NOT = { is_country_type = decentralized }
+			NOT = { is_subject_of = root }
+		}	
+		custom_tooltip = {
+			text = DIPLO_ACTION_RELATIONS_CORDIAL_OR_GREATER_NOT
+			scope:target_country.relations:root < relations_threshold:cordial
+		}
+
+		#THIS does not have restricted war rights
+		NOR = { 
+			has_law = law_type:law_no_war
+			has_law = law_type:law_defensive_war
+		}
+		#Ruler is jingoistic
+		ruler = {
+			OR = {
+				has_ideology = ideology:ideology_autocratic
+				has_ideology = ideology:ideology_power_hungry
+			}
+		}
+		
+		#No non-aggression_pact with TARGET
+		has_no_non_aggression_pact_with_target = yes
 	}
 	
 	on_weekly_pulse = {}
@@ -196,6 +255,9 @@ dp_return_state = {
 				has_ideology = ideology:ideology_elitist
 			}
 		}
+		
+		#No non-aggression_pact with TARGET
+		has_no_non_aggression_pact_with_target = yes
 	}
 	
 	on_weekly_pulse = {}
@@ -258,6 +320,9 @@ dp_liberate_subject = {
 				has_ideology = ideology:ideology_elitist
 			}
 		}
+		
+		#No non-aggression_pact with TARGET
+		has_no_non_aggression_pact_with_target = yes
 	}
 
 	on_weekly_pulse = {}
@@ -269,6 +334,7 @@ dp_liberate_subject = {
 
 dp_independence = {
 	requires_interest_marker = no
+	initiator_can_add_war_goals = no
 
 	war_goal = independence
 
@@ -278,9 +344,8 @@ dp_independence = {
 		NOT = { is_country_type = decentralized }
 		
 		#THIS does not have restricted war rights
-		NOR = { 
+		NOT = { 
 			has_law = law_type:law_no_war
-			has_law = law_type:law_defensive_war
 		}
 		#Ruler is jingoistic
 		ruler = {
@@ -290,6 +355,9 @@ dp_independence = {
 				has_ideology = ideology:ideology_elitist
 			}
 		}
+		
+		#No non-aggression_pact with TARGET
+		has_no_non_aggression_pact_with_target = yes
 	}
 
 	on_weekly_pulse = {}
@@ -330,6 +398,9 @@ dp_take_treaty_port = {
 				has_ideology = ideology:ideology_power_hungry
 			}
 		}
+		
+		#No non-aggression_pact with TARGET
+		has_no_non_aggression_pact_with_target = yes
 	}
 	
 	on_weekly_pulse = {}
@@ -364,6 +435,12 @@ dp_make_dominion = {
 				has_ideology = ideology:ideology_power_hungry
 			}
 		}
+		
+		#No non-aggression_pact with TARGET
+		has_no_non_aggression_pact_with_target = yes
+		
+		#THIS has higher rank than TARGET
+		country_rank > scope:target_country.country_rank
 	}
 	
 	on_weekly_pulse = {}
@@ -430,6 +507,12 @@ dp_make_puppet = {
 				has_ideology = ideology:ideology_power_hungry
 			}
 		}
+		
+		#No non-aggression_pact with TARGET
+		has_no_non_aggression_pact_with_target = yes
+		
+		#THIS has higher rank than TARGET
+		country_rank > scope:target_country.country_rank
 	}
 	
 	on_weekly_pulse = {}
@@ -471,6 +554,12 @@ dp_transfer_subject = {
 				has_ideology = ideology:ideology_power_hungry
 			}
 		}
+		
+		#No non-aggression_pact with TARGET
+		has_no_non_aggression_pact_with_target = yes
+		
+		#THIS has higher rank than TARGET
+		country_rank > scope:target_country.country_rank
 	}
 	
 	on_weekly_pulse = {}
@@ -487,15 +576,12 @@ dp_annex_subject = {
 	
 	possible = {
 		NOT = { is_country_type = decentralized }
+		scope:target_country = { NOT = { is_country_type = decentralized } }
+		
 		aggressive_diplomatic_plays_permitted = yes
 		scope:target_country = {
-			NOT = { is_country_type = decentralized }
 			is_direct_subject_of = root
-			OR = {
-				has_diplomatic_pact = { who = root type = dominion }
-				has_diplomatic_pact = { who = root type = puppet }
-				has_diplomatic_pact = { who = root type = vassal }
-			}
+			is_not_sufficiently_independent = yes
 		}
 
 		#THIS does not have restricted war rights
@@ -509,7 +595,10 @@ dp_annex_subject = {
 				has_ideology = ideology:ideology_power_hungry
 				has_ideology = ideology:ideology_elitist
 			}
-		}		
+		}
+
+		#No non-aggression_pact with TARGET
+		has_no_non_aggression_pact_with_target = yes
 	}
 	
 	on_weekly_pulse = {}
@@ -546,7 +635,15 @@ dp_revolution = {
 	additional_involvement_trigger = {
 		NOT = { is_country_type = decentralized }
 		aggressive_diplomatic_plays_permitted = yes
+		
+		#Potential participant is willing to get involved in other's affairs
+		OR = { 
+			has_interventionist_fp = yes
+			scope:target_country = { is_subject_of = ROOT }
+			scope:initiator = { is_subject_of = ROOT }
+		}
 	
+		#Has an interest in the area
 		scope:target_country = {
 			capital = {
 				region = {
@@ -592,6 +689,7 @@ dp_secession = {
 	}		
 	
 	possible = {
+		exists = scope:target_country
 		scope:target_country = {
 			is_secessionist = yes
 		}
@@ -656,6 +754,9 @@ dp_contain_threat = {
 		NOT = { 
 			has_law = law_type:law_no_war
 		}
+		
+		#No non-aggression_pact with TARGET
+		has_no_non_aggression_pact_with_target = yes
 	}
 
 	additional_involvement_trigger = {
@@ -725,11 +826,71 @@ dp_annex_war = {
 	
 	texture = "gfx/interface/icons/war_goals/annex_country.dds"
 	
-	selectable_in_lens = {
-		always = no
-	}
+	#selectable_in_lens = {
+	#	always = no
+	#}
 	
-	possible = {}
+	possible = {
+	
+		#THIS is not decentralized
+		NOT = { is_country_type = decentralized }
+		
+		#THIS and Target are not revolutionary
+		is_revolutionary = no
+		scope:target_country = { is_revolutionary = no }
+		
+		#THIS has a higher rank than TARGET
+		OR = { 
+			country_rank > scope:target_country.country_rank
+			scope:target_country = { 
+				any_scope_state = { 
+					is_homeland_of_country_cultures = ROOT
+					is_homeland_of_country_cultures = scope:target_country 
+				} 
+			}
+		}
+		
+		#THIS does not have a subject relationship with TARGET
+		NOT = { is_subject_of = scope:target_country }
+		scope:target_country = { NOT = { is_subject_of = root } }
+		
+		#THIS can launch aggressive wars
+		aggressive_diplomatic_plays_permitted = yes
+		
+		#THIS does not have good relations with TARGET
+		custom_tooltip = {
+			text = DIPLO_ACTION_RELATIONS_CORDIAL_OR_GREATER_NOT
+			scope:target_country.relations:root < relations_threshold:cordial
+		}
+		
+		#THIS does not have restricted war rights
+		OR = {
+		
+			NOR = { 
+				has_law = law_type:law_no_war
+				has_law = law_type:law_defensive_war
+			}
+			
+			scope:target_country = { 
+				any_scope_state = { 
+					is_homeland_of_country_cultures = ROOT
+					is_homeland_of_country_cultures = scope:target_country 
+				} 
+			}
+			
+		}
+		#Ruler is jingoistic
+		ruler = {
+			OR = {
+				has_ideology = ideology:ideology_autocratic
+				has_ideology = ideology:ideology_power_hungry
+			}
+		}
+		
+		#No non-aggression_pact with TARGET
+		has_no_non_aggression_pact_with_target = yes
+		
+	}
 	
 	on_weekly_pulse = {}
 	
@@ -763,6 +924,7 @@ dp_unify_germany = {
 	
 	requires_interest_marker = no
 	blocked_by_diplomatic_status = no
+	add_infamy_for_starting_initiator_wargoals = no
 	
 	texture = "gfx/interface/icons/war_goals/unify_germany.dds"
 	
@@ -773,6 +935,7 @@ dp_unify_germany = {
 	possible = {
 		NOT = { exists = c:GER }
 		NOT = { is_country_type = decentralized }
+		NOT = { has_truce_with = scope:target_country }
 	}
 	
 	on_weekly_pulse = {}
@@ -787,6 +950,7 @@ dp_unify_italy = {
 	
 	requires_interest_marker = no
 	blocked_by_diplomatic_status = no
+	add_infamy_for_starting_initiator_wargoals = no
 	
 	texture = "gfx/interface/icons/war_goals/unify_italy.dds"
 	
@@ -797,6 +961,7 @@ dp_unify_italy = {
 	possible = {
 		NOT = { exists = c:ITA }
 		NOT = { is_country_type = decentralized }
+		NOT = { has_truce_with = scope:target_country }
 	}
 	
 	on_weekly_pulse = {}
@@ -811,6 +976,7 @@ dp_unify_scandinavia = {
 	
 	requires_interest_marker = no
 	blocked_by_diplomatic_status = no
+	add_infamy_for_starting_initiator_wargoals = no
 	
 	texture = "gfx/interface/icons/war_goals/unification.dds"
 	
@@ -821,6 +987,85 @@ dp_unify_scandinavia = {
 	possible = {
 		NOT = { exists = c:SCA }
 		NOT = { is_country_type = decentralized }
+		NOT = { has_truce_with = scope:target_country }
+	}
+	
+	on_weekly_pulse = {}
+	
+	on_war_begins = {}
+
+	on_war_end = {}
+}
+
+dp_unify_ARF = {
+	war_goal = unification
+	
+	requires_interest_marker = no
+	blocked_by_diplomatic_status = no
+	add_infamy_for_starting_initiator_wargoals = no
+	
+	texture = "gfx/interface/icons/war_goals/unification.dds"
+	
+	selectable_in_lens = {
+		always = no
+	}
+	
+	possible = {
+		NOT = { exists = c:ARF }
+		NOT = { is_country_type = decentralized }
+		NOT = { has_truce_with = scope:target_country }
+	}
+	
+	on_weekly_pulse = {}
+	
+	on_war_begins = {}
+
+	on_war_end = {}
+}
+
+dp_unify_UAR = {
+	war_goal = unification
+	
+	requires_interest_marker = no
+	blocked_by_diplomatic_status = no
+	add_infamy_for_starting_initiator_wargoals = no
+	
+	texture = "gfx/interface/icons/war_goals/unification.dds"
+	
+	selectable_in_lens = {
+		always = no
+	}
+	
+	possible = {
+		NOT = { exists = c:UAR }
+		NOT = { is_country_type = decentralized }
+		NOT = { has_truce_with = scope:target_country }
+	}
+	
+	on_weekly_pulse = {}
+	
+	on_war_begins = {}
+
+	on_war_end = {}
+}
+
+dp_unify_benelux = {
+	war_goal = unification
+	
+	requires_interest_marker = no
+	blocked_by_diplomatic_status = no
+	add_infamy_for_starting_initiator_wargoals = no
+	
+	texture = "gfx/interface/icons/war_goals/unification.dds"
+	
+	selectable_in_lens = {
+		always = no
+	}
+	
+	possible = {
+		NOT = { exists = c:BNL }
+		NOT = { is_country_type = decentralized }
+		NOT = { has_truce_with = scope:target_country }
 	}
 	
 	on_weekly_pulse = {}
@@ -855,6 +1100,7 @@ dp_unify_ethiopia = {
 				can_form_nation = ETH
 			}
 		}
+		NOT = { has_truce_with = scope:target_country }
 	}
 	
 	on_weekly_pulse = {}
@@ -867,6 +1113,10 @@ dp_unify_ethiopia = {
 dp_unify_china = {
 	war_goal = annex_country
 	
+	requires_interest_marker = no
+	blocked_by_diplomatic_status = no
+	add_infamy_for_starting_initiator_wargoals = no
+	
 	texture = "gfx/interface/icons/war_goals/annex_country.dds"
 	
 	selectable_in_lens = {
@@ -878,11 +1128,12 @@ dp_unify_china = {
 		NOT = { is_country_type = decentralized }
 		is_subject = no
 		can_form_nation = CHI
-
 		scope:target_country = {
 			NOT = { is_country_type = decentralized }
 			aggressive_diplomatic_plays_permitted = yes
+			can_form_nation = CHI
 		}
+		NOT = { has_truce_with = scope:target_country }
 	}
 	
 	on_weekly_pulse = {}
@@ -894,6 +1145,10 @@ dp_unify_china = {
 
 dp_unify_korea = {
 	war_goal = annex_country
+	
+	requires_interest_marker = no
+	blocked_by_diplomatic_status = no
+	add_infamy_for_starting_initiator_wargoals = no
 	
 	texture = "gfx/interface/icons/war_goals/annex_country.dds"
 	
@@ -910,39 +1165,9 @@ dp_unify_korea = {
 		scope:target_country = {
 			NOT = { is_country_type = decentralized }
 			aggressive_diplomatic_plays_permitted = yes
+			can_form_nation = KOR
 		}
-	}
-	
-	on_weekly_pulse = {}
-	
-	on_war_begins = {}
-
-	on_war_end = {}
-}
-
-dp_unify_arabia = {
-	war_goal = annex_country
-	
-	texture = "gfx/interface/icons/war_goals/annex_country.dds"
-	
-	selectable_in_lens = {
-		can_form_nation = UAR
-	}
-	
-	possible = {
-		NOT = { exists = c:UAR }
-		NOT = { is_country_type = decentralized }
-		is_subject = no
-		can_form_nation = UAR
-
-		scope:target_country = {
-			NOT = { is_country_type = decentralized }
-			aggressive_diplomatic_plays_permitted = yes
-			custom_tooltip = {
-				text = ARA_tt
-				can_form_nation = UAR
-			}
-		}
+		NOT = { has_truce_with = scope:target_country }
 	}
 	
 	on_weekly_pulse = {}
@@ -977,6 +1202,7 @@ dp_unify_india = {
 				can_form_nation = BHT
 			}
 		}
+		NOT = { has_truce_with = scope:target_country }
 	}
 	
 	on_weekly_pulse = {}
@@ -1011,6 +1237,7 @@ dp_unify_indonesia = {
 				can_form_nation = IDO
 			}
 		}
+		NOT = { has_truce_with = scope:target_country }
 	}
 	
 	on_weekly_pulse = {}
@@ -1089,6 +1316,74 @@ dp_leadership_scandinavia = {
 	on_war_end = {}
 }
 
+dp_leadership_ARF = {
+	war_goal = unification_leadership
+	
+	requires_interest_marker = no
+	mirror_war_goal = yes
+	
+	texture = "gfx/interface/icons/war_goals/unification.dds"
+	
+	selectable_in_lens = {
+		always = no
+	}	
+	
+	possible = {
+		
+	}
+	
+	on_weekly_pulse = {}
+	
+	on_war_begins = {}
+
+	on_war_end = {}
+}
+
+dp_leadership_UAR = {
+	war_goal = unification_leadership
+	
+	requires_interest_marker = no
+	mirror_war_goal = yes
+	
+	texture = "gfx/interface/icons/war_goals/unification.dds"
+	
+	selectable_in_lens = {
+		always = no
+	}	
+	
+	possible = {
+		
+	}
+	
+	on_weekly_pulse = {}
+	
+	on_war_begins = {}
+
+	on_war_end = {}
+}
+
+dp_leadership_benelux = {
+	war_goal = unification_leadership
+	
+	requires_interest_marker = no
+	mirror_war_goal = yes
+	
+	texture = "gfx/interface/icons/war_goals/unification.dds"
+	
+	selectable_in_lens = {
+		always = no
+	}	
+	
+	possible = {
+		
+	}
+	
+	on_weekly_pulse = {}
+	
+	on_war_begins = {}
+
+	on_war_end = {}
+}
 
 dp_humiliation = {
 	war_goal = humiliation
@@ -1099,12 +1394,21 @@ dp_humiliation = {
 		aggressive_diplomatic_plays_permitted = yes
 		
 		#THIS does not have restricted war rights
-		scope:actor = {
-			NOR = { 
-				has_law = law_type:law_no_war
-				has_law = law_type:law_defensive_war
+		NOR = { 
+			has_law = law_type:law_no_war
+			has_law = law_type:law_defensive_war
+		}
+		
+		#Ruler is jingoistic
+		ruler = {
+			OR = {
+				has_ideology = ideology:ideology_autocratic
+				has_ideology = ideology:ideology_power_hungry
 			}
 		}
+		
+		#No non-aggression_pact with TARGET
+		has_no_non_aggression_pact_with_target = yes
 	}
 	
 	on_weekly_pulse = {}

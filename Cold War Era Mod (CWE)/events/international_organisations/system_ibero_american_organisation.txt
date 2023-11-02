@@ -48,7 +48,10 @@ ibero_american_organisation_system.1 = {
 		every_country = {
 			limit = { has_modifier = ibero_american_organisation_leader }
 			remove_modifier = ibero_american_organisation_leader
-			add_modifier = { name = ibero_american_organisation_member }
+			if = { 
+				limit = { NOT = { has_modifier = ibero_american_organisation_member } }
+				add_modifier = { name = ibero_american_organisation_member }
+			}
 		}
 	
 		#Set Ibero-American Organisation leader
@@ -158,6 +161,13 @@ ibero_american_organisation_system.3 = {
     desc = ibero_american_organisation_expulsion.d 					# Description of the event; ADD LOCALISATION
     flavor = ibero_american_organisation_expulsion.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
+	event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
+
+    icon = "gfx/interface/icons/diplo_icons/ibero_american_organisation_member.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+
 	trigger = {
 		
 		OR = { 
@@ -190,6 +200,11 @@ ibero_american_organisation_system.3 = {
 		}
 		
 	}
+	
+	option = {
+        name = ibero_american_organisation_application_rejection.1				# Unfortunate
+		
+    }
 
 }
 
@@ -199,7 +214,7 @@ ibero_american_organisation_system.4 = {
     desc = ibero_american_organisation_application_choice.d 					# Description of the event; ADD LOCALISATION
     #flavor = ibero_american_organisation_application_choice.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/unspecific_military_parade.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
     icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
@@ -223,9 +238,6 @@ ibero_american_organisation_system.4 = {
 	
 		random_country = {
 			limit = { has_variable = ibero_american_organisation_application_var }
-			
-			remove_variable = ibero_american_organisation_application_var
-			
 			save_scope_as = ibero_american_organisation_applicant
 		}
 		
@@ -243,6 +255,7 @@ ibero_american_organisation_system.4 = {
 		scope:ibero_american_organisation_applicant = {
 			#FROM joins Ibero-American Organisation
 			add_modifier = { name = ibero_american_organisation_member }
+			remove_variable = ibero_american_organisation_application_var
 		}
 		
 		#Inform applicant of successful outcome
@@ -265,7 +278,10 @@ ibero_american_organisation_system.4 = {
 		default_option = yes
 		
 		#Inform applicant of unsuccessful outcome
-		scope:ibero_american_organisation_applicant = { trigger_event = { id = ibero_american_organisation_system.5 } }
+		scope:ibero_american_organisation_applicant = { 
+			trigger_event = { id = ibero_american_organisation_system.5 } 
+			remove_variable = ibero_american_organisation_application_var
+		}
 		
 		#FROM is angry!
 		change_relations = {
@@ -287,7 +303,7 @@ ibero_american_organisation_system.5 = {
     desc = ibero_american_organisation_application_rejection.d 				# Description of the event; ADD LOCALISATION
     #flavor = ibero_american_organisation_application_rejection.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/unspecific_military_parade.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
     icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
@@ -316,7 +332,7 @@ ibero_american_organisation_system.6 = {
     desc = ibero_american_organisation_application_acceptance.d 				# Description of the event; ADD LOCALISATION
     #flavor = ibero_american_organisation_application_acceptance.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/unspecific_military_parade.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
     icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed

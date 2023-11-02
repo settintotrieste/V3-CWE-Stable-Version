@@ -16,7 +16,7 @@ progressive_party = {
 	}
 	
 	icon = {
-		default = "/gfx/interface/icons/political_parties/radical.dds"
+		default = "/gfx/interface/icons/political_parties/agrarians.dds"
 	}
 	
 	# THIS IS RUN ONLY ONCE AT GAME START
@@ -51,7 +51,7 @@ progressive_party = {
 		#IG has correct leader political leaning
 		if = {
 			limit = {
-				leader = {
+				exists = leader leader = {
 					OR = { 
 						has_ideology = ideology:ideology_democratic
 						has_ideology = ideology:ideology_liberal

@@ -1,7 +1,8 @@
 #For events
 
-parliamentary_government_ruler_custom_title = {
+government_ruler_custom_title = {
 	type = country
+	first_valid = yes
 	
 	#Chancellor
 	text = {
@@ -11,6 +12,7 @@ parliamentary_government_ruler_custom_title = {
 		
 			#Culture
 			OR = {
+				cu:german = { is_primary_culture_of = root }
 				cu:north_german = { is_primary_culture_of = root }
 				cu:south_german = { is_primary_culture_of = root }
 			}
@@ -25,6 +27,8 @@ parliamentary_government_ruler_custom_title = {
 			is_a_parliamentary_government = yes
 		
 			#Culture
+			NOT = { cu:scottish = { is_primary_culture_of = root } }
+			NOT = { cu:english = { is_primary_culture_of = root } }
 			cu:irish = { is_primary_culture_of = root }
 		}
 		localization_key = custom_taoiseach_title
@@ -39,11 +43,6 @@ parliamentary_government_ruler_custom_title = {
 		localization_key = custom_prime_minister_title
 	}
 
-}
-
-royal_government_male_ruler_custom_title = {
-	type = country
-	
 	#Emperor
 	text = {
 		trigger = {
@@ -57,6 +56,7 @@ royal_government_male_ruler_custom_title = {
 				cu:chinese = { is_primary_culture_of = root }
 				cu:vietnamese = { is_primary_culture_of = root }
 				cu:korean = { is_primary_culture_of = root }
+				cu:german = { is_primary_culture_of = root }
 				cu:north_german = { is_primary_culture_of = root }
 				cu:south_german = { is_primary_culture_of = root }
 				cu:russian = { is_primary_culture_of = root }
@@ -77,6 +77,40 @@ royal_government_male_ruler_custom_title = {
 		localization_key = custom_shah_title
 	}
 	
+	#Emir
+	text = {
+		trigger = {
+			#Gov type
+			is_a_regime_monarchy = yes
+		
+			#Culture
+			OR = { 
+				cu:emirati = { is_primary_culture_of = root }
+				cu:bahraini = { is_primary_culture_of = root }
+				cu:qatari = { is_primary_culture_of = root }
+				cu:kuwaiti = { is_primary_culture_of = root }
+			}
+		}
+		localization_key = custom_emir_title
+	}
+	
+	#Sultan
+	text = {
+		trigger = {
+			#Gov type
+			is_a_regime_monarchy = yes
+		
+			#Culture
+			OR = { 
+				cu:malay = { is_primary_culture_of = root }
+				cu:bruneian = { is_primary_culture_of = root }
+				cu:egyptian = { is_primary_culture_of = root }
+				cu:omani = { is_primary_culture_of = root }
+			}
+		}
+		localization_key = custom_sultan_title
+	}
+	
 	#Grand Duke
 	text = {
 		trigger = {
@@ -84,7 +118,7 @@ royal_government_male_ruler_custom_title = {
 			is_a_regime_monarchy = yes
 		
 			#Country
-			this ?= c:LUX
+			c:LUX ?= this
 		}
 		localization_key = custom_grand_duke_title
 	}
@@ -97,11 +131,6 @@ royal_government_male_ruler_custom_title = {
 		}
 		localization_key = custom_king_title
 	}
-
-}
-
-royal_government_female_ruler_custom_title = {
-	type = country
 	
 	#Empress
 	text = {
@@ -116,6 +145,7 @@ royal_government_female_ruler_custom_title = {
 				cu:chinese = { is_primary_culture_of = root }
 				cu:vietnamese = { is_primary_culture_of = root }
 				cu:korean = { is_primary_culture_of = root }
+				cu:german = { is_primary_culture_of = root }
 				cu:north_german = { is_primary_culture_of = root }
 				cu:south_german = { is_primary_culture_of = root }
 				cu:russian = { is_primary_culture_of = root }
@@ -143,7 +173,7 @@ royal_government_female_ruler_custom_title = {
 			is_a_regime_monarchy = yes
 		
 			#Country
-			this ?= c:LUX
+			c:LUX ?= this
 		}
 		localization_key = custom_grand_duchess_title
 	}
@@ -156,17 +186,12 @@ royal_government_female_ruler_custom_title = {
 		}
 		localization_key = custom_queen_title
 	}
-
-}
-
-communist_government_ruler_custom_title = {
-	type = country
 	
 	#Chairman
 	text = {
 		trigger = {
 			#Gov type
-			is_a_communist_government = yes
+			is_a_communist_dictatorship = yes
 		
 			#Culture
 			OR = {
@@ -183,15 +208,10 @@ communist_government_ruler_custom_title = {
 	text = {
 		trigger = {
 			#Gov type
-			is_a_communist_government = yes
+			is_a_communist_dictatorship = yes
 		}
 		localization_key = custom_general_secretary_title
 	}
-
-}
-
-theocratic_government_ruler_custom_title = {
-	type = country
 	
 	#Dalai Lama
 	text = {
@@ -221,15 +241,10 @@ theocratic_government_ruler_custom_title = {
 	text = {
 		trigger = {
 			#Gov type
-			is_a_theocratic_government = yes
+			is_a_theocratic_dictatorship = yes
 		}
 		localization_key = custom_supreme_leader_title
 	}
-
-}
-
-colonial_government_ruler_custom_title = {
-	type = country
 	
 	#Viceroy
 	text = {
@@ -242,11 +257,11 @@ colonial_government_ruler_custom_title = {
 		
 			#Country
 			OR = { 
-				this ?= c:BHT
-				this ?= c:HND
+				c:BHT ?= this
+				c:HND ?= this
 				
-				this ?= c:BRZ
-				this ?= c:MEX
+				c:BRZ ?= this
+				c:MEX ?= this
 			}
 		}
 		localization_key = custom_viceroy_title
@@ -257,8 +272,35 @@ colonial_government_ruler_custom_title = {
 		trigger = {
 			#Gov type
 			is_a_colonial_government = yes
+			NOT = { is_a_colonial_democracy = yes }
 		}
 		localization_key = custom_governor_general_title
+	}
+	
+	#Chief Minister
+	text = {
+		trigger = {
+			#Gov type
+			is_a_colonial_government = yes
+		}
+		localization_key = RULER_TITLE_CHIEF_MINISTER
+	}
+	
+	#Generalissimo
+	text = {
+		trigger = {
+			#Gov type
+			is_a_nationalist_dictatorship = yes
+		}
+		localization_key = custom_generalissimo_title
+	}
+	
+	#President
+	text = {
+		trigger = {
+			
+		}
+		localization_key = custom_president_title
 	}
 
 }

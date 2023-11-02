@@ -1,0 +1,250 @@
+je_war_system = {
+	icon = "gfx/interface/icons/event_icons/bicorne_hat.dds"
+
+	scripted_button = je_wartime_measures_martial_law_button
+	scripted_button = je_wartime_measures_martial_law_remove_button
+
+	scripted_button = je_wartime_measures_rationing_button
+	scripted_button = je_wartime_measures_rationing_remove_button
+	
+	scripted_button = je_wartime_measures_propaganda_button
+	scripted_button = je_wartime_measures_propaganda_remove_button
+	
+	scripted_button = je_wartime_measures_war_bonds_button
+
+	possible = {
+		
+		#Country is at war
+		is_at_war = yes
+		
+		#Inter-state wars only
+		any_country = {
+			has_war_with = ROOT
+			is_revolutionary = no
+		}
+		
+	}
+
+	immediate = {
+		
+		#General
+		random_interest_group = {
+			limit = { 
+				is_interest_group_type = ig_armed_forces
+			}
+			save_scope_as = supreme_commander_scope
+		}
+		random_scope_character = {
+			limit = { 
+				is_ruler = yes
+			}
+			save_scope_as = war_ruler_scope
+		}
+		
+	}
+
+	complete = {
+		
+		#War is over
+		is_at_war = no
+		
+		#THIS won the war
+		custom_tooltip = {
+			text = je_war_system_1.tt
+			has_variable = has_won_a_war
+		}
+		
+	}
+	
+	on_complete = {
+		
+		#Effects
+		remove_variable = has_won_a_war
+		trigger_event = { id = war_system.1 }
+		
+		#Remove Wartime measures
+		custom_tooltip = {
+			text = remove_all_wartime_measures.tt
+			if = {
+				limit = { has_modifier = wartime_measures_martial_law }
+				remove_modifier = wartime_measures_martial_law
+			}
+			if = {
+				limit = { has_modifier = wartime_measures_rationing }
+				remove_modifier = wartime_measures_rationing
+			}
+			if = {
+				limit = { has_modifier = wartime_measures_propaganda }
+				remove_modifier = wartime_measures_propaganda
+			}
+		}
+		
+	}
+	
+	fail = {
+		
+		#War is over
+		is_at_war = no
+		
+		#Inconclusive war or defeated
+		custom_tooltip = {
+			text = je_war_system_2.tt
+			NOT = { has_variable = has_won_a_war }
+		}
+		
+	}
+	on_fail = {
+		
+		#Effects
+		if = {
+			limit = { has_variable = has_lost_a_war }
+			remove_variable = has_lost_a_war
+			trigger_event = { id = war_system.2 }
+		}
+		else = {
+			trigger_event = { id = war_system.3 }
+		}
+		
+		#Remove Wartime measures
+		custom_tooltip = {
+			text = remove_all_wartime_measures.tt
+			if = {
+				limit = { has_modifier = wartime_measures_martial_law }
+				remove_modifier = wartime_measures_martial_law
+			}
+			if = {
+				limit = { has_modifier = wartime_measures_rationing }
+				remove_modifier = wartime_measures_rationing
+			}
+			if = {
+				limit = { has_modifier = wartime_measures_propaganda }
+				remove_modifier = wartime_measures_propaganda
+			}
+		}
+		
+	}
+	
+	on_weekly_pulse = {
+	
+		effect = {
+			
+			#Effects for Interim Wars
+			if = {
+				limit = { 
+					has_variable = has_won_a_war 
+					NOT = { has_variable = has_lost_a_war }
+				}
+				remove_variable = has_won_a_war
+				trigger_event = { id = war_system.1 }
+			}
+			else_if = {
+				limit = { 
+					NOT = { has_variable = has_won_a_war }
+					has_variable = has_lost_a_war 
+				}
+				remove_variable = has_lost_a_war
+				trigger_event = { id = war_system.2 }
+			}
+			else_if = { 
+				limit = {
+					has_variable = has_won_a_war 
+					has_variable = has_lost_a_war
+				}
+				remove_variable = has_won_a_war
+				remove_variable = has_lost_a_war
+				trigger_event = { id = war_system.3 }
+			}
+			
+			#General
+			random_scope_character = {
+				limit = { 
+					is_interest_group_type = ig_armed_forces 
+				}
+				save_scope_as = supreme_commander_scope
+			}
+			random_scope_character = {
+				limit = { 
+					is_ruler = yes
+				}
+				save_scope_as = war_ruler_scope
+			}
+			
+		}
+		
+		#Weekly chance of war crimes being committed
+		random_events = {
+			9 = 0
+			1 = war_system.1
+		}
+		
+	}
+	
+	on_monthly_pulse = {
+	
+		effect = {
+			
+			#Effect of propaganda
+			if = { 
+				limit = { has_modifier = wartime_measures_propaganda }
+				#Increase war support slightly
+				every_diplomatic_play = {
+					limit = {
+						is_war = yes
+						is_diplomatic_play_participant = ROOT
+					}
+					add_diplomatic_play_war_support = { target = ROOT value = 5 }
+				}
+			}
+			
+			#Discriminated get angry
+			random_scope_culture = {
+				limit = { NOT = { is_primary_culture_of = ROOT } }
+				save_scope_as = angry_pop_culture_war
+			}
+			if = {
+				limit = { exists = scope:angry_pop_culture_war }
+				every_scope_state = {
+					limit = { 
+						NOT = { is_homeland_of_country_cultures = ROOT }
+					}
+					random_list = {
+						2 = { }
+						1 = { 
+							add_radicals_in_state = {
+								value = small_radicals
+								culture = scope:angry_pop_culture_war
+							}
+						}
+					}
+				}
+			}
+			
+		}
+		
+		random_events = {
+			4 = 0
+			
+			#Civil Disobedience
+			1 = war_system.4
+			
+			#Protest against fighting brother states
+			1 = war_system.5
+			
+			#Criticism of the Military
+			1 = war_system.6
+			
+			#Military Unrest
+			1 = war_system.7
+			
+		}
+		
+	}
+
+	weight = 200
+
+	should_be_pinned_by_default = yes
+
+	transferable = no
+
+	progressbar = no
+}

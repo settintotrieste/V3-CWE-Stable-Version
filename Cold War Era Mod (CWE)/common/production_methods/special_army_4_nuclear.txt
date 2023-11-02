@@ -4,7 +4,7 @@
 
 #Experimental Nuclear Weapon
 pm_nuclear_type_0 = {
-	texture = "gfx/interface/icons/production_method_icons/no_nuclear.dds"
+	texture = "gfx/interface/icons/production_method_icons/no_artillery.dds"
 	
 	timed_modifiers = {
 		pm_offense_defense_readjustment
@@ -14,7 +14,7 @@ pm_nuclear_type_0 = {
 ## -10k/week is a reasonable cost for a WMD.
 #Atomic Bomb
 pm_nuclear_type_1 = {
-	texture = "gfx/interface/icons/production_method_icons/no_nuclear.dds"
+	texture = "gfx/interface/icons/production_method_icons/shrapnel_artillery.dds"
 	
 	unlocking_laws = {
 		law_wmd_allowed
@@ -26,15 +26,16 @@ pm_nuclear_type_1 = {
 	
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_refined_uranium_add = 10
+			building_input_industrial_chemicals_add = 10
 		}
 		level_scaled = {
 			building_employment_engineers_add = 1000
+			building_employment_soldiers_add = 100
 		}
 	}
 
 	country_modifiers = {
-		throughput_scaled = {
+		workforce_scaled = {
 			country_army_power_projection_add = 20
 		}
 	}
@@ -49,7 +50,7 @@ pm_nuclear_type_1 = {
 ## 2 levels of an Atomic bomb.
 #Hydrogen Bomb
 pm_nuclear_type_2 = {
-	texture = "gfx/interface/icons/production_method_icons/no_nuclear.dds"
+	texture = "gfx/interface/icons/production_method_icons/shrapnel_artillery.dds"
 	
 	unlocking_laws = {
 		law_wmd_allowed
@@ -61,15 +62,16 @@ pm_nuclear_type_2 = {
 	
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_refined_uranium_add = 20
+			building_input_industrial_chemicals_add = 20
 		}
 		level_scaled = {
 			building_employment_engineers_add = 2000
+			building_employment_soldiers_add = 200
 		}
 	}
 	
 	country_modifiers = {
-		throughput_scaled = {
+		workforce_scaled = {
 			country_army_power_projection_add = 40
 		}
 	}
@@ -83,7 +85,7 @@ pm_nuclear_type_2 = {
 
 #No Nuclear Weapons
 pm_nuclear_stockpile_0 = {
-	texture = "gfx/interface/icons/production_method_icons/no_nuclear.dds"
+	texture = "gfx/interface/icons/production_method_icons/no_artillery.dds"
 	
 	timed_modifiers = {
 		pm_offense_defense_readjustment
@@ -92,7 +94,7 @@ pm_nuclear_stockpile_0 = {
 
 #Very Low Nuclear Stockpile
 pm_nuclear_stockpile_1 = {
-	texture = "gfx/interface/icons/production_method_icons/pm_nuclear_stockpile_weapons.dds"
+	texture = "gfx/interface/icons/production_method_icons/chemical_artillery.dds"
 	
 	unlocking_laws = {
 		law_wmd_allowed
@@ -105,17 +107,12 @@ pm_nuclear_stockpile_1 = {
 	
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_refined_uranium_add = 10
-		}
-
-		level_scaled = {
-			building_employment_officers_add = 10
-			building_employment_engineers_add = 10
+			building_input_industrial_chemicals_add = 10
 		}
 	}
 	
 	country_modifiers = {
-		throughput_scaled = {
+		workforce_scaled = {
 			country_army_power_projection_add = 10
 		}
 	}
@@ -127,7 +124,7 @@ pm_nuclear_stockpile_1 = {
 
 #Low Nuclear Stockpile
 pm_nuclear_stockpile_2 = {
-	texture = "gfx/interface/icons/production_method_icons/pm_nuclear_stockpile_weapons.dds"
+	texture = "gfx/interface/icons/production_method_icons/chemical_artillery.dds"
 	
 	unlocking_laws = {
 		law_wmd_allowed
@@ -140,17 +137,12 @@ pm_nuclear_stockpile_2 = {
 	
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_refined_uranium_add = 20
-		}
-
-		level_scaled = {
-			building_employment_officers_add = 20
-			building_employment_engineers_add = 20
+			building_input_industrial_chemicals_add = 20
 		}
 	}
 	
 	country_modifiers = {
-		throughput_scaled = {
+		workforce_scaled = {
 			country_army_power_projection_add = 20
 		}
 	}
@@ -162,7 +154,7 @@ pm_nuclear_stockpile_2 = {
 
 #Medium Nuclear Stockpile
 pm_nuclear_stockpile_3 = {
-	texture = "gfx/interface/icons/production_method_icons/pm_nuclear_stockpile_weapons.dds"
+	texture = "gfx/interface/icons/production_method_icons/chemical_artillery.dds"
 	
 	unlocking_laws = {
 		law_wmd_allowed
@@ -175,17 +167,12 @@ pm_nuclear_stockpile_3 = {
 	
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_refined_uranium_add = 30
-		}
-
-		level_scaled = {
-			building_employment_officers_add = 30
-			building_employment_engineers_add = 30
+			building_input_industrial_chemicals_add = 30
 		}
 	}
 	
 	country_modifiers = {
-		throughput_scaled = {
+		workforce_scaled = {
 			country_army_power_projection_add = 30
 		}
 	}
@@ -197,7 +184,7 @@ pm_nuclear_stockpile_3 = {
 
 #Large Nuclear Stockpile
 pm_nuclear_stockpile_4 = {
-	texture = "gfx/interface/icons/production_method_icons/pm_nuclear_stockpile_weapons.dds"
+	texture = "gfx/interface/icons/production_method_icons/chemical_artillery.dds"
 	
 	unlocking_laws = {
 		law_wmd_allowed
@@ -212,17 +199,12 @@ pm_nuclear_stockpile_4 = {
 	
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_refined_uranium_add = 40
-		}
-
-		level_scaled = {
-			building_employment_officers_add = 40
-			building_employment_engineers_add = 40
+			building_input_industrial_chemicals_add = 40
 		}
 	}
 	
 	country_modifiers = {
-		throughput_scaled = {
+		workforce_scaled = {
 			country_army_power_projection_add = 40
 		}
 	}
@@ -234,7 +216,7 @@ pm_nuclear_stockpile_4 = {
 
 #Very Large Nuclear Stockpile
 pm_nuclear_stockpile_5 = {
-	texture = "gfx/interface/icons/production_method_icons/pm_nuclear_stockpile_weapons.dds"
+	texture = "gfx/interface/icons/production_method_icons/chemical_artillery.dds"
 	
 	unlocking_laws = {
 		law_wmd_allowed
@@ -249,17 +231,12 @@ pm_nuclear_stockpile_5 = {
 	
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_refined_uranium_add = 50
-		}
-
-		level_scaled = {
-			building_employment_officers_add = 50
-			building_employment_engineers_add = 50
+			building_input_industrial_chemicals_add = 50
 		}
 	}
 	
 	country_modifiers = {
-		throughput_scaled = {
+		workforce_scaled = {
 			country_army_power_projection_add = 50
 		}
 	}
@@ -273,7 +250,7 @@ pm_nuclear_stockpile_5 = {
 
 #No Nuclear Bomber
 pm_nuclear_bomber_0 = {
-	texture = "gfx/interface/icons/production_method_icons/no_nuclear.dds"
+	texture = "gfx/interface/icons/production_method_icons/no_aeroplanes.dds"
 	
 	timed_modifiers = {
 		pm_offense_defense_readjustment
@@ -283,7 +260,7 @@ pm_nuclear_bomber_0 = {
 #Have Nuclear Bomber
 # p = -472.7, e = 275, pe = -129992.5
 pm_nuclear_bomber_1 = {
-	texture = "gfx/interface/icons/production_method_icons/pm_nuclear_stockpile_weapons.dds"
+	texture = "gfx/interface/icons/production_method_icons/aerial_recon.dds"
 	
 	unlocking_laws = {
 		law_wmd_allowed
@@ -301,18 +278,16 @@ pm_nuclear_bomber_1 = {
 	building_modifiers = {
 		workforce_scaled = {
 			building_input_warplanes_add = 50
-			building_input_refined_oil_add = 25
+			building_input_oil_add = 25
 		}
 
 		level_scaled = {
-			building_employment_soldiers_add = 200
-			building_employment_officers_add = 50
-			building_employment_officers_add = 25
+			building_employment_officers_add = 100
 		}
 	}
 	
 	country_modifiers = {
-		throughput_scaled = {
+		workforce_scaled = {
 			country_army_power_projection_add = 10
 		}
 	}
@@ -326,7 +301,7 @@ pm_nuclear_bomber_1 = {
 
 #No Nuclear Rocket
 pm_nuclear_rocket_0 = {
-	texture = "gfx/interface/icons/production_method_icons/no_nuclear.dds"
+	texture = "gfx/interface/icons/production_method_icons/no_artillery_production.dds"
 	
 	timed_modifiers = {
 		pm_offense_defense_readjustment
@@ -336,7 +311,7 @@ pm_nuclear_rocket_0 = {
 #Have Nuclear Rocket
 # p = -283.6, e = 275, pe = -77990.0
 pm_nuclear_rocket_1 = {
-	texture = "gfx/interface/icons/production_method_icons/pm_nuclear_stockpile_weapons.dds"
+	texture = "gfx/interface/icons/production_method_icons/siege_artillery.dds"
 	
 	unlocking_laws = {
 		law_wmd_allowed
@@ -353,19 +328,17 @@ pm_nuclear_rocket_1 = {
 	
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_space_rockets_add = 50
-			building_input_refined_oil_add = 25
+			building_input_advanced_weaponry_add = 50
+			building_input_oil_add = 25
 		}
 
 		level_scaled = {
-			building_employment_soldiers_add = 100
-			building_employment_officers_add = 150
-			building_employment_officers_add = 25
+			building_employment_officers_add = 100
 		}
 	}
 	
 	country_modifiers = {
-		throughput_scaled = {
+		workforce_scaled = {
 			country_army_power_projection_add = 30
 		}
 	}
@@ -379,7 +352,7 @@ pm_nuclear_rocket_1 = {
 
 #No Nuclear Submarine
 pm_nuclear_submarine_0 = {
-	texture = "gfx/interface/icons/production_method_icons/no_nuclear.dds"
+	texture = "gfx/interface/icons/production_method_icons/no_military_shipbuilding.dds"
 	
 	timed_modifiers = {
 		pm_offense_defense_readjustment
@@ -389,7 +362,7 @@ pm_nuclear_submarine_0 = {
 #Have Nuclear Submarine
 # p = -520.0, e = 300, pe = -156000.0
 pm_nuclear_submarine_1 = {
-	texture = "gfx/interface/icons/production_method_icons/pm_nuclear_stockpile_weapons.dds"
+	texture = "gfx/interface/icons/production_method_icons/submarine.dds"
 	
 	unlocking_laws = {
 		law_wmd_allowed
@@ -398,19 +371,17 @@ pm_nuclear_submarine_1 = {
 	building_modifiers = {
 		workforce_scaled = {
 			building_input_ironclads_add = 50
-			building_input_space_rockets_add = 25
-			building_input_refined_uranium_add = 25
+			building_input_advanced_weaponry_add = 25
+			building_input_industrial_chemicals_add = 25
 		}
 
 		level_scaled = {
-			building_employment_soldiers_add = 100
-			building_employment_officers_add = 150
-			building_employment_officers_add = 50
+			building_employment_officers_add = 100
 		}
 	}
 	
 	country_modifiers = {
-		throughput_scaled = {
+		workforce_scaled = {
 			country_army_power_projection_add = 20
 		}
 	}

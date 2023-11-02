@@ -1,0 +1,259 @@
+foreign_supreme_court_name = {
+	type = country
+	first_valid = yes
+	
+	#Legal Union
+	text = {
+		trigger = {
+		
+			#Part of a Legal Union
+			is_subject_type = subject_type_confederal_state
+			any_country = { 
+				has_diplomatic_pact = { who = ROOT type = legal_union is_initiator = yes } 
+				has_subject_relation_with = ROOT
+			}
+			
+		}
+		localization_key = confederal_court
+	}
+	text = {
+		trigger = {
+		
+			#Part of a Legal Union
+			any_country = { 
+				is_a_monarchy = yes
+				has_diplomatic_pact = { who = ROOT type = legal_union is_initiator = yes } 
+			}
+			
+		}
+		localization_key = privy_council
+	}
+	text = {
+		trigger = {
+		
+			#Part of a Legal Union
+			any_country = { has_diplomatic_pact = { who = ROOT type = legal_union is_initiator = yes } }
+			
+		}
+		localization_key = legal_union_supreme_court
+	}
+	
+}
+
+supreme_court_name = {
+	type = country
+	first_valid = yes
+	
+	#Confederal Court
+	text = {
+		trigger = {
+		
+			#Part of a Legal Union
+			any_country = { 
+				has_diplomatic_pact = { who = ROOT type = legal_union is_initiator = no }
+				has_subject_relation_with = ROOT
+				is_subject_type = subject_type_confederal_state
+			}
+			
+		}
+		localization_key = confederal_court
+	}
+	
+	#UK
+	text = {
+		trigger = {
+		
+			c:GBR ?= this
+			game_date < 2009.10.1
+			is_a_monarchy = yes
+			
+		}
+		localization_key = uk_house_of_lords
+	}
+	text = {
+		trigger = {
+		
+			c:GBR ?= this
+			is_a_monarchy = yes
+			coa_controls_part_of_ireland = yes
+			
+		}
+		localization_key = uk_supreme_court
+	}
+	
+	#USA
+	text = {
+		trigger = {
+		
+			c:USA ?= this
+			
+		}
+		localization_key = us_supreme_court
+	}
+	
+	#FRA
+	text = {
+		trigger = {
+		
+			OR = { 
+				c:FRA ?= this
+				c:BEL ?= this
+				c:BUL ?= this
+				c:CNG ?= this
+				c:TUR ?= this
+				c:LEB ?= this
+				c:ROM ?= this
+				c:SER ?= this
+				c:SEN ?= this
+				c:SYR ?= this
+				c:TUN ?= this
+			}
+			
+		}
+		localization_key = court_of_cassation
+	}
+	
+	#ECU
+	text = {
+		trigger = {
+		
+			OR = { 
+				c:ECU ?= this
+				c:AUS ?= this
+				c:AZB ?= this
+				c:BOL ?= this
+				c:CAM ?= this
+				c:CHA ?= this
+				c:CHL ?= this
+				c:CLM ?= this
+			}
+			
+		}
+		localization_key = constitutional_court
+	}
+	
+	#NZL
+	text = {
+		trigger = {
+		
+			OR = { 
+				c:NZL ?= this
+				c:PHI ?= this
+				c:SGP ?= this
+				c:HKG ?= this
+				c:BOT ?= this
+				c:KIR ?= this
+				c:LES ?= this
+				c:SOL ?= this
+				c:TAN ?= this
+				c:TGY ?= this
+				c:TON ?= this
+			}
+			
+		}
+		localization_key = court_of_appeal
+	}
+	
+	#AST
+	text = {
+		trigger = {
+		
+			OR = { 
+				c:AST ?= this
+				c:ERI ?= this
+				c:KUW ?= this
+				c:SUR ?= this
+			}
+			
+		}
+		localization_key = high_court
+	}
+	
+	#BRZ
+	text = {
+		trigger = {
+		
+			OR = { 
+				c:BRZ ?= this
+				c:ETH ?= this
+				c:UAE ?= this
+			}
+			
+			has_law = law_type:law_federal_state
+			
+		}
+		localization_key = supreme_federal_court
+	}
+	
+	#MSY
+	text = {
+		trigger = {
+		
+			OR = { 
+				c:MSY ?= this
+				c:MLY ?= this
+			}
+			
+			has_law = law_type:law_federal_state
+			
+		}
+		localization_key = federal_court
+	}
+	
+	#GER
+	text = {
+		trigger = {
+		
+			OR = { 
+				c:GER ?= this 
+				c:WGR ?= this
+				c:EGR ?= this
+			}
+			
+			has_law = law_type:law_federal_state
+			
+		}
+		localization_key = federal_court_of_justice
+	}
+	
+	#BNL
+	text = {
+		trigger = {
+		
+			OR = { 
+				c:BNL ?= this
+				c:XEU ?= this
+			}
+			
+		}
+		localization_key = court_of_justice
+	}
+	
+	#NEJ
+	text = {
+		trigger = {
+		
+			c:NEJ ?= this
+			
+			is_a_monarchy = yes
+			
+		}
+		localization_key = supreme_judicial_council
+	}
+	
+	#Communist Court
+	text = {
+		trigger = {
+		
+			is_a_communist_government = yes
+			
+		}
+		localization_key = supreme_peoples_court
+	}
+	
+	#Generic
+	text = {
+		localization_key = generic_supreme_court
+	}
+	
+}

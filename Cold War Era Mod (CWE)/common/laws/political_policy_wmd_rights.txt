@@ -3,9 +3,16 @@ law_wmd_banned = {
 	
 	icon = "gfx/interface/icons/law_icons/autocracy.dds"
 	
-	progressiveness = 50
+	#progressiveness = 50
 
 	disallowing_laws = {
+		
+	}
+	
+	can_enact = {
+	
+		#Constitutional Laws system (Requires simple majority to amend constitutional laws)
+		government_has_legislative_simple_majority = yes
 		
 	}
 
@@ -22,6 +29,9 @@ law_wmd_banned = {
 		law_wmd_allowed
 	}
 	
+	#This law is not worth revolting over
+	pop_support = { value = 0 }
+	
 	ai_enact_weight_modifier = { #Petitions
 		value = 0
 		
@@ -33,6 +43,15 @@ law_wmd_banned = {
 			}
 			add = 750
 		}
+		
+		#World Tension
+		if = {
+			limit = { 
+				has_global_variable = very_low_world_tension
+			}
+			add = 750
+		}
+		
 	}
 	
 }
@@ -42,9 +61,21 @@ law_wmd_allowed = {
 	
 	icon = "gfx/interface/icons/law_icons/autocracy.dds"
 	
-	progressiveness = 0
+	#progressiveness = 0
 
 	disallowing_laws = {
+		
+	}
+
+	can_enact = {
+	
+		custom_tooltip = {
+			text = did_not_sign_NPT_tt
+			NOT = { has_variable = signed_nuclear_non_proliferation_treaty }
+		}
+		
+		#Constitutional Laws system (Requires simple majority to amend constitutional laws)
+		government_has_legislative_simple_majority = yes
 		
 	}
 
@@ -58,6 +89,9 @@ law_wmd_allowed = {
 		#law_wmd_allowed
 	}
 	
+	#This law is not worth revolting over
+	pop_support = { value = 0 }
+	
 	ai_enact_weight_modifier = { #Petitions
 		value = 0
 		
@@ -69,6 +103,15 @@ law_wmd_allowed = {
 			}
 			add = 750
 		}
+		
+		#World Tension
+		if = {
+			limit = { 
+				has_global_variable = very_high_world_tension
+			}
+			add = 750
+		}
+		
 	}
 	
 }

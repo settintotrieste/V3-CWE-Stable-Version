@@ -3,7 +3,9 @@
 pmg_gold_mining = {
 	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
 	production_methods = {
-		pm_gold_goods_mining
+		pm_gold_goods_mining_1
+		pm_gold_goods_mining_2
+		pm_gold_goods_mining_3
 	}
 }
 
@@ -17,21 +19,27 @@ pmg_sulfur_mining = {
 pmg_coal_mining = {
 	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
 	production_methods = {
-		pm_coal_goods_mining
+		pm_coal_goods_mining_1
+		pm_coal_goods_mining_2
+		pm_coal_goods_mining_3
 	}
 }
 
 pmg_iron_mining = {
 	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
 	production_methods = {
-		pm_iron_goods_mining
+		pm_iron_goods_mining_1
+		pm_iron_goods_mining_2
+		pm_iron_goods_mining_3
 	}
 }
 
 pmg_lead_mining = {
 	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
 	production_methods = {
-		pm_lead_goods_mining
+		pm_lead_goods_mining_1
+		pm_lead_goods_mining_2
+		pm_lead_goods_mining_3
 	}
 }
 
@@ -87,7 +95,9 @@ pmg_precious_minerals_mining = {
 pmg_oil_mining = {
 	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
 	production_methods = {
-		pm_oil_goods_mining
+		pm_oil_goods_mining_1
+		pm_oil_goods_mining_2
+		pm_oil_goods_mining_3
 	}
 }
 
@@ -102,7 +112,7 @@ pmg_natural_gas_mining = {
 
 pmg_automation_mining = {
 	texture = "gfx/interface/icons/generic_icons/mixed_icon_automation.dds"
-	ai_selection = most_productive
+	#ai_selection = most_profitable
 	production_methods = {
 		pm_automation_0_building_mining
 		pm_automation_1_building_mining
@@ -122,7 +132,7 @@ pmg_automation_mining = {
 
 pmg_technique_mining = {
 	texture = "gfx/interface/icons/generic_icons/mixed_icon_refining.dds"
-	ai_selection = most_productive
+	#ai_selection = most_profitable
 	production_methods = {
 		pm_technique_0_building_mining
 		pm_technique_1_building_mining
@@ -142,7 +152,7 @@ pmg_technique_mining = {
 
 pmg_organisation_mining = {
 	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
-	ai_selection = most_productive
+	#ai_selection = most_profitable
 	production_methods = {
 		pm_organisation_0_building_mining
 		pm_organisation_1_building_mining
@@ -162,7 +172,7 @@ pmg_organisation_mining = {
 
 pmg_greeness_mining = {
 	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
-	ai_selection = most_productive
+	#ai_selection = most_profitable
 	production_methods = {
 		pm_greeness_0_building_mining
 		pm_greeness_1_building_mining
@@ -182,7 +192,7 @@ pmg_greeness_mining = {
 
 pmg_ownership_mining = {
 	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
-	ai_selection = most_productive
+	#ai_selection = most_profitable
 	production_methods = {
 		pm_merchant_guilds_building_mining
 		pm_worker_cooperative_building_mining

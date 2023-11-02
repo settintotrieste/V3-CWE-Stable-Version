@@ -3,16 +3,44 @@ law_unitary_state = {
 	
 	icon = "gfx/interface/icons/law_icons/oligarchy.dds"
 	
+	can_enact = {
+	
+		#Constitutional Laws system (Requires more than 2/3s majority to amend constitutional laws)
+		government_has_legislative_super_majority = yes
+		
+		#Cabinet agrees with this law
+		custom_tooltip = {
+			text = no_cabinet_objection.tt
+			NOT = {
+				any_interest_group = {
+					OR = { 
+						has_modifier = cabinet_minister_ig
+						leader = { has_modifier = cabinet_minister }
+					}
+					law_stance = {
+						law = law_type:law_unitary_state
+						value < neutral
+					}
+				}
+			}
+		}
+		
+	}
+	
 	modifier = {
 	
-		#Less united state = more bureaucracy
-	
-		#More united state = more authority & faster conscription
-		state_conscription_rate_add = 0.005
-		country_authority_mult = 0.25
+		#Centralisation reduces bureaucracy costs
+		state_bureaucracy_population_base_cost_factor_mult = -0.25
+		state_tax_capacity_mult = 0.25
 		
-		country_authority_add = 100
-		country_legitimacy_govt_total_clout_add = 50
+		#Centralisation increases ruler's power
+		country_authority_mult = 0.25
+		country_legitimacy_govt_total_clout_add = 20
+	
+		#Centralisation reduces political diversity
+		state_political_strength_from_discrimination_mult = -0.20
+		state_radicals_from_discrimination_mult = 0.20
+	
 	}
 	
 	possible_political_movements = {
@@ -40,24 +68,43 @@ law_federal_state = {
 	
 	icon = "gfx/interface/icons/law_icons/elder_council.dds"
 	
-	progressiveness = 50
+	#progressiveness = 50
+	
+	can_enact = {
+	
+		#Constitutional Laws system (Requires more than 2/3s majority to amend constitutional laws)
+		government_has_legislative_super_majority = yes
+		
+		#Cabinet agrees with this law
+		custom_tooltip = {
+			text = no_cabinet_objection.tt
+			NOT = {
+				any_interest_group = {
+					OR = { 
+						has_modifier = cabinet_minister_ig
+						leader = { has_modifier = cabinet_minister }
+					}
+					law_stance = {
+						law = law_type:law_federal_state
+						value < neutral
+					}
+				}
+			}
+		}
+		
+	}
 	
 	modifier = {
-	
-		#Federal system = less power to the executive
-		country_legitimacy_ideological_incoherence_mult = 0.25
-		country_authority_mult = -0.25
 		
-		state_radicals_from_discrimination_mult = -0.20
-		political_movement_radicalism_add = -0.10
-		political_movement_radicalism_mult = -0.10
-	
-		#Less united state = more bureaucracy
-		state_bureaucracy_population_base_cost_factor_mult = 0.25
-		state_tax_capacity_mult = -0.25
+		#De-Centralisation increases bureaucracy costs
 		
-		#Less united state = less authority & faster conscription
-		country_legitimacy_govt_total_clout_add = 25
+		#Centralisation decreases ruler's power
+	
+		#Centralisation increases political diversity & hence acceptance
+		state_loyalists_from_sol_change_accepted_culture_mult = 0.20
+		state_loyalists_from_sol_change_accepted_religion_mult = 0.20
+		state_assimilation_mult = 0.05
+		
 	}
 	
 	possible_political_movements = {

@@ -16,7 +16,7 @@
 	}
 	
 	production_method_groups = {
-		pmg_monuments_rule
+		#pmg_monuments_rule
 		pmg_monuments
 	}
 
@@ -57,7 +57,7 @@ building_angkor_wat = {
 	}
 	
 	production_method_groups = {
-		pmg_monuments_rule
+		#pmg_monuments_rule
 		pmg_monuments
 	}
 	
@@ -95,7 +95,7 @@ building_big_ben = {
 	}
 	
 	production_method_groups = {
-		pmg_monuments_rule
+		#pmg_monuments_rule
 		pmg_monuments
 	}
 	
@@ -132,7 +132,7 @@ building_forbidden_city = {
 	}
 	
 	production_method_groups = {
-		pmg_monuments_rule
+		#pmg_monuments_rule
 		pmg_monuments
 	}
 	
@@ -167,7 +167,7 @@ building_hagia_sophia = {
 	}
 	
 	production_method_groups = {
-		pmg_monuments_rule
+		#pmg_monuments_rule
 		pmg_monuments
 	}
 	
@@ -175,7 +175,7 @@ building_hagia_sophia = {
 		error_check = {
 			severity = invalid
 			this = {
-				state_region = s:STATE_EASTERN_THRACE
+				state_region = s:STATE_ISTANBUL
 			}
 		}
 	}
@@ -201,7 +201,7 @@ building_mosque_of_djenne = {
 	}
 	
 	production_method_groups = {
-		pmg_monuments_rule
+		#pmg_monuments_rule
 		pmg_monuments
 	}
 	
@@ -238,7 +238,7 @@ building_saint_basils_cathedral = {
 	}
 	
 	production_method_groups = {
-		pmg_monuments_rule
+		#pmg_monuments_rule
 		pmg_monuments
 	}
 	
@@ -272,7 +272,7 @@ building_statue_of_liberty = {
 	}
 	
 	production_method_groups = {
-		pmg_monuments_rule
+		#pmg_monuments_rule
 		pmg_monuments
 	}
 
@@ -315,7 +315,7 @@ building_taj_mahal = {
 	}
 	
 	production_method_groups = {
-		pmg_monuments_rule
+		#pmg_monuments_rule
 		pmg_monuments
 	}
 
@@ -351,7 +351,7 @@ building_vatican_city = {
 	}
 	
 	production_method_groups = {
-		pmg_monuments_rule
+		#pmg_monuments_rule
 		pmg_monuments
 		pmg_monuments_tax_haven
 	}
@@ -387,7 +387,7 @@ building_white_house = {
 	}
 	
 	production_method_groups = {
-		pmg_monuments_rule
+		#pmg_monuments_rule
 		pmg_monuments
 	}
 	
@@ -621,6 +621,96 @@ building_central_park = {
 	city_gfx_interactions = {
 		clear_size_area = yes
 		size = 4
+	}
+	
+	production_method_groups = {
+		pmg_monuments
+	}
+}
+
+### AP1 - models not present in basegame ###
+
+building_martandsuntemple = {
+	building_group = bg_monuments_hidden
+	expandable = no
+	buildable = no
+	downsizeable = no
+	unique = yes
+	locator = "monument_martandsuntemple_locator"
+	
+	entity_not_constructed = {monument_martandsuntemple_entity}
+	entity_under_construction = { }
+	entity_constructed = { "monument_martandsuntemple_entity"}
+	
+	city_gfx_interactions = {
+		clear_size_area = yes
+		size = 6
+	}
+	
+	production_method_groups = {
+		pmg_monuments
+	}
+}
+
+building_observatorygreenwich = {
+	building_group = bg_monuments_hidden
+	expandable = no
+	buildable = no
+	downsizeable = no
+	unique = yes
+	locator = "monument_observatorygreenwich_locator"
+	
+	entity_not_constructed = {"monument_observatorygreenwich_entity"}
+	entity_under_construction = {"monument_observatorygreenwich_entity"}
+	entity_constructed = {"monument_observatorygreenwich_entity"}
+	
+	city_gfx_interactions = {
+		clear_size_area = yes
+		size = 4
+	}
+	
+	production_method_groups = {
+		pmg_monuments
+	}
+}
+
+building_temple_of_poseidon = {
+	building_group = bg_monuments_hidden
+	expandable = no
+	buildable = no
+	downsizeable = no
+	unique = yes
+	locator = "templeofposeidon_locator"
+	
+	entity_not_constructed = {"monument_templeofposeidon_entity"}
+	entity_under_construction = {"monument_templeofposeidon_entity"}
+	entity_constructed = {"monument_templeofposeidon_entity"}
+
+	city_gfx_interactions = {
+		clear_size_area = yes
+		size = 3
+	}
+	
+	production_method_groups = {
+		pmg_monuments
+	}
+}
+
+building_wat_arun = {
+	building_group = bg_monuments_hidden
+	expandable = no
+	buildable = no
+	downsizeable = no
+	unique = yes
+	locator = "wat_arun_locator"
+	
+	entity_not_constructed = {"monument_watarun_entity"}
+	entity_under_construction = {"monument_watarun_entity"}
+	entity_constructed = {"monument_watarun_entity"}
+
+	city_gfx_interactions = {
+		clear_size_area = yes
+		size = 3
 	}
 	
 	production_method_groups = {

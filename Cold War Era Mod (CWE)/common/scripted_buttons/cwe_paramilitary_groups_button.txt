@@ -1,0 +1,154 @@
+je_conduct_great_purge_button = {
+	name = "je_conduct_great_purge_button"
+	desc = "je_conduct_great_purge_button_desc"
+
+	visible = { 
+		
+		exists = ruler
+		
+		has_variable = paramilitary_groups_loyalty
+		
+	}
+
+	possible = {
+		
+		#Ruler is autocratic
+		ruler = {
+			OR = {
+				has_ideology = ideology:ideology_autocratic
+				has_ideology = ideology:ideology_power_hungry
+			}
+		}
+		
+		#Have camps to accomodate the purged
+		OR = {
+			has_law = law_type:law_slavery_political
+			has_law = law_type:law_slavery_cultural
+		}
+		
+		#Ruler has the loyal support of the paramilitary group
+		custom_tooltip = {
+			text = has_loyal_paramilitary_group.tt
+			root.var:paramilitary_groups_loyalty > 50
+		}
+		custom_tooltip = {
+			text = paramilitary_group_is_in_gov.tt
+			any_interest_group = {
+				has_variable = paramilitary_IG
+				is_in_government = yes
+			}
+		}
+		
+		#Not already conducting a purge
+		NOT = { has_modifier = conducting_great_purge }
+		
+		#No clash with another purge mechanic
+		custom_tooltip = {
+			text = je_no_current_plot_against_the_dictator.tt
+			NOT = { has_journal_entry = je_plot_against_the_dictator_system }
+		}
+		
+	}
+
+	effect = {
+		
+		#Add purge modifier
+		add_modifier = { 
+			name = conducting_great_purge 
+			years = 5 
+			is_decaying = yes 
+		}
+		
+		#Collateral damage from the orgy of violence
+		kill_population_percent = {
+			percent = 0.005
+		}
+		
+		#Purge everyone
+		ruler = {
+			interest_group = {
+				save_scope_as = rulers_IG_scope
+			}
+		}
+		#Purge opposition politicians
+		custom_tooltip = {
+			text = je_conduct_great_purge_politicians.tt
+			every_scope_character = {
+				limit = { 
+					is_ruler = no
+					NOT = { is_interest_group_type = scope:rulers_IG_scope }
+					OR = { 
+						has_role = politician
+						has_role = agitator
+					}
+				}
+				random_list = { 
+					1 = { kill_character = yes }
+					1 = { 
+						convert_IG_ideology_to_agitator_ideology = yes
+						exile_character_with_martyrdom = yes 
+					}
+					1 = { 
+						if = {
+							limit = { 
+								NOR = { 
+									has_modifier = convicted_character
+									has_modifier = unjustly_convicted_character
+								} 
+							}
+							remove_modifier = indicted_character 
+							add_modifier = { name = unjustly_convicted_character years = 10 } 
+						}
+					}
+				}
+			}
+		}
+		#Purge opposition generals
+		custom_tooltip = {
+			text = je_conduct_great_purge_generals.tt
+			every_scope_character = {
+				limit = { 
+					is_ruler = no
+					NOT = { is_interest_group_type = scope:rulers_IG_scope }
+					OR = {
+						has_role = general
+						has_role = admiral
+					}
+					NOR = { 
+						has_role = politician
+						has_role = agitator
+					}
+				}
+				kill_character = yes
+			}
+		}
+		#Weaken non ruler interest groups
+		every_interest_group = {
+			limit = { NOT = { is_interest_group_type = scope:rulers_IG_scope } }
+			hidden_effect = { remove_modifier = great_purge_IG }
+			add_modifier = { 
+				name = great_purge_IG
+				years = 5 
+				is_decaying = yes 
+			}
+		}
+		
+		#Gain loyalists
+		add_loyalists = {
+			value = very_large_radicals
+			interest_group = scope:rulers_IG_scope
+		}
+		
+		#Gain infamy
+		change_infamy = 5
+		
+	}
+	
+	ai_chance = {
+		base = 0
+		
+		#AI will never do this proactively
+		
+	}
+	
+}

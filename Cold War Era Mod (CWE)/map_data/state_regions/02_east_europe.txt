@@ -44,7 +44,7 @@ STATE_MOSCOW = {
 STATE_BREST = {
     id = 133
     subsistence_building = "building_subsistence_farms"
-    provinces = { x157352 x18020B x1917E9 x241A22 x2FD0B1 x406020 x416161 x66FB56 x6D7F7E x75F1B4 x7E7F58 x80E0A0 x84FE3D x8ABE62 xA201E3 xA6BED3 xAB3AC5 xB338E8 xBCB94C xBFDF20 xC06121 xC15AD8 xC3FA73 xCB21FD xCCD197 xDE471E  xE06176 xE87D11 xF02643 }
+    provinces = { x157352 x18020B x1917E9 x241A22 x2FD0B1 x406020 x416161 x66FB56 x6D7F7E x75F1B4 x7E7F58 x80E0A0 x84FE3D x8ABE62 xA201E3 xA6BED3 xAB3AC5 xB338E8 xBCB94C xBFDF20 xC15AD8 xC3FA73 xCB21FD xCCD197 xDE471E  xE06176 xE87D11 xF02643 }
     traits = { "state_trait_russian_forest" }
     city = "xAB3AC5"
     mine = "xCB21FD"
@@ -58,17 +58,10 @@ STATE_BREST = {
 
 # SPLIT FROM BREST AND MAZOVIA
 STATE_PODLASKIE = {
-    id = 133
+    id = 1331
     subsistence_building = "building_subsistence_farms"
     provinces = { x46B950 xB491B1 x0087C9 xC06121 x117AE1 x4969E4 xDE551D xF8C8F6 x809F60 xC17590 }
     traits = { "state_trait_russian_forest" }
-
-    # from BREST
-    farm = "x117AE1"
-
-    # from MAZOVIA
-    #farm = "xC17590"
-
     arable_land = 40
     arable_resources = { "bg_rye_farms" "bg_banana_plantations" "bg_livestock_ranches" }
     capped_resources = {
@@ -113,7 +106,7 @@ STATE_KIEV = {
 		undiscovered_amount = 30
 	}
 	resource = {
-		type = "bg_rare_earth_elements_mining"
+		type = "bg_lead_mining"
 		undiscovered_amount = 1
 	}
 }
@@ -189,7 +182,7 @@ STATE_EAST_KARELIA = {
 		undiscovered_amount = 15
 	}
 	resource = {
-		type = "bg_rare_earth_elements_mining"
+		type = "bg_lead_mining"
 		undiscovered_amount = 14
 	}
     naval_exit_id = 3039
@@ -274,7 +267,7 @@ STATE_LUHANSK = {
 		undiscovered_amount = 15
 	}
 	resource = {
-		type = "bg_rare_earth_elements_mining"
+		type = "bg_lead_mining"
 		undiscovered_amount = 5
 	}
     naval_exit_id = 3036
@@ -504,12 +497,12 @@ STATE_SILESIA = {
         bg_iron_mining = 60
         bg_lead_mining = 54
 		bg_copper_mining = 30
-		bg_phosphorus_mining = 40
+		bg_sulfur_mining = 40
         bg_sulfur_mining = 40
         bg_logging = 14
     }
 	resource = {
-		type = "bg_natural_gas_extraction"
+		type = "bg_oil_extraction"
 		undiscovered_amount = 20
 	}
 }
@@ -563,7 +556,7 @@ STATE_WEST_PRUSSIA = {
     arable_resources = { "bg_rye_farms" "bg_banana_plantations" "bg_livestock_ranches" }
     capped_resources = {
         bg_sulfur_mining = 40
-		bg_phosphorus_mining = 40
+		bg_sulfur_mining = 40
         bg_logging = 8
         bg_fishing = 10
     }
@@ -630,7 +623,7 @@ STATE_POSEN = {
         bg_logging = 9
     }
 	resource = {
-		type = "bg_natural_gas_extraction"
+		type = "bg_oil_extraction"
 		undiscovered_amount = 40
 	}
 }
@@ -656,7 +649,7 @@ STATE_WEST_GALICIA = {
         undiscovered_amount = 30
     }
 	resource = {
-		type = "bg_natural_gas_extraction"
+		type = "bg_oil_extraction"
 		undiscovered_amount = 5
 	}
 }
@@ -703,7 +696,7 @@ STATE_CENTRAL_HUNGARY = {
 		undiscovered_amount = 10
 	}
 	resource = {
-		type = "bg_bauxite_mining"
+		type = "bg_sulfur_mining"
 		undiscovered_amount = 25
 	}
 }
@@ -818,7 +811,7 @@ STATE_EAST_SLOVAKIA = {
 STATE_ZAKARPATTIA = {    
     id = 1691
     subsistence_building = "building_subsistence_farms"
-    provinces = { 69BAC7 xA0531B x359378 xC85CD0 }
+    provinces = { x69BAC7 xA0531B x359378 xC85CD0 }
     farm = "xC85CD0"
     mine = "xA0531B"
     arable_land = 25
@@ -848,7 +841,7 @@ STATE_SOUTHERN_TRANSYLVANIA = {
         bg_logging = 17
     }
 	resource = {
-		type = "bg_natural_gas_extraction"
+		type = "bg_oil_extraction"
 		undiscovered_amount = 30
 	}
 	resource = {
@@ -877,7 +870,7 @@ STATE_NORTHERN_TRANSYLVANIA = {
 		undiscovered_amount = 25
 	}
 	resource = {
-		type = "bg_bauxite_mining"
+		type = "bg_sulfur_mining"
 		undiscovered_amount = 30
 	}
 }
@@ -924,7 +917,7 @@ STATE_WALLACHIA = {
         undiscovered_amount = 60
     }
 	resource = {
-		type = "bg_rare_earth_elements_mining"
+		type = "bg_lead_mining"
 		undiscovered_amount = 2
 	}
 }

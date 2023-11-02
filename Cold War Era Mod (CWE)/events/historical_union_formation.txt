@@ -8,9 +8,9 @@ historical_union_formation.1 = {
     desc = united_libya.d 					# Description of the event; ADD LOCALISATION
     #flavor = united_libya.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -45,7 +45,556 @@ historical_union_formation.1 = {
 		}
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+#United Arab Republic
+historical_union_formation.2 = {
+    type = country_event
+
+    title = united_arab_republic.t 					# Title of the event; ADD LOCALISATION
+    desc = united_arab_republic.d 					# Description of the event; ADD LOCALISATION
+    #flavor = united_arab_republic.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:EGY
+		this ?= c:EGY											# Change TAG of the overlord ****
+		game_date >= 1958.2.22									# START DATE: Date colony became self governing ****
+		game_date < 1968.2.22									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_nationalist_government = yes						# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		left_wing_ruling_coalition = yes						# Correct Ruling Coalition
+		
+		NOT = { exists = c:UAR }
+		
+		#Union candidate conditions
+		exists = c:SYR
+		c:SYR = { 												# Change TAG of the colony ****
+			OR = { is_a_nationalist_government = yes is_a_democracy = yes }
+			is_sufficiently_independent = yes
+			is_at_war = no
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = UAR_1958_huf }					# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Fire only once
+		set_variable = UAR_1958_huf								# Change variable ****
+		
+	}
+    
+    option = {
+        name = historical_union_formation.option.1				# Accept annexation by FROM
+        highlighted_option = yes
+		
+		#Option for Syria to accept
+		c:SYR = { 
+			trigger_event = { id = historical_union_formation.3 } 
+		}
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_union_formation.option.2				# Refuse annexation by FROM
+		default_option = yes
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+#United Arab Republic - recipient
+historical_union_formation.3 = {
+    type = country_event
+
+    title = united_arab_republic.t 					# Title of the event; ADD LOCALISATION
+    desc = united_arab_republic.d 					# Description of the event; ADD LOCALISATION
+    #flavor = united_arab_republic.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {														# What triggers the event, if using other events or journal entries leave empty
+		
+		#Is triggered by another event
+		
+    }
+    
+    option = {
+        name = historical_union_formation.option.1			# Accept land transfer request by FROM
+        highlighted_option = yes
+		
+		c:EGY = {
+			set_variable = UAR_formed_before
+			annex = c:SYR
+			every_scope_state = {
+				limit = { is_homeland = cu:syrian }
+				state_region = {
+					set_state_type = incorporated
+				}
+			}
+			change_tag = UAR
+		}
+		
+		ai_chance = { 
+			base = 99 
+		}
+		
+    }
+	
+	option = {
+        name = historical_union_formation.option.2			# Refuse land transfer request by FROM
+		default_option = yes
+		
+		#FROM is angry!
+		change_relations = {
+			country = c:EGY
+			value = -100
+		}
+		
+		ai_chance = {
+			base = 1 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 }
+		}
+		
+    }
+
+}
+
+#Arab Federation
+historical_union_formation.4 = {
+    type = country_event
+
+    title = hashemite_arab_federation.t 				# Title of the event; ADD LOCALISATION
+    desc = hashemite_arab_federation.d 					# Description of the event; ADD LOCALISATION
+    #flavor = hashemite_arab_federation.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:IRQ
+		this ?= c:IRQ											# Change TAG of the overlord ****
+		game_date >= 1958.2.14									# START DATE: Date colony became self governing ****
+		game_date < 1968.2.14									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_regime_monarchy = yes								# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		right_wing_ruling_coalition = yes						# Correct Ruling Coalition
+		
+		NOT = { exists = c:ARF }
+		exists = c:UAR
+		
+		#Union candidate conditions
+		exists = c:JOR
+		c:JOR = { 												# Change TAG of the colony ****
+			is_a_regime_monarchy = yes
+			is_sufficiently_independent = yes
+			is_at_war = no
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = ARF_1958_huf }					# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Fire only once
+		set_variable = ARF_1958_huf								# Change variable ****
+		
+	}
+    
+    option = {
+        name = historical_union_formation.option.1				# Accept annexation by FROM
+        highlighted_option = yes
+		
+		#Option for Jordan to accept
+		c:JOR = { 
+			trigger_event = { id = historical_union_formation.5 } 
+		}
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_union_formation.option.2				# Refuse annexation by FROM
+		default_option = yes
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+#Arab Federation - recipient
+historical_union_formation.5 = {
+    type = country_event
+
+	title = hashemite_arab_federation.t 				# Title of the event; ADD LOCALISATION
+    desc = hashemite_arab_federation.d 					# Description of the event; ADD LOCALISATION
+    #flavor = hashemite_arab_federation.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {														# What triggers the event, if using other events or journal entries leave empty
+		
+		#Is triggered by another event
+		
+    }
+	
+	immediate = {
+		c:IRQ = { save_scope_as = personal_union_leader_scope }
+		save_scope_as = personal_union_junior_scope
+	}
+    
+    option = {
+        name = historical_union_formation.option.1			# Accept land transfer request by FROM
+        highlighted_option = yes
+		
+		custom_tooltip = {
+			text = personal_union.tt
+			make_independent = yes
+			c:IRQ = {
+				set_variable = ARF_formed_before
+			
+				create_diplomatic_pact = {
+					country = c:JOR										# Change TAG ****
+					type = personal_union
+				}
+			}
+		}
+		
+		ai_chance = { 
+			base = 99 
+		}
+		
+    }
+	
+	option = {
+        name = historical_union_formation.option.2			# Refuse land transfer request by FROM
+		default_option = yes
+		
+		#FROM is angry!
+		change_relations = {
+			country = c:IRQ
+			value = -100
+		}
+		
+		ai_chance = { 
+			base = 1 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 }
+		}
+		
+    }
+
+}
+
+#Union State of Russia and Belarus
+historical_union_formation.6 = {
+    type = country_event
+
+    title = RUS_BYE_union.t 				# Title of the event; ADD LOCALISATION
+    desc = RUS_BYE_union.d 					# Description of the event; ADD LOCALISATION
+    #flavor = RUS_BYE_union.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:RUS
+		this ?= c:RUS											# Change TAG of the overlord ****
+		game_date >= 1997.4.2									# START DATE: Date colony became self governing ****
+		game_date < 2017.4.2									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_some_kind_of_democracy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Union candidate conditions
+		exists = c:BYE
+		c:BYE = { 												# Change TAG of the colony ****
+			is_some_kind_of_democracy = yes
+			is_sufficiently_independent = yes
+			is_at_war = no
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = RUS_BYE_union_huf }					# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Fire only once
+		set_variable = RUS_BYE_union_huf								# Change variable ****
+		
+	}
+    
+    option = {
+        name = historical_union_formation.option.1				# Accept annexation by FROM
+        highlighted_option = yes
+		
+		#Option for Belarus to accept
+		c:BYE = { 
+			trigger_event = { id = historical_union_formation.7 } 
+		}
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_union_formation.option.2				# Refuse annexation by FROM
+		default_option = yes
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+#Union State of Russia and Belarus - recipient
+historical_union_formation.7 = {
+    type = country_event
+
+    title = RUS_BYE_union.t 				# Title of the event; ADD LOCALISATION
+    desc = RUS_BYE_union.d 					# Description of the event; ADD LOCALISATION
+    #flavor = RUS_BYE_union.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {														# What triggers the event, if using other events or journal entries leave empty
+		
+		#Is triggered by another event
+		
+    }
+    
+    option = {
+        name = historical_union_formation.option.1			# Accept land transfer request by FROM
+        highlighted_option = yes
+		
+		make_independent = yes
+		c:RUS = {
+			create_diplomatic_pact = {
+				country = ROOT
+				type = confederal_state
+			}
+		}
+		set_relations = { country = c:RUS value = 100 }
+		
+		ai_chance = { 
+			base = 99 
+		}
+		
+    }
+	
+	option = {
+        name = historical_union_formation.option.2			# Refuse land transfer request by FROM
+		default_option = yes
+		
+		#FROM is angry!
+		change_relations = {
+			country = c:RUS
+			value = -100
+		}
+		
+		ai_chance = { 
+			base = 1 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+#Senegambia Confederation
+historical_union_formation.8 = {
+    type = country_event
+
+    title = SEN_GAM_union.t 				# Title of the event; ADD LOCALISATION
+    desc = SEN_GAM_union.d 					# Description of the event; ADD LOCALISATION
+    #flavor = SEN_GAM_union.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:SEN
+		this ?= c:SEN											# Change TAG of the overlord ****
+		game_date >= 1982.2.1									# START DATE: Date colony became self governing ****
+		game_date < 1992.2.1									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_some_kind_of_democracy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Union candidate conditions
+		exists = c:GAM
+		c:GAM = { 												# Change TAG of the colony ****
+			is_some_kind_of_democracy = yes
+			is_sufficiently_independent = yes
+			is_at_war = no
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = SEN_GAM_union_huf }					# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Fire only once
+		set_variable = SEN_GAM_union_huf								# Change variable ****
+		
+	}
+    
+    option = {
+        name = historical_union_formation.option.1				# Accept annexation by FROM
+        highlighted_option = yes
+		
+		#Option to accept
+		c:GAM = { 
+			trigger_event = { id = historical_union_formation.9 } 
+		}
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_union_formation.option.2				# Refuse annexation by FROM
+		default_option = yes
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+#Senegambia Confederation - recipient
+historical_union_formation.9 = {
+    type = country_event
+
+    title = SEN_GAM_union.t 				# Title of the event; ADD LOCALISATION
+    desc = SEN_GAM_union.d 					# Description of the event; ADD LOCALISATION
+    #flavor = SEN_GAM_union.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {														# What triggers the event, if using other events or journal entries leave empty
+		
+		#Is triggered by another event
+		
+    }
+    
+    option = {
+        name = historical_union_formation.option.1			# Accept land transfer request by FROM
+        highlighted_option = yes
+		
+		make_independent = yes
+		c:SEN = {
+			create_diplomatic_pact = {
+				country = ROOT
+				type = confederal_state
+			}
+		}
+		set_relations = { country = c:SEN value = 100 }
+		
+		ai_chance = { 
+			base = 99 
+		}
+		
+    }
+	
+	option = {
+        name = historical_union_formation.option.2			# Refuse land transfer request by FROM
+		default_option = yes
+		
+		#FROM is angry!
+		change_relations = {
+			country = c:SEN
+			value = -100
+		}
+		
+		ai_chance = { 
+			base = 1 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }

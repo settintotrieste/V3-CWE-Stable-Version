@@ -1,0 +1,2425 @@
+namespace = historical_interstate_wars
+
+### Korean War ###
+
+historical_interstate_wars.1 = {
+    type = country_event
+
+    title = korean_war.t 								# Title of the event; ADD LOCALISATION
+    desc = korean_war.d 								# Description of the event; ADD LOCALISATION
+    #flavor = korean_war.f 								# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:NKO this = c:NKO											# Change TAG of the overlord ****
+		game_date >= 1950.3.25									# START DATE: Date colony became self governing ****
+		game_date < 1960.6.25									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_communist_government = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		can_go_to_war = yes										# No legal or political restrictions on going to war
+		
+		#Recipent conditions
+		exists = c:SKO
+		c:SKO = { 												# Change TAG of the transferee ****
+			NOT = { is_a_communist_government = yes }
+			is_at_war = no
+			is_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = korean_war_hiw }					# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Fire only once
+		set_variable = korean_war_hiw							# Change variable ****
+		
+	}
+    
+    option = {
+        name = historical_interstate_wars.option.1				# Declare war!
+        highlighted_option = yes
+		
+		#38th Parallel
+		c:SKO = { 
+			if = {
+				limit = { has_state_in_state_region = STATE_PYONGYANG }
+				random_scope_state = {
+					limit = { state_region = s:STATE_PYONGYANG }
+					set_state_owner = c:NKO
+				}
+			}
+		}
+		
+		#Korean War
+		if = {
+			limit = { is_player = yes }
+			create_diplomatic_play = {
+				name = korean_war
+				type = dp_annex_war_historical
+				target_country = c:SKO
+				
+				#war = yes
+				
+				#Removed for AI until PRC can intervene to save NKO
+				add_war_goal = {
+					holder = c:SKO
+					type = annex_country
+					target_country = c:NKO
+				}
+			}
+		}
+		else = {
+			
+			create_diplomatic_play = {
+				name = korean_war
+				type = dp_annex_war_historical
+				target_country = c:SKO
+				
+				#war = yes
+				
+				#TEMP
+				add_war_goal = {
+					holder = c:SKO
+					type = humiliation
+					target_country = c:NKO
+				}
+				
+				#Removed until PRC can intervene to save NKO
+				#add_war_goal = {
+				#	holder = c:SKO
+				#	type = annex_country
+				#	target_country = c:NKO
+				#}
+				
+			}
+			
+		}
+		
+		# Fire only once
+		set_variable = korean_war_hiw							# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_interstate_wars.option.2				# Peace option
+		default_option = yes
+		
+		#Minor discontent
+		every_scope_state = {
+			add_radicals_in_state = {
+				value = small_radicals
+			}
+		}
+		
+		# Fire only once
+		set_variable = korean_war_hiw							# Change variable ****
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+### Tibet War ###
+
+historical_interstate_wars.2 = {
+    type = country_event
+
+    title = sino_tibetan_war.t 								# Title of the event; ADD LOCALISATION
+    desc = sino_tibetan_war.d 								# Description of the event; ADD LOCALISATION
+    #flavor = sino_tibetan_war.f 							# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:PRC
+		this = c:PRC											# Change TAG of the overlord ****
+		game_date >= 1950.7.6									# START DATE: Date colony became self governing ****
+		game_date < 1960.7.6									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_communist_government = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		#is_at_war = no											# war = no
+		
+		is_not_neutral = yes									# No legal or political restrictions on going to war
+		
+		#Recipent conditions
+		exists = c:TIB
+		c:TIB = { 												# Change TAG of the transferee ****
+			NOT = { is_a_communist_government = yes }
+			is_at_war = no
+			is_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = sino_tibetan_war_hiw }			# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Fire only once
+		set_variable = sino_tibetan_war_hiw						# Change variable ****
+		
+	}
+    
+    option = {
+        name = historical_interstate_wars.option.1				# Declare war!
+        highlighted_option = yes
+		
+		#Korean War
+		
+		create_diplomatic_play = {
+			name = sino_tibetan_war
+			type = dp_annex_war_historical
+			target_country = c:TIB
+			
+			#war = yes
+			
+			add_war_goal = {
+				holder = c:TIB
+				type = humiliation
+				target_country = c:PRC
+			}
+		}
+		
+		# Fire only once
+		set_variable = sino_tibetan_war_hiw						# Change variable ****
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_interstate_wars.option.2				# Peace option
+		default_option = yes
+		
+		#Minor discontent
+		every_scope_state = {
+			add_radicals_in_state = {
+				value = small_radicals
+			}
+		}
+		
+		# Fire only once
+		set_variable = sino_tibetan_war_hiw						# Change variable ****
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+### Annexation of Goa ###
+
+historical_interstate_wars.3 = {
+    type = country_event
+
+    title = portugal_india_war.t 							# Title of the event; ADD LOCALISATION
+    desc = portugal_india_war.d 							# Description of the event; ADD LOCALISATION
+    #flavor = portugal_india_war.f 							# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:HND
+		this = c:HND											# Change TAG of the overlord ****
+		game_date >= 1961.12.17									# START DATE: Date colony became self governing ****
+		game_date < 1971.12.17									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		#is_a_democracy = yes									# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		is_not_neutral = yes									# No legal or political restrictions on going to war
+		
+		#Recipent conditions
+		exists = c:POR
+		c:POR = { 												# Change TAG of the transferee ****
+			exists = yes
+			is_at_war = no
+			is_sufficiently_independent = yes
+			has_state_in_state_region = STATE_BOMBAY
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = portugal_india_war_hiw }			# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Fire only once
+		set_variable = portugal_india_war_hiw					# Change variable ****
+		
+	}
+    
+    option = {
+        name = historical_interstate_wars.option.1				# Declare war!
+        highlighted_option = yes
+		
+		#Option for war
+		c:POR = { trigger_event = { id = historical_interstate_wars.4 } }
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_interstate_wars.option.2				# Peace option
+		default_option = yes
+		
+		#FROM is happy!
+		change_relations = {
+			country = c:POR
+			value = 25
+		}
+		
+		#National humiliation
+		add_modifier = { 
+			name = national_humiliation 
+			months = 60 
+			is_decaying = yes 
+		}
+		
+		#Minor discontent
+		custom_tooltip = {
+			text = everyone_is_angry_custom_tooltip
+			every_scope_state = {
+				add_radicals_in_state = {
+					value = small_radicals
+				}
+			}
+		}
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+historical_interstate_wars.4 = {
+    type = country_event
+
+    title = portugal_india_war.t 							# Title of the event; ADD LOCALISATION
+    desc = portugal_india_war.d 							# Description of the event; ADD LOCALISATION
+    #flavor = portugal_india_war.f 							# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {														# What triggers the event, if using other events or journal entries leave empty
+		
+		#Is triggered by another event
+		
+    }
+    
+    option = {
+        name = historical_interstate_wars_accept.option.1			# Accept land transfer request by FROM
+        highlighted_option = yes
+		
+		#Transfer territories
+		s:STATE_BOMBAY.region_state:POR = { set_state_owner = c:HND }
+		
+		#National humiliation
+		add_modifier = { 
+			name = national_humiliation 
+			months = 60 
+			is_decaying = yes 
+		}
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_interstate_wars_reject.option.2			# Refuse land transfer request by FROM
+		default_option = yes
+		
+		#Trigger war
+		c:HND = {
+			create_diplomatic_play = {
+				name = portugal_india_war
+				type = dp_take_treaty_port
+				target_state = s:STATE_BOMBAY.region_state:POR
+			
+				#war = yes
+
+				add_war_goal = {
+					holder = c:POR
+					type = humiliation
+					target_country = c:HND
+				}
+			}
+		}
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+### Suez Crisis ###
+
+historical_interstate_wars.5 = {
+    type = country_event
+
+    title = suez_crisis_war.t 								# Title of the event; ADD LOCALISATION
+    desc = suez_crisis_war.d 								# Description of the event; ADD LOCALISATION
+    #flavor = suez_crisis_war.f 							# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:EGY
+		this = c:EGY											# Change TAG of the overlord ****
+		game_date >= 1956.7.26									# START DATE: Date colony became self governing ****
+		game_date < 1966.7.26									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_nationalist_government = yes						# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		can_go_to_war = yes										# No legal or political restrictions on going to war
+		
+		#left_wing_ruling_coalition = yes						# Correct ruling coalition ****
+		
+		#Recipent conditions
+		exists = c:GBR
+		c:GBR = { 												# Change TAG of the transferee ****
+			exists = yes
+			is_sufficiently_independent = yes
+			has_state_in_state_region = STATE_SINAI
+		}
+		#Recipent conditions
+		exists = c:FRA
+		c:FRA = { 												# Change TAG of the transferee ****
+			exists = yes
+			is_sufficiently_independent = yes
+			has_state_in_state_region = STATE_SINAI
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = suez_crisis_war_hiw }			# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Fire only once
+		set_variable = suez_crisis_war_hiw						# Change variable ****
+		
+	}
+    
+    option = {
+        name = historical_interstate_wars.option.1				# Declare war!
+        highlighted_option = yes
+		
+		#Option for war
+		c:GBR = { trigger_event = { id = historical_interstate_wars.6 } }
+		c:FRA = { trigger_event = { id = historical_interstate_wars.6 } }
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_interstate_wars.option.2				# Peace option
+		default_option = yes
+		
+		#FROM is happy!
+		change_relations = {
+			country = c:GBR
+			value = 25
+		}
+		change_relations = {
+			country = c:FRA
+			value = 25
+		}
+		
+		#Minor discontent
+		custom_tooltip = {
+			text = everyone_is_angry_custom_tooltip
+			every_scope_state = {
+				add_radicals_in_state = {
+					value = small_radicals
+				}
+			}
+		}
+		
+		#National humiliation
+		add_modifier = { 
+			name = national_humiliation 
+			months = 60 
+			is_decaying = yes 
+		}
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+historical_interstate_wars.6 = {
+    type = country_event
+
+    title = suez_crisis_war.t 							# Title of the event; ADD LOCALISATION
+    desc = suez_crisis_war.d 							# Description of the event; ADD LOCALISATION
+    #flavor = suez_crisis_war.f 						# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {														# What triggers the event, if using other events or journal entries leave empty
+		
+		#Is triggered by another event
+		
+    }
+	
+	immediate = {
+		save_scope_as = suez_canal_owner
+		
+		random_scope_state = {
+			limit = { state_region = s:STATE_SINAI }
+			save_scope_as = suez_canal_state
+		}
+	}
+    
+    option = {
+        name = historical_interstate_wars_accept.option.1			# Accept land transfer request by FROM
+        highlighted_option = yes
+		
+		#Transfer territories
+		random_scope_state = {
+			limit = { state_region = s:STATE_SINAI }
+			set_state_owner = c:EGY
+		}
+		
+		#National humiliation
+		add_modifier = { 
+			name = national_humiliation 
+			months = 60 
+			is_decaying = yes 
+		}
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_interstate_wars_reject.option.2			# Refuse land transfer request by FROM
+		default_option = yes
+		
+		#International superpower support for Egypt
+		random_country = {
+			limit = { 
+				this ?= c:SOV 
+				is_a_communist_government = yes 
+				is_a_superpower = yes 
+			}
+			change_relations = {
+				country = c:EGY
+				value = 100
+			}
+			change_relations = {
+				country = ROOT
+				value = -100
+			}
+		}
+		random_country = {
+			limit = { 
+				this ?= c:USA
+				is_a_democracy = yes 
+				is_a_superpower = yes 
+			}
+			change_relations = {
+				country = c:EGY
+				value = 100
+			}
+			change_relations = {
+				country = ROOT
+				value = -50
+			}
+		}
+		random_country = {
+			limit = { 
+				this ?= c:ISR
+				is_a_democracy = yes
+			}
+			change_relations = {
+				country = ROOT
+				value = 100
+			}
+		}
+		
+		#Trigger war
+		c:EGY = {
+			create_diplomatic_play = {
+				name = suez_crisis_war
+				type = dp_take_treaty_port
+				target_state = scope:suez_canal_state
+			
+				#war = yes
+
+				add_war_goal = {
+					holder = scope:suez_canal_owner
+					type = humiliation
+					target_country = c:EGY
+				}
+			}
+		}
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+### Vietnam War ###
+
+historical_interstate_wars.7 = {
+    type = country_event
+
+    title = vietnam_war.t 								# Title of the event; ADD LOCALISATION
+    desc = vietnam_war.d 								# Description of the event; ADD LOCALISATION
+    #flavor = vietnam_war.f 							# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:NVM
+		this = c:NVM											# Change TAG of the overlord ****
+		game_date >= 1965.3.8									# START DATE: Date colony became self governing ****
+		game_date < 1975.3.8									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_communist_government = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		is_not_neutral = yes									# No legal or political restrictions on going to war
+		
+		#Recipent conditions
+		exists = c:SVM
+		c:SVM = { 												# Change TAG of the transferee ****
+			NOT = { is_a_communist_government = yes }
+			is_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = vietnam_war_hiw }				# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Fire only once
+		set_variable = vietnam_war_hiw							# Change variable ****
+		
+	}
+    
+    option = {
+        name = historical_interstate_wars.option.1				# Declare war!
+        highlighted_option = yes
+		
+		#Vietnam War
+		create_diplomatic_play = {
+			name = vietnam_war
+			type = dp_annex_war_historical
+			target_country = c:SVM
+			
+			#war = yes
+			
+			add_war_goal = {
+				holder = c:SVM
+				type = annex_country
+				target_country = c:NVM
+			}
+			
+		}
+		
+		#Give the AI some help
+		if = {
+			limit = { is_player = no }
+			every_scope_building = {
+				limit = {
+					OR = {
+						is_building_type = building_naval_base
+						is_building_type = building_barracks
+						is_building_type = building_conscription_center
+					}
+				}
+				add_modifier = { 
+					name = pm_offense_defense_ai_boost
+					years = 2
+					is_decaying = yes 
+				}
+			}
+		}
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_interstate_wars.option.2				# Peace option
+		default_option = yes
+		
+		#Minor discontent
+		custom_tooltip = {
+			text = everyone_is_angry_custom_tooltip
+			every_scope_state = {
+				add_radicals_in_state = {
+					value = small_radicals
+				}
+			}
+		}
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+### Second Indo-Pakistan War ###
+
+historical_interstate_wars.8 = {
+    type = country_event
+
+    title = second_indo_pakistan_war.t 								# Title of the event; ADD LOCALISATION
+    desc = second_indo_pakistan_war.d 								# Description of the event; ADD LOCALISATION
+    #flavor = second_indo_pakistan_war.f 							# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:PAK
+		this = c:PAK											# Change TAG of the overlord ****
+		game_date >= 1965.1.8									# START DATE: Date colony became self governing ****
+		game_date < 1975.1.8									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		#is_a_democracy = yes									# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		is_not_neutral = yes									# No legal or political restrictions on going to war
+		
+		#Recipent conditions
+		exists = c:HND
+		c:HND = { 												# Change TAG of the transferee ****
+			exists = yes
+			is_sufficiently_independent = yes
+			has_state_in_state_region = STATE_KASHMIR
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = second_indo_pakistan_war_hiw }	# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Fire only once
+		set_variable = second_indo_pakistan_war_hiw				# Change variable ****
+		
+	}
+    
+    option = {
+        name = historical_interstate_wars.option.1				# Declare war!
+        highlighted_option = yes
+		
+		# War
+		create_diplomatic_play = {
+			name = second_indo_pakistan_war
+			type = dp_return_state_historical
+			target_state = s:STATE_KASHMIR.region_state:HND
+			
+			#war = yes
+
+			add_war_goal = {
+				holder = c:HND
+				type = humiliation
+				target_country = c:PAK
+			}
+		}
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_interstate_wars.option.2				# Peace option
+		default_option = yes
+		
+		#Minor discontent
+		custom_tooltip = {
+			text = everyone_is_angry_custom_tooltip
+			every_scope_state = {
+				add_radicals_in_state = {
+					value = small_radicals
+				}
+			}
+		}
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+### Falklands War ###
+
+historical_interstate_wars.9 = {
+    type = country_event
+
+    title = falklands_war.t 							# Title of the event; ADD LOCALISATION
+    desc = falklands_war.d 								# Description of the event; ADD LOCALISATION
+    #flavor = falklands_war.f 							# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:ARG
+		this = c:ARG											# Change TAG of the overlord ****
+		game_date >= 1982.1.2									# START DATE: Date colony became self governing ****
+		game_date < 1992.1.2									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_nationalist_government = yes						# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		is_not_neutral = yes									# No legal or political restrictions on going to war
+		
+		#Recipent conditions
+		exists = c:GBR
+		c:GBR = { 												# Change TAG of the transferee ****
+			exists = yes
+			is_sufficiently_independent = yes
+			has_state_in_state_region = STATE_SOUTH_ATLANTIC_ISLANDS
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = falklands_war_hiw }				# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Fire only once
+		set_variable = falklands_war_hiw						# Change variable ****
+		
+	}
+    
+    option = {
+        name = historical_interstate_wars.option.1				# Declare war!
+        highlighted_option = yes
+		
+		# War
+		create_diplomatic_play = {
+			name = falklands_war
+			type = dp_return_state_historical
+			target_state = s:STATE_SOUTH_ATLANTIC_ISLANDS.region_state:GBR
+			
+			#war = yes
+
+			add_war_goal = {
+				holder = c:GBR
+				type = humiliation
+				target_country = c:ARG
+			}
+		}
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_interstate_wars.option.2				# Peace option
+		default_option = yes
+		
+		#Minor discontent
+		custom_tooltip = {
+			text = everyone_is_angry_custom_tooltip
+			every_scope_state = {
+				add_radicals_in_state = {
+					value = small_radicals
+				}
+			}
+		}
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+### Third Indo-Pakistan War ###
+
+historical_interstate_wars.10 = {
+    type = country_event
+
+    title = third_indo_pakistan_war.t 							# Title of the event; ADD LOCALISATION
+    desc = third_indo_pakistan_war.d 							# Description of the event; ADD LOCALISATION
+    #flavor = third_indo_pakistan_war.f 						# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:PAK
+		this = c:PAK											# Change TAG of the overlord ****
+		game_date >= 1971.9.3									# START DATE: Date colony became self governing ****
+		game_date < 1981.12.3									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		#is_a_democracy = yes									# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		is_not_neutral = yes									# No legal or political restrictions on going to war
+		
+		has_state_in_state_region = STATE_SOUTH_BENGAL
+		
+		#Recipent conditions
+		exists = c:HND
+		c:HND = { 												# Change TAG of the transferee ****
+			is_a_democracy = yes
+			is_sufficiently_independent = yes
+			has_state_in_state_region = STATE_KASHMIR
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = third_indo_pakistan_war_hiw }	# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Fire only once
+		set_variable = third_indo_pakistan_war_hiw				# Change variable ****
+		
+	}
+    
+    option = {
+        name = historical_interstate_wars.option.1				# Declare war!
+        highlighted_option = yes
+		
+		# Release East Pakistan
+		create_country = {
+			tag = BNG										# Change TAG of country being released ****
+			origin = ROOT									# TAG where the created country takes tech from
+			state = s:STATE_SOUTH_BENGAL.region_state:PAK
+			
+			on_created = {									# Set government laws & rulers here
+				
+				# SET laws for colony ****
+				effect_starting_politics_parliamentary_republic = yes
+				effect_starting_politics_democratic = yes
+				effect_starting_politics_constitutional_unitary_state = yes
+				effect_starting_politics_war_policy_anti_military = yes
+				effect_starting_politics_economic_policy_interventionism = yes
+				effect_starting_politics_trade_policy_protectionism = yes
+				effect_starting_politics_anti_nuclear_policy = yes
+				
+				# CREATE leader for colony ****
+				create_character = {
+					first_name = "guy_incognito_first_name"		# CHANGE
+					last_name = "guy_incognito_last_name"		# CHANGE
+					ruler = yes
+					#birth_date = 1910.1.1						# CHANGE
+					interest_group = ig_rural_folk				# CHANGE
+					ideology = ideology_democratic				# CHANGE
+					traits = {
+						charismatic								# CHANGE
+						persistent								# CHANGE
+						meticulous								# CHANGE
+					}
+				}
+				
+				# Set diplomatic recognition
+				set_country_type = unrecognized
+			}
+		}
+		every_scope_state = {
+			limit = {
+		 		state_region = { is_homeland = cu:bengali }		# Change homeland identity to match colony to be released ****
+		 	}
+			set_state_owner = c:BNG								# Change TAG to colony ****
+		}
+		if = {
+			limit = { exists = c:BNG }
+			c:HND = {
+				create_diplomatic_pact = {
+					country = c:BNG										# Change TAG ****
+					type = satellite
+				}
+			}
+		}
+		
+		# War
+		create_diplomatic_play = {
+			name = third_indo_pakistan_war
+			type = dp_return_state_historical
+			target_state = s:STATE_KASHMIR.region_state:HND
+			
+			#war = yes
+
+			add_war_goal = {
+				holder = c:BNG
+				type = independence
+				target_country = c:PAK
+			}
+			add_war_goal = {
+				holder = c:PAK
+				type = annex_country
+				target_country = c:BNG
+			}
+		}
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_interstate_wars.option.2				# Peace option
+		default_option = yes
+		
+		#Minor discontent
+		custom_tooltip = {
+			text = everyone_is_angry_custom_tooltip
+			every_scope_state = {
+				add_radicals_in_state = {
+					value = small_radicals
+				}
+			}
+		}
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+### 6 Day War ###
+
+historical_interstate_wars.11 = {
+    type = country_event
+
+    title = 6_day_war.t 							# Title of the event; ADD LOCALISATION
+    desc = 6_day_war.d 								# Description of the event; ADD LOCALISATION
+    #flavor = 6_day_war.f 							# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:EGY
+		this = c:EGY											# Change TAG of the overlord ****
+		game_date >= 1967.6.5									# START DATE: Date colony became self governing ****
+		game_date < 1977.6.5									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_nationalist_government = yes						# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		can_go_to_war = yes										# No legal or political restrictions on going to war
+		
+		#left_wing_ruling_coalition = yes						# Correct ruling coalition ****
+		
+		owns_entire_state_region = STATE_SINAI
+		has_state_in_state_region = STATE_PALESTINE
+		
+		#Recipent conditions
+		exists = c:ISR
+		c:ISR = { 												# Change TAG of the transferee ****
+			is_sufficiently_independent = yes
+			is_at_war = no
+		}
+		
+		#Other participants
+		exists = c:JOR
+		c:JOR = { 												
+			is_a_regime_monarchy = yes
+			is_sufficiently_independent = yes
+			is_at_war = no
+			has_state_in_state_region = STATE_PALESTINE
+		}
+		exists = c:SYR
+		c:SYR = { 												
+			is_a_dictatorship = yes
+			is_sufficiently_independent = yes
+			is_at_war = no
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = 6_day_war_hiw }					# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Fire only once
+		set_variable = 6_day_war_hiw							# Change variable ****
+		
+	}
+    
+    option = {
+        name = historical_interstate_wars.option.1				# Declare war!
+		highlighted_option = yes default_option = yes
+		
+		#Trigger war
+		create_diplomatic_play = {
+			name = 6_day_war
+			type = dp_annex_war_historical
+			target_country = c:ISR
+			
+			war = yes
+			
+			add_war_goal = {
+				holder = c:ISR
+				type = conquer_state
+				target_state = s:STATE_SINAI.region_state:EGY
+			}
+			add_war_goal = {
+				holder = c:ISR
+				type = return_state
+				target_state = s:STATE_PALESTINE.region_state:EGY
+			}
+			
+		}
+		
+		#Option for war
+		c:JOR = { trigger_event = { id = historical_interstate_wars.12 } }
+		c:SYR = { trigger_event = { id = historical_interstate_wars.12 } }
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+	
+	option = {
+        name = historical_interstate_wars.option.2				# Peace option
+		
+		#Transfer territories
+		random_scope_state = {
+			limit = { state_region = s:STATE_SINAI }
+			set_state_owner = c:ISR
+		}
+		random_scope_state = {
+			limit = { state_region = s:STATE_PALESTINE }
+			set_state_owner = c:ISR
+		}
+		
+		#Option for war
+		c:JOR = { trigger_event = { id = historical_interstate_wars.12 } }
+		c:SYR = { trigger_event = { id = historical_interstate_wars.12 } }
+		
+		#Minor discontent
+		custom_tooltip = {
+			text = everyone_is_angry_custom_tooltip
+			every_scope_state = {
+				add_radicals_in_state = {
+					value = small_radicals
+				}
+			}
+		}
+		
+		#National humiliation
+		add_modifier = { 
+			name = national_humiliation 
+			months = 60 
+			is_decaying = yes 
+		}
+		
+		ai_chance = { 
+			base = 90
+			
+			#AI will challenge the player
+			modifier = {
+				trigger = {
+					c:ISR = { is_player = yes }
+				}
+				add = -100
+			}
+		}
+		
+    }
+
+}
+
+historical_interstate_wars.12 = {
+    type = country_event
+
+	title = 6_day_war.t 							# Title of the event; ADD LOCALISATION
+    desc = 6_day_war.d 								# Description of the event; ADD LOCALISATION
+    #flavor = 6_day_war.f 							# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {														# What triggers the event, if using other events or journal entries leave empty
+		
+		#Is triggered by another event
+		
+    }
+	
+	immediate = {
+		
+	}
+    
+    option = {
+        name = historical_interstate_wars_accept.option.1			# Accept land transfer request by FROM
+        highlighted_option = yes
+		
+		#Transfer territories
+		every_scope_state = {
+			limit = { state_region = { OR = { is_homeland = cu:palestinian is_homeland = cu:israeli } } }
+			set_state_owner = c:ISR
+		}
+		
+		#Minor discontent
+		custom_tooltip = {
+			text = everyone_is_angry_custom_tooltip
+			every_scope_state = {
+				add_radicals_in_state = {
+					value = small_radicals
+				}
+			}
+		}
+		
+		#National humiliation
+		add_modifier = { 
+			name = national_humiliation 
+			months = 60 
+			is_decaying = yes 
+		}
+		
+		ai_chance = { 
+			base = 90 
+			
+			#AI will challenge the player
+			modifier = {
+				trigger = {
+					c:ISR = { is_player = yes }
+				}
+				add = -100
+			}
+		}
+		
+    }
+	
+	option = {
+        name = historical_interstate_wars_reject.option.2			# Refuse land transfer request by FROM
+		default_option = yes
+		
+		#Egypt is happy
+		change_relations = {
+			country = c:EGY
+			value = 100
+		}
+		
+		#Trigger war
+		if = {
+			limit = { c:JOR ?= this }
+			
+			create_diplomatic_play = {
+				name = 6_day_war
+				type = dp_annex_war_historical
+				target_country = c:ISR
+			
+				war = yes
+			
+				add_war_goal = {
+					holder = c:ISR
+					type = conquer_state
+					target_state = s:STATE_PALESTINE.region_state:JOR
+				}
+			}
+		}
+		if = {
+			limit = { c:SYR ?= this }
+			
+			create_diplomatic_play = {
+				name = 6_day_war
+				type = dp_annex_war_historical
+				target_country = c:ISR
+			
+				war = yes
+			
+				add_war_goal = {
+					holder = c:ISR
+					type = humiliation
+					target_country = c:SYR
+				}
+			}
+		}
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+### Ifni War ###
+
+historical_interstate_wars.13 = {
+    type = country_event
+
+    title = ifni_war.t 								# Title of the event; ADD LOCALISATION
+    desc = ifni_war.d 								# Description of the event; ADD LOCALISATION
+    #flavor = ifni_war.f 							# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:MOR
+		this = c:MOR											# Change TAG of the overlord ****
+		game_date >= 1957.10.23									# START DATE: Date colony became self governing ****
+		game_date < 1967.10.23									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		#is_a_monarchy = yes									# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		is_not_neutral = yes									# No legal or political restrictions on going to war
+		
+		#Recipent conditions
+		exists = c:SPA
+		c:SPA = { 												# Change TAG of the transferee ****
+			exists = yes
+			is_sufficiently_independent = yes
+			has_state_in_state_region = STATE_INNER_MOROCCO
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = ifni_war_hiw }					# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Fire only once
+		set_variable = ifni_war_hiw								# Change variable ****
+		
+	}
+    
+    option = {
+        name = historical_interstate_wars.option.1				# Declare war!
+        highlighted_option = yes
+		
+		#Option for war
+		c:SPA = { trigger_event = { id = historical_interstate_wars.14 } }
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_interstate_wars.option.2				# Peace option
+		default_option = yes
+		
+		#Minor discontent
+		custom_tooltip = {
+			text = everyone_is_angry_custom_tooltip
+			every_scope_state = {
+				add_radicals_in_state = {
+					value = small_radicals
+				}
+			}
+		}
+		
+		#National humiliation
+		add_modifier = { 
+			name = national_humiliation 
+			months = 60 
+			is_decaying = yes 
+		}
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+historical_interstate_wars.14 = {
+    type = country_event
+
+    title = ifni_war.t 							# Title of the event; ADD LOCALISATION
+    desc = ifni_war.d 							# Description of the event; ADD LOCALISATION
+    #flavor = ifni_war.f 						# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {														# What triggers the event, if using other events or journal entries leave empty
+		
+		#Is triggered by another event
+		
+    }
+	
+	immediate = {
+		random_scope_state = {
+			limit = { state_region = s:STATE_INNER_MOROCCO }
+			save_scope_as = spanish_morocco_state
+		}
+	}
+    
+    option = {
+        name = historical_interstate_wars_accept.option.1			# Accept land transfer request by FROM
+        highlighted_option = yes
+		
+		#Transfer territories
+		random_scope_state = {
+			limit = { state_region = s:STATE_INNER_MOROCCO }
+			set_state_owner = c:MOR
+		}
+		
+		#National humiliation
+		add_modifier = { 
+			name = national_humiliation 
+			months = 60 
+			is_decaying = yes 
+		}
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_interstate_wars_reject.option.2			# Refuse land transfer request by FROM
+		default_option = yes
+		
+		#Trigger war
+		c:MOR = {
+			create_diplomatic_play = {
+				name = ifni_war
+				type = dp_return_state_historical
+				target_state = scope:spanish_morocco_state
+			
+				#war = yes
+
+				add_war_goal = {
+					holder = c:SPA
+					type = humiliation
+					target_country = c:MOR
+				}
+			}
+		}
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+### Invasion of East Timor ###
+
+historical_interstate_wars.15 = {
+    type = country_event
+
+    title = IDO_ETM_war.t 								# Title of the event; ADD LOCALISATION
+    desc = IDO_ETM_war.d 								# Description of the event; ADD LOCALISATION
+    #flavor = IDO_ETM_war.f 							# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:IDO this = c:IDO								# Change TAG of the overlord ****
+		game_date >= 1975.9.7									# START DATE: Date colony became self governing ****
+		game_date < 1985.12.7									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_presidential_regime = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		is_not_neutral = yes									# No legal or political restrictions on going to war
+		
+		#Recipent conditions
+		exists = c:ETM
+		c:ETM = { 												# Change TAG of the transferee ****
+			is_sufficiently_independent = yes
+			is_at_war = no
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = IDO_ETM_war_hiw }				# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Fire only once
+		set_variable = IDO_ETM_war_hiw							# Change variable ****
+		
+	}
+    
+    option = {
+        name = historical_interstate_wars.option.1				# Declare war!
+        highlighted_option = yes
+		
+		#Invasion of East Timor War
+		create_diplomatic_play = {
+			name = IDO_ETM_war
+			type = dp_annex_war_historical
+			target_country = c:ETM
+		}
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_interstate_wars.option.2				# Peace option
+		default_option = yes
+		
+		#Minor discontent
+		every_scope_state = {
+			add_radicals_in_state = {
+				value = small_radicals
+			}
+		}
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+### Iran-Iraq War ###
+
+historical_interstate_wars.16 = {
+    type = country_event
+
+    title = iran_iraq_war.t 							# Title of the event; ADD LOCALISATION
+    desc = iran_iraq_war.d 								# Description of the event; ADD LOCALISATION
+    #flavor = iran_iraq_war.f 							# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:IRQ this = c:IRQ								# Change TAG of the overlord ****
+		game_date >= 1980.9.22									# START DATE: Date colony became self governing ****
+		game_date < 1990.9.22									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_nationalist_government = yes						# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		can_go_to_war = yes										# No legal or political restrictions on going to war
+		
+		#Recipent conditions
+		exists = c:PER
+		c:PER = { 												# Change TAG of the transferee ****
+			is_a_theocratic_government = yes
+			is_sufficiently_independent = yes
+			is_at_war = no
+			
+			has_state_in_state_region = STATE_KHUZESTAN
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = iran_iraq_war_hiw }				# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		random_scope_state = {
+			limit = { state_region = s:STATE_KHUZESTAN }
+			save_scope_as = iraq_target_state
+		}
+	
+		# Fire only once
+		set_variable = iran_iraq_war_hiw						# Change variable ****
+		
+	}
+    
+    option = {
+        name = historical_interstate_wars.option.1				# Declare war!
+        highlighted_option = yes
+		
+		#War
+		create_diplomatic_play = {
+			name = iran_iraq_war
+			type = dp_conquer_state_historical
+			target_state = scope:iraq_target_state
+			
+			#war = yes
+
+			add_war_goal = {
+				holder = c:PER
+				type = regime_change
+				target_country = c:IRQ
+			}
+		}
+		
+		set_variable = iran_iraq_war_happened
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_interstate_wars.option.2				# Peace option
+		default_option = yes
+		
+		#Minor discontent
+		every_scope_state = {
+			add_radicals_in_state = {
+				value = small_radicals
+			}
+		}
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+### Bizerte Crisis ###
+
+historical_interstate_wars.17 = {
+    type = country_event
+
+    title = france_tunisia_war.t 							# Title of the event; ADD LOCALISATION
+    desc = france_tunisia_war.d 							# Description of the event; ADD LOCALISATION
+    #flavor = france_tunisia_war.f 							# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:TUN this = c:TUN								# Change TAG of the overlord ****
+		game_date >= 1961.7.19									# START DATE: Date colony became self governing ****
+		game_date < 1971.7.19									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		#is_a_democracy = yes									# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		is_not_neutral = yes									# No legal or political restrictions on going to war
+		
+		#Recipent conditions
+		exists = c:FRA
+		c:FRA = { 												# Change TAG of the transferee ****
+			is_sufficiently_independent = yes
+			is_at_war = no
+			
+			has_state_in_state_region = STATE_TUNISIA
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = france_tunisia_war_hiw }			# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Fire only once
+		set_variable = france_tunisia_war_hiw					# Change variable ****
+		
+	}
+    
+    option = {
+        name = historical_interstate_wars.option.1				# Declare war!
+        highlighted_option = yes
+		
+		#Option for war
+		c:FRA = { trigger_event = { id = historical_interstate_wars.18 } }
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_interstate_wars.option.2				# Peace option
+		default_option = yes
+		
+		#FROM is happy!
+		change_relations = {
+			country = c:FRA
+			value = 25
+		}
+		
+		#National humiliation
+		add_modifier = { 
+			name = national_humiliation 
+			months = 60 
+			is_decaying = yes 
+		}
+		
+		#Minor discontent
+		custom_tooltip = {
+			text = everyone_is_angry_custom_tooltip
+			every_scope_state = {
+				add_radicals_in_state = {
+					value = small_radicals
+				}
+			}
+		}
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+historical_interstate_wars.18 = {
+    type = country_event
+
+    title = france_tunisia_war.t 							# Title of the event; ADD LOCALISATION
+    desc = france_tunisia_war.d 							# Description of the event; ADD LOCALISATION
+    #flavor = france_tunisia_war.f 							# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {														# What triggers the event, if using other events or journal entries leave empty
+		
+		#Is triggered by another event
+		
+    }
+    
+    option = {
+        name = historical_interstate_wars_accept.option.1			# Accept land transfer request by FROM
+        highlighted_option = yes
+		
+		#Transfer territories
+		s:STATE_TUNISIA.region_state:FRA = { set_state_owner = c:TUN }
+		every_scope_state = {
+			limit = {
+		 		state_region = { is_homeland = cu:tunisian }	# Change homeland identity to match colony to be released ****
+				is_incorporated = no							# State is a colony
+		 	}
+			set_state_owner = c:TUN								# Change TAG to colony ****
+		}
+		
+		#National humiliation
+		add_modifier = { 
+			name = national_humiliation 
+			months = 60 
+			is_decaying = yes 
+		}
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_interstate_wars_reject.option.2			# Refuse land transfer request by FROM
+		default_option = yes
+		
+		#Trigger war
+		c:TUN = {
+		
+			#Become independent
+			make_independent = yes
+		
+			create_diplomatic_play = {
+				name = france_tunisia_war
+				type = dp_return_state_historical
+				target_state = s:STATE_TUNISIA.region_state:FRA
+			
+				#war = yes
+
+				add_war_goal = {
+					holder = c:FRA
+					type = humiliation
+					target_country = c:TUN
+				}
+			}
+			
+		}
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+### Yom Kippur War ###
+
+historical_interstate_wars.19 = {
+    type = country_event
+
+    title = yom_kippur_war.t 						# Title of the event; ADD LOCALISATION
+    desc = yom_kippur_war.d 						# Description of the event; ADD LOCALISATION
+    #flavor = yom_kippur_war.f 						# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:EGY
+		this = c:EGY											# Change TAG of the overlord ****
+		game_date >= 1973.10.6									# START DATE: Date colony became self governing ****
+		game_date < 1983.10.6									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_nationalist_government = yes						# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		can_go_to_war = yes										# No legal or political restrictions on going to war
+		
+		#left_wing_ruling_coalition = yes						# Correct ruling coalition ****
+		
+		#Recipent conditions
+		exists = c:ISR
+		c:ISR = { 												# Change TAG of the transferee ****
+			is_sufficiently_independent = yes
+			is_at_war = no
+			
+			has_state_in_state_region = STATE_SINAI
+			
+			has_strategic_land_adjacency = c:EGY
+		}
+		
+		#Other participants
+		exists = c:SYR
+		c:SYR = {							
+			is_a_nationalist_government = yes
+			is_sufficiently_independent = yes
+			is_at_war = no
+			
+			has_strategic_land_adjacency = c:ISR
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = yom_kippur_war_hiw }				# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Fire only once
+		set_variable = yom_kippur_war_hiw						# Change variable ****
+		
+	}
+    
+    option = {
+        name = historical_interstate_wars.option.1				# Declare war!
+		highlighted_option = yes default_option = yes
+		
+		# Trigger War
+		create_diplomatic_play = {
+			name = yom_kippur_war
+			type = dp_return_state_historical
+			target_state = s:STATE_SINAI.region_state:ISR
+			
+			war = yes
+
+			add_war_goal = {
+				holder = c:ISR
+				type = humiliation
+				target_country = c:EGY
+			}
+		}
+		
+		#Option for war
+		c:SYR = { trigger_event = { id = historical_interstate_wars.20 } }
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+	
+	option = {
+        name = historical_interstate_wars.option.2				# Peace option
+		
+		#Option for war
+		c:SYR = { trigger_event = { id = historical_interstate_wars.20 } }
+		
+		#Minor discontent
+		custom_tooltip = {
+			text = everyone_is_angry_custom_tooltip
+			every_scope_state = {
+				add_radicals_in_state = {
+					value = small_radicals
+				}
+			}
+		}
+		
+		#National humiliation
+		add_modifier = { 
+			name = national_humiliation 
+			months = 60 
+			is_decaying = yes 
+		}
+		
+		ai_chance = { 
+			base = 90
+			
+			#AI will challenge the player
+			modifier = {
+				trigger = {
+					c:ISR = { is_player = yes }
+				}
+				add = -100
+			}
+		}
+		
+    }
+
+}
+
+historical_interstate_wars.20 = {
+    type = country_event
+
+	title = yom_kippur_war.t 							# Title of the event; ADD LOCALISATION
+    desc = yom_kippur_war.d 							# Description of the event; ADD LOCALISATION
+    #flavor = yom_kippur_war.f 							# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {														# What triggers the event, if using other events or journal entries leave empty
+		
+		#Is triggered by another event
+		
+    }
+	
+	immediate = {
+		
+	}
+    
+    option = {
+        name = historical_interstate_wars_accept.option.1			# Accept land transfer request by FROM
+        highlighted_option = yes
+		
+		#Minor discontent
+		custom_tooltip = {
+			text = everyone_is_angry_custom_tooltip
+			every_scope_state = {
+				add_radicals_in_state = {
+					value = small_radicals
+				}
+			}
+		}
+		
+		#National humiliation
+		add_modifier = { 
+			name = national_humiliation 
+			months = 60 
+			is_decaying = yes 
+		}
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_interstate_wars_reject.option.2			# Refuse land transfer request by FROM
+		default_option = yes
+		
+		#Egypt is happy
+		change_relations = {
+			country = c:EGY
+			value = 100
+		}
+		
+		# Trigger War
+		create_diplomatic_play = {
+			name = yom_kippur_war
+			type = dp_annex_war_historical
+			target_country = c:ISR
+			
+			war = yes
+
+			add_war_goal = {
+				holder = c:ISR
+				type = humiliation
+				target_country = c:SYR
+			}
+		}
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+### Annexation of Western Sahara ###
+
+historical_interstate_wars.21 = {
+    type = country_event
+
+    title = morocco_sahara_war.t 								# Title of the event; ADD LOCALISATION
+    desc = morocco_sahara_war.d 								# Description of the event; ADD LOCALISATION
+    #flavor = morocco_sahara_war.f 								# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:MOR
+		this = c:MOR											# Change TAG of the overlord ****
+		game_date >= 1975.10.31									# START DATE: Date colony became self governing ****
+		game_date < 1985.10.31									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		#is_a_communist_government = yes						# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		is_not_neutral = yes									# No legal or political restrictions on going to war
+		
+		#Recipent conditions
+		exists = c:WSA
+		c:WSA = { 												# Change TAG of the transferee ****
+			is_at_war = no
+			is_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = morocco_sahara_war_hiw }			# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Fire only once
+		set_variable = morocco_sahara_war_hiw					# Change variable ****
+		
+	}
+    
+    option = {
+        name = historical_interstate_wars.option.1				# Declare war!
+        highlighted_option = yes
+		
+		#War
+		create_diplomatic_play = {
+			name = morocco_sahara_war
+			type = dp_annex_war_historical
+			target_country = c:WSA
+			
+			#war = yes
+			
+		}
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_interstate_wars.option.2				# Peace option
+		default_option = yes
+		
+		#Minor discontent
+		add_radicals = {
+			value = small_radicals
+		}
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+### Gulf War ###
+
+historical_interstate_wars.22 = {
+    type = country_event
+
+    title = iraq_kuwait_war.t 								# Title of the event; ADD LOCALISATION
+    desc = iraq_kuwait_war.d 								# Description of the event; ADD LOCALISATION
+    #flavor = iraq_kuwait_war.f 							# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:IRQ
+		this = c:IRQ											# Change TAG of the overlord ****
+		game_date >= 1990.5.2									# START DATE: Date colony became self governing ****
+		game_date < 2000.5.2									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_dictatorship = yes									# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		is_not_neutral = yes									# No legal or political restrictions on going to war
+		
+		#Recipent conditions
+		exists = c:KUW
+		c:KUW = { 												# Change TAG of the transferee ****
+			is_sufficiently_independent = yes
+			is_at_war = no
+		}
+		
+		#Iran-Iraq War
+		has_variable = iran_iraq_war_happened
+		
+		# Event has not been fired before
+		NOT = { has_variable = iraq_kuwait_war_hiw }			# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Fire only once
+		set_variable = iraq_kuwait_war_hiw						# Change variable ****
+		
+	}
+    
+    option = {
+        name = historical_interstate_wars.option.1				# Declare war!
+        highlighted_option = yes
+		
+		#Gulf War
+		
+		create_diplomatic_play = {
+			name = iraq_kuwait_war
+			type = dp_annex_war_historical
+			target_country = c:KUW
+			
+			#war = yes
+			
+			add_war_goal = {
+				holder = c:KUW
+				type = humiliation
+				target_country = c:IRQ
+			}
+		}
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_interstate_wars.option.2				# Peace option
+		default_option = yes
+		
+		#Minor discontent
+		add_radicals = {
+			value = small_radicals
+		}
+		
+		#National humiliation
+		add_modifier = { 
+			name = national_humiliation 
+			months = 60 
+			is_decaying = yes 
+		}
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+### Soviet Afghan War ###
+
+historical_interstate_wars.23 = {
+    type = country_event
+
+    title = soviet_afghan_war.t 								# Title of the event; ADD LOCALISATION
+    desc = soviet_afghan_war.d 								# Description of the event; ADD LOCALISATION
+    #flavor = soviet_afghan_war.f 							# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:SOV
+		this = c:SOV											# Change TAG of the overlord ****
+		game_date >= 1979.9.24									# START DATE: Date colony became self governing ****
+		game_date < 1989.9.24									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_communist_government = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		is_not_neutral = yes									# No legal or political restrictions on going to war
+		
+		#Recipent conditions
+		exists = c:AFG
+		c:AFG = { 												# Change TAG of the transferee ****
+			NOT = { is_subject_of = ROOT }
+			NOT = { is_a_communist_government = yes }
+			is_sufficiently_independent = yes
+			is_at_war = no
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = soviet_afghan_war_hiw }			# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Fire only once
+		set_variable = soviet_afghan_war_hiw						# Change variable ****
+		
+	}
+    
+    option = {
+        name = historical_interstate_wars.option.1				# Declare war!
+        highlighted_option = yes
+		
+		#Gulf War
+		
+		create_diplomatic_play = {
+			name = soviet_afghan_war
+			type = dp_make_dominion
+			target_country = c:AFG
+			
+			#war = yes
+			
+			add_war_goal = {
+				holder = c:AFG
+				type = humiliation
+				target_country = c:SOV
+			}
+		}
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_interstate_wars.option.2				# Peace option
+		default_option = yes
+		
+		#Minor discontent
+		add_radicals = {
+			value = small_radicals
+		}
+		
+		#National humiliation
+		add_modifier = { 
+			name = national_humiliation 
+			months = 12
+			is_decaying = yes 
+		}
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}

@@ -1,0 +1,2473 @@
+### Africa ###
+
+#Egypt
+EGY = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+#Algeria
+ALG = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+ETH = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+TIG = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+ORO = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+DJI = { #Djibouti
+	provinces = { x40E050 x9B6C39 x3EE4D1 x9E8FDD }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+MAD = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+LIB = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+MOR = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+WSA = { # Western Sahara
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+TUN = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Libya
+LBY = {
+	states = { STATE_TRIPOLI STATE_LIBYA STATE_LIBYAN_DESERT }
+	
+	required_num_states = 3
+
+	ai_will_do = { always = no }
+}
+
+TRI = {
+	states = { STATE_TRIPOLI }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+FEZ = {
+	states = { STATE_LIBYAN_DESERT }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+CYR = {
+	states = { STATE_LIBYA }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Chad
+CHA = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Mauritania
+MAU = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Niger
+NIG = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Democratic Republic of Congo
+CNG = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Katanga
+KAT = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# South Kasai
+SKA = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Republic of the Congo
+KNG = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Rwanda
+RWA = {
+	provinces = { x662B31 x5954AA x34EFF0 x80DF50 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Burundi
+BRD = {
+	provinces = { x5093DF x16915A xD8B2ED }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Gabon
+GAB = {
+	provinces = { x46DE71 xA22CB6 xB25786 x8D528D x683118 x9EC4DA x27723A x819A60 xC0A090 xE31261 xD76706 x53FB46 x79DFE3 x0F5F7D x6B44DE xCD7A34 xA26A13 x2F5442 x12572A xDE26DB xE8DC57 x88674A xD4438C x7AC766 xC25A2B x5D3B7C x2E8386 x66BBD4 xC46F31 xFC7E53 x40A090 x271A16 x534DEC x4DA171 x86E43C xCD570F x75A079 x4A0409 x8D20C0 x8FE687 xB323FD xBAA5C1 xC02090 x6273A5 xBB6854 x9E126C x228965 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Namibia
+NMB = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Angola
+ANG = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Senegal
+SEN = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Guinea
+GUI = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Nigeria
+NGE = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+#Biafra
+BIA = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+#Yoruba
+YOR = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+BEN = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Togo
+TOG = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Burkina Faso
+BUF = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Guinea-Bissau
+GNB = {
+	provinces = { x7486F1 x9933B7 x04FDE5 x146701 x5A627D x97F797 x6D295A xEB469A x7B55A9 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# The Gambia
+GAM = {
+	provinces = { x7B561C xB07040 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Cameroon
+CMR = {
+	use_culture_states = yes
+	
+	required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Ambazonia
+AMB = {
+	provinces = { x09FC06 x802050 xF24DEA x7ECE9E x47CD3B x361F6A }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Somalia
+SOM = {
+	provinces = { x560238 x0C544E x42DA4F xD0FF66 xE585C3 x1D4F93 x324717 xCB3B07 x6BA02C x6D66A6 xFE3534 x60EAC8 xDDF9DB xE4636A x76595D x83A1A3 x58307A xB64D3E x049442 xF5E822 x73FE30 xA05C39 x6D0680 x469B34 xA2A857 x529552 x2D75F4 xB19FD2 xB9F779 xEF3903 x2D75F4 x132465 xF70163 xA0E090 x4BED76 x854A91 xA6E128 x995FB2 xED2D92 x281ECB xD97AC4 xB72AFB x326FD1 x2CA298 xF30A4D x625125 x337D01 xF26F4C xAFF79D x1CE5E9 x5BF703 x3587B8 x815D01 x3D5BE3 xCEE8F8 x5B7C30 x2F6BB1 x45FEEC xF4A328 x46250C x1017C5 xBFE050 xBC0D72 x1D4152 xDF6111 x407408 x212090 xAABDBD x508D8F xBF3A7A xEDC612 x30521C x6EFA28 x354629 xE44897 xD0BA96 x5DAE68 x3DE547 x992BFC xA1A21B x10CF18 x72DC5E xE65D19 x894078 x0085FA xF0C31D x606011 x655F7E x0F9944 xD191E8 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+#Somaliland
+SML = {
+	provinces = { x7D4764 x284319 x8AA210 x3BB51B xAE76D1 xD3EE2E x2FB806 xDF951C x20E090 xD6084C x678D0D xCA0AFC x395C77 xDDAC33 x184064 xCCC39F x089FE7 xF2A924 x524E91 x0CE1C7 x5C2622 x2C4BFE x48FFF1 xC6A5CB x9DA796 xF9565C x12FDBA x7FBAFA x4A6DFD xE19C5A x9ACA9E x85FD85 xDEFB4F xD85A85 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Ghana
+GHA = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Ivory Coast
+IVC = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Central African Republic
+CAR = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# São Tomé and Príncipe
+STP = {
+	provinces = { xC02050 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Eritrea
+ERI = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+#Sudan
+SUD = { 
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# South Sudan
+SSD = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+#Darfur
+DAR = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Kenya
+KEN = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Uganda
+UGA = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Tanganyika
+TGY = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+#Zanzibar
+ZAN = {
+	provinces = { x414325 xE020B0 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Zambia
+ZAM = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Malawi
+MLW = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Mozambique
+MOZ = {
+	use_culture_states = yes
+	
+	required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Eswatini (formerly Swaziland)
+ESW = {
+	provinces = { x90A090 x884936 xA30505 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Lesotho
+LES = {
+	provinces = { xF06050 x6DB7E8 xE1EAA4 x8C39B6 x3B4B19 xB6892A xD121F1 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Equatorial Guinea
+EQG = {
+	provinces = { x3BD4AD x3DD6EF x402090 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Cape Verde
+CPV = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+#South Africa Normal
+RSA = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+#Botswana
+BOT = {
+	provinces = { x8BAD21 x38C967 xA77BC0 xB1E75E xD552F5 x760E05 x306DC9 x8B4085 x698277 x819206 x858909 xF92485 xEA71CE x3CE6FF x78A346 x2FE2E3 xDB264E xFF8C04 xD6F5C7 x902564 xEF0542 xD15F17 xF0C0D0 x223C4F x3AE92B xBEEEE8 xDF3B0C x9F9C56 x573D63 x59431C xBF54DA x459352 x06D1B1 xCA6EA0 x1BCFD6 x8DD21F x7D59A8 x832BB2 x15A746 xCCEEA1 xDAF4AF xFC89C7 x03C203 xB6F8AE xF94C98 x4C8326 x76FB79 x19C463 x9FFC78 x2578E8 x925066 xA8ACE2 xDB6DB3 x19C97C xB11821 x05B2DE xE225A2 xD297E1 x1707CC x14CE63 xAB3B20 xF335C3 xC4A648 x8C89B3 xABB3BC x0CC806 xF4C429 x158E45 x1DC5C0 x0B6737 x40B84D x462BFC xB0FE54 xBF4BD6 xA8DF8B x911967 xA557D2 x594654 x8271F9 xD8ACEF x036F2B x1DD5DD x700CC8 xC0E1AD x71C0D0 xDC9F54 x5A7E71 x7DB4A4 xC5B1D0 x1109D2 x054B00 x26D55C xC820AA xDFBC7F xD043BF x0D58B5 x987179 x3C20FD x3D52E8 x246D93 x7DE725 xF311B5 x44CA8D x7B96B9 x32C840 x19247C xB041D0 xFFAA21 x17960C xB71BD8 x1745CC x167727 x7FBDCE x0CE0FB xABDEAA x0C4D4C x128E49 xA3BC0B x31A92F xA522F8 x0906CA x958940 x83A6B2 xB82E36 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+#Mali
+MAL = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+#Zimbabwe
+ZIM = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+#Southern Rhodesia
+RHO = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+#Sierra Leone
+SIL = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Seychelles
+SEY = {
+	provinces = { x60E0B0 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Mauritius
+MRT = {
+	provinces = { xD0E090 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Comoros
+COM = {
+	provinces = { xD690E0 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+### Middle East ###
+
+TUR = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+UAE = {
+	provinces = { x4D3B30 xD12977 x723F1D xFF7473 x28D126 xC9472E xE8E0A4 xA9240B x65A581 x70D020 x8C6854 x1830A7 x631F32 x69B568 xF0D021 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+IRQ = {
+	states = {
+		STATE_BAGHDAD
+		STATE_MOSUL
+		STATE_BASRA
+	}
+	ai_will_do = { always = no }
+}
+
+OMA = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+PER = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+YEM = {
+	use_culture_states = yes
+	
+	required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+SYE = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+NYE = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+BHR = {
+	provinces = { x505AE0 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Palestine
+PAL = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+ISR = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+GZA = {
+	provinces = { x60D060 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+SYR = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+JOR = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+LEB = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+#Kurdistan
+KUR = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Qatar
+QAT = {
+	provinces = { x2768F8 xEF5020 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Kuwait
+KUW = {
+	provinces = { x00F060 x68C89A xDABB9C }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Saudi Arabia
+NEJ = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+### Caribbean ###
+
+#SPM = { #Saint Pierre and Miquelon
+#	use_culture_states = yes
+#	
+#	#required_num_states = 2
+#
+#	ai_will_do = { always = no }
+#}
+
+BEU = { #Bermuda
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+BAH = {
+	states = { STATE_BAHAMAS }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+TCI = { #Turks and Caicos Islands
+	provinces = { x7A6FA3 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+CUB = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+HAI = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+DOM = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+PUR = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+VIR = { #Virgin Islands
+	provinces = { x30F080 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Antigua and Barbuda
+AAB = {
+	provinces = { x89334D }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Anguilla
+AGU = {
+	provinces = { x606060 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Saint Kitts and Nevis
+SKN = {
+	provinces = { x89337A }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Cayman Islands
+CYI = {
+	provinces = { x1E761E }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+JAM = {
+	provinces = { x535B49 x7070B8 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+MTS = { #Montserrat
+	provinces = { x335389 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+GDE = { #Guadeloupe
+	provinces = { x33895B }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Dominica
+DMC = {
+	provinces = { x70F001 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Martinique
+MRQ = {
+	provinces = { x9C52CA }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Saint Lucia
+STL = {
+	provinces = { x5299CA }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Saint Vincent and the Grenadines
+SVG = {
+	provinces = { x446C63 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Barbados
+BAR = {
+	provinces = { x445B6C }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Grenada
+GND = {
+	provinces = { xF0F001 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Trinidad and Tobago
+TAT = {
+	provinces = { x707080 xD496B1 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Aruba
+#ARU = {
+#	use_culture_states = yes
+#	
+#	#required_num_states = 2
+#
+#	ai_will_do = { always = no }
+#}
+
+# Curaçao
+#CRC = {
+#	use_culture_states = yes
+#	
+#	#required_num_states = 2
+#
+#	ai_will_do = { always = no }
+#}
+
+# Netherlands Antillies
+DAN = {
+	provinces = { xB03080 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Sint Maarten
+SIM = {
+	provinces = { xECC061 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Saint Martin (For French + Dutch Saint Martin)
+#STM = {
+#	use_culture_states = yes
+#	
+#	#required_num_states = 2
+#
+#	ai_will_do = { always = no }
+#}
+
+### Europe ###
+
+POR = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+SPA = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+CAT = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+BSQ = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+ADL = { #Andulasia
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+FRA = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+OCC = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+COR = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+BRI = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+ITA = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+MLT = { # Malta
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+SWI = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+BEL = {
+	use_culture_states = yes
+	
+	required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+FLA = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+WLL = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+NET = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+LUX = {
+	provinces = { x5180A0 }
+	
+	#required_num_states = 2
+	
+	ai_will_do = { always = no }
+}
+
+GBR = {
+	use_culture_states = yes
+	
+	required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+ENG = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+WLS = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+SCO = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+IRE = {
+	use_culture_states = yes
+	
+	required_num_states = 4
+
+	ai_will_do = { always = no }
+}
+
+NIR = {
+	states = { STATE_ULSTER }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+SIR = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+ICL = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+DEN = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+FAR = {
+	provinces = { x8B7790 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+GRN = {
+	states = { STATE_GREENLAND }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+GER = {
+	use_culture_states = yes
+	
+	required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+AUS = {
+	use_culture_states = yes
+	
+	required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+CZH = { #Czechoslovakia
+	use_culture_states = yes
+	
+	required_num_states = 3
+
+	ai_will_do = { always = no }
+}
+
+BOH = { #Czechia
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+SLV = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+HUN = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+SLO = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+CRO = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+BOS = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+MON = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+SER = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+KOS = { # Kosovo
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+MCD = { # North Macedonia
+	states = { STATE_SKOPIA }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+ALB = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+GRE = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+NOR = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+SWE = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+SMI = { # Sapmi
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+POL = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+ROM = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+BUL = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+FIN = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+RUS = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+SIB = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+EST = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+LIT = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+LAT = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+BYE = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+UKR = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+DPR = {
+	states = { STATE_LUHANSK STATE_KURSK STATE_CHERSON }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+MOL = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+TRD = {
+	provinces = { x8ACA9B xFC9EFE x1E1DEF }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+CYP = {
+	states = { STATE_CYPRUS }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+WCY = {
+	provinces = { xBF3020 x79685E }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+ECY = {
+	provinces = { x40B020 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+CRI = {
+	states = { STATE_CRIMEA }
+
+	ai_will_do = { always = no }
+}
+
+TRE = {
+	states = { STATE_ISTRIA }
+
+	ai_will_do = { always = no }
+}
+
+### North America ###
+
+CAN = {
+	use_culture_states = yes
+	
+	required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+NFL = {
+	states = { STATE_NEWFOUNDLAND }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+QUE = {
+	states = { STATE_QUEBEC }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+CSC = { # Cascadia
+	states = { STATE_BRITISH_COLUMBIA }
+	
+	#required_num_states = 2
+	
+	ai_will_do = { always = no }
+}
+
+LSK = {
+	states = { STATE_ALASKA }
+	
+	#required_num_states = 2
+	
+	ai_will_do = { always = no }
+}
+
+USA = {
+	use_culture_states = yes
+	
+	required_num_states = 13
+
+	ai_will_do = { always = no }
+}
+
+TEX = {
+	states = { STATE_TEXAS }
+	
+	#required_num_states = 2
+	
+	ai_will_do = { always = no }
+}
+
+MEX = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+ZAP = { # Zapatista
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+GUA = {
+	states = { STATE_GUATEMALA }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+BLZ = {
+	provinces = { xD0B040 x02073E x7D333F }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+HON = {
+	states = { STATE_HONDURAS }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+ELS = {
+	states = { STATE_SAN_SALVADOR }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+NIC = {
+	states = { STATE_NICARAGUA }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+COS = {
+	states = { STATE_COSTA_RICA }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+PNM = {
+	states = { STATE_PANAMA }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+### South East Asia ###
+
+DAI = {
+	states = { STATE_TONKIN STATE_MEKONG }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+NVM = {
+	states = { STATE_TONKIN }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+SVM = {
+	states = { STATE_MEKONG }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+LAO = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+CAM = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+THI = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+BUR = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+KRN = { # Karen
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+KHN = { # Kachin
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+SHS = { # Shan States
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Malaysia
+MSY = {
+	states = { STATE_MALAYA STATE_NORTH_BORNEO }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Malaya
+MLY = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Singapore
+SGP = {
+	provinces = { xC00130 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Sabah
+SAB = {
+	provinces = { x763646 x965EF0 xC531AE xB689E6 xD0AC5F x821B67 x75D5D2 x808070 x461E0E xC0B7FD x3CCBAA xCED863 x2EE734 xD78953 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+BRU = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+#Sarawak
+SWK = {
+	provinces = { xE9FB27 x91B40F x0141B0 x278E1E x6D3CF9 xF61121 x905338 x242519 x26DE63 xEF6FBE xFC8025 x9E0616 x1C6623 x8041B0 xC65120 x0F01DC x762FBA xE66512 x61FE7A xFB18B8 xDD9CFE xF2BC79 x6FEE71 x002310 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+PHI = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+#Mindano
+MGD = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+#Indonesia
+IDO = {
+	use_culture_states = yes
+	
+	required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Kalimantan
+KLM = {
+	states = { STATE_NORTH_BORNEO }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+ACE = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+JAV = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+BAL = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# East Timor
+ETM = {
+	provinces = { x4EE71E x3CCE91 x7F4592 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# South Maluku
+SMK = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# West Papua
+WPA = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Papua New Guinea
+PNG = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Solomon Islands
+SOL = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Vanuatu
+VAN = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Nauru
+NAU = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Palau
+#PAU = {
+#	use_culture_states = yes
+#
+#	#required_num_states = 2
+#
+#	ai_will_do = { always = no }
+#}
+
+# Micronesia
+MIC = {
+	use_culture_states = yes
+	
+	required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Marshall Islands
+#MAR = {
+#	provinces = { xF5DBBF x808011 xCD1EA0 x6e4206 }
+#	
+#	#required_num_states = 2
+#
+#	ai_will_do = { always = no }
+#}
+
+# Tuvalu
+TVU = {
+	provinces = { x808090 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# New Caledonia
+NCD = {
+	states = { STATE_KANAK }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Fiji
+FIJ = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Wallis and Futuna
+#WAF = {
+#	use_culture_states = yes
+#	
+#	#required_num_states = 2
+#
+#	ai_will_do = { always = no }
+#}
+
+# Kiribati
+KIR = {
+	provinces = { x80C011 }
+	
+	country_type = recognized
+
+	tier = principality
+
+	cultures = { kiribati micronesian }
+	capital = STATE_EAST_MICRONESIA
+}
+
+# Samoa
+#SAM = {
+#	use_culture_states = yes
+#	
+#	#required_num_states = 2
+#
+#	ai_will_do = { always = no }
+#}
+
+# Tonga
+TON = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+
+# Niue
+#NIU = {
+#	use_culture_states = yes
+#	
+#	#required_num_states = 2
+#
+#	ai_will_do = { always = no }
+#}
+
+# Cook Islands
+#COI = {
+#	use_culture_states = yes
+#	
+#	#required_num_states = 2
+#
+#	ai_will_do = { always = no }
+#}
+
+# Polynesia
+PYI = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+AST = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+ULR = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+NZL = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+AOT = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+HAW = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+BOU = { # Bougainville
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+### Asia ###
+
+JAP = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+PRC = { #Mainland China
+	states = { STATE_BEIJING }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+ROC = { #Exiled China
+	states = { STATE_NANJING }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+TAI = { # Taiwan
+	states = { STATE_FORMOSA }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+HKG = { # Hong Kong
+	provinces = { xB03161 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+MCA = { # Macau
+	provinces = { xB031E0 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# North Korea
+NKO = {
+	states = { STATE_PYONGYANG }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# South Korea
+SKO = {
+	states = { STATE_SEOUL }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+MGL = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+XIN = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+ETS = { # East Turkestan
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+MCK = {
+	states = { STATE_SOUTHERN_MANCHURIA }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+### Asia ###
+
+SRL = { # Sri Lanka
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+MLD = { # Maldives
+	provinces = { x95AAA3 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+SIK = {
+	provinces = { xE0B0E0 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+BHU = {
+	provinces = { x388D2C xDA7F32 x665E5B x01C109 xD10C8F x4F99DC x84F73C xE5D3E0 x60B0DF }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+NEP = {
+	provinces = { xBCD18E x29576A x4DE9D5 xC6179B x920B51 xC1C87A x812FBE xAF5B29 x25994F x11C815 x6E233E xE18F72 xAF11F0 x4874D9 x4D5FC1 xC13072 xA2C234 x605021 x833D63 x73C2C6 x23C36A xCE4DAE xA5D1EB x1C3876 xA228F8 x218FFE x515E66 x213060 x1619ED xDA8130 xC1DA32 xE51929 xC6D4A8 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+TIB = { # Tibet
+	use_culture_states = yes
+	
+	required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+BNG = { # Bangladesh
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+HND = { # India
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+PAK = { # Pakistan
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+### South America ###
+
+VNZ = {
+	states = {
+		STATE_MIRANDA
+		STATE_BOLIVAR
+		STATE_ZULIA
+	}
+	ai_will_do = { always = no }
+}
+
+CLM = {
+	states = {
+		STATE_ANTIOQUIA
+		STATE_CUNDINAMARCA
+		STATE_CAUCA
+		STATE_GUAVIARE
+	}
+	
+	required_num_states = 3
+
+	ai_will_do = { always = no }
+}
+
+ECU = {
+	states = {
+		STATE_ECUADOR
+		STATE_PASTAZA
+	}
+	ai_will_do = { always = no }
+}
+
+PEU = {
+	states = {
+		STATE_LIMA
+		STATE_CAJAMARCA
+		STATE_ICA
+		STATE_AREQUIPA
+		STATE_TARAPACA
+	}
+	ai_will_do = { always = no }
+}
+
+BRZ = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Guyana
+GUY = {
+	provinces = { xA22A4C xBB88B5 x218011 x1F5190 x6B802F xA52CE3 xE600F3 xA00111 x734F81 x8E31E8 x7B4B5E x63ABD4 x3A069F x24A66B x719492 x41552E x4AE8F7 x9A88B5 xB21306 xB1960A x805A8C x518580 xC0C0D0 xADE6C2 xE85635 x9FEDF7 xAA1153 x6816FF x350473 xFAE8C5 xB3512B xD0678B xD0BA2B xE7864B xA350D5 x6C6251 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Suriname
+SUR = {
+	provinces = { xF17CCC xA08011 xDBF640 x50D012 x29D96A xE18467 xDB86CE xE8D6CB xE6BBD3 xA9777B xF6408F x063557 xA299AE x210190 x771D68 xD8362B xF1E3BF x4B427A x0753FE x19A3D9 xC2E46E x58ABBF x3EC2E7 xB6F7B4 x43E136 x102B13 xCD1A5A x822364 x27E268 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# French Guiana
+FGY = {
+	provinces = { x80C050 x705AB9 x439BC2 x8C64ED x61BE2C xC591AC x049E29 x20DD27 xA082D3 xF23696 xF20136 x148FB5 x9F0090 }
+
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+BOL = {
+	states = {
+		STATE_SANTA_CRUZ
+		STATE_POTOSI
+		STATE_LA_PAZ
+		STATE_ACRE
+		STATE_ANTOFAGASTA
+	}
+	ai_will_do = { always = no }
+}
+
+CHL = {
+	states = {
+		STATE_SANTIAGO
+		STATE_LOS_RIOS
+	}
+	ai_will_do = { always = no }
+}
+
+ARG = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+PRG = {
+	states = {
+		STATE_BAJO_PARAGUAY
+		STATE_ALTO_PARAGUAY
+	}
+	ai_will_do = { always = no }
+}
+
+URU = {
+	states = {
+		STATE_URUGUAY
+	}
+	ai_will_do = { always = no }
+}
+
+FLK = { #Falkland Islands
+	provinces = { x9EF337 x5E9DB3 x3020D0 }
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+### Central Asia ###
+
+ARM = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+DAG = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+AZB = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+GEO = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+KAZ = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+TKM = { # Turkmenistan
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Uzbekistan
+UZB = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Tajikistan
+TAJ = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Kyrgyzstan
+KYR = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}
+
+# Caucasian Imamate / Chechnya
+CHC = {
+	use_culture_states = yes
+	
+	#required_num_states = 2
+
+	ai_will_do = { always = no }
+}

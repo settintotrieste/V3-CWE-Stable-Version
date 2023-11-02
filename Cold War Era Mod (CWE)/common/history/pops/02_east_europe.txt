@@ -10,7 +10,7 @@
 				size = 166195
 			}
 			create_pop = {
-				culture = north_german
+				culture = german
 				size = 76147
 			}
 			create_pop = {
@@ -79,7 +79,7 @@
 				size = 68517
 			}
 			create_pop = {
-				culture = north_german
+				culture = german
 				size = 38809
 			}
 			create_pop = {
@@ -149,7 +149,7 @@
 				size = 333040
 			}
 			create_pop = {
-				culture = south_german
+				culture = austrian
 				size = 121022
 			}
 			create_pop = {
@@ -293,7 +293,7 @@
 				size = 458894
 			}
 			create_pop = {
-				culture = south_german
+				culture = austrian
 				size = 102304
 			}
 			create_pop = {
@@ -325,7 +325,7 @@
 				size = 4808717
 			}
 			create_pop = {
-				culture = south_german
+				culture = austrian
 				size = 84942
 			}
 			create_pop = {
@@ -337,7 +337,7 @@
 				size = 323520
 			}
 			create_pop = {
-				culture = north_german
+				culture = german
 				size = 91565
 			}
 			create_pop = {
@@ -386,7 +386,7 @@
 				size = 4716147
 			}
 			create_pop = {
-				culture = south_italian
+				culture = italian
 				size = 37616
 			}
 			create_pop = {
@@ -536,7 +536,7 @@
 				size = 73955
 			}
 			create_pop = {
-				culture = north_german
+				culture = german
 				size = 70989
 			}
 		}
@@ -548,7 +548,7 @@
 				size = 1366860
 			}
 			create_pop = {
-				culture = north_german
+				culture = german
 				size = 187557
 			}
 			create_pop = {
@@ -589,12 +589,29 @@
 				size = 67940
 			}
 			create_pop = {
-				culture = north_german
+				culture = german
 				size = 561777
 			}
 			create_pop = {
 				culture = russian
 				size = 129886
+			}
+		}
+	}
+	
+	s:STATE_LUBUSZ = {
+		region_state:POL = {
+			create_pop = {
+				culture = polish
+				size = 1000000
+			}
+		}
+	}
+	s:STATE_PODLASKIE = {
+		region_state:POL = {
+			create_pop = {
+				culture = polish
+				size = 100000
 			}
 		}
 	}
@@ -613,7 +630,7 @@
 				size = 81955
 			}
 			create_pop = {
-				culture = north_german
+				culture = german
 				size = 56994
 			}
 			create_pop = {
@@ -625,7 +642,7 @@
 	s:STATE_SILESIA = {
 		region_state:POL = {
 			create_pop = {
-				culture = north_german
+				culture = german
 				size = 984998
 			}
 			create_pop = {
@@ -637,7 +654,7 @@
 				size = 3394351
 			}
 			create_pop = {
-				culture = north_german
+				culture = german
 				religion = catholic
 				size = 512077
 			}
@@ -664,7 +681,7 @@
 				size = 123412
 			}
 			create_pop = {
-				culture = north_german
+				culture = german
 				size = 272772
 			}
 		}
@@ -689,7 +706,7 @@
 				size = 152130
 			}
 			create_pop = {
-				culture = north_german
+				culture = german
 				size = 63983
 			}
 		}
@@ -697,7 +714,7 @@
 	s:STATE_WEST_PRUSSIA = {
 		region_state:POL = {
 			create_pop = {
-				culture = north_german
+				culture = german
 				size = 365728
 			}
 			create_pop = {
@@ -722,7 +739,7 @@
 	s:STATE_EAST_PRUSSIA = {
 		region_state:POL = {
 			create_pop = {
-				culture = north_german
+				culture = german
 				size = 163892
 			}
 			create_pop = {
@@ -752,7 +769,7 @@
 	s:STATE_POSEN = {
 		region_state:POL = {
 			create_pop = {
-				culture = north_german
+				culture = german
 				size = 212186
 			}
 			create_pop = {
@@ -764,7 +781,7 @@
 				size = 1687436
 			}
 			create_pop = {
-				culture = north_german
+				culture = german
 				religion = catholic
 				size = 124473
 			}
@@ -777,7 +794,7 @@
 				size = 3120984
 			}
 			create_pop = {
-				culture = south_german
+				culture = austrian
 				size = 487296
 			}
 			create_pop = {
@@ -801,7 +818,7 @@
 				size = 2910180
 			}
 			create_pop = {
-				culture = south_german
+				culture = austrian
 				size = 145084
 			}
 			create_pop = {
@@ -822,7 +839,7 @@
 				size = 965195
 			}
 			create_pop = {
-				culture = south_german
+				culture = austrian
 				size = 226578
 			}
 			create_pop = {
@@ -852,7 +869,7 @@
 				size = 15448
 			}
 			create_pop = {
-				culture = south_german
+				culture = austrian
 				size = 45874
 			}
 			create_pop = {
@@ -890,11 +907,11 @@
 				size = 194286
 			}
 			create_pop = {
-				culture = south_german
+				culture = austrian
 				size = 98761
 			}
 			create_pop = {
-				culture = south_german
+				culture = austrian
 				religion = protestant
 				size = 53162
 			}
@@ -918,7 +935,7 @@
 				size = 18816
 			}
 			create_pop = {
-				culture = south_german
+				culture = austrian
 				size = 4363
 			}
 			create_pop = {
@@ -932,7 +949,7 @@
 				size = 98450
 			}
 			create_pop = {
-				culture = south_german
+				culture = austrian
 				size = 509486
 			}
 			create_pop = {
@@ -948,7 +965,7 @@
 	s:STATE_DELVIDEK = {
 		region_state:YUG = {
 			create_pop = {
-				culture = south_german
+				culture = austrian
 				size = 42238
 			}
 			create_pop = {
@@ -976,7 +993,7 @@
 	s:STATE_BANAT = {
 		region_state:ROM = {
 			create_pop = {
-				culture = south_german
+				culture = austrian
 				size = 86594
 			}
 			create_pop = {
@@ -1018,7 +1035,7 @@
 				size = 279951
 			}
 			create_pop = {
-				culture = south_german
+				culture = austrian
 				size = 187631
 			}
 			create_pop = {
@@ -1076,11 +1093,32 @@
 				size = 26712
 			}
 			create_pop = {
-				culture = south_german
+				culture = austrian
 				size = 8627
 			}
 		}
 	}
+	s:STATE_ZAKARPATTIA = {
+		region_state:SOV = {
+			create_pop = {
+				culture = slovak
+				size = 5600
+			}
+			create_pop = {
+				culture = russian
+				size = 31000
+			}
+			create_pop = {
+				culture = romanian
+				size = 151500
+			}
+			create_pop = {
+				culture = ukrainian
+				size = 1010100
+			}
+		}
+	}
+	
 	s:STATE_SOUTHERN_TRANSYLVANIA = {
 		region_state:ROM = {
 			create_pop = {
@@ -1097,7 +1135,7 @@
 				size = 853985
 			}
 			create_pop = {
-				culture = south_german
+				culture = austrian
 				size = 14061
 			}
 			create_pop = {
@@ -1105,7 +1143,7 @@
 				size = 67405
 			}
 			create_pop = {
-				culture = north_german
+				culture = german
 				size = 101088
 			}
 		}
@@ -1122,11 +1160,11 @@
 				size = 350936
 			}
 			create_pop = {
-				culture = south_german
+				culture = austrian
 				size = 8384
 			}
 			create_pop = {
-				culture = north_german
+				culture = german
 				size = 117580
 			}
 			create_pop = {
@@ -1146,7 +1184,7 @@
 				size = 130183
 			}
 			create_pop = {
-				culture = romanian
+				culture = moldovan
 				size = 71806
 			}
 			create_pop = {
@@ -1162,13 +1200,13 @@
 				size = 251278
 			}
 			create_pop = {
-				culture = south_german
+				culture = austrian
 				size = 80112
 			}
 		}
 		region_state:ROM = {
 			create_pop = {
-				culture = romanian
+				culture = moldovan
 				size = 2592364
 			}
 			create_pop = {
@@ -1274,6 +1312,14 @@
 			create_pop = {
 				culture = hungarian
 				size = 14342
+			}
+		}
+	}
+	s:STATE_KALININGRAD = {
+		region_state:SOV = {
+			create_pop = {
+				culture = russian
+				size = 152000
 			}
 		}
 	}

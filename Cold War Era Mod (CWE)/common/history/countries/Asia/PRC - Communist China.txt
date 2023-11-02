@@ -3,12 +3,7 @@ COUNTRIES = {
 	c:PRC = {
 	
 		#Ruling Party
-		ig:ig_bureaucrats = { add_ruling_interest_group = yes }
 		ig:ig_trade_unions = { add_ruling_interest_group = yes }
-		ig:ig_trade_unions_infrastructure = { add_ruling_interest_group = yes }
-		ig:ig_trade_unions_mines = { add_ruling_interest_group = yes }
-		ig:ig_security_forces = { add_ruling_interest_group = yes }
-		ig:ig_armed_forces = { add_ruling_interest_group = yes }
 		
 		ig:ig_industrialists = { set_ig_suppression = yes }
 		ig:ig_landowners = { set_ig_suppression = yes }
@@ -27,10 +22,14 @@ COUNTRIES = {
 		effect_starting_politics_communist_republic = yes
 		effect_starting_politics_dictatorship = yes
 		effect_starting_politics_constitutional_unitary_state = yes
-		effect_starting_politics_war_policy_jingoism = yes
+		effect_starting_politics_war_policy_pro_military = yes
 		effect_starting_politics_economic_policy_planned_economy = yes
 		effect_starting_politics_trade_policy_autarky = yes
 		effect_starting_politics_pro_nuclear_policy = yes
+		
+		effect_starting_politics_specialisation_natural_resource = yes
+		
+		effect_starting_politics_fiat_standard = yes
 		
 	}
 	

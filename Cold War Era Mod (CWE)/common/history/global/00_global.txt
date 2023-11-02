@@ -18,6 +18,37 @@ GLOBAL = {
 		value = 0
 	}
 	
+	#Nuclear War system
+	set_global_variable = { 
+		name = nuclear_strike_power_global
+		value = 0
+	}
+	set_global_variable = { 
+		name = nuclear_strike_defence_global
+		value = 0
+	}
+	
+	#Strategic Bombardment system
+	set_global_variable = { 
+		name = strategic_bombardment_strike_power_global
+		value = 0
+	}
+	set_global_variable = { 
+		name = strategic_bombardment_strike_defence_global
+		value = 0
+	}
+	
+	#Economic Cycles
+	set_global_variable = { 
+		name = economic_strength_global_var
+		value = 0
+	}
+	set_global_variable = { 
+		name = economic_strength_country_count_var
+		value = 0
+	}
+	
+	#USA states
 	s:STATE_DISTRICT_OF_COLUMBIA = {	
 		set_variable = {
             name = usa_state_flag_block
@@ -30,11 +61,40 @@ GLOBAL = {
         }
 	}
 	
-	s:STATE_WEST_VIRGINIA = {	
-        set_variable = {
-            name = usa_state_flag_block
-            value = yes
-        }
+	#Chinese Civil War devastation
+	c:PRC = {
+		every_scope_state = {
+			limit = {
+				OR = {
+					region = sr:region_south_china
+					region = sr:region_north_china
+					region = sr:region_manchuria
+				}
+			}
+			state_region = {
+				add_devastation = 25
+			}
+		}
+	}
+	
+	#Historical Railroading is enabled by default
+	if = {
+		limit = { 
+			NOT = { has_game_rule = no_historical_ai_railroading } 
+		}
+		set_global_variable = historical_railroading_active
+	}
+	
+	#Prune excess buildings
+	every_country = {
+		limit = { 
+			NOR = { 
+				c:LUX ?= this
+				c:SAR ?= this
+				c:MLT ?= this
+			} 
+		}
+		effect_prune_excess_buildings = yes
 	}
 
 }

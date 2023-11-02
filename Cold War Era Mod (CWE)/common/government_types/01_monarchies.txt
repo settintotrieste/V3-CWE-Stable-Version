@@ -1,4 +1,68 @@
-﻿gov_absolute_kingdom = { #Absolute Monarchy
+﻿### RULER IS A KING ###
+
+gov_absolute_empire = { #Absolute Monarchy
+	transfer_of_power = hereditary
+
+	male_ruler = "RULER_TITLE_EMPEROR"
+	female_ruler = "RULER_TITLE_EMPRESS"
+	
+	male_heir = "RULER_TITLE_PRINCE"
+	female_heir = "RULER_TITLE_PRINCESS"
+	
+	possible = {
+		#Head of State is a Monarch
+		has_law = law_type:law_HOS_monarch
+		
+		#Special exceptions only
+		OR = {
+			
+			#From culture
+			country_has_primary_culture = cu:japanese
+			country_has_primary_culture = cu:amhara
+			country_has_primary_culture = cu:chinese
+			country_has_primary_culture = cu:vietnamese
+			country_has_primary_culture = cu:korean
+			country_has_primary_culture = cu:north_german
+			country_has_primary_culture = cu:south_german
+			country_has_primary_culture = cu:russian
+			country_has_primary_culture = cu:indian
+			country_has_primary_culture = cu:persian
+			
+			#From country tag
+			c:CAR ?= this
+			c:TUR ?= this
+			c:BRZ ?= this
+			c:MEX ?= this
+			c:HAI ?= this
+			
+		}
+		
+		#Legislature is unelected
+		has_law = law_type:law_appointed_legislature
+		
+		#Head of Government is Monarch or Shared
+		OR = {
+			has_law = law_type:law_HOG_none
+			has_law = law_type:law_HOG_president_prime_minister
+		}
+		
+		#Not a colony or SAR
+		NOR = {
+			is_subject_type = subject_type_semi_autonomous_colony
+			#is_subject_type = subject_type_mandate
+			is_subject_type = subject_type_special_administrative_region
+		}
+	}
+	
+	on_government_type_change = {
+		change_to_hereditary = yes
+	}
+	on_post_government_type_change = {
+		post_change_to_hereditary = yes
+	}
+}
+
+gov_absolute_monarchy = { #Absolute Monarchy
 	transfer_of_power = hereditary
 
 	male_ruler = "RULER_TITLE_KING"
@@ -14,6 +78,12 @@
 		#Legislature is unelected
 		has_law = law_type:law_appointed_legislature
 		
+		#Head of Government is Monarch or Shared
+		OR = {
+			has_law = law_type:law_HOG_none
+			has_law = law_type:law_HOG_president_prime_minister
+		}
+		
 		#Not a colony or SAR
 		NOR = {
 			is_subject_type = subject_type_semi_autonomous_colony
@@ -24,6 +94,9 @@
 	
 	on_government_type_change = {
 		change_to_hereditary = yes
+	}
+	on_post_government_type_change = {
+		post_change_to_hereditary = yes
 	}
 }
 
@@ -63,6 +136,78 @@ gov_semi_constitutional_monarchy = { #Semi-Constitutional Monarchy
 	on_government_type_change = {
 		change_to_hereditary = yes
 	}
+	on_post_government_type_change = {
+		post_change_to_hereditary = yes
+	}
+}
+
+### RULER IS A PM ###
+
+gov_constitutional_monarchy_dictatorship = { #Constitutional Monarchy Dictatorship
+	transfer_of_power = dictatorial #Leader is PM
+
+	male_ruler = "RULER_TITLE_CHANCELLOR"
+	female_ruler = "RULER_TITLE_CHANCELLOR"
+	
+	possible = {
+		#Head of State is a Monarch
+		has_law = law_type:law_HOS_monarch
+		
+		#Legislature is elected in some way
+		has_law = law_type:law_appointed_legislature
+		
+		#Head of Government is Prime Minister
+		has_law = law_type:law_HOG_prime_minister
+		
+		#Not a colony or SAR
+		NOR = {
+			is_subject_type = subject_type_semi_autonomous_colony
+			#is_subject_type = subject_type_mandate
+			is_subject_type = subject_type_special_administrative_region
+		}
+	}
+	
+	on_government_type_change = {
+		change_to_dictatorial = yes
+	}
+	on_post_government_type_change = {
+		post_change_to_dictatorial = yes
+	}
+	
+}
+
+gov_constitutional_monarchy_regime = { #Constitutional Monarchy Regime
+	transfer_of_power = dictatorial	#Leader is PM
+	new_leader_on_reform_government = no
+
+	male_ruler = "RULER_TITLE_CHANCELLOR"
+	female_ruler = "RULER_TITLE_CHANCELLOR"
+	
+	possible = {
+		#Head of State is a Monarch
+		has_law = law_type:law_HOS_monarch
+		
+		#Legislature is elected in some way
+		has_law = law_type:law_technocratic_legislature
+		
+		#Head of Government is Prime Minister
+		has_law = law_type:law_HOG_prime_minister
+		
+		#Not a colony or SAR
+		NOR = {
+			is_subject_type = subject_type_semi_autonomous_colony
+			#is_subject_type = subject_type_mandate
+			is_subject_type = subject_type_special_administrative_region
+		}
+	}
+	
+	on_government_type_change = {
+		change_to_dictatorial = yes
+	}
+	on_post_government_type_change = {
+		post_change_to_dictatorial = yes
+	}
+	
 }
 
 gov_constitutional_monarchy = { #Constitutional Monarchy
@@ -76,10 +221,7 @@ gov_constitutional_monarchy = { #Constitutional Monarchy
 		has_law = law_type:law_HOS_monarch
 		
 		#Legislature is elected in some way
-		OR = { 
-			has_law = law_type:law_technocratic_legislature
-			has_law = law_type:law_democratic_legislature
-		}
+		has_law = law_type:law_democratic_legislature
 		
 		#Head of Government is Prime Minister
 		has_law = law_type:law_HOG_prime_minister
@@ -95,4 +237,8 @@ gov_constitutional_monarchy = { #Constitutional Monarchy
 	on_government_type_change = {
 		change_to_parliamentary_elective = yes
 	}
+	on_post_government_type_change = {
+		post_change_to_parliamentary_elective = yes
+	}
+	
 }

@@ -87,7 +87,13 @@
 			#Warsaw Pact
 			NAND = { 
 				scope:actor = { OR = { has_modifier = warsaw_pact_member has_modifier = warsaw_pact_leader } }
-				scope:target_country = { has_modifier = warsaw_pact_member }
+				scope:target_country = { OR = { has_modifier = warsaw_pact_member has_modifier = warsaw_pact_leader } }
+			}
+			
+			#CSTO
+			NAND = { 
+				scope:actor = { OR = { has_modifier = csto_member has_modifier = csto_leader } }
+				scope:target_country = { OR = { has_modifier = csto_member has_modifier = csto_leader } }
 			}
 			
 		}
@@ -108,7 +114,13 @@
 			#Warsaw Pact
 			NAND = { 
 				scope:actor = { OR = { has_modifier = warsaw_pact_member has_modifier = warsaw_pact_leader } }
-				scope:target_country = { has_modifier = warsaw_pact_member }
+				scope:target_country = { OR = { has_modifier = warsaw_pact_member has_modifier = warsaw_pact_leader } }
+			}
+			
+			#CSTO
+			NAND = { 
+				scope:actor = { OR = { has_modifier = csto_member has_modifier = csto_leader } }
+				scope:target_country = { OR = { has_modifier = csto_member has_modifier = csto_leader } }
 			}
 			
 		}
@@ -152,9 +164,6 @@
 				
 				is_country_type = decentralized
 				scope:target_country = { is_country_type = decentralized }
-				
-				aggressive_diplomatic_plays_permitted = no
-				scope:target_country = { aggressive_diplomatic_plays_permitted = no }
 				
 				scope:actor = { is_not_sufficiently_independent = yes }
 				scope:target_country = { is_not_sufficiently_independent = yes }

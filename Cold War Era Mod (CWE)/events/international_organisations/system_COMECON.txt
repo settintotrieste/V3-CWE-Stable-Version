@@ -46,7 +46,10 @@ COMECON_system.1 = {
 		every_country = {
 			limit = { has_modifier = COMECON_leader }
 			remove_modifier = COMECON_leader
-			add_modifier = { name = COMECON_member }
+			if = { 
+				limit = { NOT = { has_modifier = COMECON_member } }
+				add_modifier = { name = COMECON_member }
+			}
 		}
 	
 		#Set COMECON leader
@@ -147,6 +150,13 @@ COMECON_system.3 = {
     desc = COMECON_expulsion.d 					# Description of the event; ADD LOCALISATION
     flavor = COMECON_expulsion.f 					# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
+	event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
+
+    icon = "gfx/interface/icons/diplo_icons/COMECON_member.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+
 	trigger = {
 		
 		OR = { 
@@ -179,6 +189,11 @@ COMECON_system.3 = {
 		}
 		
 	}
+	
+	option = {
+        name = COMECON_application_rejection.1				# Unfortunate
+		
+    }
 
 }
 
@@ -188,7 +203,7 @@ COMECON_system.4 = {
     desc = COMECON_application_choice.d 					# Description of the event; ADD LOCALISATION
     #flavor = COMECON_application_choice.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/unspecific_military_parade.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
     icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
@@ -212,9 +227,6 @@ COMECON_system.4 = {
 	
 		random_country = {
 			limit = { has_variable = COMECON_application_var }
-			
-			remove_variable = COMECON_application_var
-			
 			save_scope_as = COMECON_applicant
 		}
 		
@@ -232,6 +244,7 @@ COMECON_system.4 = {
 		scope:COMECON_applicant = {
 			#FROM joins COMECON
 			add_modifier = { name = COMECON_member }
+			remove_variable = COMECON_application_var
 		}
 		
 		#Inform applicant of successful outcome
@@ -254,7 +267,10 @@ COMECON_system.4 = {
 		default_option = yes
 		
 		#Inform applicant of unsuccessful outcome
-		scope:COMECON_applicant = { trigger_event = { id = COMECON_system.5 } }
+		scope:COMECON_applicant = { 
+			trigger_event = { id = COMECON_system.5 } 
+			remove_variable = COMECON_application_var
+		}
 		
 		#FROM is angry!
 		change_relations = {
@@ -276,7 +292,7 @@ COMECON_system.5 = {
     desc = COMECON_application_rejection.d 				# Description of the event; ADD LOCALISATION
     #flavor = COMECON_application_rejection.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/unspecific_military_parade.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
     icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
@@ -305,7 +321,7 @@ COMECON_system.6 = {
     desc = COMECON_application_acceptance.d 				# Description of the event; ADD LOCALISATION
     #flavor = COMECON_application_acceptance.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/unspecific_military_parade.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
     icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed

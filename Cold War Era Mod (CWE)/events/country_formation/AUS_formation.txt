@@ -8,9 +8,9 @@ austria_formation.1 = {
     desc = austria_formation.d 				# Description of the event; ADD LOCALISATION
     #flavor = austria_formation.f 			# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_ruler_speaking_to_people.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -34,14 +34,14 @@ austria_formation.1 = {
 			is_at_war = no
 			
 			#Colony conditions
-			c:EAU = { 											# Change TAG of the colony ****
-				is_direct_subject_of = ROOT
+			c:EAU ?= { 											# Change TAG of the colony ****
+				is_direct_subject_of = c:SOV
 				is_subject_type = subject_type_mandate
 			}
 		}
 		
 		#Colony conditions
-		c:WAU = { 												# Change TAG of the colony ****
+		c:WAU ?= { 												# Change TAG of the colony ****
 			is_direct_subject_of = ROOT
 			is_subject_type = subject_type_mandate
 		}
@@ -98,8 +98,8 @@ austria_formation.1 = {
 		
 			# Natives are angry!
 			every_scope_state = {
-				limit = { is_homeland = cu:austrian }
-				add_radicals = {
+				limit = { state_region = { is_homeland = cu:austrian } }
+				add_radicals_in_state = {
 					value = large_radicals
 				}
 				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
@@ -111,7 +111,7 @@ austria_formation.1 = {
 		change_infamy = 10
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
     }
 
@@ -125,9 +125,9 @@ austria_formation.2 = {
     desc = austria_formation.d 				# Description of the event; ADD LOCALISATION
     #flavor = austria_formation.f 			# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_ruler_speaking_to_people.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -159,7 +159,7 @@ austria_formation.2 = {
 		}
 		
 		ai_chance = { 
-			base = 90 
+			base = 100 
 		}
 		
     }
@@ -190,8 +190,8 @@ austria_formation.2 = {
 		
 			# Natives are angry!
 			every_scope_state = {
-				limit = { is_homeland = cu:austrian }
-				add_radicals = {
+				limit = { state_region = { is_homeland = cu:austrian } }
+				add_radicals_in_state = {
 					value = large_radicals
 				}
 				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
@@ -203,7 +203,7 @@ austria_formation.2 = {
 		change_infamy = 10
 		
 		ai_chance = { 
-			base = 10 
+			base = 0 
 		}
 		
     }

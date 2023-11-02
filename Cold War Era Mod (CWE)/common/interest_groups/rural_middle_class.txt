@@ -21,13 +21,20 @@ ig_devout = {
 		always = yes
 	}
 	
+	# Deprecated; use on_enable effect to assign traits instead
 	traits = {
 		ig_trait_be_fruitful_and_multiply
 		ig_trait_divine_right
 		ig_trait_pious_fiction
 	}	
 	
-	on_enable = {}
+	on_enable = {
+		ig:ig_devout = {
+			set_ig_trait = ig_trait:ig_trait_pious_fiction
+			set_ig_trait = ig_trait:ig_trait_divine_right
+			set_ig_trait = ig_trait:ig_trait_be_fruitful_and_multiply
+		}
+	}
 	on_disable = {}
 	on_character_ig_membership = {
 		change_character_religion = scope:interest_group.owner.religion
@@ -52,15 +59,18 @@ ig_devout = {
 	pop_weight = {
 		value = 1
 		
-		multiply = {
-			desc = "LEADER_POPULARITY"
-			scope:interest_group = {
-				leader = {
-					value = popularity
-					multiply = 0.0025
-					add = 1
-					max = 1.25
-					min = 0.75
+		if = {
+			limit = { exists = scope:interest_group exists = leader }
+			multiply = {
+				desc = "LEADER_POPULARITY"
+				scope:interest_group = {
+					leader ?= {
+						value = popularity
+						multiply = 0.0025
+						add = 1
+						max = 1.25
+						min = 0.75
+					}
 				}
 			}
 		}
@@ -148,6 +158,31 @@ ig_devout = {
 			}
 			add = {
 				value = 0.1
+			}
+		}
+		
+		if = {
+			limit = {
+				owner = {
+					is_a_dictatorship = yes
+				}
+			}
+			add = {
+				value = -100
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = { 
+						has_modifier = traditionalist_ruling_party_ideology
+						has_modifier = conservative_ruling_party_ideology
+						has_modifier = fascist_ruling_party_ideology
+					}
+				}
+			}
+			add = {
+				value = -0.1
 			}
 		}
 		

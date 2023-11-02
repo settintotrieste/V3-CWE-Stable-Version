@@ -4,7 +4,7 @@
 
 # p = 7.3, e = 5000, pe = 36500.0
 pm_simple_roads = {
-	texture = "gfx/interface/icons/production_method_icons/simple_roads.dds"
+	texture = "gfx/interface/icons/production_method_icons/public_motor_carriages.dds"
 
 	building_modifiers = {
 		workforce_scaled = {
@@ -12,12 +12,11 @@ pm_simple_roads = {
 			building_input_real_estate_add = 2
 			building_input_electricity_add = 1
 			
-			building_output_transportation_add = 100
+			building_output_transportation_add = 200
 		}
 		level_scaled = {
-			building_employment_laborers_add = 1000
-			building_employment_machinists_add = 500
-			building_employment_engineers_add = 500
+			building_employment_machinists_add = 10000
+			building_input_professional_services_add = 1
 		}
 	}
 
@@ -28,158 +27,39 @@ pm_simple_roads = {
 	}
 }
 
-# p = 8.3, e = 5000, pe = 41500.0
-pm_low_traffic_highways = {
-	texture = "gfx/interface/icons/production_method_icons/low_traffic_highways.dds"
-	
-	unlocking_technologies = {
-		tech_land_infrastructure_2
-		tech_urbanization_1
-	}
-
-	building_modifiers = {
-		workforce_scaled = {
-			building_input_construction_services_add = 10
-			building_input_automobiles_add = 10
-			
-			building_output_transportation_add = 80
-		}
-		level_scaled = {
-			building_employment_laborers_add = 2000
-			building_employment_machinists_add = 1500
-			building_employment_engineers_add = 500
-		}
-	}
-
-	state_modifiers = {
-		workforce_scaled = {
-			state_infrastructure_add = 100
-		}
-	}
-}
-
-# p = 16.6, e = 5000, pe = 83000.0
-pm_medium_traffic_highways = {
-	texture = "gfx/interface/icons/production_method_icons/medium_traffic_highways.dds"
-	
-	unlocking_technologies = {
-		tech_land_infrastructure_3
-		tech_urbanization_2
-	}
-
-	building_modifiers = {
-		workforce_scaled = {
-			building_input_construction_services_add = 20
-			building_input_automobiles_add = 20
-			
-			building_output_transportation_add = 120
-		}
-		level_scaled = {
-			building_employment_machinists_add = 2500
-			building_employment_engineers_add = 500
-		}
-	}
-
-	state_modifiers = {
-		workforce_scaled = {
-			state_infrastructure_add = 150
-		}
-	}
-}
-
-# p = 25.0, e = 5000, pe = 125000.0
-pm_high_traffic_highways = {
-	texture = "gfx/interface/icons/production_method_icons/high_traffic_highways.dds"
-	
-	unlocking_technologies = {
-		tech_land_infrastructure_4
-		tech_urbanization_3
-	}
-
-	building_modifiers = {
-		workforce_scaled = {
-			building_input_construction_services_add = 30
-			building_input_automobiles_add = 30
-			
-			building_output_transportation_add = 200
-		}
-		level_scaled = {
-			building_employment_machinists_add = 3500
-			building_employment_engineers_add = 500
-		}
-	}
-
-	state_modifiers = {
-		workforce_scaled = {
-			state_infrastructure_add = 200
-		}
-	}
-}
-
-# p = 33.3, e = 5000, pe = 166500.0
-pm_very_high_traffic_highways = {
-	texture = "gfx/interface/icons/production_method_icons/very_high_traffic_highways.dds"
-	
-	unlocking_technologies = {
-		tech_land_infrastructure_5
-		tech_urbanization_4
-	}
-
-	building_modifiers = {
-		workforce_scaled = {
-			building_input_construction_services_add = 40
-			building_input_automobiles_add = 40
-			
-			building_output_transportation_add = 340
-		}
-		level_scaled = {
-			building_employment_machinists_add = 5500
-			building_employment_engineers_add = 500
-		}
-	}
-
-	state_modifiers = {
-		workforce_scaled = {
-			state_infrastructure_add = 250
-		}
-	}
-	
-}
-
 # Car Design #
 
 pm_petrol_cars = {
-	texture = "gfx/interface/icons/production_method_icons/petrol_cars.dds"
+	texture = "gfx/interface/icons/production_method_icons/automobiles.dds"
 	
 	pollution_generation = 2
 
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_refined_oil_add = 5
-			
-			building_output_transportation_add = 5
+			building_input_oil_add = 2
 		}
 	}
 
 }
 
 pm_diesel_cars = {
-	texture = "gfx/interface/icons/production_method_icons/diesel_cars.dds"
+	texture = "gfx/interface/icons/production_method_icons/automobiles.dds"
 	
 	pollution_generation = 4
 
 	building_modifiers = {
 		workforce_scaled = {
 			building_input_oil_add = 5
+			building_input_automobiles_add = 5
 			
-			building_output_transportation_add = 10
+			building_output_transportation_add = 100
 		}
 	}
 
 }
 
 pm_electric_cars = {
-	texture = "gfx/interface/icons/production_method_icons/electric_cars.dds"
+	texture = "gfx/interface/icons/production_method_icons/automobiles.dds"
 
 	unlocking_technologies = {
 		tech_land_infrastructure_7
@@ -188,6 +68,9 @@ pm_electric_cars = {
 	building_modifiers = {
 		workforce_scaled = {
 			building_input_electricity_add = 5
+			building_input_automobiles_add = 5
+			
+			building_output_transportation_add = 100
 		}
 	}
 
@@ -197,7 +80,7 @@ pm_electric_cars = {
 
 # p = 11.9, e = 5000, pe = 59500.0
 pm_simple_rails = {
-	texture = "gfx/interface/icons/production_method_icons/simple_rails.dds"
+	texture = "gfx/interface/icons/production_method_icons/passenger_carriages.dds"
 
 	building_modifiers = {
 		workforce_scaled = {
@@ -205,12 +88,11 @@ pm_simple_rails = {
 			building_input_real_estate_add = 1
 			building_input_electricity_add = 1
 			
-			building_output_transportation_add = 100
+			building_output_transportation_add = 200
 		}
 		level_scaled = {
-			building_employment_laborers_add = 3000
-			building_employment_machinists_add = 1500
-			building_employment_engineers_add = 500
+			building_employment_machinists_add = 10000
+			building_input_professional_services_add = 2
 		}
 	}
 
@@ -232,11 +114,6 @@ pm_steam_trains = {
 	building_modifiers = {
 		workforce_scaled = {
 			building_input_coal_add = 10
-
-			building_output_transportation_add = 5
-		}
-		level_scaled = {
-			building_employment_laborers_add = 500
 		}
 	}
 	
@@ -254,13 +131,12 @@ pm_diesel_trains = {
 
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_refined_oil_add = 10
+			building_input_oil_add = 10
 
-			building_output_transportation_add = 10
+			building_output_transportation_add = 50
 		}
 		level_scaled = {
-			building_employment_laborers_add = 500
-			building_employment_machinists_add = 100
+			building_input_professional_services_add = 1
 		}
 	}
 	
@@ -284,12 +160,10 @@ pm_electric_trains = {
 		workforce_scaled = {
 			building_input_electricity_add = 10
 
-			building_output_transportation_add = 15
+			building_output_transportation_add = 100
 		}
 		level_scaled = {
-			building_employment_laborers_add = 500
-			building_employment_machinists_add = 200
-			building_employment_engineers_add = 100
+			building_input_professional_services_add = 2
 		}
 	}
 	
@@ -306,7 +180,7 @@ pm_high_speed_electric_trains = {
 	texture = "gfx/interface/icons/production_method_icons/trains_electric.dds"
 	
 	unlocking_technologies = {
-		tech_land_infrastructure_3
+		tech_land_infrastructure_4
 	}
 
 	building_modifiers = {
@@ -315,12 +189,10 @@ pm_high_speed_electric_trains = {
 			building_input_real_estate_add = 1
 			building_input_electricity_add = 5
 			
-			building_output_transportation_add = 40
+			building_output_transportation_add = 200
 		}
 		level_scaled = {
-			building_employment_laborers_add = 500
-			building_employment_machinists_add = 750
-			building_employment_engineers_add = 500
+			building_input_professional_services_add = 4
 		}
 	}
 
@@ -344,20 +216,20 @@ pm_basic_port = {
 			building_input_real_estate_add = 3
 			building_input_electricity_add = 5
 			
-			building_output_transportation_add = 50
-			building_output_tradable_transportation_add = 40
+			building_output_transportation_add = 100
+			
+			#building_output_forex_add = 1
 		}
 		level_scaled = {
-			building_employment_laborers_add = 1500
-			building_employment_machinists_add = 500
-			building_employment_engineers_add = 250
-			building_employment_clerks_add = 250
+			building_employment_machinists_add = 10000
+			building_input_professional_services_add = 1
+			building_input_corporate_services_add = 2
 		}
 	}
 
 	country_modifiers = {
 		workforce_scaled = {
-			country_convoys_capacity_add = 500
+			country_convoys_capacity_add = 200
 		}
 	}
 	state_modifiers = {
@@ -372,7 +244,7 @@ pm_industrial_port = {
 	texture = "gfx/interface/icons/production_method_icons/industrial_port.dds"
 
 	unlocking_technologies = { 
-		tech_sea_infrastructure_2
+		tech_sea_infrastructure_1
 	}
 
 	building_modifiers = {
@@ -381,20 +253,18 @@ pm_industrial_port = {
 			building_input_real_estate_add = 6
 			building_input_electricity_add = 10
 			
-			building_output_transportation_add = 75
-			building_output_tradable_transportation_add = 80
+			building_output_transportation_add = 200
 		}
 		level_scaled = {
-			building_employment_laborers_add = 3000
-			building_employment_machinists_add = 1000
-			building_employment_engineers_add = 500
-			building_employment_clerks_add = 500
+			building_employment_machinists_add = 20000
+			building_input_professional_services_add = 2
+			building_input_corporate_services_add = 3
 		}
 	}
 
 	country_modifiers = {
 		workforce_scaled = {
-			country_convoys_capacity_add = 1000
+			country_convoys_capacity_add = 400
 		}
 	}
 	state_modifiers = {
@@ -409,7 +279,7 @@ pm_modern_port = {
 	texture = "gfx/interface/icons/production_method_icons/modern_port.dds"
 
 	unlocking_technologies = { 
-		tech_sea_infrastructure_3
+		tech_sea_infrastructure_4
 	}
 
 	building_modifiers = {
@@ -418,20 +288,18 @@ pm_modern_port = {
 			building_input_real_estate_add = 12
 			building_input_electricity_add = 20
 			
-			building_output_transportation_add = 100
-			building_output_tradable_transportation_add = 160
+			building_output_transportation_add = 400
 		}
 		level_scaled = {
-			building_employment_laborers_add = 6000
-			building_employment_machinists_add = 2000
-			building_employment_engineers_add = 1000
-			building_employment_clerks_add = 1000
+			building_employment_machinists_add = 40000
+			building_input_professional_services_add = 3
+			building_input_corporate_services_add = 4
 		}
 	}
 
 	country_modifiers = {
 		workforce_scaled = {
-			country_convoys_capacity_add = 2000
+			country_convoys_capacity_add = 800
 		}
 	}
 	state_modifiers = {
@@ -445,7 +313,7 @@ pm_modern_port = {
 # Ship Design # 
 
 pm_steam_ships = {
-	texture = "gfx/interface/icons/production_method_icons/steam_ships.dds"
+	texture = "gfx/interface/icons/production_method_icons/reinforced_steam_ships.dds"
 	
 	pollution_generation = 4
 
@@ -458,7 +326,7 @@ pm_steam_ships = {
 }
 
 pm_small_diesel_ships = {
-	texture = "gfx/interface/icons/production_method_icons/small_diesel_ships.dds"
+	texture = "gfx/interface/icons/production_method_icons/reinforced_steam_ships.dds"
 	
 	pollution_generation = 2
 	
@@ -470,30 +338,30 @@ pm_small_diesel_ships = {
 		workforce_scaled = {
 			building_input_oil_add = 5
 			
-			building_output_tradable_transportation_add = 20
+			building_output_transportation_add = 50
 		}
 	}
 	
 	country_modifiers = {
 		workforce_scaled = {
-			country_convoys_capacity_add = 1000
+			country_convoys_capacity_add = 200
 		}
 	}
 	state_modifiers = {
 		workforce_scaled = {
-			state_infrastructure_add = 100
+			state_infrastructure_add = 200
 		}
 	}
 	
 }
 
 pm_medium_diesel_ships = {
-	texture = "gfx/interface/icons/production_method_icons/medium_diesel_ships.dds"
+	texture = "gfx/interface/icons/production_method_icons/reinforced_steam_ships.dds"
 	
 	pollution_generation = 3
 	
 	unlocking_technologies = {
-		tech_sea_infrastructure_4
+		tech_sea_infrastructure_3
 	}
 
 	building_modifiers = {
@@ -501,13 +369,13 @@ pm_medium_diesel_ships = {
 			building_input_steamers_add = 5
 			building_input_oil_add = 10
 			
-			building_output_tradable_transportation_add = 40
+			building_output_transportation_add = 100
 		}
 	}
 	
 	country_modifiers = {
 		workforce_scaled = {
-			country_convoys_capacity_add = 2000
+			country_convoys_capacity_add = 400
 		}
 	}
 	state_modifiers = {
@@ -519,7 +387,7 @@ pm_medium_diesel_ships = {
 }
 
 pm_large_diesel_ships = {
-	texture = "gfx/interface/icons/production_method_icons/large_diesel_ships.dds"
+	texture = "gfx/interface/icons/production_method_icons/reinforced_steam_ships.dds"
 	
 	pollution_generation = 4
 	
@@ -532,13 +400,13 @@ pm_large_diesel_ships = {
 			building_input_steamers_add = 10
 			building_input_oil_add = 20
 			
-			building_output_tradable_transportation_add = 80
+			building_output_transportation_add = 200
 		}
 	}
 	
 	country_modifiers = {
 		workforce_scaled = {
-			country_convoys_capacity_add = 3000
+			country_convoys_capacity_add = 800
 		}
 	}
 	state_modifiers = {
@@ -549,202 +417,12 @@ pm_large_diesel_ships = {
 	
 }
 
-pm_anchorage = {
-	texture = "gfx/interface/icons/production_method_icons/anchorage.dds"
-	
-	low_pop_method = yes # AI will activate this method for states with low population
-	
-	pollution_generation = 1
-	
-	unlocking_technologies = {
-		tech_sea_infrastructure_1
-	}
-	
-	building_modifiers = {
-		workforce_scaled = {	
-			building_input_steamers_add = 5
-			building_input_electricity_add = 5
-			building_input_refined_oil_add = 5
-			
-			building_output_transportation_add = 25
-			building_output_tradable_transportation_add = 25
-		}
-		workforce_scaled = {
-			building_employment_laborers_add = 5000
-		}
-	}
-	
-	country_modifiers = {
-		workforce_scaled = {
-			country_convoys_capacity_add = 100
-		}
-	}
-	
-	state_modifiers = {
-		workforce_scaled = {
-			state_infrastructure_add = 100
-		}
-	}
-	
-	ai_value = 500 # Equivalent to 50 convoys
-}
-
-# p = 12.5, e = 5000, pe = 62500.0
-pm_small_port = {
-	texture = "gfx/interface/icons/production_method_icons/basic_port.dds"
-	
-	pollution_generation = 2
-	
-	unlocking_technologies = {
-		tech_sea_infrastructure_2
-	}
-	
-	building_modifiers = {
-		workforce_scaled = {	
-			building_input_steamers_add = 10
-			building_input_electricity_add = 10
-			building_input_refined_oil_add = 10
-			
-			building_output_tradable_transportation_add = 50
-		}
-		level_scaled = {
-			building_employment_laborers_add = 3500
-			building_employment_machinists_add = 1000
-			building_employment_clerks_add = 500
-		}
-	}
-
-	country_modifiers = {
-		workforce_scaled = {
-			country_convoys_capacity_add = 200
-		}
-	}
-	state_modifiers = {
-		workforce_scaled = {
-			state_infrastructure_add = 150
-		}
-	}
-}
-
-# p = 15.6, e = 8000, pe = 124800.0
-pm_medium_port = {
-	texture = "gfx/interface/icons/production_method_icons/industrial_port.dds"
-
-	pollution_generation = 3
-	
-	unlocking_technologies = {
-		tech_sea_infrastructure_3
-	}
-	
-	building_modifiers = {
-		workforce_scaled = {
-			building_input_steamers_add = 20
-			building_input_electricity_add = 20
-			building_input_refined_oil_add = 20
-			
-			building_output_tradable_transportation_add = 100
-		}
-		level_scaled = {
-			building_employment_laborers_add = 4500
-			building_employment_machinists_add = 2000
-			building_employment_clerks_add = 1500
-		}
-	}
-
-	country_modifiers = {
-		workforce_scaled = {
-			country_convoys_capacity_add = 400
-		}
-	}
-	state_modifiers = {
-		workforce_scaled = {
-			state_infrastructure_add = 200
-		}
-	}	
-}
-
-# p = 22.7, e = 11000, pe = 249700.0
-pm_large_port = {
-	texture = "gfx/interface/icons/production_method_icons/modern_port.dds"
-	
-	pollution_generation = 4
-	
-	unlocking_technologies = {
-		tech_sea_infrastructure_4
-	}
-	
-	building_modifiers = {
-		workforce_scaled = {
-			building_input_steamers_add = 40
-			building_input_electricity_add = 40
-			building_input_refined_oil_add = 40
-			
-			building_output_tradable_transportation_add = 200
-		}
-		level_scaled = {
-			building_employment_laborers_add = 5500
-			building_employment_machinists_add = 3000
-			building_employment_clerks_add = 2500
-		}
-	}
-
-	country_modifiers = {
-		workforce_scaled = {
-			country_convoys_capacity_add = 800
-		}
-	}
-	state_modifiers = {
-		workforce_scaled = {
-			state_infrastructure_add = 250
-		}
-	}
-	
-}
-
-# p = 35.7, e = 14000, pe = 499800.00000000006
-pm_mega_port = {
-	texture = "gfx/interface/icons/production_method_icons/modern_port.dds"
-	
-	pollution_generation = 5
-	
-	unlocking_technologies = {
-		tech_sea_infrastructure_5
-	}
-	
-	building_modifiers = {
-		workforce_scaled = {
-			building_input_steamers_add = 80
-			building_input_electricity_add = 80
-			building_input_refined_oil_add = 80
-			
-			building_output_tradable_transportation_add = 400
-		}
-		level_scaled = {
-			building_employment_laborers_add = 6500
-			building_employment_machinists_add = 4000
-			building_employment_clerks_add = 3500
-		}
-	}
-
-	country_modifiers = {
-		workforce_scaled = {
-			country_convoys_capacity_add = 1600
-		}
-	}
-	state_modifiers = {
-		workforce_scaled = {
-			state_infrastructure_add = 300
-		}
-	}
-	
-}
-
 ### Air ###
 
 # Airport Design #
 # p = 12.3, e = 5000, pe = 61500.0
 pm_simple_airport = {
-	texture = "gfx/interface/icons/production_method_icons/simple_airport.dds"
+	texture = "gfx/interface/icons/production_method_icons/aeroplanes.dds"
 
 	building_modifiers = {
 		workforce_scaled = {
@@ -752,13 +430,14 @@ pm_simple_airport = {
 			building_input_real_estate_add = 5
 			building_input_electricity_add = 1
 			
-			building_output_transportation_add = 20
-			building_output_tradable_transportation_add = 20
+			building_output_transportation_add = 200
+			
+			#building_output_forex_add = 1
 		}
 		level_scaled = {
-			building_employment_laborers_add = 2000
-			building_employment_machinists_add = 2500
-			building_employment_engineers_add = 500
+			building_employment_machinists_add = 10000
+			building_input_professional_services_add = 5
+			building_input_corporate_services_add = 5
 		}
 	}
 
@@ -767,31 +446,26 @@ pm_simple_airport = {
 			state_infrastructure_add = 50
 		}
 	}
-	country_modifiers = {
-		workforce_scaled = {
-			country_convoys_capacity_add = 50
-		}
-	}
 	
 }
 
 # Aeroplane Design #
 
 pm_propeller_aircraft = {
-	texture = "gfx/interface/icons/production_method_icons/propeller_aircraft.dds"
+	texture = "gfx/interface/icons/production_method_icons/aerial_recon.dds"
 	
 	pollution_generation = 1
 
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_refined_oil_add = 5
+			building_input_oil_add = 5
 		}
 	}
 
 }
 
 pm_small_jet_aircraft = {
-	texture = "gfx/interface/icons/production_method_icons/small_jet_aircraft.dds"
+	texture = "gfx/interface/icons/production_method_icons/aerial_recon.dds"
 	
 	pollution_generation = 2
 	
@@ -804,8 +478,7 @@ pm_small_jet_aircraft = {
 			building_input_aeroplanes_add = 5
 			building_input_oil_add = 10
 			
-			building_output_transportation_add = 20
-			building_output_tradable_transportation_add = 20
+			building_output_transportation_add = 100
 		}
 	}
 	
@@ -814,16 +487,11 @@ pm_small_jet_aircraft = {
 			state_infrastructure_add = 50
 		}
 	}
-	country_modifiers = {
-		workforce_scaled = {
-			country_convoys_capacity_add = 50
-		}
-	}
 
 }
 
 pm_medium_jet_aircraft = {
-	texture = "gfx/interface/icons/production_method_icons/medium_jet_aircraft.dds"
+	texture = "gfx/interface/icons/production_method_icons/aerial_recon.dds"
 
 	pollution_generation = 4
 	
@@ -836,8 +504,7 @@ pm_medium_jet_aircraft = {
 			building_input_aeroplanes_add = 10
 			building_input_oil_add = 20
 			
-			building_output_transportation_add = 40
-			building_output_tradable_transportation_add = 40
+			building_output_transportation_add = 200
 		}
 	}
 	
@@ -846,16 +513,11 @@ pm_medium_jet_aircraft = {
 			state_infrastructure_add = 100
 		}
 	}
-	country_modifiers = {
-		workforce_scaled = {
-			country_convoys_capacity_add = 100
-		}
-	}
 
 }
 
 pm_large_jet_aircraft = {
-	texture = "gfx/interface/icons/production_method_icons/large_jet_aircraft.dds"
+	texture = "gfx/interface/icons/production_method_icons/aerial_recon.dds"
 
 	pollution_generation = 8
 	
@@ -868,8 +530,7 @@ pm_large_jet_aircraft = {
 			building_input_aeroplanes_add = 20
 			building_input_oil_add = 40
 			
-			building_output_transportation_add = 80
-			building_output_tradable_transportation_add = 80
+			building_output_transportation_add = 400
 		}
 	}
 	
@@ -878,210 +539,7 @@ pm_large_jet_aircraft = {
 			state_infrastructure_add = 200
 		}
 	}
-	country_modifiers = {
-		workforce_scaled = {
-			country_convoys_capacity_add = 200
-		}
-	}
 
-}
-
-
-
-pm_airstrip = {
-	texture = "gfx/interface/icons/production_method_icons/no_airport.dds"
-	
-	pollution_generation = 1
-	
-	unlocking_technologies = {
-		tech_air_infrastructure_1
-	}
-	
-	building_modifiers = {
-		workforce_scaled = {	
-			building_input_aeroplanes_add = 5
-			building_input_electricity_add = 1
-			building_input_refined_oil_add = 5
-			
-			building_output_transportation_add = 50
-		}
-		workforce_scaled = {
-			building_employment_laborers_add = 1000
-			building_employment_machinists_add = 500
-			building_employment_clerks_add = 250
-			building_employment_engineers_add = 250
-		}
-	}
-	
-	country_modifiers = {
-		workforce_scaled = {
-			country_convoys_capacity_add = 50
-		}
-	}
-	
-	state_modifiers = {
-		workforce_scaled = {
-			state_infrastructure_add = 100
-		}
-	}
-}
-
-# p = 95.7, e = 4000, pe = 382800.0
-pm_small_airport = {
-	texture = "gfx/interface/icons/production_method_icons/small_airport.dds"
-	
-	pollution_generation = 2
-	
-	unlocking_technologies = {
-		tech_air_infrastructure_2
-	}
-	
-	building_modifiers = {
-		workforce_scaled = {	
-			building_input_aeroplanes_add = 10
-			building_input_electricity_add = 2
-			building_input_refined_oil_add = 10
-			
-			building_output_transportation_add = 100
-			building_output_tradable_transportation_add = 100
-		}
-		level_scaled = {
-			building_employment_laborers_add = 1500
-			building_employment_machinists_add = 1000
-			building_employment_clerks_add = 750
-			building_employment_engineers_add = 750
-		}
-	}
-
-	country_modifiers = {
-		workforce_scaled = {
-			country_convoys_capacity_add = 100
-		}
-	}
-	state_modifiers = {
-		workforce_scaled = {
-			state_infrastructure_add = 150
-		}
-	}
-}
-
-# p = 92.9, e = 6000, pe = 557400.0
-pm_medium_airport = {
-	texture = "gfx/interface/icons/production_method_icons/medium_airport.dds"
-
-	pollution_generation = 3
-	
-	unlocking_technologies = {
-		tech_air_infrastructure_3
-	}
-	
-	building_modifiers = {
-		workforce_scaled = {
-			building_input_aeroplanes_add = 20
-			building_input_electricity_add = 4
-			building_input_refined_oil_add = 20
-			
-			building_output_transportation_add = 150
-			building_output_tradable_transportation_add = 150
-		}
-		level_scaled = {
-			building_employment_laborers_add = 2000
-			building_employment_machinists_add = 1500
-			building_employment_clerks_add = 1250
-			building_employment_engineers_add = 1250
-		}
-	}
-
-	country_modifiers = {
-		workforce_scaled = {
-			country_convoys_capacity_add = 200
-		}
-	}
-	state_modifiers = {
-		workforce_scaled = {
-			state_infrastructure_add = 200
-		}
-	}	
-}
-
-# p = 87.4, e = 8000, pe = 699200.0
-pm_large_airport = {
-	texture = "gfx/interface/icons/production_method_icons/large_airport.dds"
-	
-	pollution_generation = 4
-	
-	unlocking_technologies = {
-		tech_air_infrastructure_4
-	}
-	
-	building_modifiers = {
-		workforce_scaled = {
-			building_input_aeroplanes_add = 40
-			building_input_electricity_add = 8
-			building_input_refined_oil_add = 40
-			
-			building_output_transportation_add = 200
-			building_output_tradable_transportation_add = 200
-		}
-		level_scaled = {
-			building_employment_laborers_add = 2500
-			building_employment_machinists_add = 2000
-			building_employment_clerks_add = 1750
-			building_employment_engineers_add = 1750
-		}
-	}
-
-	country_modifiers = {
-		workforce_scaled = {
-			country_convoys_capacity_add = 400
-		}
-	}
-	state_modifiers = {
-		workforce_scaled = {
-			state_infrastructure_add = 250
-		}
-	}
-	
-}
-
-# p = 277.3, e = 10500, pe = 2911650.0
-pm_mega_airport = {
-	texture = "gfx/interface/icons/production_method_icons/mega_airport.dds"
-	
-	pollution_generation = 5
-	
-	unlocking_technologies = {
-		tech_air_infrastructure_5
-	}
-	
-	building_modifiers = {
-		workforce_scaled = {
-			building_input_aeroplanes_add = 80
-			building_input_electricity_add = 80
-			building_input_refined_oil_add = 160
-			
-			building_output_transportation_add = 800
-			building_output_tradable_transportation_add = 800
-		}
-		level_scaled = {
-			building_employment_laborers_add = 3000
-			building_employment_machinists_add = 2500
-			building_employment_clerks_add = 2500
-			building_employment_engineers_add = 2500
-		}
-	}
-
-	country_modifiers = {
-		workforce_scaled = {
-			country_convoys_capacity_add = 800
-		}
-	}
-	state_modifiers = {
-		workforce_scaled = {
-			state_infrastructure_add = 300
-		}
-	}
-	
 }
 
 ### Electricity ###
@@ -1097,14 +555,13 @@ pm_hydroelectric_plant = {
 	
 	building_modifiers = { 
 		workforce_scaled = {
-			building_input_engines_add = 10
-			building_output_electricity_add = 50
+			building_input_industrial_robots_add = 10
+			building_output_electricity_add = 500
 		}
-
+		
 		level_scaled = {
-			building_employment_laborers_add = 2500
-			building_employment_machinists_add = 1500
-			building_employment_engineers_add = 1000
+			building_employment_machinists_add = 10000
+			building_input_professional_services_add = 2
 		}
 	}
 }
@@ -1120,14 +577,13 @@ pm_geothermal_plant = {
 	
 	building_modifiers = { 
 		workforce_scaled = {
-			building_input_engines_add = 10
-			building_output_electricity_add = 50
+			building_input_industrial_robots_add = 10
+			building_output_electricity_add = 500
 		}
 
 		level_scaled = {
-			building_employment_laborers_add = 2500
-			building_employment_machinists_add = 1500
-			building_employment_engineers_add = 1000
+			building_employment_machinists_add = 10000
+			building_input_professional_services_add = 3
 		}
 	}
 }
@@ -1153,15 +609,14 @@ pm_coal-fired_plant = {
 	
 	building_modifiers = { 
 		workforce_scaled = {
-			building_input_engines_add = 15
-			building_input_coal_add = 30
-			building_output_electricity_add = 100
+			building_input_industrial_robots_add = 5
+			building_input_coal_add = 10
+			building_output_electricity_add = 400
 		}
 
 		level_scaled = {
-			building_employment_laborers_add = 2000
-			building_employment_machinists_add = 2000
-			building_employment_engineers_add = 1000
+			building_employment_machinists_add = 10000
+			building_input_professional_services_add = 1
 		}
 	}
 }
@@ -1186,15 +641,14 @@ pm_oil-fired_plant = {
 	
 	building_modifiers = { 
 		workforce_scaled = {
-			building_input_engines_add = 20
-			building_input_oil_add = 40
-			building_output_electricity_add = 150
+			building_input_industrial_robots_add = 5
+			building_input_oil_add = 10
+			building_output_electricity_add = 400
 		}
 
 		level_scaled = {
-			building_employment_laborers_add = 1000
-			building_employment_machinists_add = 2500
-			building_employment_engineers_add = 1500
+			building_employment_machinists_add = 10000
+			building_input_professional_services_add = 1
 		}
 	}
 }
@@ -1215,27 +669,26 @@ pm_gas-fired_plant = {
 	
 	building_modifiers = { 
 		workforce_scaled = {
-			building_input_engines_add = 20
-			building_input_natural_gas_add = 40
-			building_output_electricity_add = 150
+			building_input_industrial_robots_add = 5
+			building_input_oil_add = 20
+			building_output_electricity_add = 500
 		}
 
 		level_scaled = {
-			building_employment_laborers_add = 500
-			building_employment_machinists_add = 3000
-			building_employment_engineers_add = 1500
+			building_employment_machinists_add = 10000
+			building_input_professional_services_add = 2
 		}
 	}
 }
 
 pm_no_nuclear_plant = {
-	texture = "gfx/interface/icons/production_method_icons/nuclear_plant.dds"
+	texture = "gfx/interface/icons/production_method_icons/power_plant.dds"
 	
 }
 
 # p = 52.0, e = 5000, pe = 260000.0
 pm_nuclear_plant = {
-	texture = "gfx/interface/icons/production_method_icons/nuclear_plant.dds"
+	texture = "gfx/interface/icons/production_method_icons/power_plant.dds"
 	
 	disallowing_laws = {
 		law_no_nuclear_energy
@@ -1247,14 +700,14 @@ pm_nuclear_plant = {
 	
 	building_modifiers = { 
 		workforce_scaled = {
-			building_input_engines_add = 30
-			building_input_uranium_add = 40
-			building_output_electricity_add = 300
+			building_input_industrial_robots_add = 10
+			building_input_lead_add = 10
+			building_output_electricity_add = 1000
 		}
 
 		level_scaled = {
-			building_employment_machinists_add = 2500
-			building_employment_engineers_add = 2500
+			building_employment_machinists_add = 10000
+			building_input_professional_services_add = 5
 		}
 	}
 }
@@ -1263,20 +716,18 @@ pm_nuclear_plant = {
 
 # p = 7.9, e = 5000, pe = 39500.0
 pm_postal_service = {
-	texture = "gfx/interface/icons/production_method_icons/postal_service.dds"
+	texture = "gfx/interface/icons/production_method_icons/bicycle_messengers.dds"
 
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_paper_add = 30
 			building_input_automobiles_add = 5
 			building_input_real_estate_add = 1
 			
-			building_output_communication_services_add = 50
+			building_output_communication_services_add = 100
 		}
 
 		level_scaled = {
-			building_employment_laborers_add = 4000
-			building_employment_machinists_add = 1000
+			building_employment_machinists_add = 10000
 		}
 	}
 	
@@ -1284,7 +735,7 @@ pm_postal_service = {
 
 # p = 18.9, e = 5000, pe = 94500.0
 pm_telegraph_service = {
-	texture = "gfx/interface/icons/production_method_icons/telegraph_service.dds"
+	texture = "gfx/interface/icons/production_method_icons/radios.dds"
 
 	pollution_generation = 1
 
@@ -1294,17 +745,16 @@ pm_telegraph_service = {
 
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_paper_add = 20
-			building_input_electricity_add = 5
+			building_input_telecommunications_add = 2
+			building_input_electricity_add = 2
 			building_input_real_estate_add = 2
 			
-			building_output_communication_services_add = 100
+			building_output_communication_services_add = 200
 		}
 
 		level_scaled = {
-			building_employment_laborers_add = 3000
-			building_employment_machinists_add = 1500
-			building_employment_engineers_add = 500
+			building_employment_machinists_add = 10000
+			building_input_professional_services_add = 1
 		}
 	}
 	
@@ -1312,7 +762,7 @@ pm_telegraph_service = {
 
 # p = 23.7, e = 5000, pe = 118500.0
 pm_telephone_service = {
-	texture = "gfx/interface/icons/production_method_icons/telegraph_service.dds"
+	texture = "gfx/interface/icons/production_method_icons/telephones.dds"
 
 	pollution_generation = 2
 
@@ -1322,18 +772,16 @@ pm_telephone_service = {
 
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_paper_add = 10
-			building_input_telecommunications_add = 10
-			building_input_electricity_add = 10
+			building_input_telecommunications_add = 4
+			building_input_electricity_add = 4
 			building_input_real_estate_add = 3
 			
-			building_output_communication_services_add = 150
+			building_output_communication_services_add = 300
 		}
 
 		level_scaled = {
-			building_employment_laborers_add = 2000
-			building_employment_machinists_add = 2000
-			building_employment_engineers_add = 1000
+			building_employment_machinists_add = 10000
+			building_input_professional_services_add = 2
 		}
 	}
 	
@@ -1341,7 +789,7 @@ pm_telephone_service = {
 
 # p = 28.1, e = 5000, pe = 140500.0
 pm_bw_television_service = {
-	texture = "gfx/interface/icons/production_method_icons/bw_television_service.dds"
+	texture = "gfx/interface/icons/production_method_icons/film_art.dds"
 
 	pollution_generation = 3
 
@@ -1351,18 +799,17 @@ pm_bw_television_service = {
 
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_telecommunications_add = 20
-			building_input_electricity_add = 15
-			building_input_satellites_add = 1
+			building_input_telecommunications_add = 6
+			building_input_electricity_add = 6
+			#building_input_space_rockets_add = 1
 			building_input_real_estate_add = 5
 			
-			building_output_communication_services_add = 200
+			building_output_communication_services_add = 400
 		}
 
 		level_scaled = {
-			building_employment_laborers_add = 1000
-			building_employment_machinists_add = 2500
-			building_employment_engineers_add = 1500
+			building_employment_machinists_add = 10000
+			building_input_professional_services_add = 3
 		}
 	}
 	
@@ -1370,7 +817,7 @@ pm_bw_television_service = {
 
 # p = 31.2, e = 5000, pe = 156000.0
 pm_colour_television_service = {
-	texture = "gfx/interface/icons/production_method_icons/colour_television_service.dds"
+	texture = "gfx/interface/icons/production_method_icons/realist_art.dds"
 
 	pollution_generation = 4
 
@@ -1380,17 +827,16 @@ pm_colour_television_service = {
 
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_telecommunications_add = 30
-			building_input_electricity_add = 20
-			building_input_satellites_add = 3
+			building_input_telecommunications_add = 8
+			building_input_electricity_add = 8
 			building_input_real_estate_add = 5
 			
-			building_output_communication_services_add = 250
+			building_output_communication_services_add = 500
 		}
 
 		level_scaled = {
-			building_employment_machinists_add = 3000
-			building_employment_engineers_add = 2000
+			building_employment_machinists_add = 10000
+			building_input_professional_services_add = 4
 		}
 	}
 	
@@ -1398,7 +844,7 @@ pm_colour_television_service = {
 
 # p = 40.6, e = 5000, pe = 203000.0
 pm_gps_service = {
-	texture = "gfx/interface/icons/production_method_icons/gps_service.dds"
+	texture = "gfx/interface/icons/production_method_icons/radio_stations.dds"
 
 	pollution_generation = 5
 
@@ -1408,17 +854,17 @@ pm_gps_service = {
 
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_telecommunications_add = 40
-			building_input_electricity_add = 30
-			building_input_satellites_add = 5
+			building_input_telecommunications_add = 8
+			building_input_computers_add = 2
+			building_input_electricity_add = 10
 			building_input_real_estate_add = 5
 			
-			building_output_communication_services_add = 300
+			building_output_communication_services_add = 600
 		}
 
 		level_scaled = {
-			building_employment_machinists_add = 2500
-			building_employment_engineers_add = 2500
+			building_employment_machinists_add = 10000
+			building_input_professional_services_add = 5
 		}
 	}
 	
@@ -1426,14 +872,14 @@ pm_gps_service = {
 
 ### Internet ###
 
-pm_no_internet = {
-	texture = "gfx/interface/icons/production_method_icons/no_internet.dds"
+pm_no_internet_services = {
+	texture = "gfx/interface/icons/production_method_icons/no_automation.dds"
 	
 }
 
 # p = 9.2, e = 5000, pe = 46000.0
-pm_very_slow_internet = {
-	texture = "gfx/interface/icons/production_method_icons/internet.dds"
+pm_very_slow_internet_services = {
+	texture = "gfx/interface/icons/production_method_icons/telephone_switchboards.dds"
 
 	pollution_generation = 1
 	
@@ -1443,27 +889,26 @@ pm_very_slow_internet = {
 
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_computers_add = 20
-			building_input_telecommunications_add = 10
-			building_input_electricity_add = 10
+			building_input_computers_add = 1
+			building_input_electricity_add = 1
 			building_input_real_estate_add = 2
 			
-			building_input_satellites_add = 2
+			#building_input_space_rockets_add = 2
 			
-			building_output_internet_add = 120
+			building_output_communication_services_add = 100
 		}
 
 		level_scaled = {
-			building_employment_machinists_add = 4000
-			building_employment_engineers_add = 1000
+			building_employment_machinists_add = 1000
+			building_input_professional_services_add = 1
 		}
 	}
 	
 }
 
 # p = 20.4, e = 5000, pe = 102000.0
-pm_slow_internet = {
-	texture = "gfx/interface/icons/production_method_icons/internet.dds"
+pm_slow_internet_services = {
+	texture = "gfx/interface/icons/production_method_icons/telephone_switchboards.dds"
 
 	pollution_generation = 2
 
@@ -1473,27 +918,26 @@ pm_slow_internet = {
 
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_computers_add = 40
-			building_input_telecommunications_add = 20
-			building_input_electricity_add = 20
+			building_input_computers_add = 2
+			building_input_electricity_add = 2
 			building_input_real_estate_add = 4
 			
-			building_input_satellites_add = 4
+			#building_input_space_rockets_add = 4
 			
-			building_output_internet_add = 250
+			building_output_communication_services_add = 200
 		}
 
 		level_scaled = {
-			building_employment_machinists_add = 4000
-			building_employment_engineers_add = 1000
+			building_employment_machinists_add = 2000
+			building_input_professional_services_add = 2
 		}
 	}
 	
 }
 
 # p = 35.6, e = 5000, pe = 178000.0
-pm_decent_internet = {
-	texture = "gfx/interface/icons/production_method_icons/internet.dds"
+pm_decent_internet_services = {
+	texture = "gfx/interface/icons/production_method_icons/telephone_switchboards.dds"
 
 	pollution_generation = 3
 
@@ -1503,28 +947,27 @@ pm_decent_internet = {
 
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_computers_add = 60
-			building_input_telecommunications_add = 30
-			building_input_electricity_add = 30
+			building_input_computers_add = 3
+			building_input_electricity_add = 3
 			building_input_real_estate_add = 6
 			
-			building_input_satellites_add = 6
+			#building_input_space_rockets_add = 6
 			building_input_glass_add = 1
 			
-			building_output_internet_add = 400
+			building_output_communication_services_add = 300
 		}
 
 		level_scaled = {
-			building_employment_machinists_add = 4000
-			building_employment_engineers_add = 1000
+			building_employment_machinists_add = 3000
+			building_input_professional_services_add = 3
 		}
 	}
 	
 }
 
 # p = 40.4, e = 5000, pe = 202000.0
-pm_fast_internet = {
-	texture = "gfx/interface/icons/production_method_icons/internet.dds"
+pm_fast_internet_services = {
+	texture = "gfx/interface/icons/production_method_icons/telephone_switchboards.dds"
 
 	pollution_generation = 4
 
@@ -1534,28 +977,27 @@ pm_fast_internet = {
 
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_computers_add = 80
-			building_input_telecommunications_add = 40
-			building_input_electricity_add = 40
+			building_input_computers_add = 4
+			building_input_electricity_add = 4
 			building_input_real_estate_add = 8
 			
-			building_input_satellites_add = 8
+			#building_input_space_rockets_add = 8
 			building_input_glass_add = 2
 			
-			building_output_internet_add = 500
+			building_output_communication_services_add = 400
 		}
 
 		level_scaled = {
 			building_employment_machinists_add = 4000
-			building_employment_engineers_add = 1000
+			building_input_professional_services_add = 4
 		}
 	}
 	
 }
 
 # p = 36.6, e = 5000, pe = 183000.0
-pm_very_fast_internet = {
-	texture = "gfx/interface/icons/production_method_icons/internet.dds"
+pm_very_fast_internet_services = {
+	texture = "gfx/interface/icons/production_method_icons/telephone_switchboards.dds"
 
 	pollution_generation = 5
 
@@ -1565,20 +1007,19 @@ pm_very_fast_internet = {
 
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_computers_add = 100
-			building_input_telecommunications_add = 50
-			building_input_electricity_add = 50
+			building_input_computers_add = 5
+			building_input_electricity_add = 5
 			building_input_real_estate_add = 10
 			
-			building_input_satellites_add = 10
+			#building_input_space_rockets_add = 10
 			building_input_glass_add = 4
 			
-			building_output_internet_add = 560
+			building_output_communication_services_add = 500
 		}
 
 		level_scaled = {
-			building_employment_machinists_add = 4000
-			building_employment_engineers_add = 1000
+			building_employment_machinists_add = 5000
+			building_input_professional_services_add = 5
 		}
 	}
 	
@@ -1594,22 +1035,20 @@ pm_construction_0 = {
 
 	country_modifiers = {
 		workforce_scaled = {
-			country_construction_add = 2
+			country_construction_add = 0.5
 		}
 	}
 
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_fabric_add = 5
+			building_input_meat_add = 5
 			building_input_wood_add = 20
 			
 			building_output_construction_services_add = 50
 		}
 
 		level_scaled = {
-			building_employment_laborers_add = 4000
-			building_employment_machinists_add = 900
-			building_employment_engineers_add = 100
+			building_employment_laborers_add = 10000
 		}
 	}
 	
@@ -1630,26 +1069,22 @@ pm_construction_1 = {
 
 	country_modifiers = {
 		workforce_scaled = {
-			country_construction_add = 4
+			country_construction_add = 1
 		}
 	}
 
 	building_modifiers = {
 		workforce_scaled = {
 			building_input_steel_add = 5
-			building_input_glass_add = 5
-			building_input_silicon_add = 5
-			building_input_tools_add = 5
-			building_input_engines_add = 5
+			building_input_industrial_robots_add = 5
 			building_input_transportation_add = 5
 			
 			building_output_construction_services_add = 100
 		}
 
 		level_scaled = {
-			building_employment_laborers_add = 5000
-			building_employment_machinists_add = 1000
-			building_employment_engineers_add = 250
+			building_employment_laborers_add = 10000
+			building_input_professional_services_add = 1
 		}
 	}
 	
@@ -1670,26 +1105,22 @@ pm_construction_2 = {
 
 	country_modifiers = {
 		workforce_scaled = {
-			country_construction_add = 6
+			country_construction_add = 2
 		}
 
 	}
 	building_modifiers = {
 		workforce_scaled = {
 			building_input_steel_add = 10
-			building_input_glass_add = 10
-			building_input_silicon_add = 10
-			building_input_tools_add = 10
-			building_input_engines_add = 10
+			building_input_industrial_robots_add = 10
 			building_input_transportation_add = 10
 			
-			building_output_construction_services_add = 125
+			building_output_construction_services_add = 200
 		}
 
 		level_scaled = {
-			building_employment_laborers_add = 5000
-			building_employment_machinists_add = 2000
-			building_employment_engineers_add = 500
+			building_employment_laborers_add = 10000
+			building_input_professional_services_add = 2
 		}
 	}
 	
@@ -1710,26 +1141,22 @@ pm_construction_3 = {
 
 	country_modifiers = {
 		workforce_scaled = {
-			country_construction_add = 8
+			country_construction_add = 3
 		}
 	}
 
 	building_modifiers = {
 		workforce_scaled = {
 			building_input_steel_add = 20
-			building_input_glass_add = 20
-			building_input_silicon_add = 20
-			building_input_tools_add = 20
-			building_input_engines_add = 20
+			building_input_industrial_robots_add = 20
 			building_input_transportation_add = 20
 			
-			building_output_construction_services_add = 150
+			building_output_construction_services_add = 300
 		}
 
 		level_scaled = {
-			building_employment_laborers_add = 5000
-			building_employment_machinists_add = 3000
-			building_employment_engineers_add = 750
+			building_employment_laborers_add = 10000
+			building_input_professional_services_add = 3
 		}
 	}
 	
@@ -1750,26 +1177,22 @@ pm_construction_4 = {
 	
 	country_modifiers = {
 		workforce_scaled = {
-			country_construction_add = 10
+			country_construction_add = 4
 		}
 	}
 
 	building_modifiers = {
 		workforce_scaled = {
 			building_input_steel_add = 30
-			building_input_glass_add = 30
-			building_input_silicon_add = 30
-			building_input_tools_add = 30
-			building_input_engines_add = 30
+			building_input_industrial_robots_add = 30
 			building_input_transportation_add = 30
 			
-			building_output_construction_services_add = 175
+			building_output_construction_services_add = 400
 		} 
 
 		level_scaled = {
-			building_employment_laborers_add = 5000
-			building_employment_machinists_add = 4000
-			building_employment_engineers_add = 1000
+			building_employment_laborers_add = 10000
+			building_input_professional_services_add = 4
 		}
 	}
 	
@@ -1790,26 +1213,22 @@ pm_construction_5 = {
 	
 	country_modifiers = {
 		workforce_scaled = {
-			country_construction_add = 12
+			country_construction_add = 5
 		}
 	}
 
 	building_modifiers = {
 		workforce_scaled = {
 			building_input_steel_add = 40
-			building_input_glass_add = 40
-			building_input_silicon_add = 40
-			building_input_tools_add = 40
-			building_input_engines_add = 40
+			building_input_industrial_robots_add = 40
 			building_input_transportation_add = 40
 			
-			building_output_construction_services_add = 200
+			building_output_construction_services_add = 500
 		} 
 
 		level_scaled = {
-			building_employment_laborers_add = 5000
-			building_employment_machinists_add = 5000
-			building_employment_engineers_add = 1250
+			building_employment_laborers_add = 10000
+			building_input_professional_services_add = 5
 		}
 	}
 	
@@ -1834,7 +1253,7 @@ pm_skyscraper_bureaucratic_nexus = {
 	
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_paper_add = 40
+			building_input_furniture_add = 40
 			
 			building_input_construction_services_add = 20
 			building_input_transportation_add = 20
@@ -1844,9 +1263,7 @@ pm_skyscraper_bureaucratic_nexus = {
 		}
 
 		level_scaled = {
-			building_employment_laborers_add = 1000
-			building_employment_clerks_add = 2500
-			building_employment_bureaucrats_add = 1500
+			building_employment_bureaucrats_add = 2500
 		}
 	}
 	
@@ -1872,8 +1289,7 @@ pm_skyscraper_trade_nexus = {
 		}
 
 		level_scaled = {
-			building_employment_laborers_add = 2000
-			building_employment_clerks_add = 500
+			building_employment_clerks_add = 2500
 		}
 	}
 	

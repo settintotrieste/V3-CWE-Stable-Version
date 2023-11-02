@@ -1,0 +1,164 @@
+### This is for country tags that do have any split tags (eg. KOR has NKO and SKO and so an entry for KOR should be placed here; GBR has SCO, WLS, ENG and NIR and so an entry for GBR should be placed here)
+
+### Europe ###
+
+GBR = {
+	use_culture_states = yes
+
+	required_states_fraction = 0.75	
+	
+	ai_will_do = { always = yes }
+}
+
+AUS = {
+	states = { 
+		STATE_AUSTRIA
+		STATE_STYRIA
+		STATE_TYROL
+	}
+
+	required_states_fraction = 1
+	
+	ai_will_do = { always = yes }
+}
+
+IRE = {
+	use_culture_states = yes
+
+	required_states_fraction = 1
+	
+	ai_will_do = { always = yes }
+}
+
+CZH = {
+	use_culture_states = yes
+
+	required_states_fraction = 0.8
+	
+	ai_will_do = { always = yes }
+}
+
+YUG = {
+	use_culture_states = yes
+
+	required_states_fraction = 0.75
+	
+	ai_will_do = { always = yes }
+}
+
+SOV = {
+	use_culture_states = yes
+
+	required_states_fraction = 0.9
+	
+	ai_will_do = { always = yes }
+}
+
+### Asia ###
+
+CHI = {
+
+	states = { 
+		STATE_BEIJING
+		STATE_FORMOSA
+	}
+
+	required_states_fraction = 1
+	
+	ai_will_do = { always = yes }
+}
+
+KOR = {
+	use_culture_states = yes
+
+	required_states_fraction = 1
+	
+	ai_will_do = { always = yes }
+}
+
+DAI = {
+	use_culture_states = yes
+
+	required_states_fraction = 1
+	
+	ai_will_do = { always = yes }
+}
+
+MSY = {
+	use_culture_states = yes
+
+	required_states_fraction = 1
+	
+	ai_will_do = { always = yes }
+}
+
+KLM = {
+	states = { 
+		STATE_NORTH_BORNEO
+		STATE_WEST_BORNEO
+		STATE_EAST_BORNEO
+	}
+
+	required_num_states = 1
+	
+	ai_will_do = { always = yes }
+}
+
+ICU = {
+	use_culture_states = yes
+
+	required_states_fraction = 1
+	
+	ai_will_do = { always = yes }
+}
+
+# United India
+BHT = {
+	use_culture_states = yes
+
+	required_states_fraction = 1
+	
+	ai_will_do = { always = yes }
+
+}
+
+### Middle East ###
+
+YEM = {
+	states = {
+		STATE_YEMEN
+	}
+
+	required_states_fraction = 0.75	
+	
+	ai_will_do = { always = yes }
+}
+
+FAE = {
+	states = {
+		STATE_ABU_DHABI
+	}
+
+	required_states_fraction = 1
+	
+	ai_will_do = { always = yes }
+}
+
+### Africa ###
+
+# Libya
+LBY = {
+	states = { STATE_TRIPOLI STATE_LIBYA STATE_LIBYAN_DESERT }
+	
+	required_num_states = 3
+
+	ai_will_do = { always = yes }
+}
+
+CAF = {
+	use_culture_states = yes
+
+	required_states_fraction = 1
+	
+	ai_will_do = { always = yes }
+}

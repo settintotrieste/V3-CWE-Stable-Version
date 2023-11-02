@@ -1,0 +1,400 @@
+upper_house_name = {
+	type = country
+	first_valid = yes
+	
+	#House of Councillors
+	text = {
+		trigger = {
+		
+			OR = { 
+				c:JAP ?= this
+				c:MOR ?= this
+			}
+		
+			is_a_monarchy = yes
+			
+		}
+		localization_key = house_of_councillors_upper_house
+	}
+	
+	#House of Lords
+	text = {
+		trigger = {
+		
+			NOT = { c:CAN ?= this }
+			
+			is_a_monarchy = yes
+			
+		}
+		localization_key = house_of_lords_upper_house
+	}
+	
+	#Soviet of Nationalities
+	text = {
+		trigger = {
+		
+			OR = { 
+				c:RUS ?= this
+				c:SOV ?= this
+			}
+		
+			is_a_communist_government = yes
+		}
+		localization_key = Soviet_of_Nationalities_upper_house
+	}
+	
+	#Federal Assembly
+	text = {
+		trigger = {
+		
+			OR = { 
+				c:YUG ?= this
+				c:SWI ?= this
+				c:RUS ?= this
+				c:UAE ?= this
+				NOT = { has_an_elected_parliament = yes }
+			}
+			
+			has_law = law_type:law_federal_state
+			
+		}
+		localization_key = Federal_Assembly_upper_house
+	}
+	
+	#National People's Assembly
+	text = {
+		trigger = {
+		
+			is_a_communist_government = yes
+		}
+		localization_key = Peoples_Assembly_upper_house
+	}
+	
+	#US Senate
+	text = {
+		trigger = {
+			c:USA ?= this
+		}
+		localization_key = us_senate_upper_house
+	}
+	
+	#Control Yuan
+	text = {
+		trigger = {
+			country_has_primary_culture = cu:chinese
+			capital = { state_region = { is_homeland = cu:chinese } }
+		}
+		localization_key = control_yuan_upper_house
+	}
+	
+	#Senate
+	text = {
+		trigger = {
+			
+		}
+		localization_key = senate_upper_house
+	}
+	
+}
+
+lower_house_name = {
+	type = country
+	first_valid = yes
+	
+	#German
+	text = {
+		trigger = {
+		
+			OR = { 
+				c:GER ?= this
+				c:WGR ?= this
+				c:EGR ?= this
+				c:SGR ?= this
+			}
+			
+			has_law = law_type:law_federal_state
+			
+		}
+		localization_key = Bundestag_lower_house
+	}
+	text = {
+		trigger = {
+		
+			OR = { 
+				c:GER ?= this
+				c:WGR ?= this
+				c:EGR ?= this
+				c:SGR ?= this
+			}
+			
+			OR = {
+				is_a_monarchy = yes
+				is_a_nationalist_government = yes
+			}
+			
+		}
+		localization_key = Reichstag_lower_house
+	}
+	
+	#Chamber of Deputies
+	text = {
+		trigger = {
+		
+			c:ITA ?= this
+			
+		}
+		localization_key = Chamber_of_Deputies_lower_house
+	}
+	
+	#House of Commons
+	text = {
+		trigger = {
+		
+			c:GBR ?= this
+		
+			is_a_monarchy = yes
+			
+		}
+		localization_key = house_of_commons_lower_house
+	}
+	
+	#National Assembly
+	text = {
+		trigger = {
+		
+			c:FRA ?= this
+			
+		}
+		localization_key = national_assembly_lower_house
+	}
+	
+	#Knesset
+	text = {
+		trigger = {
+		
+			c:ISR ?= this
+			
+		}
+		localization_key = knesset_lower_house
+	}
+	
+	#Duma
+	text = {
+		trigger = {
+		
+			OR = { 
+				c:RUS ?= this
+				c:SOV ?= this
+			}
+			
+			NOT = { is_a_communist_government = yes }
+			
+		}
+		localization_key = state_duma_lower_house
+	}
+	
+	#Soviet of the Union
+	text = {
+		trigger = {
+		
+			OR = { 
+				c:RUS ?= this
+				c:SOV ?= this
+			}
+		
+			is_a_communist_government = yes
+		}
+		localization_key = Soviet_of_the_Union_lower_house
+	}
+	
+	#National People's Congress
+	text = {
+		trigger = {
+		
+			OR = { 
+				c:CHI ?= this
+				c:PRC ?= this
+				c:ROC ?= this
+			}
+		
+			is_a_communist_government = yes
+		}
+		localization_key = National_Peoples_Congress_lower_house
+	}
+	
+	#Legislative Council
+	text = {
+		trigger = {
+			is_subject_type = subject_type_special_administrative_region
+			has_law = law_type:law_unicameralism
+		}
+		localization_key = Legislative_Council_lower_house
+	}
+	
+	#Legislative Yuan
+	text = {
+		trigger = {
+			country_has_primary_culture = cu:chinese
+			capital = { state_region = { is_homeland = cu:chinese } }
+		}
+		localization_key = legislative_yuan_lower_house
+	}
+	
+	#House of Representatives
+	text = {
+		trigger = {
+			NOT = { has_law = law_type:law_unicameralism }
+		}
+		localization_key = house_of_representatives_lower_house
+	}
+	
+	#Parliament
+	text = {
+		trigger = {
+			
+		}
+		localization_key = parliament_name
+	}
+	
+}
+
+senator_name = {
+	type = country
+	first_valid = yes
+	
+	#Lord
+	text = {
+		trigger = {
+		
+			c:GBR ?= this
+		
+			is_a_monarchy = yes
+			
+		}
+		localization_key = lord_senator_name
+	}
+	
+	#Councillor
+	text = {
+		trigger = {
+		
+			OR = { 
+				c:JAP ?= this
+				c:MOR ?= this
+			}
+		
+			is_a_monarchy = yes
+			
+		}
+		localization_key = councillor_senator_name
+	}
+	
+	#Senator
+	text = {
+		trigger = {
+			
+		}
+		localization_key = senator_senator_name
+	}
+
+}
+
+MPs_name = {
+	type = country
+	first_valid = yes
+	
+	#Representative
+	text = {
+		trigger = {
+		
+			OR = { 
+				c:JAP ?= this
+				NOT = { is_a_monarchy = yes }
+			}
+			
+		}
+		localization_key = representative_name
+	}
+	
+	#MP
+	text = {
+		trigger = {
+			
+		}
+		localization_key = MP_name
+	}
+
+}
+
+legislature_name = {
+	type = country
+	first_valid = yes
+	
+	#National Diet
+	text = {
+		trigger = {
+		
+			c:JAP ?= this
+		
+			is_a_monarchy = yes
+			
+		}
+		localization_key = national_diet_name
+	}
+	
+	#National Assembly
+	text = {
+		trigger = {
+		
+			OR = { 
+				c:NKO ?= this
+				c:SKO ?= this
+				c:KOR ?= this
+			}
+			
+		}
+		localization_key = national_assembly_name
+	}
+	
+	#Parliament
+	text = {
+		trigger = {
+		
+			OR = { 
+				c:FRA ?= this
+			
+				is_a_monarchy = yes
+				is_a_parliamentary_democracy = yes
+			}
+			
+		}
+		localization_key = parliament_name
+	}
+	
+	#Supreme Soviet
+	text = {
+		trigger = {
+		
+			is_a_communist_government = yes
+			
+		}
+		localization_key = supreme_soviet_name
+	}
+	
+	#US Congress
+	text = {
+		trigger = {
+			c:USA ?= this
+		}
+		localization_key = us_congress_name
+	}
+	
+	#Congress
+	text = {
+		trigger = {
+			
+		}
+		localization_key = congress_name
+	}
+
+}

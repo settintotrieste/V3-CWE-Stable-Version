@@ -3,7 +3,7 @@
 	#United States
 	c:USA = {
 		create_diplomatic_pact = {
-			country = c:ICL
+			country = c:NEJ
 			type = customs_union
 		}
 	}
@@ -15,29 +15,23 @@
 			type = customs_union
 		}
 	}
+	c:GBR = {
+		create_diplomatic_pact = {
+			country = c:ICL
+			type = customs_union
+		}
+	}
+	c:GBR = {
+		create_diplomatic_pact = {
+			country = c:JOR
+			type = customs_union
+		}
+	}
 	
 	#France
 	c:FRA = {
 		create_diplomatic_pact = {
 			country = c:SWI
-			type = customs_union
-		}
-	}
-	c:FRA = {
-		create_diplomatic_pact = {
-			country = c:NET
-			type = customs_union
-		}
-	}
-	c:FRA = {
-		create_diplomatic_pact = {
-			country = c:BEL
-			type = customs_union
-		}
-	}
-	c:FRA = {
-		create_diplomatic_pact = {
-			country = c:LUX
 			type = customs_union
 		}
 	}
@@ -50,6 +44,19 @@
 	}
 	
 	#Netherlands
+	c:NET = {
+		create_diplomatic_pact = {
+			country = c:BEL
+			type = customs_union
+		}
+	}
+	c:NET = {
+		create_diplomatic_pact = {
+			country = c:LUX
+			type = customs_union
+		}
+	}
+	
 	c:NET = {
 		create_diplomatic_pact = {
 			country = c:IDO

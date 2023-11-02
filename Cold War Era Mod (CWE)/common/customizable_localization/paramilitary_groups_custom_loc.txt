@@ -1,0 +1,140 @@
+paramilitary_group_custom_title = {
+	type = country
+	first_valid = yes
+	
+	#Flavoured names
+	text = {
+		trigger = {
+			OR = {
+				is_subject_type = subject_type_semi_autonomous_colony
+				is_subject_type = subject_type_mandate
+			}
+		}
+		localization_key = Colonial_Guard_custom_title
+	}
+	text = {
+		trigger = {
+			is_subject_type = subject_type_special_administrative_region
+		}
+		localization_key = Foreign_Legion_custom_title
+	}
+	text = {
+		trigger = {
+			c:JAP ?= this
+			OR = { 
+				is_a_regime_monarchy = yes
+				is_a_nationalist_government = yes
+			}
+		}
+		localization_key = Kempeitai_custom_title
+	}
+	text = {
+		trigger = {
+			c:ITA ?= this
+			is_a_monarchy = yes
+		}
+		localization_key = Praetorian_Guard_custom_title
+	}
+	text = {
+		trigger = {
+			OR = { 
+				c:GER ?= this
+				c:WGR ?= this
+				c:EGR ?= this
+				c:SGR ?= this
+			}
+			is_a_racist_dictatorship = yes
+		}
+		localization_key = Schutzstaffel_custom_title
+	}
+	text = {
+		trigger = {
+			OR = { 
+				c:GER ?= this
+				c:WGR ?= this
+				c:EGR ?= this
+				c:SGR ?= this
+			}
+			is_a_communist_government = yes
+		}
+		localization_key = Staatssicherheit_custom_title
+	}
+	text = {
+		trigger = {
+			c:USA ?= this
+			has_law = law_type:law_ethnostate
+			NOT = { has_law = law_type:law_state_atheism }
+		}
+		localization_key = Ku_Klux_Klan_custom_title
+	}
+	text = {
+		trigger = {
+			OR = { c:IRE ?= this c:SIR ?= this }
+			NOT = { is_a_monarchy = yes }
+			NOT = { has_law = law_type:law_state_atheism }
+		}
+		localization_key = Irish_Republican_Army_custom_title
+	}
+	text = {
+		trigger = {
+			c:NIR ?= this
+			NOT = { has_law = law_type:law_state_atheism }
+		}
+		localization_key = Ulster_Volunteer_Force_custom_title
+	}
+	text = {
+		trigger = {
+			c:ITA ?= this
+			has_modifier = fascist_ruling_party_ideology
+		}
+		localization_key = Blackshirts_custom_title
+	}
+	
+	#Imperial Guard
+	text = {
+		trigger = {
+			OR = { 
+				country_tier = hegemony
+				country_tier = empire
+			}
+			is_a_monarchy = yes
+		}
+		localization_key = imperial_guard_custom_title
+	}
+	
+	#Royal Guard
+	text = {
+		trigger = {
+			is_a_monarchy = yes
+		}
+		localization_key = royal_guard_custom_title
+	}
+	
+	#Red Guard
+	text = {
+		trigger = {
+			is_a_communist_government = yes
+		}
+		localization_key = red_guard_custom_title
+	}
+	
+	#Revolutionary Guard
+	text = {
+		trigger = {
+			OR = { 
+				is_a_theocratic_government = yes
+				is_a_nationalist_government = yes
+			}
+		}
+		localization_key = revolutionary_guard_custom_title
+	}
+	
+	#Republican Guard
+	text = {
+		trigger = {
+			
+		}
+		localization_key = republican_guard_custom_title
+	}
+	
+}

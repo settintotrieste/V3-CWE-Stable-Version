@@ -1,410 +1,160 @@
-#Basic Colony
-effect_starting_buildings_1 = {
+#Special for China & India
+effect_starting_buildings_PRC_HND_1 = {
+	
+	#Grain farms
+	create_building = {
+		building = "building_wheat_farm"
+		level = 100
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_agriculture" "pm_merchant_guilds_building_agriculture" }
+	}
+	create_building = {
+		building = "building_rice_farm"
+		level = 100
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_agriculture" "pm_merchant_guilds_building_agriculture" }
+	}
+	create_building = {
+		building = "building_rye_farm"
+		level = 100
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_agriculture" "pm_merchant_guilds_building_agriculture" }
+	}
+	create_building = {
+		building = "building_maize_farm"
+		level = 100
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_agriculture" "pm_merchant_guilds_building_agriculture" }
+	}
+	create_building = {
+		building = "building_millet_farm"
+		level = 100
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_agriculture" "pm_merchant_guilds_building_agriculture" }
+	}
+	
+	#Meat farms
+	create_building = {
+		building = "building_livestock_ranch"
+		level = 50
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_agriculture" "pm_merchant_guilds_building_agriculture" }
+	}
+	
+}
+
+#City State
+effect_starting_buildings_0 = {
 
 	#Grain Farms
-	#if = {
-	#	limit = {
-	#		#has_potential_resource = bg_wheat_farms
-	#		free_arable_land > 0
-	#	}
-		create_building = {
-			building = "building_wheat_farm"
-			level = 20
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_agriculture" "pm_organisation_2_building_agriculture"  "pm_merchant_guilds_building_agriculture" }
-		}
-	#}
-	#if = {
-	#	limit = {
-	#		#has_potential_resource = bg_wheat_farms
-	#		free_arable_land > 0
-	#	}
-		create_building = {
-			building = "building_rice_farm"
-			level = 20
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_agriculture" "pm_organisation_2_building_agriculture"  "pm_merchant_guilds_building_agriculture" }
-		}
-	#}
-	#if = {
-	#	limit = {
-	#		#has_potential_resource = bg_wheat_farms
-	#		free_arable_land > 0
-	#	}
-		create_building = {
-			building = "building_rye_farm"
-			level = 5
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_agriculture" "pm_organisation_2_building_agriculture"  "pm_merchant_guilds_building_agriculture" }
-		}
-	#}
-	#if = {
-	#	limit = {
-	#		#has_potential_resource = bg_wheat_farms
-	#		free_arable_land > 0
-	#	}
-		create_building = {
-			building = "building_maize_farm"
-			level = 5
-			reserves = 1
-			activate_production_methods = { "pm_organisation_2_building_agriculture"  "pm_merchant_guilds_building_agriculture" }
-		}
-	#}
-	#if = {
-	#	limit = {
-	#		#has_potential_resource = bg_wheat_farms
-	#		free_arable_land > 0
-	#	}
-		create_building = {
-			building = "building_millet_farm"
-			level = 5
-			reserves = 1
-			activate_production_methods = { "pm_organisation_2_building_agriculture"  "pm_merchant_guilds_building_agriculture" }
-		}
-	#}
 	
-	#Coastal Farms
-	#if = {
-	#	limit = {
-	#		is_coastal = yes
-	#	}
-		create_building = {
-			building = "building_fishing_wharf"
-			level = 5
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_agriculture" "pm_organisation_2_building_agriculture"  "pm_merchant_guilds_building_agriculture" }
-		}
-	#}
+	create_building = {
+		building = "building_wheat_farm"
+		level = 5
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_agriculture" "pm_merchant_guilds_building_agriculture" }
+	}
+	create_building = {
+		building = "building_rice_farm"
+		level = 5
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_agriculture" "pm_merchant_guilds_building_agriculture" }
+	}
+	create_building = {
+		building = "building_rye_farm"
+		level = 5
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_agriculture" "pm_merchant_guilds_building_agriculture" }
+	}
+	create_building = {
+		building = "building_maize_farm"
+		level = 5
+		reserves = 1
+		activate_production_methods = { "pm_merchant_guilds_building_agriculture" }
+	}
+	create_building = {
+		building = "building_millet_farm"
+		level = 5
+		reserves = 1
+		activate_production_methods = { "pm_merchant_guilds_building_agriculture" }
+	}
 	
-	#Fabric Farms
-	#if = {
-	#	limit = {
-	#		#has_potential_resource = bg_wheat_farms
-	#		free_arable_land > 0
-	#	}
-		create_building = {
-			building = "building_cotton_plantation"
-			level = 20
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_agriculture" "pm_organisation_2_building_agriculture"  "pm_merchant_guilds_building_agriculture" }
-		}
-	#}
-	#if = {
-	#	limit = {
-	#		#has_potential_resource = bg_wheat_farms
-	#		free_arable_land > 0
-	#	}
-		create_building = {
-			building = "building_silk_plantation"
-			level = 5
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_agriculture" "pm_organisation_2_building_agriculture"  "pm_merchant_guilds_building_agriculture" }
-		}
-	#}
-	#if = {
-	#	limit = {
-	#		#has_potential_resource = bg_wheat_farms
-	#		free_arable_land > 0
-	#	}
-		create_building = {
-			building = "building_dye_plantation"
-			level = 5
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_agriculture" "pm_organisation_2_building_agriculture"  "pm_merchant_guilds_building_agriculture" }
-		}
-	#}
+	#Luxury Crops
 	
-	# Fruit Farms
-	#if = {
-	#	limit = {
-	#		#has_potential_resource = bg_wheat_farms
-	#		free_arable_land > 0
-	#	}
-		create_building = {
-			building = "building_fruit_plantation"
-			level = 5
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_agriculture" "pm_organisation_2_building_agriculture"  "pm_merchant_guilds_building_agriculture" }
-		}
-	#}
-	#if = {
-	#	limit = {
-	#		#has_potential_resource = bg_wheat_farms
-	#		free_arable_land > 0
-	#	}
-		create_building = {
-			building = "building_wine_plantation"
-			level = 5
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_agriculture" "pm_organisation_2_building_agriculture"  "pm_merchant_guilds_building_agriculture" }
-		}
-	#}
-	#if = {
-	#	limit = {
-	#		#has_potential_resource = bg_wheat_farms
-	#		free_arable_land > 0
-	#	}
-		create_building = {
-			building = "building_sugar_plantation"
-			level = 5
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_agriculture" "pm_organisation_2_building_agriculture"  "pm_merchant_guilds_building_agriculture" }
-		}
-	#}
+	create_building = {	#Wine Plantation
+		building = "building_sugar_plantation"
+		level = 1
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_agriculture" "pm_merchant_guilds_building_agriculture" }
+	}
+	create_building = { #Intoxicants plantation
+		building = "building_tobacco_plantation"
+		level = 5
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_agriculture" "pm_merchant_guilds_building_agriculture" }
+	}
 	
 	#Meat Farms
-	#if = {
-	#	limit = {
-	#		#has_potential_resource = bg_wheat_farms
-	#		free_arable_land > 0
-	#	}
-		create_building = {
-			building = "building_livestock_ranch"
-			level = 10
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_agriculture" "pm_organisation_2_building_agriculture"  "pm_merchant_guilds_building_agriculture" }
-		}
-	#}
 	
-	#Leaf Farms
-	#if = {
-	#	limit = {
-	#		#has_potential_resource = bg_wheat_farms
-	#		free_arable_land > 0
-	#	}
-		create_building = {
-			building = "building_tea_plantation"
-			level = 5
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_agriculture" "pm_organisation_2_building_agriculture"  "pm_merchant_guilds_building_agriculture" }
-		}
-	#}
-	#if = {
-	#	limit = {
-	#		#has_potential_resource = bg_wheat_farms
-	#		free_arable_land > 0
-	#	}
-		create_building = {
-			building = "building_coffee_plantation"
-			level = 5
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_agriculture" "pm_organisation_2_building_agriculture"  "pm_merchant_guilds_building_agriculture" }
-		}
-	#}
-	#if = {
-	#	limit = {
-	#		#has_potential_resource = bg_wheat_farms
-	#		free_arable_land > 0
-	#	}
-		create_building = {
-			building = "building_tobacco_plantation"
-			level = 10
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_agriculture" "pm_organisation_2_building_agriculture"  "pm_merchant_guilds_building_agriculture" }
-		}
-	#}
-	#if = {
-	#	limit = {
-	#		#has_potential_resource = bg_wheat_farms
-	#		free_arable_land > 0
-	#	}
-		create_building = {
-			building = "building_opium_plantation"
-			level = 10
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_agriculture" "pm_organisation_2_building_agriculture"  "pm_merchant_guilds_building_agriculture" }
-		}
-	#}
+	create_building = {
+		building = "building_fishing_wharf"
+		level = 1
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_agriculture" "pm_merchant_guilds_building_agriculture" }
+	}
+	create_building = {
+		building = "building_livestock_ranch"
+		level = 5
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_agriculture" "pm_merchant_guilds_building_agriculture" }
+	}
 	
 	#Logging
-	if = {
-		limit = {
-			has_potential_resource = bg_logging
-		}
-		create_building = {
-			building = "building_logging_camp"
-			level = 10
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_logging" "pm_organisation_2_building_logging" "pm_greeness_0_building_logging" "pm_merchant_guilds_building_logging" }
-		}
-	}
-	if = {
-		limit = {
-			has_potential_resource = bg_logging
-		}
-		create_building = {
-			building = "building_hardwood_logging_camp"
-			level = 5
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_logging" "pm_organisation_2_building_logging" "pm_greeness_0_building_logging" "pm_merchant_guilds_building_logging" }
-		}
+	create_building = {
+		building = "building_logging_camp"
+		level = 5
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_logging" "pm_organisation_0_building_logging" "pm_greeness_0_building_logging" "pm_merchant_guilds_building_logging" }
 	}
 	
 	#Mines
-	if = {
-		limit = {
-			has_potential_resource = bg_gold_mining
-		}
-		create_building = {
-			building = "building_gold_mine"
-			level = 5
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_mining" "pm_organisation_2_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
-		}
+	create_building = {
+		building = "building_gold_mine"
+		level = 5
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_mining" "pm_organisation_0_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
 	}
-	if = {
-		limit = {
-			has_potential_resource = bg_gold_fields
-		}
-		create_building = {
-			building = "building_gold_fields"
-			level = 5
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_mining" "pm_organisation_2_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
-		}
+	create_building = {
+		building = "building_sulfur_mine"
+		level = 5
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_mining" "pm_organisation_0_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
 	}
-	if = {
-		limit = {
-			has_potential_resource = bg_sulfur_mining
-		}
-		create_building = {
-			building = "building_sulfur_mine"
-			level = 5
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_mining" "pm_organisation_2_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
-		}
+	create_building = {
+		building = "building_coal_mine"
+		level = 5
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_mining" "pm_organisation_0_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
 	}
-	if = {
-		limit = {
-			has_potential_resource = bg_coal_mining
-		}
-		create_building = {
-			building = "building_coal_mine"
-			level = 20
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_mining" "pm_organisation_2_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
-		}
+	create_building = {
+		building = "building_iron_mine"
+		level = 5
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_mining" "pm_organisation_0_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
 	}
-	if = {
-		limit = {
-			has_potential_resource = bg_iron_mining
-		}
-		create_building = {
-			building = "building_iron_mine"
-			level = 10
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_mining" "pm_organisation_2_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
-		}
+	create_building = {
+		building = "building_lead_mine"
+		level = 5
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_mining" "pm_organisation_0_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
 	}
-	if = {
-		limit = {
-			has_potential_resource = bg_lead_mining
-		}
-		create_building = {
-			building = "building_lead_mine"
-			level = 10
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_mining" "pm_organisation_2_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
-		}
-	}
-	if = {
-		limit = {
-			has_potential_resource = bg_phosphorus_mining
-		}
-		create_building = {
-			building = "building_phosphorous_mine"
-			level = 10
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_mining" "pm_organisation_2_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
-		}
-	}
-	if = {
-		limit = {
-			has_potential_resource = bg_bauxite_mining
-		}
-		create_building = {
-			building = "building_bauxite_mine"
-			level = 10
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_mining" "pm_organisation_2_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
-		}
-	}
-	if = {
-		limit = {
-			has_potential_resource = bg_silicon_mining
-		}
-		create_building = {
-			building = "building_silicon_mine"
-			level = 10
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_mining" "pm_organisation_2_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
-		}
-	}
-	if = {
-		limit = {
-			has_potential_resource = bg_copper_mining
-		}
-		create_building = {
-			building = "building_copper_mine"
-			level = 10
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_mining" "pm_organisation_2_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
-		}
-	}
-	if = {
-		limit = {
-			has_potential_resource = bg_rare_earth_elements_mining
-		}
-		create_building = {
-			building = "building_rare_earth_minerals_mine"
-			level = 10
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_mining" "pm_organisation_2_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
-		}
-	}
-	if = {
-		limit = {
-			has_potential_resource = bg_uranium_mining
-		}
-		create_building = {
-			building = "building_uranium_mine"
-			level = 10
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_mining" "pm_organisation_2_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
-		}
-	}
-	if = {
-		limit = {
-			has_potential_resource = bg_precious_minerals_mining
-		}
-		create_building = {
-			building = "building_precious_minerals_mine"
-			level = 5
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_mining" "pm_organisation_2_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
-		}
-	}
-	if = {
-		limit = {
-			has_potential_resource = bg_oil_extraction
-		}
-		create_building = {
-			building = "building_oil_rig"
-			level = 5
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_mining" "pm_organisation_2_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
-		}
-	}
-	if = {
-		limit = {
-			has_potential_resource = bg_natural_gas_extraction
-		}
-		create_building = {
-			building = "building_natural_gas_rig"
-			level = 5
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_mining" "pm_organisation_2_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
-		}
+	
+	#Fossil Fuels
+	create_building = {
+		building = "building_oil_rig"
+		level = 1
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_mining" "pm_organisation_0_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
 	}
 	
 	#Infrastructure
@@ -412,13 +162,13 @@ effect_starting_buildings_1 = {
 		building = "building_roadway"
 		level = 1
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_infrastructure" "pm_organisation_2_building_infrastructure"  "pm_government_run_building_infrastructure" }
+		activate_production_methods = { "pm_automation_0_building_infrastructure" "pm_organisation_0_building_infrastructure"  "pm_government_run_building_infrastructure" }
 	}
 	create_building = {
 		building = "building_railway"
 		level = 1
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_infrastructure" "pm_organisation_2_building_infrastructure"  "pm_government_run_building_infrastructure" }
+		activate_production_methods = { "pm_automation_0_building_infrastructure" "pm_organisation_0_building_infrastructure"  "pm_government_run_building_infrastructure" }
 	}
 	if = {
 		limit = {
@@ -428,7 +178,7 @@ effect_starting_buildings_1 = {
 			building = "building_port"
 			level = 1
 			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_agriculture" "pm_organisation_2_building_agriculture"  "pm_government_run_building_infrastructure" }
+			activate_production_methods = { "pm_automation_0_building_agriculture" "pm_government_run_building_infrastructure" }
 		}
 	}
 	create_building = {
@@ -449,7 +199,176 @@ effect_starting_buildings_1 = {
 		building = "building_government_administration"
 		level = 1
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_government" "pm_organisation_2_building_government" }
+		activate_production_methods = { "pm_automation_1_building_government" "pm_organisation_1_building_government" }
+	}
+	
+	#Government Army
+	create_building = {
+		building = "building_barracks"
+		level = 1
+		reserves = 1
+		activate_production_methods = { "pm_ground_forces_2" "pm_airforce_2" "pm_support_2" }
+	}
+	
+}
+
+#Basic Colony
+effect_starting_buildings_1 = {
+
+	#Grain Farms
+	
+	create_building = {
+		building = "building_wheat_farm"
+		level = 20
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_agriculture" "pm_merchant_guilds_building_agriculture" }
+	}
+	create_building = {
+		building = "building_rice_farm"
+		level = 20
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_agriculture" "pm_merchant_guilds_building_agriculture" }
+	}
+	create_building = {
+		building = "building_rye_farm"
+		level = 20
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_agriculture" "pm_merchant_guilds_building_agriculture" }
+	}
+	create_building = {
+		building = "building_maize_farm"
+		level = 20
+		reserves = 1
+		activate_production_methods = { "pm_merchant_guilds_building_agriculture" }
+	}
+	create_building = {
+		building = "building_millet_farm"
+		level = 20
+		reserves = 1
+		activate_production_methods = { "pm_merchant_guilds_building_agriculture" }
+	}
+	
+	#Luxury Crops
+	
+	create_building = {	#Wine Plantation
+		building = "building_sugar_plantation"
+		level = 5
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_agriculture" "pm_merchant_guilds_building_agriculture" }
+	}
+	create_building = { #Intoxicants plantation
+		building = "building_tobacco_plantation"
+		level = 20
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_agriculture" "pm_merchant_guilds_building_agriculture" }
+	}
+	
+	#Meat Farms
+	
+	create_building = {
+		building = "building_fishing_wharf"
+		level = 10
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_agriculture" "pm_merchant_guilds_building_agriculture" }
+	}
+	create_building = {
+		building = "building_livestock_ranch"
+		level = 20
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_agriculture" "pm_merchant_guilds_building_agriculture" }
+	}
+	
+	#Logging
+	create_building = {
+		building = "building_logging_camp"
+		level = 10
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_logging" "pm_organisation_0_building_logging" "pm_greeness_0_building_logging" "pm_merchant_guilds_building_logging" }
+	}
+	
+	#Mines
+	create_building = {
+		building = "building_gold_mine"
+		level = 10
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_mining" "pm_organisation_0_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
+	}
+	create_building = {
+		building = "building_sulfur_mine"
+		level = 10
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_mining" "pm_organisation_0_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
+	}
+	create_building = {
+		building = "building_coal_mine"
+		level = 20
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_mining" "pm_organisation_0_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
+	}
+	create_building = {
+		building = "building_iron_mine"
+		level = 20
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_mining" "pm_organisation_0_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
+	}
+	create_building = {
+		building = "building_lead_mine"
+		level = 20
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_mining" "pm_organisation_0_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
+	}
+	
+	#Fossil Fuels
+	create_building = {
+		building = "building_oil_rig"
+		level = 20
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_mining" "pm_organisation_0_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
+	}
+	
+	#Infrastructure
+	create_building = {
+		building = "building_roadway"
+		level = 1
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_infrastructure" "pm_organisation_0_building_infrastructure"  "pm_government_run_building_infrastructure" }
+	}
+	create_building = {
+		building = "building_railway"
+		level = 1
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_infrastructure" "pm_organisation_0_building_infrastructure"  "pm_government_run_building_infrastructure" }
+	}
+	if = {
+		limit = {
+			is_coastal = yes
+		}
+		create_building = {
+			building = "building_port"
+			level = 1
+			reserves = 1
+			activate_production_methods = { "pm_automation_0_building_agriculture" "pm_government_run_building_infrastructure" }
+		}
+	}
+	create_building = {
+		building = "building_construction_sector"
+		level = 1
+		reserves = 1
+		activate_production_methods = { "pm_construction_1" "pm_government_run_building_infrastructure" }
+	}
+	create_building = {
+		building = "building_communications_network"
+		level = 1
+		reserves = 1
+		activate_production_methods = { "pm_postal_service" "pm_government_run_building_infrastructure" }
+	}
+
+	#Government Admin
+	create_building = {
+		building = "building_government_administration"
+		level = 1
+		reserves = 1
+		activate_production_methods = { "pm_automation_1_building_government" "pm_organisation_1_building_government" }
 	}
 	
 	#Government Army
@@ -469,130 +388,52 @@ effect_starting_buildings_2 = {
 
 	#Manufacturing
 	create_building = {
-		building = "building_food_industry"
-		level = 5
+		building = "building_steel_mills"
+		level = 10
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
+		activate_production_methods = { "pm_automation_0_building_manufacturing" "pm_organisation_0_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
 	}
 	create_building = {
-		building = "building_textile_mills"
-		level = 5
+		building = "building_chemical_plants"
+		level = 10
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
+		activate_production_methods = { "pm_automation_0_building_manufacturing" "pm_organisation_0_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
 	}
-	create_building = {
-		building = "building_furniture_manufacturies"
-		level = 5
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
-	}
-	create_building = {
-		building = "building_paper_mills"
-		level = 20
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
-	}
-	create_building = {
-		building = "building_liquor_industry"
-		level = 5
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
-	}
-	create_building = {
-		building = "building_arts_academy"
-		level = 1
-		reserves = 1
-		activate_production_methods = {  }
-	}
-	create_building = {
-		building = "building_jewellery_industry"
-		level = 1
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
-	}
-
+	
 	#Commercial Services
 	create_building = {
 		building = "building_retail_services_industry"
 		level = 5
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services"  "pm_merchant_guilds_building_services" }
-	}
-	create_building = {
-		building = "building_recreational_services_industry"
-		level = 5
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services"  "pm_merchant_guilds_building_services" }
-	}
-	create_building = {
-		building = "building_tourism_services_industry"
-		level = 5
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services"  "pm_merchant_guilds_building_services" }
+		activate_production_methods = { "pm_automation_0_building_services" "pm_organisation_0_building_services"  "pm_merchant_guilds_building_services" }
 	}
 	create_building = {
 		building = "building_professional_services_industry"
 		level = 1
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services"  "pm_merchant_guilds_building_services" }
-	}
-	create_building = {
-		building = "building_financial_services_industry"
-		level = 5
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services"  "pm_merchant_guilds_building_services" }
-	}
-	create_building = {
-		building = "building_banking_sector"
-		level = 1
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services"  "pm_merchant_guilds_building_services" }
-	}
-	create_building = {
-		building = "building_domestic_services_industry"
-		level = 5
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services"  "pm_merchant_guilds_building_services" }
-	}
-	create_building = {
-		building = "building_media_services_industry"
-		level = 1
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services"  "pm_merchant_guilds_building_services" }
+		activate_production_methods = { "pm_automation_0_building_services" "pm_organisation_0_building_services"  "pm_merchant_guilds_building_services" }
 	}
 	
 	#Government Services
 	create_building = {
-		building = "building_healthcare_services_industry"
-		level = 2
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services" "pm_government_run_building_services" }
-	}
-	create_building = {
-		building = "building_education_services_industry"
+		building = "building_university"
 		level = 1
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services" "pm_government_run_building_services" }
-	}
-	create_building = {
-		building = "building_security_services_industry"
-		level = 2
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services" "pm_government_run_building_services" }
+		activate_production_methods = { "pm_automation_0_building_services" "pm_organisation_0_building_services" "pm_government_run_building_services" }
 	}
 	
 	#Infrastructure
 	create_building = {
 		building = "building_roadway"
-		level = 1
+		level = 2
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_infrastructure" "pm_organisation_2_building_infrastructure"  "pm_government_run_building_infrastructure" }
+		activate_production_methods = { "pm_automation_0_building_infrastructure" "pm_organisation_0_building_infrastructure"  "pm_government_run_building_infrastructure" }
 	}
 	create_building = {
 		building = "building_railway"
-		level = 1
+		level = 2
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_infrastructure" "pm_organisation_2_building_infrastructure"  "pm_government_run_building_infrastructure" }
+		activate_production_methods = { "pm_automation_0_building_infrastructure" "pm_organisation_0_building_infrastructure"  "pm_government_run_building_infrastructure" }
 	}
 	if = {
 		limit = {
@@ -600,16 +441,16 @@ effect_starting_buildings_2 = {
 		}
 		create_building = {
 			building = "building_port"
-			level = 1
+			level = 2
 			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_agriculture" "pm_organisation_2_building_agriculture"  "pm_government_run_building_infrastructure" }
+			activate_production_methods = { "pm_automation_0_building_agriculture" "pm_government_run_building_infrastructure" }
 		}
 	}
 	create_building = {
 		building = "building_airport"
 		level = 1
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_infrastructure" "pm_organisation_2_building_infrastructure"  "pm_government_run_building_infrastructure" }
+		activate_production_methods = { "pm_automation_0_building_infrastructure" "pm_organisation_0_building_infrastructure"  "pm_government_run_building_infrastructure" }
 	}
 	create_building = {
 		building = "building_construction_sector"
@@ -626,10 +467,10 @@ effect_starting_buildings_2 = {
 	
 	#Electricity
 	create_building = {
-		building = "building_coal_power_plant"
+		building = "building_power_plant"
 		level = 2
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_infrastructure" "pm_organisation_2_building_infrastructure"  "pm_government_run_building_infrastructure" }
+		activate_production_methods = { "pm_automation_0_building_infrastructure" "pm_organisation_0_building_infrastructure"  "pm_government_run_building_infrastructure" }
 	}
 	
 	#Government Admin
@@ -637,7 +478,7 @@ effect_starting_buildings_2 = {
 		building = "building_government_administration"
 		level = 1
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_government" "pm_organisation_2_building_government" }
+		activate_production_methods = { "pm_automation_1_building_government" "pm_organisation_1_building_government" }
 	}
 	
 	#Government Army
@@ -677,40 +518,40 @@ effect_starting_buildings_3 = {
 			building = "building_iron_mine"
 			level = 20
 			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_mining" "pm_organisation_2_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
+			activate_production_methods = { "pm_automation_0_building_mining" "pm_organisation_0_building_mining" "pm_greeness_0_building_mining" "pm_privately_owned_building_mining" }
 		}
 	}
 	
-	#Manufacturing
+	#Military Goods Manufacturing
 	create_building = {
 		building = "building_munition_plants"
-		level = 5
+		level = 10
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
+		activate_production_methods = { "pm_automation_0_building_manufacturing" "pm_organisation_0_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
 	}
 	create_building = {
 		building = "building_small_arms_industry"
-		level = 5
+		level = 10
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
+		activate_production_methods = { "pm_automation_0_building_manufacturing" "pm_organisation_0_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
 	}
 	create_building = {
 		building = "building_artillery_industry"
-		level = 5
+		level = 10
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
+		activate_production_methods = { "pm_automation_0_building_manufacturing" "pm_organisation_0_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
 	}
 	create_building = {
 		building = "building_war_machine_industry"
-		level = 5
+		level = 10
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
+		activate_production_methods = { "pm_automation_0_building_manufacturing" "pm_organisation_0_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
 	}
 	create_building = {
 		building = "building_warplanes_industry"
-		level = 5
+		level = 10
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
+		activate_production_methods = { "pm_automation_0_building_manufacturing" "pm_organisation_0_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
 	}
 	if = {
 		limit = {
@@ -718,16 +559,30 @@ effect_starting_buildings_3 = {
 		}
 		create_building = {
 			building = "building_warship_industry"
-			level = 5
+			level = 10
 			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
+			activate_production_methods = { "pm_automation_0_building_manufacturing" "pm_organisation_0_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
 		}
+	}
+	
+	#Civilian Goods Manufacturing
+	create_building = {
+		building = "building_food_industry"
+		level = 20
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_manufacturing" "pm_organisation_0_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
+	}
+	create_building = {
+		building = "building_furniture_manufacturies"
+		level = 20
+		reserves = 1
+		activate_production_methods = { "pm_automation_0_building_manufacturing" "pm_organisation_0_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
 	}
 	create_building = {
 		building = "building_aeroplane_industry"
-		level = 5
+		level = 10
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
+		activate_production_methods = { "pm_automation_0_building_manufacturing" "pm_organisation_0_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
 	}
 	if = {
 		limit = {
@@ -735,88 +590,40 @@ effect_starting_buildings_3 = {
 		}
 		create_building = {
 			building = "building_shipyards"
-			level = 5
+			level = 10
 			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
+			activate_production_methods = { "pm_automation_0_building_manufacturing" "pm_organisation_0_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
 		}
 	}
 	create_building = {
 		building = "building_locomotives_industry"
-		level = 5
+		level = 10
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
+		activate_production_methods = { "pm_automation_0_building_manufacturing" "pm_organisation_0_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
 	}
 	create_building = {
 		building = "building_motor_industry"
-		level = 5
+		level = 10
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
-	}
-	create_building = {
-		building = "building_arts_academy"
-		level = 5
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
-	}
-	create_building = {
-		building = "building_jewellery_industry"
-		level = 5
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
-	}
-	create_building = {
-		building = "building_home_products_plant"
-		level = 5
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
-	}
-	create_building = {
-		building = "building_industrial_robots_plant"
-		level = 5
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
+		activate_production_methods = { "pm_automation_0_building_manufacturing" "pm_organisation_0_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
 	}
 	create_building = {
 		building = "building_tooling_workshops"
-		level = 10
+		level = 20
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
-	}
-	create_building = {
-		building = "building_engine_factory"
-		level = 10
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
-	}
-	create_building = {
-		building = "building_precision_components_factory"
-		level = 5
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
+		activate_production_methods = { "pm_automation_0_building_manufacturing" "pm_organisation_0_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
 	}
 	create_building = {
 		building = "building_steel_mills"
 		level = 10
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
-	}
-	create_building = {
-		building = "building_glassworks"
-		level = 2
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
+		activate_production_methods = { "pm_automation_0_building_manufacturing" "pm_organisation_0_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
 	}
 	create_building = {
 		building = "building_chemical_plants"
-		level = 2
+		level = 10
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
-	}
-	create_building = {
-		building = "building_explosives_plants"
-		level = 2
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
+		activate_production_methods = { "pm_automation_0_building_manufacturing" "pm_organisation_0_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
 	}
 	if = {
 		limit = {
@@ -826,95 +633,36 @@ effect_starting_buildings_3 = {
 			building = "building_oil_refinery"
 			level = 10
 			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing" "pm_publicly_traded_building_manufacturing" }
-		}
-	}
-	if = {
-		limit = {
-			has_potential_resource = bg_uranium_mining
-		}
-		create_building = {
-			building = "building_refined_uranium_plant"
-			level = 5
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing" "pm_publicly_traded_building_manufacturing" }
+			activate_production_methods = { "pm_automation_0_building_manufacturing" "pm_organisation_0_building_manufacturing" "pm_publicly_traded_building_manufacturing" }
 		}
 	}
 	
 	#Commercial Services
 	create_building = {
 		building = "building_retail_services_industry"
-		level = 2
+		level = 10
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services"  "pm_merchant_guilds_building_services" }
+		activate_production_methods = { "pm_automation_0_building_services" "pm_organisation_0_building_services"  "pm_merchant_guilds_building_services" }
 	}
 	create_building = {
 		building = "building_corporate_services_industry"
-		level = 2
+		level = 10
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services"  "pm_merchant_guilds_building_services" }
-	}
-	create_building = {
-		building = "building_recreational_services_industry"
-		level = 2
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services"  "pm_merchant_guilds_building_services" }
-	}
-	create_building = {
-		building = "building_tourism_services_industry"
-		level = 2
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services"  "pm_merchant_guilds_building_services" }
+		activate_production_methods = { "pm_automation_0_building_services" "pm_organisation_0_building_services"  "pm_merchant_guilds_building_services" }
 	}
 	create_building = {
 		building = "building_professional_services_industry"
-		level = 2
+		level = 10
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services"  "pm_merchant_guilds_building_services" }
-	}
-	create_building = {
-		building = "building_financial_services_industry"
-		level = 5
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services"  "pm_merchant_guilds_building_services" "pm_no_corruption_services"}
-	}
-	create_building = {
-		building = "building_banking_sector"
-		level = 2
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services"  "pm_merchant_guilds_building_services" }
-	}
-	create_building = {
-		building = "building_domestic_services_industry"
-		level = 2
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services"  "pm_merchant_guilds_building_services" }
-	}
-	create_building = {
-		building = "building_media_services_industry"
-		level = 5
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services"  "pm_merchant_guilds_building_services" }
+		activate_production_methods = { "pm_automation_0_building_services" "pm_organisation_0_building_services"  "pm_merchant_guilds_building_services" }
 	}
 	
 	#Government Services
 	create_building = {
-		building = "building_healthcare_services_industry"
-		level = 2
+		building = "building_university"
+		level = 1
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services" "pm_government_run_building_services" }
-	}
-	create_building = {
-		building = "building_education_services_industry"
-		level = 2
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services" "pm_government_run_building_services" }
-	}
-	create_building = {
-		building = "building_security_services_industry"
-		level = 2
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services" "pm_government_run_building_services" }
+		activate_production_methods = { "pm_automation_0_building_services" "pm_organisation_0_building_services" "pm_government_run_building_services" }
 	}
 	
 	#Infrastructure
@@ -922,13 +670,13 @@ effect_starting_buildings_3 = {
 		building = "building_roadway"
 		level = 1
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_infrastructure" "pm_organisation_2_building_infrastructure"  "pm_government_run_building_infrastructure" }
+		activate_production_methods = { "pm_automation_0_building_infrastructure" "pm_organisation_0_building_infrastructure"  "pm_government_run_building_infrastructure" }
 	}
 	create_building = {
 		building = "building_railway"
 		level = 1
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_infrastructure" "pm_organisation_2_building_infrastructure"  "pm_government_run_building_infrastructure" }
+		activate_production_methods = { "pm_automation_0_building_infrastructure" "pm_organisation_0_building_infrastructure"  "pm_government_run_building_infrastructure" }
 	}
 	if = {
 		limit = {
@@ -938,14 +686,14 @@ effect_starting_buildings_3 = {
 			building = "building_port"
 			level = 1
 			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_agriculture" "pm_organisation_2_building_agriculture"  "pm_government_run_building_infrastructure" }
+			activate_production_methods = { "pm_automation_0_building_agriculture" "pm_government_run_building_infrastructure" }
 		}
 	}
 	create_building = {
 		building = "building_airport"
 		level = 1
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_infrastructure" "pm_organisation_2_building_infrastructure"  "pm_government_run_building_infrastructure" }
+		activate_production_methods = { "pm_automation_0_building_infrastructure" "pm_organisation_0_building_infrastructure"  "pm_government_run_building_infrastructure" }
 	}
 	create_building = {
 		building = "building_construction_sector"
@@ -962,28 +710,11 @@ effect_starting_buildings_3 = {
 	
 	#Electricity
 	create_building = {
-		building = "building_coal_power_plant"
-		level = 2
+		building = "building_power_plant"
+		level = 3
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_infrastructure" "pm_organisation_2_building_infrastructure"  "pm_government_run_building_infrastructure" }
+		activate_production_methods = { "pm_automation_0_building_infrastructure" "pm_organisation_0_building_infrastructure"  "pm_government_run_building_infrastructure" }
 	}
-	if = {
-		limit = {
-			has_potential_resource = bg_oil_extraction
-		}
-		create_building = {
-			building = "building_oil_power_plant"
-			level = 1
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_infrastructure" "pm_organisation_2_building_infrastructure" "pm_government_run_building_infrastructure" }
-		}
-	}
-	#create_building = {
-	#	building = "building_gas_power_plant"
-	#	level = 1
-	#	reserves = 1
-	#	activate_production_methods = { "pm_automation_2_building_infrastructure" "pm_organisation_2_building_infrastructure"  "pm_government_run_building_infrastructure" }
-	#}
 	if = {
 		limit = {
 			on_river = yes
@@ -992,7 +723,7 @@ effect_starting_buildings_3 = {
 			building = "building_hydroelectric_power_plant"
 			level = 1
 			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_infrastructure" "pm_organisation_2_building_infrastructure"  "pm_government_run_building_infrastructure" }
+			activate_production_methods = { "pm_automation_0_building_infrastructure" "pm_organisation_0_building_infrastructure"  "pm_government_run_building_infrastructure" }
 		}
 	}
 	
@@ -1001,13 +732,13 @@ effect_starting_buildings_3 = {
 		building = "building_government_administration"
 		level = 2
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_government" "pm_organisation_2_building_government" }
+		activate_production_methods = { "pm_automation_1_building_government" "pm_organisation_1_building_government" }
 	}
 	create_building = {
 		building = "building_university"
 		level = 1
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_government" "pm_organisation_2_building_government" }
+		activate_production_methods = { "pm_automation_0_building_government" "pm_organisation_0_building_government" }
 	}
 	
 	#Government Army
@@ -1041,133 +772,41 @@ effect_starting_buildings_4 = {
 	#Manufacturing
 	create_building = {
 		building = "building_electrics_industry"
-		level = 5
+		level = 10
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
+		activate_production_methods = { "pm_automation_0_building_manufacturing" "pm_organisation_0_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
 	}
 	create_building = {
-		building = "building_home_appliances_plant"
-		level = 5
+		building = "building_food_industry"
+		level = 10
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
+		activate_production_methods = { "pm_automation_0_building_manufacturing" "pm_organisation_0_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
 	}
 	create_building = {
-		building = "building_pharmaceuticals_plant"
-		level = 5
+		building = "building_furniture_manufacturies"
+		level = 10
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
-	}
-	create_building = {
-		building = "building_circuit_boards_factory"
-		level = 5
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
-	}
-	create_building = {
-		building = "building_plastic_factory"
-		level = 5
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
-	}
-	create_building = {
-		building = "building_aluminium_factory"
-		level = 5
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
-	}
-	create_building = {
-		building = "building_synthetic_silk_plants"
-		level = 5
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
-	}
-	create_building = {
-		building = "building_synthetic_dye_plants"
-		level = 5
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
-	}
-	create_building = {
-		building = "building_synthetic_rubber_plants"
-		level = 5
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
+		activate_production_methods = { "pm_automation_0_building_manufacturing" "pm_organisation_0_building_manufacturing"  "pm_publicly_traded_building_manufacturing" }
 	}
 	
 	#Commercial Services
 	create_building = {
 		building = "building_retail_services_industry"
-		level = 5
+		level = 10
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services"  "pm_merchant_guilds_building_services" }
+		activate_production_methods = { "pm_automation_0_building_services" "pm_organisation_0_building_services"  "pm_merchant_guilds_building_services" }
 	}
 	create_building = {
 		building = "building_corporate_services_industry"
-		level = 5
+		level = 10
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services"  "pm_merchant_guilds_building_services" }
-	}
-	create_building = {
-		building = "building_recreational_services_industry"
-		level = 5
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services"  "pm_merchant_guilds_building_services" }
-	}
-	create_building = {
-		building = "building_tourism_services_industry"
-		level = 5
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services"  "pm_merchant_guilds_building_services" }
+		activate_production_methods = { "pm_automation_0_building_services" "pm_organisation_0_building_services"  "pm_merchant_guilds_building_services" }
 	}
 	create_building = {
 		building = "building_professional_services_industry"
-		level = 5
+		level = 10
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services"  "pm_merchant_guilds_building_services" }
-	}
-	create_building = {
-		building = "building_financial_services_industry"
-		level = 5
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services"  "pm_merchant_guilds_building_services" }
-	}
-	create_building = {
-		building = "building_banking_sector"
-		level = 5
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services"  "pm_merchant_guilds_building_services" }
-	}
-	create_building = {
-		building = "building_domestic_services_industry"
-		level = 5
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services"  "pm_merchant_guilds_building_services" }
-	}
-	create_building = {
-		building = "building_media_services_industry"
-		level = 5
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services"  "pm_merchant_guilds_building_services" }
-	}
-	
-	#Government Services
-	create_building = {
-		building = "building_healthcare_services_industry"
-		level = 2
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services" "pm_government_run_building_services" }
-	}
-	create_building = {
-		building = "building_education_services_industry"
-		level = 5
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services" "pm_government_run_building_services" }
-	}
-	create_building = {
-		building = "building_security_services_industry"
-		level = 2
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_services" "pm_organisation_2_building_services" "pm_government_run_building_services" }
+		activate_production_methods = { "pm_automation_0_building_services" "pm_organisation_0_building_services"  "pm_merchant_guilds_building_services" }
 	}
 	
 	#Infrastructure
@@ -1175,13 +814,13 @@ effect_starting_buildings_4 = {
 		building = "building_roadway"
 		level = 1
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_infrastructure" "pm_organisation_2_building_infrastructure"  "pm_government_run_building_infrastructure" }
+		activate_production_methods = { "pm_automation_0_building_infrastructure" "pm_organisation_0_building_infrastructure"  "pm_government_run_building_infrastructure" }
 	}
 	create_building = {
 		building = "building_railway"
 		level = 1
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_infrastructure" "pm_organisation_2_building_infrastructure"  "pm_government_run_building_infrastructure" }
+		activate_production_methods = { "pm_automation_0_building_infrastructure" "pm_organisation_0_building_infrastructure"  "pm_government_run_building_infrastructure" }
 	}
 	if = {
 		limit = {
@@ -1191,14 +830,14 @@ effect_starting_buildings_4 = {
 			building = "building_port"
 			level = 1
 			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_agriculture" "pm_organisation_2_building_agriculture"  "pm_government_run_building_infrastructure" }
+			activate_production_methods = { "pm_automation_0_building_agriculture" "pm_government_run_building_infrastructure" }
 		}
 	}
 	create_building = {
 		building = "building_airport"
 		level = 1
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_infrastructure" "pm_organisation_2_building_infrastructure"  "pm_government_run_building_infrastructure" }
+		activate_production_methods = { "pm_automation_0_building_infrastructure" "pm_organisation_0_building_infrastructure"  "pm_government_run_building_infrastructure" }
 	}
 	create_building = {
 		building = "building_construction_sector"
@@ -1215,27 +854,10 @@ effect_starting_buildings_4 = {
 	
 	#Electricity
 	create_building = {
-		building = "building_coal_power_plant"
-		level = 2
+		building = "building_power_plant"
+		level = 4
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_infrastructure" "pm_organisation_2_building_infrastructure"  "pm_government_run_building_infrastructure" }
-	}
-	if = {
-		limit = {
-			has_potential_resource = bg_oil_extraction
-		}
-		create_building = {
-			building = "building_oil_power_plant"
-			level = 1
-			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_infrastructure" "pm_organisation_2_building_infrastructure" "pm_government_run_building_infrastructure" }
-		}
-	}
-	create_building = {
-		building = "building_gas_power_plant"
-		level = 1
-		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_infrastructure" "pm_organisation_2_building_infrastructure"  "pm_government_run_building_infrastructure" }
+		activate_production_methods = { "pm_automation_0_building_infrastructure" "pm_organisation_0_building_infrastructure" "pm_government_run_building_infrastructure" }
 	}
 	if = {
 		limit = {
@@ -1245,7 +867,7 @@ effect_starting_buildings_4 = {
 			building = "building_hydroelectric_power_plant"
 			level = 1
 			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_infrastructure" "pm_organisation_2_building_infrastructure"  "pm_government_run_building_infrastructure" }
+			activate_production_methods = { "pm_automation_0_building_infrastructure" "pm_organisation_0_building_infrastructure"  "pm_government_run_building_infrastructure" }
 		}
 	}
 	
@@ -1254,13 +876,13 @@ effect_starting_buildings_4 = {
 		building = "building_government_administration"
 		level = 3
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_government" "pm_organisation_2_building_government" }
+		activate_production_methods = { "pm_automation_1_building_government" "pm_organisation_1_building_government" }
 	}
 	create_building = {
 		building = "building_university"
-		level = 2
+		level = 5
 		reserves = 1
-		activate_production_methods = { "pm_automation_2_building_government" "pm_organisation_2_building_government" }
+		activate_production_methods = { "pm_automation_0_building_government" "pm_organisation_0_building_government" }
 	}
 	
 	#Government Army
@@ -1286,8 +908,72 @@ effect_starting_buildings_4 = {
 			building = "building_advanced_warship_industry"
 			level = 2
 			reserves = 1
-			activate_production_methods = { "pm_automation_2_building_manufacturing" "pm_organisation_2_building_manufacturing" "pm_publicly_traded_building_manufacturing" }
+			activate_production_methods = { "pm_automation_0_building_manufacturing" "pm_organisation_0_building_manufacturing" "pm_publicly_traded_building_manufacturing" }
 		}
 	}
 	
+}
+
+effect_prune_excess_buildings = {
+
+	#Delete building on start up if there are insufficient pops in the state
+	every_scope_state = { limit = { state_population < 100000 } if = { limit = { any_scope_building = { is_building_type = building_wheat_farm  } } remove_building = building_wheat_farm } }
+	every_scope_state = { limit = { state_population < 100000 } if = { limit = { any_scope_building = { is_building_type = building_rice_farm  } } remove_building = building_rice_farm } }
+	every_scope_state = { limit = { state_population < 100000 } if = { limit = { any_scope_building = { is_building_type = building_rye_farm  } } remove_building = building_rye_farm } }
+	every_scope_state = { limit = { state_population < 100000 } if = { limit = { any_scope_building = { is_building_type = building_maize_farm  } } remove_building = building_maize_farm } }
+	every_scope_state = { limit = { state_population < 100000 } if = { limit = { any_scope_building = { is_building_type = building_millet_farm  } } remove_building = building_millet_farm } }
+	
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_fishing_wharf  } } remove_building = building_fishing_wharf } }
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_livestock_ranch  } } remove_building = building_livestock_ranch } }
+	
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_tobacco_plantation  } } remove_building = building_tobacco_plantation } }
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_sugar_plantation  } } remove_building = building_sugar_plantation } }
+	
+	#every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_coal_power_plant  } } remove_building = building_coal_power_plant } }
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_power_plant  } } remove_building = building_power_plant } }
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_nuclear_power_plant  } } remove_building = building_nuclear_power_plant } }
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_hydroelectric_power_plant  } } remove_building = building_hydroelectric_power_plant } }
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_geothermal_power_plant  } } remove_building = building_geothermal_power_plant } }
+	
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_roadway  } } remove_building = building_roadway } }
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_airport  } } remove_building = building_airport } }
+	
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_communications_network  } } remove_building = building_communications_network } }
+	
+	#every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_skyscraper  } } remove_building = building_skyscraper } }
+	
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_logging_camp  } } remove_building = building_logging_camp } }
+	
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_munition_plants  } } remove_building = building_munition_plants } }
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_small_arms_industry  } } remove_building = building_small_arms_industry } }
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_artillery_industry  } } remove_building = building_artillery_industry } }
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_war_machine_industry  } } remove_building = building_war_machine_industry } }
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_warplanes_industry  } } remove_building = building_warplanes_industry } }
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_warship_industry  } } remove_building = building_warship_industry } }
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_advanced_weaponry_industry  } } remove_building = building_advanced_weaponry_industry } }
+	
+	every_scope_state = { limit = { state_population < 1000000 } if = { limit = { any_scope_building = { is_building_type = building_aeroplane_industry  } } remove_building = building_aeroplane_industry } }
+	every_scope_state = { limit = { state_population < 1000000 } if = { limit = { any_scope_building = { is_building_type = building_shipyards  } } remove_building = building_shipyards } }
+	every_scope_state = { limit = { state_population < 1000000 } if = { limit = { any_scope_building = { is_building_type = building_locomotives_industry  } } remove_building = building_locomotives_industry } }
+	every_scope_state = { limit = { state_population < 1000000 } if = { limit = { any_scope_building = { is_building_type = building_motor_industry  } } remove_building = building_motor_industry } }
+	
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_food_industry  } } remove_building = building_food_industry } }
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_furniture_manufacturies  } } remove_building = building_furniture_manufacturies } }
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_electrics_industry  } } remove_building = building_electrics_industry } }
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_synthetics_plants  } } remove_building = building_synthetics_plants } }
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_tooling_workshops  } } remove_building = building_tooling_workshops } }
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_steel_mills  } } remove_building = building_steel_mills } }
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_chemical_plants  } } remove_building = building_chemical_plants } }
+	
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_gold_mine  } } remove_building = building_gold_mine } }
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_gold_fields  } } remove_building = building_gold_fields } }
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_iron_mine  } } remove_building = building_iron_mine } }
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_lead_mine  } } remove_building = building_lead_mine } }
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_coal_mine  } } remove_building = building_coal_mine } }
+	every_scope_state = { limit = { state_population < 500000 } if = { limit = { any_scope_building = { is_building_type = building_oil_rig  } } remove_building = building_oil_rig } }
+	
+	every_scope_state = { limit = { state_population < 1000000 } if = { limit = { any_scope_building = { is_building_type = building_retail_services_industry  } } remove_building = building_retail_services_industry } }
+	every_scope_state = { limit = { state_population < 1000000 } if = { limit = { any_scope_building = { is_building_type = building_corporate_services_industry  } } remove_building = building_corporate_services_industry } }
+	every_scope_state = { limit = { state_population < 1000000 } if = { limit = { any_scope_building = { is_building_type = building_professional_services_industry  } } remove_building = building_professional_services_industry } }
+
 }

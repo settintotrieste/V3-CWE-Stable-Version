@@ -24,6 +24,13 @@
     law_technocratic_legislature:0 "Semi-Appointed Legislature"
     law_democratic_legislature:0 "Elected Legislature"
     
+    law_unicameralism:0 "Unicameral Legislature"
+    law_hybrid_chamber:0 "Hybrid Legislature"
+    law_bicameralism:0 "Bicameral Legislature"
+    law_unicameralism_desc:0 "Unicameralism is a type of legislature, which consists of one house or assembly, that legislates and votes as one."
+    law_hybrid_chamber_desc:0 "The country has a unicameral legislature with a largely ceremonial Head of State, or executive body independent of the [concept_ruler] that has veto power over laws passed by the [concept_government]."
+    law_bicameralism_desc:0 "Bicameralism is a type of legislature that is divided into two separate assemblies, chambers, or houses, known as a bicameral legislature."
+    
     law_politicised_bureaucrats:0 "Politicised Bureaucrats"
     law_elitist_bureaucrats:0 "Elitist Bureaucrats"
     law_professional_bureaucrats:0 "Professional Bureaucrats"
@@ -32,15 +39,23 @@
     law_moderate_financial_regulations:0 "Decent Financial Regulations"
     law_strong_financial_regulations:0 "Strong Financial Regulations"
     
-    law_HOS_monarch:0 "Monarch"
-    law_HOS_president:0 "President"
-    law_HOS_religious_leader:0 "Religious Leader"
-    law_HOS_nationalist_leader:0 "Military Leader"
-    law_HOS_communist_leader:0 "Communist Leader"
+    law_HOS_monarch:0 "$law_monarchy$"
+    law_HOS_monarch_desc:0 "$law_monarchy_desc$"
+    law_HOS_president:0 "$law_presidential_republic$"
+    law_HOS_president_desc:0 "$law_presidential_republic_desc$"
+    law_HOS_religious_leader:0 "$law_theocracy$"
+    law_HOS_religious_leader_desc:0 "$law_theocracy_desc$"
+    law_HOS_nationalist_leader:0 "Military Regime"
+    law_HOS_nationalist_leader_desc:0 "This is a [concept_government_type] where the political power is concentrated in the hands of the country's $ig_armed_forces$."
+    law_HOS_communist_leader:0 "Socialist Republic"
+    law_HOS_communist_leader_desc:0 "$law_council_republic_desc$"
     
-    law_HOG_none:0 "No separate HoG"
-    law_HOG_prime_minister:0 "Prime Minister System"
-    law_HOG_president_prime_minister:0 "Shared with HoS"
+    law_HOG_none:0 "Ruler is Head of Government"
+    law_HOG_none_desc:0 "The [concept_ruler] is both the Head of State and Head of Government."
+    law_HOG_prime_minister:0 "Prime Minister"
+    law_HOG_prime_minister_desc:0 "The Head of State is only a ceremonial position with the real power lying with the Head of Government. The [concept_ruler] is thus the Head of Government."
+    law_HOG_president_prime_minister:0 "Shared with Head of State"
+    law_HOG_president_prime_minister_desc:0 "The [concept_ruler], who is the Head of State, shares his or her executive powers with a Prime Minister chosen from members of the legislature."
     
     law_nepotistic_cabinet:0 "Nepotistic Cabinet"
     law_semi_nepotistic_cabinet:0 "Semi-Nepotistic Cabinet"
@@ -56,7 +71,7 @@
     
     law_peasant_levies:0 "Demilitarised"
     
-    law_ethnostate:0 "Cultural Supremacy"
+    law_ethnostate:0 "Ethnostate"
     law_national_supremacy:0 "National Supremacy"
     law_multicultural:0 "Multiculturalism"
     
@@ -72,13 +87,27 @@
     law_no_secret_police:0 "No Secret Police"
     law_secret_police:0 "Secret Police"
     
+    law_no_espionage:0 "No Foreign Intelligence Services"
+    law_defensive_espionage:0 "Defensive Espionage Only"
+    law_offensive_espionage:0 "Offensive Espionage Allowed"
+    
     law_lenient_policing:0 "Lenient Policing"
     law_balanced_policing:0 "Balanced Policing"
     law_strict_policing:0 "Strict Policing"
     law_draconian_policing:0 "Draconian Policing"
     
-    law_slavery_banned:0 "Forced Labour Banned"
-    law_slavery_allowed:0 "Forced Labour Allowed"
+    law_slavery_banned:0 "No Concentration Camps"
+    law_slavery_banned_desc:0 "There are no concentration camps in the country."
+    law_slavery_political:0 "Gulags"
+    law_slavery_political_desc:0 "Political dissidents are imprisoned in sprawling concentration camps and are subjected to forced labour."
+    law_slavery_cultural:0 "Cultural Suppression"
+    law_slavery_cultural_desc:0 "The government systematically suppresses anyone who is discrimated by [concept_culture] or [concept_religion] in the country."
+    
+    law_compulsory_primary_school:0 "Compulsory Schooling"
+    
+    law_colonial_resettlement:0 "Colonial Nation Building"
+    law_colonial_resettlement_desc:0 "Colonies are to be developed both industrially and politically."
+    law_colonial_exploitation_desc:0 "Colonies are used only for resource extraction and no political rights will be given to the natives."
     
     law_trade_unions_banned:0 "Trade Unions Banned"
     law_state_trade_unions:0 "State Trade Unions Only"
@@ -93,12 +122,15 @@
     law_wmd_allowed:0 "WMDs Permitted"
     
     law_no_civil_defence_law:0 "No Civil Defence"
+    law_very_weak_civil_defence_law:0 "Very Weak Civil Defence"
     law_weak_civil_defence_law:0 "Weak Civil Defence"
     law_moderate_civil_defence_law:0 "Moderate Civil Defence"
     law_strong_civil_defence_law:0 "Strong Civil Defence"
+    law_very_strong_civil_defence_law:0 "Very Strong Civil Defence"
     
     law_no_space_program:0 "No Space Program"
-    law_space_program:0 "Space Program"
+    law_space_program_public:0 "Public Space Program"
+    law_space_program_private:0 "Private Space Program"
     
     law_no_social_security:0 "No Social Security"
     law_low_social_security:0 "Weak Social Security"
@@ -128,9 +160,11 @@
     law_taxation_4:0 "Progressive Taxes"
     law_taxation_5:0 "Very Progressive Taxes"
     
+    law_very_deflationary_monetary_policy:0 "Very Deflationary Fiscal Policy"
     law_deflationary_monetary_policy:0 "Deflationary Fiscal Policy"
     law_neutral_monetary_policy:0 "Neutral Fiscal Policy"
     law_expansionary_monetary_policy:0 "Expansionary Fiscal Policy"
+    law_very_expansionary_monetary_policy:0 "Very Expansionary Fiscal Policy"
     
     law_charitable_health_system:0 "Non-Profit Healthcare"
     law_private_health_insurance:0 "Private Healthcare"
@@ -144,9 +178,9 @@
     law_regionalist_fp:0 "Regionalist Foreign Policy"
     law_globalist_fp:0 "Globalist Foreign Policy"
     
-    law_pro_consumer_regulations:0 "Pro-Consumer Regulations"
+    law_pro_consumer_regulations:0 "Strong Industry Regulations"
     law_balanced_regulations:0 "Balanced Industry Regulations"
-    law_pro_industry_regulations:0 "Pro-Industry Regulations"
+    law_pro_industry_regulations:0 "Weak Industry Regulations"
     
     law_no_environment_law:0 "No Pollution Controls"
     law_weak_environment_law:0 "Weak Pollution Controls"
@@ -160,24 +194,27 @@
     law_no_pop_growth_policy:0 "No Population Growth Policy"
     law_anti_pop_growth_policy:0 "Anti-Population Growth Policy"
     
+    law_no_colonial_affairs:0 "Anti-Colonialism"
+    
     power_structure:0 "State Structure"
     human_rights:0 "Political Policies"
     economy:0 "Economic Policies"
     
     lawgroup_voting_system:0 "Voting System"
     lawgroup_political_parties:0 "Political Parties"
-    lawgroup_judiciary:0 "Judiciary System"
+    lawgroup_judiciary:0 "Judicial Composition"
     lawgroup_cabinet_composition:0 "Cabinet Composition"
     lawgroup_bureaucracy:0 "Civil Service"
     lawgroup_army_model:0 "Army Model"
     lawgroup_constitutional_system:0 "Constitutional System"
-    lawgroup_legal_system:0 "Legal System"
-    lawgroup_head_of_state:0 "Head of State"
+    lawgroup_legal_system:0 "Judicial Autonomy"
+    lawgroup_head_of_state:0 "Government Type"
     lawgroup_head_of_government:0 "Head of Government"
-    lawgroup_legislature:0 "Legislature"
+    lawgroup_legislature:0 "Legislature Composition"
+    lawgroup_legislative_chambers:0 "Legislative System"
     lawgroup_centralisation:0 "Centralisation"
 
-    lawgroup_slavery:0 "Slavery"
+    lawgroup_slavery:0 "Crimes Against Humanity"
     lawgroup_war_policy:0 "War Policy"
     lawgroup_policing:0 "Police System"
     lawgroup_labor_rights:0 "Labour Rights"
@@ -194,6 +231,7 @@
     lawgroup_rights_of_women:0 "Women's Rights"
     lawgroup_church_and_state:0 "Religious Rights"
     lawgroup_citizenship:0 "Citizenship Policy"
+    lawgroup_espionage_policy:0 "Espionage Policy"
 
     lawgroup_welfare:0 "Welfare Policy"
     lawgroup_trade_policy:0 "Trade Policy"

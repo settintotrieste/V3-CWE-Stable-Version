@@ -1,0 +1,753 @@
+namespace = economic_cycles_system
+
+#Determine economic outlook (Checked every 6 months)
+economic_cycles_system.1 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		
+	}
+
+	immediate = {
+		
+		#Calculate economic strength
+		set_variable = { 
+			name = economic_strength_var
+			value = 0
+		}
+		
+		#Display variables
+		set_variable = { name = economic_strength_corruption_display_var value = 0 }
+		set_variable = { name = economic_strength_economic_laws_display_var value = 0 }
+		set_variable = { name = economic_strength_core_inflation_display_var value = 0 }
+		set_variable = { name = economic_strength_stock_market_display_var value = 0 }
+		set_variable = { name = economic_strength_government_finances_display_var value = 0 }
+		set_variable = { name = economic_strength_global_economy_display_var value = 0 }
+		set_variable = { name = economic_strength_wars_display_var value = 0 }
+	
+		### Compute Scores ###
+	
+		## Structural (Max: 15) ##
+	
+		#Corruption (Max: 4)
+		if = {
+			limit = { has_law = law_type:law_low_anti_corruption }
+			change_variable = { name = economic_strength_var add = 1 }
+			change_variable = { name = economic_strength_corruption_display_var add = 1 }
+		}
+		if = {
+			limit = { has_law = law_type:law_medium_anti_corruption }
+			change_variable = { name = economic_strength_var add = 2 }
+			change_variable = { name = economic_strength_corruption_display_var add = 2 }
+		}
+		if = {
+			limit = { has_law = law_type:law_high_anti_corruption }
+			change_variable = { name = economic_strength_var add = 3 }
+			change_variable = { name = economic_strength_corruption_display_var add = 3 }
+		}
+		if = {
+			limit = { has_law = law_type:law_very_high_anti_corruption }
+			change_variable = { name = economic_strength_var add = 4 }
+			change_variable = { name = economic_strength_corruption_display_var add = 4 }
+		}
+	
+		#Industrial Policy (Max: 1)
+		if = {
+			limit = { has_law = law_type:law_pro_industry_regulations }
+			change_variable = { name = economic_strength_var add = 1 }
+			change_variable = { name = economic_strength_economic_laws_display_var add = 1 }
+		}
+	
+		#Fiscal Policy (Max: 10)
+		if = {
+			limit = { has_law = law_type:law_neutral_monetary_policy }
+			change_variable = { name = economic_strength_var add = 2 }
+			change_variable = { name = economic_strength_economic_laws_display_var add = 2 }
+		}
+		if = {
+			limit = { has_law = law_type:law_expansionary_monetary_policy }
+			change_variable = { name = economic_strength_var add = 6 }
+			change_variable = { name = economic_strength_economic_laws_display_var add = 6 }
+		}
+		if = {
+			limit = { has_law = law_type:law_very_expansionary_monetary_policy }
+			change_variable = { name = economic_strength_var add = 10 }
+			change_variable = { name = economic_strength_economic_laws_display_var add = 10 }
+		}
+		
+		#Core Inflation Rate (Max: -10)
+		if = {
+			limit = { OR = { has_variable = high_core_inflation has_variable = low_core_inflation } }
+			change_variable = { name = economic_strength_var add = -5 }
+			change_variable = { name = economic_strength_core_inflation_display_var add = -5 }
+		}
+		if = {
+			limit = { OR = { has_variable = very_high_core_inflation has_variable = very_low_core_inflation } }
+			change_variable = { name = economic_strength_var add = -10 }
+			change_variable = { name = economic_strength_core_inflation_display_var add = -10 }
+		}
+	
+		## Situational (Max: 15) ##
+	
+		#Stock Market Speculation (Max: 5)
+		if = {
+			limit = { 
+				NOT = { is_a_command_economy = yes }
+			}
+			random_list = {
+				1 = {
+					change_variable = { name = economic_strength_var add = 1 }
+					change_variable = { name = economic_strength_stock_market_display_var add = 1 }
+					
+					#More likely to have a crash on the markets
+					modifier = {
+						if = {
+							limit = {
+								has_law = law_type:law_weak_financial_regulations
+							}
+						}
+						add = 4
+					}
+					modifier = {
+						if = {
+							limit = {
+								has_law = law_type:law_moderate_financial_regulations
+							}
+						}
+						add = 2
+					}
+					modifier = {
+						if = {
+							limit = {
+								has_global_variable = very_high_world_tension
+							}
+						}
+						add = 4
+					}
+					modifier = {
+						if = {
+							limit = {
+								has_global_variable = high_world_tension
+							}
+						}
+						add = 3
+					}
+					
+				}
+				2 = {
+					change_variable = { name = economic_strength_var add = 2 }
+					change_variable = { name = economic_strength_stock_market_display_var add = 2 }
+					
+					#More likely to have a crash on the markets
+					modifier = {
+						if = {
+							limit = {
+								has_law = law_type:law_weak_financial_regulations
+							}
+						}
+						add = 2
+					}
+					modifier = {
+						if = {
+							limit = {
+								has_law = law_type:law_moderate_financial_regulations
+							}
+						}
+						add = 1
+					}
+					modifier = {
+						if = {
+							limit = {
+								has_global_variable = very_high_world_tension
+							}
+						}
+						add = 4
+					}
+					modifier = {
+						if = {
+							limit = {
+								has_global_variable = high_world_tension
+							}
+						}
+						add = 3
+					}
+					modifier = {
+						if = {
+							limit = {
+								has_global_variable = medium_world_tension
+							}
+						}
+						add = 2
+					}
+					
+				}
+				3 = {
+					change_variable = { name = economic_strength_var add = 3 }
+					change_variable = { name = economic_strength_stock_market_display_var add = 3 }
+				}
+				4 = {
+					change_variable = { name = economic_strength_var add = 4 }
+					change_variable = { name = economic_strength_stock_market_display_var add = 4 }
+					
+					#Less likely to have a boom
+					modifier = {
+						if = {
+							limit = {
+								has_law = law_type:law_strong_financial_regulations
+							}
+						}
+						add = -2
+					}
+					
+					#More likely to have a boom
+					modifier = {
+						if = {
+							limit = {
+								has_global_variable = very_low_world_tension
+							}
+						}
+						add = 2
+					}
+					modifier = {
+						if = {
+							limit = {
+								has_global_variable = low_world_tension
+							}
+						}
+						add = 1
+					}
+					
+				}
+				5 = {
+					change_variable = { name = economic_strength_var add = 5 }
+					change_variable = { name = economic_strength_stock_market_display_var add = 5 }
+					
+					#Less likely to have a boom
+					modifier = {
+						if = {
+							limit = {
+								has_law = law_type:law_strong_financial_regulations
+							}
+						}
+						add = -4
+					}
+					
+					#More likely to have a boom
+					modifier = {
+						if = {
+							limit = {
+								has_global_variable = very_low_world_tension
+							}
+						}
+						add = 4
+					}
+					modifier = {
+						if = {
+							limit = {
+								has_global_variable = low_world_tension
+							}
+						}
+						add = 2
+					}
+					
+				}
+			}
+		}
+		
+		#State of Domestic Economy (Max: 5)
+		if = {
+			limit = { 
+				taking_loans = no
+			}
+			change_variable = { name = economic_strength_var add = 1 }
+			change_variable = { name = economic_strength_government_finances_display_var add = 1 }
+		}
+		if = {
+			limit = { 
+				in_default = no
+			}
+			change_variable = { name = economic_strength_var add = 1 }
+			change_variable = { name = economic_strength_government_finances_display_var add = 1 }
+		}
+		if = {
+			limit = { 
+				has_healthy_economy = yes
+			}
+			change_variable = { name = economic_strength_var add = 3 }
+			change_variable = { name = economic_strength_government_finances_display_var add = 3 }
+		}
+		
+		#State of Global Economy (Max: 5)
+		set_global_variable = { 
+			name = economic_strength_global_var
+			value = 0
+		}
+		set_global_variable = { 
+			name = economic_strength_country_count_var
+			value = 0
+		}
+		every_country = {
+			if = {
+				limit = { has_modifier = economic_cycle_1 }
+				change_global_variable = { name = economic_strength_global_var add = 1 }
+			}
+			if = {
+				limit = { has_modifier = economic_cycle_2 }
+				change_global_variable = { name = economic_strength_global_var add = 2 }
+			}
+			if = {
+				limit = { has_modifier = economic_cycle_3 }
+				change_global_variable = { name = economic_strength_global_var add = 3 }
+			}
+			if = {
+				limit = { has_modifier = economic_cycle_4 }
+				change_global_variable = { name = economic_strength_global_var add = 4 }
+			}
+			if = {
+				limit = { has_modifier = economic_cycle_5 }
+				change_global_variable = { name = economic_strength_global_var add = 5 }
+			}
+			change_global_variable = { name = economic_strength_country_count_var add = 1 }
+		}
+		change_global_variable = { 
+			name = economic_strength_global_var 
+			divide = global_var:economic_strength_country_count_var
+		}
+		if = {
+			limit = { 
+				global_var:economic_strength_global_var <= 1 
+			}
+			change_variable = { name = economic_strength_var add = 1 }
+			change_variable = { name = economic_strength_global_economy_display_var add = 1 }
+		}
+		if = {
+			limit = { 
+				global_var:economic_strength_global_var > 1
+				global_var:economic_strength_global_var <= 2
+			}
+			change_variable = { name = economic_strength_var add = 2 }
+			change_variable = { name = economic_strength_global_economy_display_var add = 2 }
+		}
+		if = {
+			limit = { 
+				global_var:economic_strength_global_var > 2
+				global_var:economic_strength_global_var <= 3
+			}
+			change_variable = { name = economic_strength_var add = 3 }
+			change_variable = { name = economic_strength_global_economy_display_var add = 3 }
+		}
+		if = {
+			limit = { 
+				global_var:economic_strength_global_var > 3
+				global_var:economic_strength_global_var <= 4
+			}
+			change_variable = { name = economic_strength_var add = 4 }
+			change_variable = { name = economic_strength_global_economy_display_var add = 4 }
+		}
+		if = {
+			limit = { 
+				global_var:economic_strength_global_var > 4
+			}
+			change_variable = { name = economic_strength_var add = 5 }
+			change_variable = { name = economic_strength_global_economy_display_var add = 5 }
+		}
+	
+		## Situational (Max: -30) ##
+	
+		#Wars (Max: -30)
+		if = {
+			limit = { 
+				is_at_war = yes
+				any_scope_war = { has_war_support = { target = ROOT value < 25 } }
+			}
+			change_variable = { name = economic_strength_var add = -10 }
+			change_variable = { name = economic_strength_wars_display_var add = -10 }
+		}
+		if = {
+			limit = { 
+				is_at_war = yes
+				any_scope_war = { has_war_support = { target = ROOT value < 50 } }
+			}
+			change_variable = { name = economic_strength_var add = -10 }
+			change_variable = { name = economic_strength_wars_display_var add = -10 }
+		}
+		if = {
+			limit = { 
+				is_at_war = yes
+				any_scope_war = { has_war_support = { target = ROOT value < 75 } }
+			}
+			change_variable = { name = economic_strength_var add = -10 }
+			change_variable = { name = economic_strength_wars_display_var add = -10 }
+		}
+		
+		### Apply modifiers ###
+		if = {
+			limit = { 
+				#root.var:economic_strength_var >= 0
+				root.var:economic_strength_var < 6
+			}
+			if = {
+				limit = { has_modifier = economic_cycle_2 }
+				remove_modifier = economic_cycle_2
+				add_modifier = { name = economic_cycle_1 }
+			}
+			else_if = {
+				limit = { has_modifier = economic_cycle_3 }
+				remove_modifier = economic_cycle_3
+				add_modifier = { name = economic_cycle_2 }
+			}
+			else_if = {
+				limit = { has_modifier = economic_cycle_4 }
+				remove_modifier = economic_cycle_4
+				add_modifier = { name = economic_cycle_3 }
+			}
+			else_if = {
+				limit = { has_modifier = economic_cycle_5 }
+				remove_modifier = economic_cycle_5
+				add_modifier = { name = economic_cycle_4 }
+			}
+			else = {
+				limit = { 
+					NOR = { 
+						has_modifier = economic_cycle_1 
+						has_modifier = economic_cycle_2
+						has_modifier = economic_cycle_3
+						has_modifier = economic_cycle_4
+						has_modifier = economic_cycle_5
+					} 
+				}
+				add_modifier = { name = economic_cycle_1 }
+			}
+		}
+		else_if = {
+			limit = { 
+				root.var:economic_strength_var >= 6
+				root.var:economic_strength_var < 12
+			}
+			if = {
+				limit = { has_modifier = economic_cycle_1 }
+				remove_modifier = economic_cycle_1
+				add_modifier = { name = economic_cycle_2 }
+			}
+			else_if = {
+				limit = { has_modifier = economic_cycle_3 }
+				remove_modifier = economic_cycle_3
+				add_modifier = { name = economic_cycle_2 }
+			}
+			else_if = {
+				limit = { has_modifier = economic_cycle_4 }
+				remove_modifier = economic_cycle_4
+				add_modifier = { name = economic_cycle_3 }
+			}
+			else_if = {
+				limit = { has_modifier = economic_cycle_5 }
+				remove_modifier = economic_cycle_5
+				add_modifier = { name = economic_cycle_4 }
+			}
+			else = {
+				limit = { 
+					NOR = { 
+						has_modifier = economic_cycle_1 
+						has_modifier = economic_cycle_2
+						has_modifier = economic_cycle_3
+						has_modifier = economic_cycle_4
+						has_modifier = economic_cycle_5
+					} 
+				}
+				add_modifier = { name = economic_cycle_2 }
+			}
+		}
+		else_if = {
+			limit = { 
+				root.var:economic_strength_var >= 12
+				root.var:economic_strength_var < 18
+			}
+			if = {
+				limit = { has_modifier = economic_cycle_1 }
+				remove_modifier = economic_cycle_1
+				add_modifier = { name = economic_cycle_2 }
+			}
+			else_if = {
+				limit = { has_modifier = economic_cycle_2 }
+				remove_modifier = economic_cycle_2
+				add_modifier = { name = economic_cycle_3 }
+			}
+			else_if = {
+				limit = { has_modifier = economic_cycle_4 }
+				remove_modifier = economic_cycle_4
+				add_modifier = { name = economic_cycle_3 }
+			}
+			else_if = {
+				limit = { has_modifier = economic_cycle_5 }
+				remove_modifier = economic_cycle_5
+				add_modifier = { name = economic_cycle_4 }
+			}
+			else_if = {
+				limit = { 
+					NOR = { 
+						has_modifier = economic_cycle_1 
+						has_modifier = economic_cycle_2
+						has_modifier = economic_cycle_3
+						has_modifier = economic_cycle_4
+						has_modifier = economic_cycle_5
+					} 
+				}
+				add_modifier = { name = economic_cycle_3 }
+			}
+		}
+		else_if = {
+			limit = { 
+				root.var:economic_strength_var >= 18
+				root.var:economic_strength_var < 24
+			}
+			if = {
+				limit = { has_modifier = economic_cycle_1 }
+				remove_modifier = economic_cycle_1
+				add_modifier = { name = economic_cycle_2 }
+			}
+			else_if = {
+				limit = { has_modifier = economic_cycle_2 }
+				remove_modifier = economic_cycle_2
+				add_modifier = { name = economic_cycle_3 }
+			}
+			else_if = {
+				limit = { has_modifier = economic_cycle_3 }
+				remove_modifier = economic_cycle_3
+				add_modifier = { name = economic_cycle_4 }
+			}
+			else_if = {
+				limit = { has_modifier = economic_cycle_5 }
+				remove_modifier = economic_cycle_5
+				add_modifier = { name = economic_cycle_4 }
+			}
+			else = {
+				limit = { 
+					NOR = { 
+						has_modifier = economic_cycle_1 
+						has_modifier = economic_cycle_2
+						has_modifier = economic_cycle_3
+						has_modifier = economic_cycle_4
+						has_modifier = economic_cycle_5
+					} 
+				}
+				add_modifier = { name = economic_cycle_4 }
+			}
+		}
+		else_if = {
+			limit = { 
+				root.var:economic_strength_var >= 24
+				#root.var:economic_strength_var <= 30
+			}
+			if = {
+				limit = { has_modifier = economic_cycle_1 }
+				remove_modifier = economic_cycle_1
+				add_modifier = { name = economic_cycle_2 }
+			}
+			else_if = {
+				limit = { has_modifier = economic_cycle_2 }
+				remove_modifier = economic_cycle_2
+				add_modifier = { name = economic_cycle_3 }
+			}
+			else_if = {
+				limit = { has_modifier = economic_cycle_3 }
+				remove_modifier = economic_cycle_3
+				add_modifier = { name = economic_cycle_4 }
+			}
+			else_if = {
+				limit = { has_modifier = economic_cycle_4 }
+				remove_modifier = economic_cycle_4
+				add_modifier = { name = economic_cycle_5 }
+			}
+			else = {
+				limit = { 
+					NOR = { 
+						has_modifier = economic_cycle_1 
+						has_modifier = economic_cycle_2
+						has_modifier = economic_cycle_3
+						has_modifier = economic_cycle_4
+						has_modifier = economic_cycle_5
+					} 
+				}
+				add_modifier = { name = economic_cycle_5 }
+			}
+		}
+		
+	}
+
+}
+
+# Determine International Interest Rates
+economic_cycles_system.2 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		
+		#International interest rates only applies to countries who did not borrow from the IMF
+		NOT = { has_modifier = imf_loan_debtor }
+		
+	}
+
+	immediate = {
+		
+		#Check state of the Global Economy (Max: 5)
+		set_global_variable = { 
+			name = interest_rates_global_var
+			value = 0
+		}
+		set_global_variable = { 
+			name = interest_rates_country_count_var
+			value = 0
+		}
+		#Normal countries
+		every_country = {
+			if = {
+				limit = { has_law = law_type:law_very_deflationary_monetary_policy }
+				change_global_variable = { name = interest_rates_global_var add = 1 }
+			}
+			if = {
+				limit = { has_law = law_type:law_deflationary_monetary_policy }
+				change_global_variable = { name = interest_rates_global_var add = 2 }
+			}
+			if = {
+				limit = { has_law = law_type:law_neutral_monetary_policy }
+				change_global_variable = { name = interest_rates_global_var add = 3 }
+			}
+			if = {
+				limit = { has_law = law_type:law_expansionary_monetary_policy }
+				change_global_variable = { name = interest_rates_global_var add = 4 }
+			}
+			if = {
+				limit = { has_law = law_type:law_very_expansionary_monetary_policy }
+				change_global_variable = { name = interest_rates_global_var add = 5 }
+			}
+			change_global_variable = { name = interest_rates_country_count_var add = 1 }
+		}
+		
+		#Global Reserve Currency countries (x10 weight)
+		every_country = {
+			limit = { has_modifier = global_reserve_currency }
+			if = {
+				limit = { has_law = law_type:law_very_deflationary_monetary_policy }
+				change_global_variable = { name = interest_rates_global_var add = 10 }
+			}
+			if = {
+				limit = { has_law = law_type:law_deflationary_monetary_policy }
+				change_global_variable = { name = interest_rates_global_var add = 20 }
+			}
+			if = {
+				limit = { has_law = law_type:law_neutral_monetary_policy }
+				change_global_variable = { name = interest_rates_global_var add = 30 }
+			}
+			if = {
+				limit = { has_law = law_type:law_expansionary_monetary_policy }
+				change_global_variable = { name = interest_rates_global_var add = 40 }
+			}
+			if = {
+				limit = { has_law = law_type:law_very_expansionary_monetary_policy }
+				change_global_variable = { name = interest_rates_global_var add = 50 }
+			}
+			change_global_variable = { name = interest_rates_country_count_var add = 10 }
+		}
+		
+		#Major Reserve Currency countries (x2 weight)
+		every_country = {
+			limit = { has_modifier = major_reserve_currency }
+			if = {
+				limit = { has_law = law_type:law_very_deflationary_monetary_policy }
+				change_global_variable = { name = interest_rates_global_var add = 2 }
+			}
+			if = {
+				limit = { has_law = law_type:law_deflationary_monetary_policy }
+				change_global_variable = { name = interest_rates_global_var add = 4 }
+			}
+			if = {
+				limit = { has_law = law_type:law_neutral_monetary_policy }
+				change_global_variable = { name = interest_rates_global_var add = 6 }
+			}
+			if = {
+				limit = { has_law = law_type:law_expansionary_monetary_policy }
+				change_global_variable = { name = interest_rates_global_var add = 8 }
+			}
+			if = {
+				limit = { has_law = law_type:law_very_expansionary_monetary_policy }
+				change_global_variable = { name = interest_rates_global_var add = 10 }
+			}
+			change_global_variable = { name = interest_rates_country_count_var add = 2 }
+		}
+		
+		#Compute global average interest rates
+		change_global_variable = { 
+			name = interest_rates_global_var
+			divide = global_var:interest_rates_country_count_var
+		}
+		
+		#Apply modifiers
+		if = {
+			limit = { 
+				global_var:interest_rates_global_var <= 1 
+				
+				NOT = { has_modifier = very_low_imf_interest_rate }
+			}
+			add_modifier = { name = very_low_imf_interest_rate }
+			remove_modifier = low_imf_interest_rate
+			remove_modifier = medium_imf_interest_rate
+			remove_modifier = high_imf_interest_rate
+			remove_modifier = very_high_imf_interest_rate
+		}
+		if = {
+			limit = { 
+				global_var:interest_rates_global_var > 1
+				global_var:interest_rates_global_var <= 2
+				
+				NOT = { has_modifier = low_imf_interest_rate }
+			}
+			remove_modifier = very_low_imf_interest_rate
+			add_modifier = { name = low_imf_interest_rate }
+			remove_modifier = medium_imf_interest_rate
+			remove_modifier = high_imf_interest_rate
+			remove_modifier = very_high_imf_interest_rate
+		}
+		if = {
+			limit = { 
+				global_var:interest_rates_global_var > 2
+				global_var:interest_rates_global_var <= 3
+				
+				NOT = { has_modifier = medium_imf_interest_rate }
+			}
+			remove_modifier = very_low_imf_interest_rate
+			remove_modifier = low_imf_interest_rate
+			add_modifier = { name = medium_imf_interest_rate }
+			remove_modifier = high_imf_interest_rate
+			remove_modifier = very_high_imf_interest_rate
+		}
+		if = {
+			limit = { 
+				global_var:interest_rates_global_var > 3
+				global_var:interest_rates_global_var <= 4
+				
+				NOT = { has_modifier = high_imf_interest_rate }
+			}
+			remove_modifier = very_low_imf_interest_rate
+			remove_modifier = low_imf_interest_rate
+			remove_modifier = medium_imf_interest_rate
+			add_modifier = { name = high_imf_interest_rate }
+			remove_modifier = very_high_imf_interest_rate
+		}
+		if = {
+			limit = { 
+				global_var:interest_rates_global_var > 4
+				
+				NOT = { has_modifier = very_high_imf_interest_rate }
+			}
+			remove_modifier = very_low_imf_interest_rate
+			remove_modifier = low_imf_interest_rate
+			remove_modifier = medium_imf_interest_rate
+			remove_modifier = high_imf_interest_rate
+			add_modifier = { name = very_high_imf_interest_rate }
+		}
+		
+	}
+	
+}

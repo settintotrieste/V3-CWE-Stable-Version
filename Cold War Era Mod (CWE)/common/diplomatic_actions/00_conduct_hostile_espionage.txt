@@ -1,0 +1,418 @@
+﻿conduct_hostile_espionage = {
+	requires_approval = no
+	should_notify_third_parties = no
+	show_effect_in_tooltip = yes
+
+	unlocking_technologies = {
+		tech_geopolitics_1
+	}
+
+	potential = {
+	
+		#THIS is not decentralized
+		NOT = { is_country_type = decentralized }
+		scope:target_country = { NOT = { is_country_type = decentralized } }
+		
+		#THIS has intelligence services
+		has_law = law_type:law_offensive_espionage
+		
+		#THIS and Target are not revolutionary
+		is_revolutionary = no
+		scope:target_country = { is_revolutionary = no } 
+		
+		#THIS is not broke
+		in_default = no
+		
+		#THIS is of a higher rank than the Target OR is a Great Power and above
+		OR = { 
+			scope:target_country = { country_rank < root.country_rank }
+			country_rank >= rank_value:great_power
+		}
+		
+		#THIS is sufficiently independent
+		is_sufficiently_independent = yes
+		
+	}
+	
+	possible = {
+		
+		#THIS is interested in Target
+		has_diplomatic_relevance = scope:target_country
+		
+		#THIS is not friendly with Target in anyway
+		NOR = { 
+			has_diplomatic_pact = { who = scope:target_country type = increase_relations }
+			has_diplomatic_pact = { who = scope:target_country type = bankroll }
+			has_diplomatic_pact = { who = scope:target_country type = alliance }
+			has_diplomatic_pact = { who = scope:target_country type = defensive_pact } 
+		}
+		
+		#Country wants to meddle in other's affairs
+		OR = { 
+		
+			#Leader is aggressive
+			AND = { 
+				exists = ruler
+				ruler = {
+					OR = {
+						has_ideology = ideology:ideology_autocratic
+						has_ideology = ideology:ideology_power_hungry
+						has_ideology = ideology:ideology_elitist
+					}
+				}
+			}
+			
+			#Target is a rival of THIS
+			has_diplomatic_pact = { who = scope:target_country type = rivalry is_initiator = no }
+			
+		}
+		
+		#THIS is not friendly with Target
+		custom_tooltip = {
+			text = DIPLO_ACTION_RELATIONS_NEUTRAL_OR_LESS
+			scope:target_country.relations:root < relations_threshold:cordial
+		}
+		
+	}
+	
+	pact = {	
+		cost = 50
+		is_two_sided_pact = no
+		infamy_affects_maintenance = yes
+		
+		### Validation requirements ###
+		
+		is_about_to_auto_break = {
+            scope:target_country.relations:root >= relations_threshold:neutral
+        }
+		
+		should_auto_break = {
+			
+			OR = { 
+			
+				#THIS is friendly with Target
+				scope:target_country.relations:root >= relations_threshold:cordial
+				
+				#THIS is friendly with Target in anyway
+				OR = { 
+					has_diplomatic_pact = { who = scope:target_country type = increase_relations }
+					has_diplomatic_pact = { who = scope:target_country type = bankroll }
+					has_diplomatic_pact = { who = scope:target_country type = alliance }
+					has_diplomatic_pact = { who = scope:target_country type = defensive_pact } 
+				}
+				
+				#Country no longer wants to meddle in other's affairs
+				NOR = { 
+			
+					#Leader is aggressive
+					AND = { 
+						exists = ruler
+						ruler = {
+							OR = {
+								has_ideology = ideology:ideology_autocratic
+								has_ideology = ideology:ideology_power_hungry
+								has_ideology = ideology:ideology_elitist
+							}
+						}
+					}
+				
+					#Target is a rival of THIS
+					has_diplomatic_pact = { who = scope:target_country type = rivalry is_initiator = no }
+				
+				}
+				
+				#THIS is broke
+				in_default = yes
+			
+			}
+			
+		}
+		
+		should_invalidate = {
+		
+			OR = { 
+			
+				#THIS no longer has intelligence services
+				NOT = { has_law = law_type:law_offensive_espionage }
+			
+				#THIS has lost interest in Target
+				NOT = { has_diplomatic_relevance = scope:target_country }
+				
+				#THIS is not of a higher rank than the Target OR is a Great Power and above
+				NOR = {
+					scope:target_country = { country_rank < root.country_rank }
+					country_rank >= rank_value:great_power
+				}
+			
+			}
+			
+		}
+		
+		### Effects added by Espionage JE ### 
+		
+		monthly_effect = {
+			
+			## Chance for an Espionage Opportunity to appear ##
+			
+			#Instigate Domestic Unrest (<1% chance per week) [ONLY possible if country has an open media]
+			if = {
+				limit = { 
+					scope:target_country = { country_has_an_open_media = yes }
+				}
+				custom_tooltip = {
+					text = instigate_domestic_unrest_2_tt
+					random_list = { 
+						99 = { }
+						1 = { 
+							set_variable = espionage_attacker_var
+							scope:target_country = {
+								
+								#Defence by the other side
+								if = {
+									limit = { institution_investment_level = { institution = institution_espionage value = 1 } }
+									random_list = { 
+										1 = { }
+										5 = { trigger_event = { id = espionage_system.2 } }
+									}
+								}
+								if = {
+									limit = { institution_investment_level = { institution = institution_espionage value = 2 } }
+									random_list = { 
+										1 = { }
+										4 = { trigger_event = { id = espionage_system.2 } }
+									}
+								}
+								if = {
+									limit = { institution_investment_level = { institution = institution_espionage value = 3 } }
+									random_list = { 
+										1 = { }
+										3 = { trigger_event = { id = espionage_system.2 } }
+									}
+								}
+								if = {
+									limit = { institution_investment_level = { institution = institution_espionage value = 4 } }
+									random_list = { 
+										1 = { }
+										2 = { trigger_event = { id = espionage_system.2 } }
+									}
+								}
+								if = {
+									limit = { institution_investment_level = { institution = institution_espionage value = 5 } }
+									random_list = { 
+										1 = { }
+										1 = { trigger_event = { id = espionage_system.2 } }
+									}
+								}
+								
+							}
+						}
+					}
+				}
+			}
+			
+			#Conduct Economic Sabotage
+			custom_tooltip = {
+				text = espionage_conduct_economic_sabotage_2_tt
+				random_list = { 
+					99 = { }
+					1 = {
+						set_variable = espionage_attacker_var
+						scope:target_country = {
+						
+							#Defence by the other side
+							if = {
+								limit = { institution_investment_level = { institution = institution_espionage value = 1 } }
+								random_list = { 
+									1 = { }
+									5 = { trigger_event = { id = espionage_system.4 } }
+								}
+							}
+							if = {
+								limit = { institution_investment_level = { institution = institution_espionage value = 2 } }
+								random_list = { 
+									1 = { }
+									4 = { trigger_event = { id = espionage_system.4 } }
+								}
+							}
+							if = {
+								limit = { institution_investment_level = { institution = institution_espionage value = 3 } }
+								random_list = { 
+									1 = { }
+									3 = { trigger_event = { id = espionage_system.4 } }
+								}
+							}
+							if = {
+								limit = { institution_investment_level = { institution = institution_espionage value = 4 } }
+								random_list = { 
+									1 = { }
+									2 = { trigger_event = { id = espionage_system.4 } }
+								}
+							}
+							if = {
+								limit = { institution_investment_level = { institution = institution_espionage value = 5 } }
+								random_list = { 
+									1 = { }
+									1 = { trigger_event = { id = espionage_system.4 } }
+								}
+							}
+							
+						}
+					}
+				}
+			}
+			
+			#Instigate Secessionist Movement
+			custom_tooltip = {
+				text = espionage_instigate_secessionist_movement_2_tt
+				random_list = { 
+					99 = { }
+					1 = {
+						set_variable = espionage_attacker_var
+						scope:target_country = {
+						
+							#Defence by the other side
+							if = {
+								limit = { institution_investment_level = { institution = institution_espionage value = 1 } }
+								random_list = { 
+									1 = { }
+									5 = { trigger_event = { id = espionage_system.6 } }
+								}
+							}
+							if = {
+								limit = { institution_investment_level = { institution = institution_espionage value = 2 } }
+								random_list = { 
+									1 = { }
+									4 = { trigger_event = { id = espionage_system.6 } }
+								}
+							}
+							if = {
+								limit = { institution_investment_level = { institution = institution_espionage value = 3 } }
+								random_list = { 
+									1 = { }
+									3 = { trigger_event = { id = espionage_system.6 } }
+								}
+							}
+							if = {
+								limit = { institution_investment_level = { institution = institution_espionage value = 4 } }
+								random_list = { 
+									1 = { }
+									2 = { trigger_event = { id = espionage_system.6 } }
+								}
+							}
+							if = {
+								limit = { institution_investment_level = { institution = institution_espionage value = 5 } }
+								random_list = { 
+									1 = { }
+									1 = { trigger_event = { id = espionage_system.6 } }
+								}
+							}
+							
+						}
+					}
+				}
+			}
+			
+			#Election Interference (50% chance per election) [ONLY possible if country has a ruling party & is having elections]
+			if = {
+				limit = { 
+					scope:target_country = {
+						any_interest_group = { 
+							exists = leader 
+							leader = { is_ruler = yes }
+							has_party = yes
+						}
+						in_election_campaign = yes
+					} 
+				}
+				custom_tooltip = {
+					text = election_interference_2_tt
+					random_list = { 
+						99 = { }
+						1 = { 
+							set_variable = espionage_attacker_var
+							scope:target_country = {
+								
+								#Defence by the other side
+								if = {
+									limit = { institution_investment_level = { institution = institution_espionage value = 1 } }
+									random_list = { 
+										1 = { }
+										5 = { trigger_event = { id = espionage_system.8 } }
+									}
+								}
+								if = {
+									limit = { institution_investment_level = { institution = institution_espionage value = 2 } }
+									random_list = { 
+										1 = { }
+										4 = { trigger_event = { id = espionage_system.8 } }
+									}
+								}
+								if = {
+									limit = { institution_investment_level = { institution = institution_espionage value = 3 } }
+									random_list = { 
+										1 = { }
+										3 = { trigger_event = { id = espionage_system.8 } }
+									}
+								}
+								if = {
+									limit = { institution_investment_level = { institution = institution_espionage value = 4 } }
+									random_list = { 
+										1 = { }
+										2 = { trigger_event = { id = espionage_system.8 } }
+									}
+								}
+								if = {
+									limit = { institution_investment_level = { institution = institution_espionage value = 5 } }
+									random_list = { 
+										1 = { }
+										1 = { trigger_event = { id = espionage_system.8 } }
+									}
+								}
+								
+							}
+						}
+					}
+				}
+			}
+			
+		}
+		
+	}
+	
+	ai = {
+		max_influence_spending_fraction = 0.20
+	
+		propose_score = {
+			value = 10
+		}
+		
+		will_propose = {
+			OR = { 
+				has_attitude = {
+					who = scope:target_country
+					attitude <= antagonistic
+				}
+				has_diplomatic_pact = { who = scope:target_country type = rivalry }
+				scope:target_country.relations:root < relations_threshold:poor
+			}
+		}
+		
+		will_break = {
+			NOR = { 
+				has_diplomatic_pact = { who = scope:target_country type = rivalry }
+				scope:target_country.relations:root < relations_threshold:poor
+				scope:target_country.infamy >= infamy_threshold:pariah
+			}
+			NOR = { 
+				has_attitude = {
+					who = scope:target_country
+					attitude <= antagonistic
+				}
+				has_diplomatic_pact = { who = scope:target_country type = rivalry }
+				scope:target_country.relations:root < relations_threshold:poor
+			}
+		}
+		
+	}
+	
+}

@@ -1,0 +1,779 @@
+namespace = OPEC_system
+
+#Set OPEC leader
+OPEC_system.1 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		
+		OR = {
+		
+			#No OPEC leader and there is an eligible one
+			AND = { 
+				NOT = { any_country = { has_modifier = OPEC_leader } }
+				any_country = { 
+					has_modifier = OPEC_member
+				}
+			}
+			
+			#OPEC leader is wrong
+			AND = { 
+				has_modifier = OPEC_leader 
+				OR = {
+					NOT = { is_sufficiently_independent = yes }
+					is_a_communist_government = yes
+					any_country = { has_modifier = OPEC_member NOT = { has_modifier = OPEC_leader } country_rank > root.country_rank }
+				}
+			}
+			
+			#Overlapping modifiers
+			any_country = { has_modifier = OPEC_leader has_modifier = OPEC_member }
+			
+		}
+		
+	}
+
+	immediate = {
+		
+		#Clear OPEC leader
+		every_country = {
+			limit = { has_modifier = OPEC_leader }
+			remove_modifier = OPEC_leader
+			if = { 
+				limit = { NOT = { has_modifier = OPEC_member } }
+				add_modifier = { name = OPEC_member }
+			}
+		}
+	
+		#Set OPEC leader
+		if = {
+			limit = { 
+				NOT = { any_country = { has_modifier = OPEC_leader } }
+				any_country = { 
+					has_modifier = OPEC_member
+				}
+			}
+			random_country = {
+				limit = {
+					has_modifier = OPEC_member
+				}
+				add_modifier = { name = OPEC_leader }
+			}
+		}
+		else_if = {
+			limit = {
+				has_modifier = OPEC_leader
+				OR = {
+					NOT = { is_sufficiently_independent = yes }
+					is_a_communist_government = yes
+					any_country = { has_modifier = OPEC_member NOT = { has_modifier = OPEC_leader } country_rank > root.country_rank }
+				}
+			}
+			random_country = {
+				limit = {
+					has_modifier = OPEC_member
+					country_rank > root.country_rank
+				}
+				add_modifier = { name = OPEC_leader }
+			}
+		}
+		
+		#Clean up memberships
+		if = { 
+			limit = { has_modifier = OPEC_leader has_modifier = OPEC_member }
+			remove_modifier = OPEC_member
+		}
+		
+	}
+
+}
+
+#Dissolve OPEC
+OPEC_system.2 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		
+		OR = { 
+		
+			#THIS is the sole member of OPEC
+			AND = { 
+				OR = { has_modifier = OPEC_member has_modifier = OPEC_leader }
+				NOT = { any_country = { has_modifier = OPEC_member } }
+			}
+			
+			#No OPEC leader
+			AND = { 
+				NOT = { has_modifier = OPEC_leader }
+				NOT = { any_country = { has_modifier = OPEC_leader } }
+			}
+			
+		}
+		
+	}
+
+	immediate = {
+		
+		#Everyone leaves OPEC
+		remove_modifier = OPEC_member
+		remove_modifier = OPEC_leader
+		
+		every_country = {
+			remove_modifier = OPEC_member
+			remove_modifier = OPEC_leader
+		}
+		
+	}
+
+}
+
+#Kick ineligible countries out of OPEC
+OPEC_system.3 = {
+	type = country_event
+	title = OPEC_expulsion.t 					# Title of the event; ADD LOCALISATION
+    desc = OPEC_expulsion.d 					# Description of the event; ADD LOCALISATION
+    flavor = OPEC_expulsion.f 					# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+	event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
+
+    icon = "gfx/interface/icons/diplo_icons/OPEC_member.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+
+	trigger = {
+		
+		OR = { 
+			has_modifier = OPEC_member
+			has_modifier = OPEC_leader
+			has_variable = OPEC_application_var
+			
+			any_scope_state = {
+				OR = {
+					has_modifier = very_low_OPEC_oil_quota
+					has_modifier = low_OPEC_oil_quota
+					has_modifier = medium_OPEC_oil_quota
+					has_modifier = high_OPEC_oil_quota
+					has_modifier = very_high_OPEC_oil_quota
+				}
+			}
+			
+		}
+		
+		OR = { 
+			NOT = { is_sufficiently_independent = yes }
+			NOT = { infamy < infamy_threshold:pariah }
+			is_a_communist_government = yes
+			NOT = { has_building = building_oil_rig }
+		}
+		
+	}
+
+	immediate = {
+	
+		#THIS leaves OPEC
+		remove_modifier = OPEC_member
+		remove_modifier = OPEC_leader
+		
+		#Clear all OPEC modifiers
+		every_scope_state = {
+			remove_modifier = very_low_OPEC_oil_quota
+			remove_modifier = low_OPEC_oil_quota
+			remove_modifier = medium_OPEC_oil_quota
+			remove_modifier = high_OPEC_oil_quota
+			remove_modifier = very_high_OPEC_oil_quota
+		}
+		
+		#Terminate any applications
+		remove_variable = OPEC_application_var
+		
+		#Block reapplication for 5 years
+		set_variable = {
+			name = left_OPEC_var
+			months = 60
+		}
+		
+	}
+	
+	option = {
+        name = OPEC_application_rejection.1				# Unfortunate
+		
+    }
+
+}
+
+#Option for OPEC leader to accept or reject application for membership
+OPEC_system.4 = {
+	title = OPEC_application_choice.t 					# Title of the event; ADD LOCALISATION
+    desc = OPEC_application_choice.d 					# Description of the event; ADD LOCALISATION
+    #flavor = OPEC_application_choice.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+
+	trigger = {
+		
+		has_modifier = OPEC_leader
+		
+		any_country = {
+			has_variable = OPEC_application_var
+			
+			is_sufficiently_independent = yes
+			is_at_war = no
+		}
+		
+	}
+
+	immediate = {
+	
+		random_country = {
+			limit = { has_variable = OPEC_application_var }
+			save_scope_as = OPEC_applicant
+		}
+		
+		ROOT = {
+			save_scope_as = OPEC_leader
+		}
+		
+	}
+
+	option = {
+        name = OPEC_application_choice.option.1			# Accept application from PREV
+        highlighted_option = yes
+		
+		#Accept FROM into OPEC
+		scope:OPEC_applicant = {
+			#FROM joins OPEC
+			add_modifier = { name = OPEC_member }
+			remove_variable = OPEC_application_var
+		}
+		
+		#Inform applicant of successful outcome
+		scope:OPEC_applicant = { trigger_event = { id = OPEC_system.6 } }
+		
+		#FROM is happy with THIS
+		set_relations = {
+			country = scope:OPEC_applicant
+			value = 25
+		}
+		
+		ai_chance = { 
+			base = 99
+		}
+		
+    }
+	
+	option = {
+        name = OPEC_application_choice.option.2 # Refuse application from PREV
+		default_option = yes
+		
+		#Inform applicant of unsuccessful outcome
+		scope:OPEC_applicant = { 
+			trigger_event = { id = OPEC_system.5 }
+			remove_variable = OPEC_application_var
+		}
+		
+		#FROM is angry!
+		change_relations = {
+			country = scope:OPEC_applicant
+			value = -25
+		}
+		
+		ai_chance = { 
+			base = 1
+		}
+		
+    }
+
+}
+
+#Notification of rejection
+OPEC_system.5 = {
+	title = OPEC_application_rejection.t 				# Title of the event; ADD LOCALISATION
+    desc = OPEC_application_rejection.d 				# Description of the event; ADD LOCALISATION
+    #flavor = OPEC_application_rejection.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+
+	immediate = {
+	
+		random_country = {
+			limit = { has_modifier = OPEC_leader }
+			save_scope_as = OPEC_leader
+		}
+		
+	}
+
+	option = {
+        name = OPEC_application_rejection.1				# Unfortunate
+		
+    }
+
+}
+
+#Notification of acceptance
+OPEC_system.6 = {
+	title = OPEC_application_acceptance.t 				# Title of the event; ADD LOCALISATION
+    desc = OPEC_application_acceptance.d 				# Description of the event; ADD LOCALISATION
+    #flavor = OPEC_application_acceptance.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+
+	immediate = {
+	
+		random_country = {
+			limit = { has_modifier = OPEC_leader }
+			save_scope_as = OPEC_leader
+		}
+		
+	}
+
+	option = {
+        name = OPEC_application_acceptance.1				# Fortunate
+		
+    }
+
+}
+
+### OPEC Oil Production Quotas ###
+
+# Fires once per year
+OPEC_system.7 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		
+		#Only applies to OPEC members
+		OR = { 
+			has_modifier = OPEC_leader 
+			has_modifier = OPEC_member 
+		} 
+		
+	}
+
+	immediate = {
+		
+		#Check state of the Global Economy (Max: 5)
+		set_global_variable = { 
+			name = economic_strength_global_var
+			value = 0
+		}
+		set_global_variable = { 
+			name = economic_strength_country_count_var
+			value = 0
+		}
+		every_country = {
+			if = {
+				limit = { has_modifier = economic_cycle_1 }
+				change_global_variable = { name = economic_strength_global_var add = 1 }
+			}
+			if = {
+				limit = { has_modifier = economic_cycle_2 }
+				change_global_variable = { name = economic_strength_global_var add = 2 }
+			}
+			if = {
+				limit = { has_modifier = economic_cycle_3 }
+				change_global_variable = { name = economic_strength_global_var add = 3 }
+			}
+			if = {
+				limit = { has_modifier = economic_cycle_4 }
+				change_global_variable = { name = economic_strength_global_var add = 4 }
+			}
+			if = {
+				limit = { has_modifier = economic_cycle_5 }
+				change_global_variable = { name = economic_strength_global_var add = 5 }
+			}
+			change_global_variable = { name = economic_strength_country_count_var add = 1 }
+		}
+		change_global_variable = { 
+			name = economic_strength_global_var 
+			divide = global_var:economic_strength_country_count_var
+		}
+		
+		#Apply OPEC quotas to oil producing states
+		if = {
+			limit = { 
+				global_var:economic_strength_global_var < 1 
+				
+				any_scope_state = { NOT = { has_modifier = very_low_OPEC_oil_quota } }
+			}
+			
+			#Always clear everything first
+			every_scope_state = {
+				remove_modifier = very_low_OPEC_oil_quota
+				remove_modifier = low_OPEC_oil_quota
+				remove_modifier = medium_OPEC_oil_quota
+				remove_modifier = high_OPEC_oil_quota
+				remove_modifier = very_high_OPEC_oil_quota
+			}
+			
+			#Add quota to all oil producing states
+			every_scope_state = {
+				limit = { has_building = building_oil_rig }
+				add_modifier = { name = very_low_OPEC_oil_quota }
+			}
+			
+			#Inform country of change
+			trigger_event = { id = OPEC_system.8 }
+		}
+		if = {
+			limit = { 
+				global_var:economic_strength_global_var >= 1
+				global_var:economic_strength_global_var < 2
+				
+				any_scope_state = { NOT = { has_modifier = low_OPEC_oil_quota } }
+			}
+			
+			#Always clear everything first
+			every_scope_state = {
+				remove_modifier = very_low_OPEC_oil_quota
+				remove_modifier = low_OPEC_oil_quota
+				remove_modifier = medium_OPEC_oil_quota
+				remove_modifier = high_OPEC_oil_quota
+				remove_modifier = very_high_OPEC_oil_quota
+			}
+			
+			#Add quota to all oil producing states
+			every_scope_state = {
+				limit = { has_building = building_oil_rig }
+				add_modifier = { name = low_OPEC_oil_quota }
+			}
+			
+			#Inform country of change
+			trigger_event = { id = OPEC_system.8 }
+		}
+		if = {
+			limit = { 
+				global_var:economic_strength_global_var >= 2
+				global_var:economic_strength_global_var < 3
+				
+				any_scope_state = { NOT = { has_modifier = medium_OPEC_oil_quota } }
+			}
+			
+			#Always clear everything first
+			every_scope_state = {
+				remove_modifier = very_low_OPEC_oil_quota
+				remove_modifier = low_OPEC_oil_quota
+				remove_modifier = medium_OPEC_oil_quota
+				remove_modifier = high_OPEC_oil_quota
+				remove_modifier = very_high_OPEC_oil_quota
+			}
+			
+			#Add quota to all oil producing states
+			every_scope_state = {
+				limit = { has_building = building_oil_rig }
+				add_modifier = { name = medium_OPEC_oil_quota }
+			}
+			
+			#Inform country of change
+			trigger_event = { id = OPEC_system.8 }
+		}
+		if = {
+			limit = { 
+				global_var:economic_strength_global_var >= 3
+				global_var:economic_strength_global_var < 4
+				
+				any_scope_state = { NOT = { has_modifier = high_OPEC_oil_quota } }
+			}
+			
+			#Always clear everything first
+			every_scope_state = {
+				remove_modifier = very_low_OPEC_oil_quota
+				remove_modifier = low_OPEC_oil_quota
+				remove_modifier = medium_OPEC_oil_quota
+				remove_modifier = high_OPEC_oil_quota
+				remove_modifier = very_high_OPEC_oil_quota
+			}
+			
+			#Add quota to all oil producing states
+			every_scope_state = {
+				limit = { has_building = building_oil_rig }
+				add_modifier = { name = high_OPEC_oil_quota }
+			}
+			
+			#Inform country of change
+			trigger_event = { id = OPEC_system.8 }
+		}
+		if = {
+			limit = { 
+				global_var:economic_strength_global_var >= 4
+				
+				any_scope_state = { NOT = { has_modifier = very_high_OPEC_oil_quota } }
+			}
+			
+			#Always clear everything first
+			every_scope_state = {
+				remove_modifier = very_low_OPEC_oil_quota
+				remove_modifier = low_OPEC_oil_quota
+				remove_modifier = medium_OPEC_oil_quota
+				remove_modifier = high_OPEC_oil_quota
+				remove_modifier = very_high_OPEC_oil_quota
+			}
+			
+			#Add quota to all oil producing states
+			every_scope_state = {
+				limit = { has_building = building_oil_rig }
+				add_modifier = { name = very_high_OPEC_oil_quota }
+			}
+			
+			#Inform country of change
+			trigger_event = { id = OPEC_system.8 }
+		}
+		
+	}
+	
+}
+
+OPEC_system.8 = {
+	type = country_event
+	
+	title = OPEC_oil_quota.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = OPEC_oil_quota.1.d
+				trigger = { any_scope_state = { has_modifier = very_low_OPEC_oil_quota } }
+			}
+			triggered_desc = {
+				desc = OPEC_oil_quota.2.d
+				trigger = { any_scope_state = { has_modifier = low_OPEC_oil_quota } }
+			}
+			triggered_desc = {
+				desc = OPEC_oil_quota.3.d
+				trigger = { any_scope_state = { has_modifier = medium_OPEC_oil_quota } }
+			}
+			triggered_desc = {
+				desc = OPEC_oil_quota.4.d
+				trigger = { any_scope_state = { has_modifier = high_OPEC_oil_quota } }
+			}
+			triggered_desc = {
+				desc = OPEC_oil_quota.5.d
+				trigger = { any_scope_state = { has_modifier = very_high_OPEC_oil_quota } }
+			}
+		}
+	}
+	flavor = OPEC_oil_quota.f
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_signed_contract.bk2"
+	}
+
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/leader_speaking_to_a_group_of_people"
+
+	duration = 1
+
+	trigger = {
+		#Triggered by the event above
+	}
+
+	immediate = {
+		save_scope_as = OPEC_oil_quota_target
+	}
+
+	option = {
+		name = OPEC_accept_quota
+		default_option = yes
+		
+		ai_chance = { 
+			base = 100
+			
+			#AI will ignore quotas when it is in financial difficulties
+			modifier = {
+				trigger = {
+					OR = { 
+						has_healthy_economy = no
+						in_default = yes
+					}
+				}
+				add = -100
+			}
+			
+		}
+		
+	}
+	
+	option = {
+		name = OPEC_reject_quota
+		
+		#Clear all quotas
+		every_scope_state = {
+			remove_modifier = very_low_OPEC_oil_quota
+			remove_modifier = low_OPEC_oil_quota
+			remove_modifier = medium_OPEC_oil_quota
+			remove_modifier = high_OPEC_oil_quota
+			remove_modifier = very_high_OPEC_oil_quota
+		}
+		
+		#Antagonise OPEC members
+		every_country = {
+			limit = { 
+				OR = { 
+					has_modifier = OPEC_leader 
+					has_modifier = OPEC_member 
+				} 
+			}
+			change_relations = {
+				country = ROOT
+				value = -25
+			}
+		}
+		
+		#Add infamy because doing this is a breach of international treaty obligations
+		change_infamy = 5
+		
+		ai_chance = { 
+			base = 0
+			
+			#AI will ignore quotas when it is in financial difficulties
+			modifier = {
+				trigger = {
+					OR = { 
+						has_healthy_economy = no
+						in_default = yes
+					}
+				}
+				add = 100
+			}
+			
+		}
+		
+	}
+	
+}
+
+#Offer to join OPEC embargo
+OPEC_system.9 = {
+	title = OPEC_embargo_invitation.t 					# Title of the event; ADD LOCALISATION
+    desc = OPEC_embargo_invitation.d 					# Description of the event; ADD LOCALISATION
+    flavor = OPEC_embargo_invitation.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+
+	immediate = {
+	
+		random_country = {
+			limit = {
+				has_modifier = OPEC_leader
+			}
+			save_scope_as = OPEC_leader
+		}
+		
+		random_country = {
+			limit = {
+				has_variable = oil_embargo_target
+				NOT = { has_diplomatic_pact = { who = ROOT type = OPEC_oil_embargo } }
+			}
+			save_scope_as = OPEC_embargo_target
+		}
+		
+	}
+
+	option = {
+       name = OPEC_accept_embargo
+		
+		#THIS creates an Oil Embargo Pact with a country that the OPEC leader is embargoing
+		custom_tooltip = {
+			text = DIPLO_ACTION_CREATE_OPEC_EMBARGO
+			create_diplomatic_pact = {
+				country = scope:OPEC_embargo_target
+				type = OPEC_oil_embargo
+			}
+		}
+		
+		ai_chance = { 
+			base = 100
+			
+			#AI will ignore quotas when it is in financial difficulties
+			modifier = {
+				trigger = {
+					OR = { 
+						has_healthy_economy = no
+						in_default = yes
+					}
+				}
+				add = -100
+			}
+			
+		}
+    }
+	
+	option = {
+       name = OPEC_reject_embargo
+	   default_option = yes
+		
+		#Gain relations with embargoed country
+		every_country = {
+			limit = {
+				NOR = { 
+					has_modifier = OPEC_leader
+					has_modifier = OPEC_member
+				}
+				has_diplomatic_pact = { who = scope:OPEC_leader type = OPEC_oil_embargo }
+				NOT = { has_diplomatic_pact = { who = ROOT type = OPEC_oil_embargo } }
+			}
+			change_relations = {
+				country = ROOT
+				value = 25
+			}
+		}
+		
+		#Antagonise OPEC members who are participating in the embargo
+		every_country = {
+			limit = { 
+				OR = { 
+					has_modifier = OPEC_leader 
+					AND = { 
+						has_modifier = OPEC_member 
+						has_diplomatic_pact = { who = scope:OPEC_embargo_target type = OPEC_oil_embargo } 
+					}
+				} 
+			}
+			change_relations = {
+				country = ROOT
+				value = -25
+			}
+		}
+		
+		ai_chance = { 
+			base = 0
+			
+			#AI will ignore quotas when it is in financial difficulties
+			modifier = {
+				trigger = {
+					OR = { 
+						has_healthy_economy = no
+						in_default = yes
+					}
+				}
+				add = 100
+			}
+			
+		}
+    }
+
+}

@@ -1,0 +1,123 @@
+je_vote_of_no_confidence_system = {
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	possible = {
+	
+		#PM system
+		is_a_parliamentary_democracy = yes
+		any_interest_group = { 
+			exists = leader
+			leader = { is_ruler = yes }
+		}
+		
+		#Weak Government
+		government_legitimacy < 25
+		
+		#Elections = parliament has already been dissolved
+		in_election_campaign = no
+		
+		#There is at least 1 powerful interest group who hates the government
+		any_interest_group = {
+			is_in_government = no
+			is_powerful = yes
+			ig_approval < -5 # Unhappy
+		}
+		
+	}
+
+	immediate = {
+		
+		
+		
+	}
+	
+	# Ruler has 100 days to avoid vote of no confidence
+	timeout = 100
+	
+	# Parliament to vote after 100 days
+	on_timeout = {
+		
+		#Timer
+		set_variable = { name = vote_of_no_confidence_timer years = 2 }
+	
+		# Vote of no confidence is successful
+		if = {
+			limit = { 
+			
+				government_legitimacy < 25
+				
+				any_interest_group = {
+					is_in_government = no
+					is_powerful = yes
+					ig_approval < -5 # Unhappy
+				}
+			
+			}
+			
+			#All IG leaders in the government are tarnished for 1 electoral cycle
+			custom_tooltip = {
+				text = je_vote_of_no_confidence_system_1.tt
+			}
+			every_interest_group = {
+				limit = { is_in_government = yes }
+				leader = {
+					hidden_effect = { remove_modifier = lost_confidence_vote_modifier }
+					add_modifier = {
+						name = lost_confidence_vote_modifier
+						years = 4
+						is_decaying = yes
+					}
+				}
+			}
+	
+			#Call for fresh elections
+			call_election = {
+				months = 6
+			}
+			
+		}
+		
+		# Vote of no confidence is unsuccessful
+		else = {
+	
+			#PM's popularity is raised for 1 electoral cycle
+			custom_tooltip = {
+				text = je_vote_of_no_confidence_system_2.tt
+			}
+			ruler = { 
+				hidden_effect = { remove_modifier = survived_vote_of_no_confidence }
+				add_modifier = { name = survived_vote_of_no_confidence years = 4 is_decaying = yes } 
+			}
+			
+		}
+		
+	}
+	
+	invalid = {
+	
+		OR = {
+		
+			#PM has become the Parliament OR there is no longer a PM
+			NOT = { is_a_parliamentary_democracy = yes }
+			
+			#Elections = parliament has already been dissolved
+			in_election_campaign = yes
+		
+		}
+		
+	}
+	
+	on_invalid = {
+		
+		
+	}
+	
+	weight = 200
+
+	should_be_pinned_by_default = yes
+
+	transferable = no
+
+	progressbar = no
+	
+}

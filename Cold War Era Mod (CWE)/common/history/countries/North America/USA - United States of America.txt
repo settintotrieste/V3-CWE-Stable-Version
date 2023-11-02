@@ -1,6 +1,6 @@
 ﻿COUNTRIES = {
 	c:USA = {
-		set_next_election_date = 1950.11.7
+		set_next_election_date = 1952.11.4
 		
 		ig:ig_industrialists = { add_ruling_interest_group = yes }
 		ig:ig_petty_bourgeoisie = { add_ruling_interest_group = yes }
@@ -9,8 +9,7 @@
 
 		set_tax_level = low
 		
-		effect_starting_technology_tier_1_tech = yes
-		effect_starting_technology_tier_2_tech = yes
+		effect_starting_technology_tier_2_5_tech = yes
 		effect_starting_technology_nuclear_tech = yes
 		
 		set_market_capital = STATE_NEW_YORK
@@ -23,6 +22,13 @@
 		effect_starting_politics_economic_policy_interventionism = yes
 		effect_starting_politics_trade_policy_free_trade = yes
 		effect_starting_politics_pro_nuclear_policy = yes
+		
+		effect_starting_politics_specialisation_manufacturing = yes
+		
+		effect_starting_politics_gold_system = yes
+		
+		activate_law = law_type:law_politicised_judiciary
+		activate_law = law_type:law_racial_segregation
 		
 		set_institution_investment_level = {
 			institution = institution_colonial_affairs
@@ -47,6 +53,26 @@
 		
 		#Extra prestige for winning WW2
 		add_modifier = { name = ww2_victor months = 60 is_decaying = yes }
+		
+		#President Truman
+		add_journal_entry = { type = je_term_limits }
+		set_variable = {
+			name = term_limit_var
+			value = 5
+		}
+		set_variable = ig_petty_bourgeoisie_president
+		
+		#US Senate
+		add_journal_entry = { type = je_upper_house }
+		set_variable = {
+			name = pro_government_senators_var
+			value = 49
+		}
+		set_variable = {
+			name = upper_house_majority_var
+			value = 51
+		}
+		set_variable = upper_house_filibuster_rule
 		
 		#Nuclear capability
 		add_modifier = { name = nuclear_capability }

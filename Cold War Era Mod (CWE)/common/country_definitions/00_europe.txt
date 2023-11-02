@@ -121,7 +121,7 @@ ITA = {
 
 	tier = empire
 	
-	cultures = { italian north_italian south_italian }
+	cultures = { italian }
 	capital = STATE_LAZIO
 }
 
@@ -132,7 +132,7 @@ TRE = { #Trieste
 
 	tier = principality
 	
-	cultures = { italian north_italian }
+	cultures = { italian }
 	capital = STATE_ISTRIA
 }
 
@@ -143,7 +143,7 @@ VEN = {
 
 	tier = principality
 	
-	cultures = { italian north_italian }
+	cultures = { italian }
 	capital = STATE_VENETIA
 	is_named_from_capital = yes
 }
@@ -153,7 +153,7 @@ MLT = { # Malta
 	
 	country_type = recognized
 	
-	tier = city_state
+	tier = principality
 	
 	cultures = { maltese }
 	
@@ -225,8 +225,19 @@ LUX = {
 
 	tier = grand_principality
 	
-	cultures = { luxembourger wallonian north_german }
+	cultures = { luxembourger wallonian german }
 	capital = STATE_WALLONIA
+}
+
+BNL = {
+	color = { 210 95 0 }
+	
+	country_type = recognized
+
+	tier = empire
+	
+	cultures = { belgian dutch luxembourger }	
+	capital = STATE_FLANDERS
 }
 
 GBR = {
@@ -343,7 +354,7 @@ FAR = {
 	capital = STATE_ICELAND
 }
 
-GRL = {
+GRN = {
 	color = { 165 77 179 }
 	
 	country_type = recognized
@@ -362,7 +373,7 @@ GER = {
 
 	tier = empire
 	
-	cultures = { german north_german south_german }
+	cultures = { german }
 	capital = STATE_BRANDENBURG
 }
 
@@ -373,7 +384,7 @@ WGR = {
 
 	tier = kingdom
 	
-	cultures = { german north_german south_german }
+	cultures = { german }
 	capital = STATE_BRANDENBURG
 }
 
@@ -384,7 +395,7 @@ SGR = {
 
 	tier = kingdom
 	
-	cultures = { german north_german south_german }
+	cultures = { german }
 	capital = STATE_BRANDENBURG
 }
 
@@ -395,7 +406,7 @@ SAR = {
 
 	tier = principality
 	
-	cultures = { german north_german south_german french }
+	cultures = { german french }
 	capital = STATE_RHINELAND
 }
 
@@ -406,7 +417,7 @@ IAR = {
 
 	tier = principality
 	
-	cultures = { german north_german south_german french }
+	cultures = { german french }
 	capital = STATE_NORTH_RHINE
 }
 
@@ -417,7 +428,7 @@ RHE = {
 
 	tier = principality
 	
-	cultures = { north_german }
+	cultures = { german }
 	capital = STATE_NORTH_RHINE
 	is_named_from_capital = yes
 }
@@ -429,7 +440,7 @@ EGR = {
 
 	tier = kingdom
 	
-	cultures = { german north_german south_german }
+	cultures = { german }
 	capital = STATE_BRANDENBURG
 }
 
@@ -440,7 +451,7 @@ BAV = {
 
 	tier = kingdom
 	
-	cultures = { bavarian south_german }
+	cultures = { bavarian }
 	capital = STATE_BAVARIA
 	is_named_from_capital = yes
 }
@@ -452,7 +463,7 @@ AUS = {
 
 	tier = empire
 	
-	cultures = { austrian south_german }
+	cultures = { austrian }
 	capital = STATE_AUSTRIA
 }
 
@@ -463,7 +474,7 @@ EAU = {
 
 	tier = kingdom
 	
-	cultures = { austrian south_german }
+	cultures = { austrian }
 	capital = STATE_AUSTRIA
 }
 
@@ -474,7 +485,7 @@ WAU = {
 
 	tier = kingdom
 	
-	cultures = { austrian south_german }
+	cultures = { austrian }
 	capital = STATE_AUSTRIA
 }
 
@@ -530,7 +541,7 @@ YUG = {
 	tier = empire
 	
 	capital = STATE_NORTHERN_SERBIA 
-	cultures = { yugoslavian serb croat slovene bosniak }
+	cultures = { yugoslavian serb croat slovene bosniak montenegrin }
 }
 
 SLO = {
@@ -575,7 +586,7 @@ MON = {
 
 	tier = principality
 	
-	cultures = { montenegrin serb }
+	cultures = { montenegrin }
 	capital = STATE_MONTENEGRO
 	is_named_from_capital = yes
 }
@@ -674,7 +685,7 @@ SMI = { # Sapmi
 	
 	country_type = recognized
 	
-	tier = city_state
+	tier = principality
 	
 	cultures = { sami }
 	
@@ -697,9 +708,9 @@ DZG = {
 	
 	country_type = recognized
 
-	tier = city_state
+	tier = principality
 	
-	cultures = { north_german }
+	cultures = { german }
 	capital = STATE_WEST_PRUSSIA
 }
 
@@ -816,6 +827,17 @@ UKR = {
 	capital = STATE_KIEV
 }
 
+DPR = {
+	color = { 132 112 255 }
+
+	country_type = recognized
+
+	tier = principality
+	
+	cultures = { russian }
+	capital = STATE_LUHANSK
+}
+
 MOL = {
 	color = { 245 222 179 }
 	
@@ -828,6 +850,18 @@ MOL = {
 	is_named_from_capital = yes
 }
 
+TRD = {
+	color = { 176 10 10 }
+	
+	country_type = recognized
+
+	tier = principality
+	
+	cultures = { russian }
+	capital = STATE_BESSARABIA
+	is_named_from_capital = yes
+}
+
 CRI = {
 	color = { 200 202 85 }
 	
@@ -835,7 +869,7 @@ CRI = {
 	
 	tier = principality
 	
-	cultures = { tatar }
+	cultures = { tatar russian }
 	capital = STATE_CRIMEA
 	is_named_from_capital = yes
 }
@@ -857,7 +891,7 @@ WCY = { #West Cyprus
 	
 	country_type = recognized
 
-	tier = kingdom
+	tier = principality
 	
 	cultures = { cypriot greek }
 	capital = STATE_CYPRUS
@@ -868,7 +902,7 @@ ECY = { #East/Northern Cyprus
 	
 	country_type = recognized
 
-	tier = kingdom
+	tier = principality
 	
 	cultures = { cypriot turkish }
 	capital = STATE_CYPRUS

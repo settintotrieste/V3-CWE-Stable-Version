@@ -4,13 +4,36 @@ debug.1 = {
 	type = country_event
 	hidden = yes
 	immediate = {
-		remove_variable = nato_application_var
+		c:EAU = { add_journal_entry = { type = je_austrian_unification } }
+		c:WAU = { add_journal_entry = { type = je_austrian_unification } }
+		
+		c:NVM = { add_journal_entry = { type = je_vietnamese_unification } }
+		c:SVM = { add_journal_entry = { type = je_vietnamese_unification } }
+		
+		c:NYE = { add_journal_entry = { type = je_yemeni_unification } }
+		c:SYE = { add_journal_entry = { type = je_yemeni_unification } }
+		
+		c:NKO = { add_journal_entry = { type = je_korean_unification } }
+		c:SKO = { add_journal_entry = { type = je_korean_unification } }
+		
+		c:PRC = { add_journal_entry = { type = je_chinese_unification } }
+		c:ROC = { add_journal_entry = { type = je_chinese_unification } }
 	}
 }
 debug.2 = {
 	type = country_event
 	hidden = yes
 	immediate = {
+	
+		#Nuclear War system
+		set_global_variable = { 
+			name = nuclear_strike_power_global
+			value = 0
+		}
+		set_global_variable = { 
+			name = nuclear_strike_defence_global
+			value = 0
+		}
 	
 		c:USA = {
 		
@@ -34,4 +57,71 @@ debug.2 = {
 		
 	}
 	
+}
+
+debug.3 = {
+	type = country_event
+	hidden = yes
+	immediate = {
+	
+		#Transnistrian issue
+				if = { 
+					limit = { exists = c:MOL } 
+					c:MOL = {
+						if = { 
+							limit = { NOT = { exists = c:TRD } owns_entire_state_region = STATE_BESSARABIA }
+							create_country = { 
+								tag = TRD 
+								province = p:x8ACA9B 
+								province = p:xFC9EFE 
+								province = p:x1E1DEF
+								origin = ROOT
+								on_created = { soviet_SSR_dissolution_laws = yes } 
+							}
+						}
+					}
+					if = { limit = { exists = c:TRD } set_relations = { who = c:TRD value = 100 } create_diplomatic_pact = { country = c:TRD type = protectorate } }
+				}	
+		s:STATE_SHAN_STATES = {
+			add_homeland = shan
+		}
+		
+	}
+}
+
+debug.4 = {
+	type = country_event
+	hidden = yes
+	immediate = {
+		effect_starting_politics_democratic = yes
+	}
+}
+
+debug.5 = {
+	type = country_event
+	hidden = yes
+	immediate = {
+		call_election = {
+			months = 1
+		}
+		add_journal_entry = { type = je_elections_system }
+	}
+}
+
+debug.6 = {
+	type = country_event
+	hidden = yes
+	immediate = {
+		effect_starting_politics_absolute_monarchy = yes
+		effect_starting_politics_dictatorship = yes
+		effect_starting_politics_constitutional_unitary_state = yes
+		effect_starting_politics_war_policy_pro_military = yes
+		effect_starting_politics_economic_policy_interventionism = yes
+		effect_starting_politics_trade_policy_free_trade = yes
+		effect_starting_politics_anti_nuclear_policy = yes
+		
+		effect_starting_politics_specialisation_natural_resource = yes
+		
+		effect_starting_politics_semi_gold_system = yes
+	}
 }

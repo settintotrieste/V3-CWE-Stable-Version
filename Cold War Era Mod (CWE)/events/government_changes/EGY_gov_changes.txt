@@ -8,7 +8,7 @@ EGY_gov_changes.1 = {
     desc = EGY_1952_revolution.d 							# Description of the event; ADD LOCALISATION
     #flavor = EGY_1952_revolution.f 						# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_politicians_arguing.bk2" }
 
     icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
@@ -79,14 +79,14 @@ EGY_gov_changes.1 = {
     }
 	
 	option = {
-        name = historical_interstate_wars.option.2				# Reject
+        name = historical_gov_changes.option.2				# Reject
 		default_option = yes
 		
 		#Major discontent
 		custom_tooltip = {
 			text = everyone_is_angry_custom_tooltip
 			every_scope_state = {
-				add_radicals = {
+				add_radicals_in_state = {
 					value = large_radicals
 				}
 			}
@@ -98,7 +98,7 @@ EGY_gov_changes.1 = {
 		}
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }

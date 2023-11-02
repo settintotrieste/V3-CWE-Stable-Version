@@ -3,20 +3,34 @@
     	selection_behavior = weighted_random
     	fallback = no_beard
     
-    no_beard = {
-         dna_modifiers = {
-             accessory = {
-                 mode = add
-                 gene = beards
-                 template = no_beard
-                 range = { 0 1 } # For the randomness to work correctly
-             }
-         }   
+    	no_beard = {
+         	dna_modifiers = {
+             		accessory = {
+                 		mode = add
+                 		gene = beards
+                 		template = no_beard
+                 		range = { 0 1 } # For the randomness to work correctly
+             		}
+         	}   
     
-         weight = {
-             base = 0
-         }
-    }
+         	weight = {
+             		base = 0
+			modifier = {
+                		add = 5000
+                		exists = scope:character
+				scope:character = {
+					exists = home_country
+					home_country = { 
+						OR = { 
+							is_a_theocratic_government = yes 
+							NOT = { is_country_type = decentralized } 
+						} 
+					}
+					is_historical = no
+				}
+            		}
+        	}
+    	}
     
     asian_beards = {
         dna_modifiers = {
@@ -56,13 +70,17 @@
             modifier = {
                 add = 100
                 exists = scope:character
-                 scope:character = { age > 16 }
+                scope:character = { age > 16 }
                 OR = {
                     african_clothes_trigger = yes
                     african_diaspora_clothes_trigger = yes
                     african_diaspora_pop_clothes_trigger = yes
                     african_clothes_pop_trigger = yes
                 } 
+				scope:character = {
+					exists = home_country
+					home_country = { OR = { is_a_monarchy = yes is_a_theocratic_government = yes is_country_type = decentralized } }
+				}
             }
         }
     }
@@ -83,7 +101,8 @@
                 OR = {
                     arabic_clothes_trigger = yes
                     arabic_clothes_pop_trigger = yes
-                }  
+                }
+		monarchy_clothes_trigger = yes
             }
         }
     }    
@@ -107,6 +126,7 @@
                     arabic_clothes_trigger = yes
                     arabic_clothes_pop_trigger = yes
                 } 
+				monarchy_clothes_trigger = yes
             }
         }
     }
@@ -141,6 +161,7 @@
                             }
 							is_interest_group_type = ig_devout 
                         }
+						monarchy_clothes_trigger = yes
                     }
                     AND = {
                         european_clothes_pop_trigger = yes # sanity check so that things aren't being applied in wildly edge case scenarios

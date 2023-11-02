@@ -1,0 +1,180 @@
+central_bank_name_custom_title = {
+	type = country
+	first_valid = yes
+	
+	text = {
+		trigger = {
+			OR = { 
+				is_subject_type = subject_type_special_administrative_region
+				is_subject_type = subject_type_semi_autonomous_colony
+				is_subject_type = subject_type_mandate
+				
+				c:SGP ?= this
+				c:HKG ?= this
+				c:MCU ?= this
+				c:BEU ?= this
+				c:BHU ?= this
+				c:BRU ?= this
+				c:CYI ?= this
+				c:MLD ?= this
+				c:PAL ?= this
+			}
+		}
+		localization_key = monetary_authority_custom_loc
+	}
+	text = {
+		trigger = {
+			OR = { 
+				c:AST ?= this
+				c:ELS ?= this
+				c:FIJ ?= this
+				c:HND ?= this
+				c:MLW ?= this
+				c:NZL ?= this
+				c:PEU ?= this
+				c:TON ?= this
+				c:RSA ?= this
+				c:SAF ?= this
+				c:VAN ?= this
+				c:ZIM ?= this
+			}
+		}
+		localization_key = reserve_bank_custom_loc
+	}
+	text = {
+		trigger = {
+			c:USA ?= this
+			has_law = law_type:law_federal_state
+		}
+		localization_key = federal_reserve_custom_loc
+	}
+	text = {
+		trigger = {
+			c:GBR ?= this
+			NOT = { has_law = law_type:law_federal_state }
+		}
+		localization_key = bank_of_england_custom_loc
+	}
+	text = {
+		trigger = {
+			c:SOV ?= this
+			is_a_communist_government = yes
+		}
+		localization_key = gosbank_custom_loc
+	}
+	text = {
+		trigger = {
+			OR = { 
+				c:CHI ?= this
+				c:PRC ?= this
+				c:ROC ?= this
+			}
+			is_a_communist_government = yes
+		}
+		localization_key = peoples_bank_of_china_custom_loc
+	}
+	
+	text = {
+		trigger = {
+			is_a_theocratic_government = yes
+			NOT = { c:PER ?= this }
+		}
+		localization_key = religious_bank_custom_loc
+	}
+	text = {
+		trigger = {
+			is_a_communist_government = yes
+		}
+		localization_key = peoples_bank_custom_loc
+	}
+	text = {
+		trigger = {
+			is_a_nationalist_government = yes
+		}
+		localization_key = state_bank_custom_loc
+	}
+	text = {
+		trigger = {
+			is_a_regime_monarchy = yes
+		}
+		localization_key = royal_bank_custom_loc
+	}
+	text = {
+		localization_key = central_bank_custom_loc
+	}
+	
+}
+
+central_bank_appropriate_monetary_policy_custom_title = {
+	type = country
+	first_valid = yes
+	
+	text = {
+		trigger = {
+			has_variable = very_high_core_inflation
+		}
+		localization_key = law_very_deflationary_monetary_policy
+	}
+	text = {
+		trigger = {
+			has_variable = high_core_inflation
+		}
+		localization_key = law_deflationary_monetary_policy
+	}
+	text = {
+		trigger = {
+			has_variable = moderate_core_inflation
+		}
+		localization_key = law_neutral_monetary_policy
+	}
+	text = {
+		trigger = {
+			has_variable = low_core_inflation
+		}
+		localization_key = law_expansionary_monetary_policy
+	}
+	text = {
+		trigger = {
+			has_variable = very_low_core_inflation
+		}
+		localization_key = law_very_expansionary_monetary_policy
+	}
+	
+}
+
+central_bank_current_monetary_policy_custom_title = {
+	type = country
+	first_valid = yes
+	
+	text = {
+		trigger = {
+			has_law = law_type:law_very_deflationary_monetary_policy
+		}
+		localization_key = law_very_deflationary_monetary_policy
+	}
+	text = {
+		trigger = {
+			has_law = law_type:law_deflationary_monetary_policy
+		}
+		localization_key = law_deflationary_monetary_policy
+	}
+	text = {
+		trigger = {
+			has_law = law_type:law_neutral_monetary_policy
+		}
+		localization_key = law_neutral_monetary_policy
+	}
+	text = {
+		trigger = {
+			has_law = law_type:law_expansionary_monetary_policy
+		}
+		localization_key = law_expansionary_monetary_policy
+	}
+	text = {
+		trigger = {
+			has_law = law_type:law_very_expansionary_monetary_policy
+		}
+		localization_key = law_very_expansionary_monetary_policy
+	}
+	
+}

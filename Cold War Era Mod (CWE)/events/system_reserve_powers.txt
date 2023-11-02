@@ -1,0 +1,296 @@
+namespace = reserve_powers_system
+
+#Ceremonial President's Veto
+reserve_powers_system.1 = {
+	type = country_event
+
+	title = reserve_powers_veto.t
+	desc = reserve_powers_veto.d
+	flavor = reserve_powers_veto.f
+
+	event_image = {
+		video = "gfx/event_pictures/middleeast_courtroom_upheaval.bk2"
+	}
+
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/leader_speaking_to_a_group_of_people"
+
+	duration = 1
+
+	trigger = {
+		
+		enacting_any_law = yes
+		
+		NOT = { has_variable = ceremonial_head_of_state_veto_overruled }
+		
+		any_interest_group = {
+			leader = { has_variable = ceremonial_head_of_state }
+			law_stance = {
+				law = owner.currently_enacting_law.type
+				value < neutral
+			}
+		}
+		
+	}
+
+	immediate = {
+		
+		random_scope_character = {
+			limit = { 
+				has_variable = ceremonial_head_of_state
+			}
+			save_scope_as = ceremonial_head_of_state
+		}
+		random_interest_group = {
+			limit = { leader = { has_variable = ceremonial_head_of_state } }
+			save_scope_as = ceremonial_head_of_state_ig
+		}
+		
+	}
+
+	option = {
+		name = reserve_powers_system_accept_option #Accept the presidential veto
+		default_option = yes
+		
+		add_enactment_setback = 3
+		
+		ai_chance = {
+			base = 50
+			modifier = { 
+				trigger = {
+					exists = ruler
+					ruler = {
+						OR = {
+							has_ideology = ideology:ideology_autocratic
+							has_ideology = ideology:ideology_power_hungry
+						}
+					}
+				}
+				add = -100 
+			}
+		}
+		
+	}
+	
+	option = {
+		name = reserve_powers_system_reject_option #Reject the presidential veto
+		trigger = {
+			OR = {
+				AND = { 
+					has_journal_entry = je_upper_house
+					has_variable = upper_house_has_super_majority
+					government_legitimacy > 66
+				}
+				AND = { 
+					NOT = { has_journal_entry = je_upper_house }
+					government_legitimacy > 66
+				}
+			}
+		}
+		
+		set_variable = ceremonial_head_of_state_veto_overruled
+		
+		if = {
+			limit = { enactment_setback_count < 2 }
+			add_enactment_setback = 1
+		}
+		else = {
+			hidden_effect = {
+				remove_modifier = ruler_restrained
+			}
+			add_enactment_modifier = {
+				name = ruler_restrained
+			}
+		}
+		
+		#Opposition IGs are angry
+		every_interest_group = {
+			limit = { 
+				OR = { 
+					is_in_government = no
+					leader = { has_variable = ceremonial_head_of_state }
+				}
+			}
+			hidden_effect = {
+				remove_modifier = ig_angry_with_government
+			}
+			add_modifier = { name = ig_angry_with_government years = 2 is_decaying = yes }
+		}
+		
+		ai_chance = {
+			base = 50
+			modifier = { 
+				trigger = {
+					exists = ruler
+					ruler = {
+						OR = {
+							has_ideology = ideology:ideology_democratic
+							has_ideology = ideology:ideology_liberal
+						}
+					}
+				}
+				add = -100 
+			}
+		}
+		
+	}
+	
+}
+
+#Paramilitary Group's Veto
+reserve_powers_system.2 = {
+	type = country_event
+
+	title = paramilitary_group_veto.t
+	desc = paramilitary_group_veto.d
+	flavor = paramilitary_group_veto.f
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_politicians_arguing.bk2"
+	}
+
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	duration = 1
+
+	trigger = {
+		
+		enacting_any_law = yes
+		
+		NOT = { has_variable = paramilitary_group_veto_overruled }
+		
+		OR = {
+		
+			#Paramilitary IG disapproves of the law being enacted
+			any_interest_group = {
+				has_variable = paramilitary_IG
+				law_stance = {
+					law = owner.currently_enacting_law.type
+					value < neutral
+				}
+			}
+			
+			#Paramilitary IG disapproves of a law being enacted that would disable them
+			is_enacting_law = law_type:law_no_secret_police
+			
+			is_enacting_law = law_type:law_peasant_levies
+			is_enacting_law = law_type:law_national_militia
+			
+			is_enacting_law = law_type:law_elitist_bureaucrats
+			is_enacting_law = law_type:law_professional_bureaucrats
+			
+			#Paramilitary IG disapproves of decreasing corruption
+			AND = {
+				has_law = law_type:law_very_low_anti_corruption
+				is_enacting_law = law_type:law_low_anti_corruption
+			}
+			AND = {
+				has_law = law_type:law_low_anti_corruption
+				is_enacting_law = law_type:law_medium_anti_corruption
+			}
+			AND = {
+				has_law = law_type:law_medium_anti_corruption
+				is_enacting_law = law_type:law_high_anti_corruption
+			}
+			AND = {
+				has_law = law_type:law_high_anti_corruption
+				is_enacting_law = law_type:law_very_high_anti_corruption
+			}
+			
+		}
+		
+	}
+
+	immediate = {
+		
+		random_interest_group = {
+			limit = { has_variable = paramilitary_IG }
+			save_scope_as = paramilitary_group_ig
+		}
+		
+		currently_enacting_law = {
+    		save_scope_as = current_law_scope
+    	}
+		
+	}
+
+	option = {
+		name = paramilitary_group_system_accept_option 		#Accept the veto
+		default_option = yes
+		
+		add_enactment_setback = 3
+		
+		ai_chance = {
+			base = 50
+			modifier = { 
+				trigger = {
+					exists = ruler
+					ruler = {
+						OR = {
+							has_ideology = ideology:ideology_democratic
+							has_ideology = ideology:ideology_liberal
+						}
+					}
+				}
+				add = -100 
+			}
+		}
+		
+	}
+	
+	option = {
+		name = paramilitary_group_system_reject_option 		#Reject the veto
+		
+		set_variable = paramilitary_group_veto_overruled
+		
+		if = {
+			limit = { enactment_setback_count < 2 }
+			add_enactment_setback = 1
+		}
+		else = {
+			hidden_effect = {
+				remove_modifier = ruler_restrained
+			}
+			add_enactment_modifier = {
+				name = ruler_restrained
+			}
+		}
+		
+		#Paramilitary IG
+		add_radicals = {
+			value = large_radicals
+			interest_group = scope:paramilitary_group_ig
+		}
+		
+		#Paramilitary becomes disloyal
+		custom_tooltip = {
+			text = paramilitary_becomes_disloyal.tt
+			set_variable = { 
+				name = paramilitary_groups_loyalty
+				value = 0
+			}
+		}
+		
+		ai_chance = {
+			base = 50
+			modifier = { 
+				trigger = {
+					exists = ruler
+					ruler = {
+						OR = {
+							has_ideology = ideology:ideology_autocratic
+							has_ideology = ideology:ideology_power_hungry
+						}
+					}
+				}
+				add = -100 
+			}
+		}
+		
+	}
+	
+}

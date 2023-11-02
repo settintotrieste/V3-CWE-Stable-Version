@@ -58,12 +58,6 @@
 	}
 	c:USA = {
 		create_diplomatic_pact = {
-			country = c:SIR
-			type = protectorate
-		}
-	}
-	c:USA = {
-		create_diplomatic_pact = {
 			country = c:ICL
 			type = protectorate
 		}
@@ -249,15 +243,15 @@
 	}
 	c:USA = {
 		create_diplomatic_pact = {
-			country = c:NEJ
-			type = protectorate
-		}		
-	}
-	c:USA = {
-		create_diplomatic_pact = {
 			country = c:TUR
 			type = protectorate
 		}
+	}
+	c:USA = {
+		create_diplomatic_pact = {
+			country = c:PER
+			type = protectorate
+		}		
 	}
 	
 	#USSR
@@ -289,13 +283,13 @@
 	c:SOV = {
 		create_diplomatic_pact = {
 			country = c:EAU
-			type = puppet
+			type = mandate
 		}		
 	}
 	c:SOV = {
 		create_diplomatic_pact = {
 			country = c:EGR
-			type = puppet
+			type = mandate
 		}
 	}
 	c:SOV = {
@@ -351,12 +345,6 @@
 	
 	c:GBR = {
 		create_diplomatic_pact = {
-			country = c:PER
-			type = protectorate
-		}		
-	}
-	c:GBR = {
-		create_diplomatic_pact = {
 			country = c:KUW
 			type = puppet
 		}		
@@ -389,12 +377,6 @@
 		create_diplomatic_pact = {
 			country = c:IRQ
 			type = satellite
-		}		
-	}
-	c:GBR = {
-		create_diplomatic_pact = {
-			country = c:JOR
-			type = protectorate
 		}		
 	}
 	c:GBR = {
@@ -441,12 +423,12 @@
 		}
 	}
 	
-	#c:GBR = {
-	#	create_diplomatic_pact = {
-	#		country = c:HND
-	#		type = protectorate
-	#	}
-	#}
+	c:GBR = {
+		create_diplomatic_pact = {
+			country = c:HND
+			type = personal_union
+		}
+	}
 	c:GBR = {
 		create_diplomatic_pact = {
 			country = c:PAK
@@ -527,12 +509,6 @@
 	}
 	c:FRA = {
 		create_diplomatic_pact = {
-			country = c:LUX
-			type = satellite
-		}	
-	}
-	c:FRA = {
-		create_diplomatic_pact = {
 			country = c:SWI
 			type = protectorate
 		}	
@@ -586,16 +562,8 @@
 	c:NET = {	#Netherlands-Indonesia Confederal Union (1949 to 1956)
 		create_diplomatic_pact = {
 			country = c:IDO
-			type = protectorate
+			type = confederal_state
 		}	
-	}
-	
-	#Belgium
-	c:BEL = {
-		create_diplomatic_pact = {
-			country = c:RBK
-			type = mandate
-		}		
 	}
 	
 	#Finland
@@ -622,14 +590,6 @@
 		}
 	}
 	
-	#Ethiopia
-	#c:ETH = {
-	#	create_diplomatic_pact = {
-	#		country = c:ERI
-	#		type = special_administrative_region
-	#	}
-	#}
-	
 	#India
 	c:HND = {
 		create_diplomatic_pact = {
@@ -648,14 +608,6 @@
 			country = c:SIK
 			type = satellite
 		}	
-	}
-	
-	#Saudi Arabia
-	c:NEJ = {
-		create_diplomatic_pact = {
-			country = c:NYE
-			type = protectorate
-		}
 	}
 	
 }

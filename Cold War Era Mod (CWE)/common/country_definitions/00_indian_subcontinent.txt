@@ -14,6 +14,8 @@ BHT = { #United India (PAK + HND + BNG)
 	
 	country_type = recognized
 	
+	valid_as_home_country_for_separatists = { always = no }
+	
 	tier = empire
 	
 	cultures = { indian assamese avadhi baluchi bengali bihari gujarati kanauji kannada malayalam marathi oriya panjabi pashtun rajput sindi tamil telegu }
@@ -270,7 +272,7 @@ NEP = {
 	
 	country_type = recognized
 	
-	tier = kingdom
+	tier = principality
 	
 	cultures = { nepali }
 	capital = STATE_HIMALAYAS
@@ -293,7 +295,7 @@ PAN = {
 	
 	country_type = recognized
 	
-	tier = kingdom
+	tier = principality
 	
 	cultures = { panjabi }
 	capital = STATE_PUNJAB
@@ -415,7 +417,7 @@ BLH = {
 	
 	country_type = recognized
 
-	tier = kingdom
+	tier = principality
 
 	cultures = { baluchi }
 	capital = STATE_BALUCHISTAN

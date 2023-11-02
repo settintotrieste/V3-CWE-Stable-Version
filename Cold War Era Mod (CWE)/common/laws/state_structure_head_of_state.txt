@@ -8,9 +8,47 @@ law_HOS_monarch = {
 	
 	icon = "gfx/interface/icons/law_icons/monarchy.dds"
 	
-	progressiveness = -50
+	#progressiveness = -50
 
-	disallowing_laws = {
+	unlocking_laws = {
+		law_appointed_legislature
+	}
+	
+	can_enact = {
+	
+		#Constitutional Laws system (Requires more than 2/3s majority to amend constitutional laws)
+		government_has_legislative_super_majority = yes
+	
+		#Puppets cannot change Head of State on their own
+		is_sufficiently_independent = yes
+		
+		#Ruler agrees with this
+		any_interest_group = {
+			leader = {
+				is_ruler = yes
+			}
+			law_stance = {
+				law = law_type:law_HOS_monarch
+				value > neutral
+			}
+		}
+		
+		#Cabinet agrees with this law
+		custom_tooltip = {
+			text = no_cabinet_objection.tt
+			NOT = {
+				any_interest_group = {
+					OR = { 
+						has_modifier = cabinet_minister_ig
+						leader = { has_modifier = cabinet_minister }
+					}
+					law_stance = {
+						law = law_type:law_HOS_monarch
+						value < neutral
+					}
+				}
+			}
+		}
 		
 	}
 
@@ -57,6 +95,40 @@ law_HOS_monarch = {
 			add = 750
 		}
 		
+		if = {
+			limit = { 
+				NOR = { 
+					has_modifier = conservative_ruling_party_ideology
+					has_modifier = traditionalist_ruling_party_ideology
+				}
+			}
+			add = -1000
+		}
+		
+		#AI will not change gov type if it is a stable democracy
+		if = {
+			limit = { 
+				is_a_democracy = yes
+				radical_fraction = { value < 0.50 }
+			}
+			add = -1000
+		}
+		
+		#AI will not change gov type if country is democratic and ruler is not extremist
+		if = {
+			limit = { 
+				is_some_kind_of_democracy = yes
+				exists = ruler
+				ruler = {
+					NOR = { 
+						has_ideology = ideology:ideology_autocratic 
+						has_ideology = ideology:ideology_power_hungry
+					}
+				}
+			}
+			add = -1000
+		}
+		
 	}
 	
 }
@@ -67,9 +139,47 @@ law_HOS_president = {
 	
 	icon = "gfx/interface/icons/law_icons/presidential_republic.dds"
 	
-	progressiveness = 0
+	#progressiveness = 0
 
 	disallowing_laws = {
+		law_appointed_legislature
+	}
+	
+	can_enact = {
+	
+		#Constitutional Laws system (Requires more than 2/3s majority to amend constitutional laws)
+		government_has_legislative_super_majority = yes
+	
+		#Puppets cannot change Head of State on their own
+		is_sufficiently_independent = yes
+		
+		#Ruler agrees with this
+		any_interest_group = {
+			leader = {
+				is_ruler = yes
+			}
+			law_stance = {
+				law = law_type:law_HOS_president
+				value > neutral
+			}
+		}
+		
+		#Cabinet agrees with this law
+		custom_tooltip = {
+			text = no_cabinet_objection.tt
+			NOT = {
+				any_interest_group = {
+					OR = { 
+						has_modifier = cabinet_minister_ig
+						leader = { has_modifier = cabinet_minister }
+					}
+					law_stance = {
+						law = law_type:law_HOS_president
+						value < neutral
+					}
+				}
+			}
+		}
 		
 	}
 
@@ -100,6 +210,58 @@ law_HOS_president = {
 			}
 			add = 750
 		}
+		
+		#Post Colonial Nations will attempt to abolish legacy monarchy if angry with overlord
+		if = {
+			limit = { 
+				has_law = law_type:law_HOS_monarch
+				is_subject_type = subject_type_personal_union
+				any_country = {
+					has_law = law_type:law_HOS_monarch
+					has_subject_relation_with = ROOT
+					relations:root < relations_threshold:poor
+				}
+			}
+			add = 750
+		}
+		
+		if = {
+			limit = { 
+				NOR = { 
+					has_modifier = social_democratic_ruling_party_ideology
+					has_modifier = progressive_ruling_party_ideology
+					has_modifier = centrist_ruling_party_ideology
+					has_modifier = liberal_ruling_party_ideology
+					has_modifier = libertarian_ruling_party_ideology
+				}
+			}
+			add = -1000
+		}
+		
+		#AI will not change gov type if it is a stable democracy
+		if = {
+			limit = { 
+				is_a_democracy = yes
+				radical_fraction = { value < 0.50 }
+			}
+			add = -1000
+		}
+		
+		#AI will not change gov type if country is democratic and ruler is not extremist
+		if = {
+			limit = { 
+				is_some_kind_of_democracy = yes
+				exists = ruler
+				ruler = {
+					NOR = { 
+						has_ideology = ideology:ideology_autocratic 
+						has_ideology = ideology:ideology_power_hungry
+					}
+				}
+			}
+			add = -1000
+		}
+		
 	}
 	
 }
@@ -110,9 +272,47 @@ law_HOS_religious_leader = {
 	
 	icon = "gfx/interface/icons/law_icons/theocracy.dds"
 	
-	progressiveness = -100
+	#progressiveness = -100
 
-	disallowing_laws = {
+	unlocking_laws = {
+		law_appointed_legislature
+	}
+	
+	can_enact = {
+	
+		#Constitutional Laws system (Requires more than 2/3s majority to amend constitutional laws)
+		government_has_legislative_super_majority = yes
+	
+		#Puppets cannot change Head of State on their own
+		is_sufficiently_independent = yes
+		
+		#Ruler agrees with this
+		any_interest_group = {
+			leader = {
+				is_ruler = yes
+			}
+			law_stance = {
+				law = law_type:law_HOS_religious_leader
+				value > neutral
+			}
+		}
+		
+		#Cabinet agrees with this law
+		custom_tooltip = {
+			text = no_cabinet_objection.tt
+			NOT = {
+				any_interest_group = {
+					OR = { 
+						has_modifier = cabinet_minister_ig
+						leader = { has_modifier = cabinet_minister }
+					}
+					law_stance = {
+						law = law_type:law_HOS_religious_leader
+						value < neutral
+					}
+				}
+			}
+		}
 		
 	}
 
@@ -142,7 +342,7 @@ law_HOS_religious_leader = {
 	}
 	
 	on_activate = {
-		deactivate_law = law_type:law_democratic_legislature
+		
 	}
 	
 	ai_enact_weight_modifier = { #Petitions
@@ -156,6 +356,41 @@ law_HOS_religious_leader = {
 			}
 			add = 750
 		}
+		
+		if = {
+			limit = { 
+				NOR = { 
+					has_modifier = traditionalist_ruling_party_ideology
+					has_modifier = conservative_ruling_party_ideology
+				}
+			}
+			add = -1000
+		}
+		
+		#AI will not change gov type if it is a stable democracy
+		if = {
+			limit = { 
+				is_a_democracy = yes
+				radical_fraction = { value < 0.50 }
+			}
+			add = -1000
+		}
+		
+		#AI will not change gov type if country is democratic and ruler is not extremist
+		if = {
+			limit = { 
+				is_some_kind_of_democracy = yes
+				exists = ruler
+				ruler = {
+					NOR = { 
+						has_ideology = ideology:ideology_autocratic 
+						has_ideology = ideology:ideology_power_hungry
+					}
+				}
+			}
+			add = -1000
+		}
+		
 	}
 	
 }
@@ -166,9 +401,47 @@ law_HOS_nationalist_leader = {
 	
 	icon = "gfx/interface/icons/law_icons/autocracy.dds"
 	
-	progressiveness = -50
+	#progressiveness = -50
 
-	disallowing_laws = {
+	unlocking_laws = {
+		law_appointed_legislature
+	}
+	
+	can_enact = {
+	
+		#Constitutional Laws system (Requires more than 2/3s majority to amend constitutional laws)
+		government_has_legislative_super_majority = yes
+	
+		#Puppets cannot change Head of State on their own
+		is_sufficiently_independent = yes
+		
+		#Ruler agrees with this
+		any_interest_group = {
+			leader = {
+				is_ruler = yes
+			}
+			law_stance = {
+				law = law_type:law_HOS_nationalist_leader
+				value > neutral
+			}
+		}
+		
+		#Cabinet agrees with this law
+		custom_tooltip = {
+			text = no_cabinet_objection.tt
+			NOT = {
+				any_interest_group = {
+					OR = { 
+						has_modifier = cabinet_minister_ig
+						leader = { has_modifier = cabinet_minister }
+					}
+					law_stance = {
+						law = law_type:law_HOS_nationalist_leader
+						value < neutral
+					}
+				}
+			}
+		}
 		
 	}
 
@@ -196,7 +469,7 @@ law_HOS_nationalist_leader = {
 	}
 	
 	on_activate = {
-		deactivate_law = law_type:law_democratic_legislature
+		
 	}
 	
 	ai_enact_weight_modifier = { #Petitions
@@ -210,6 +483,41 @@ law_HOS_nationalist_leader = {
 			}
 			add = 750
 		}
+		
+		if = {
+			limit = { 
+				NOR = { 
+					has_modifier = fascist_ruling_party_ideology
+					has_modifier = conservative_ruling_party_ideology
+				}
+			}
+			add = -1000
+		}
+		
+		#AI will not change gov type if it is a stable democracy
+		if = {
+			limit = { 
+				is_a_democracy = yes
+				radical_fraction = { value < 0.50 }
+			}
+			add = -1000
+		}
+		
+		#AI will not change gov type if country is democratic and ruler is not extremist
+		if = {
+			limit = { 
+				is_some_kind_of_democracy = yes
+				exists = ruler
+				ruler = {
+					NOR = { 
+						has_ideology = ideology:ideology_autocratic 
+						has_ideology = ideology:ideology_power_hungry
+					}
+				}
+			}
+			add = -1000
+		}
+		
 	}
 	
 }
@@ -220,9 +528,47 @@ law_HOS_communist_leader = {
 	
 	icon = "gfx/interface/icons/law_icons/council_republic.dds"
 	
-	progressiveness = -50
+	#progressiveness = -50
 
-	disallowing_laws = {
+	unlocking_laws = {
+		law_appointed_legislature
+	}
+	
+	can_enact = {
+	
+		#Constitutional Laws system (Requires more than 2/3s majority to amend constitutional laws)
+		government_has_legislative_super_majority = yes
+	
+		#Puppets cannot change Head of State on their own
+		is_sufficiently_independent = yes
+		
+		#Ruler agrees with this
+		any_interest_group = {
+			leader = {
+				is_ruler = yes
+			}
+			law_stance = {
+				law = law_type:law_HOS_communist_leader
+				value > neutral
+			}
+		}
+		
+		#Cabinet agrees with this law
+		custom_tooltip = {
+			text = no_cabinet_objection.tt
+			NOT = {
+				any_interest_group = {
+					OR = { 
+						has_modifier = cabinet_minister_ig
+						leader = { has_modifier = cabinet_minister }
+					}
+					law_stance = {
+						law = law_type:law_HOS_communist_leader
+						value < neutral
+					}
+				}
+			}
+		}
 		
 	}
 
@@ -251,7 +597,7 @@ law_HOS_communist_leader = {
 	}
 	
 	on_activate = {
-		deactivate_law = law_type:law_democratic_legislature
+		
 	}
 	
 	ai_enact_weight_modifier = { #Petitions
@@ -265,6 +611,42 @@ law_HOS_communist_leader = {
 			}
 			add = 750
 		}
+		
+		if = {
+			limit = { 
+				NOR = { 
+					has_modifier = communist_ruling_party_ideology
+					has_modifier = market_socialist_ruling_party_ideology
+					has_modifier = socialist_ruling_party_ideology
+				}
+			}
+			add = -1000
+		}
+		
+		#AI will not change gov type if it is a stable democracy
+		if = {
+			limit = { 
+				is_a_democracy = yes
+				radical_fraction = { value < 0.50 }
+			}
+			add = -1000
+		}
+		
+		#AI will not change gov type if country is democratic and ruler is not extremist
+		if = {
+			limit = { 
+				is_some_kind_of_democracy = yes
+				exists = ruler
+				ruler = {
+					NOR = { 
+						has_ideology = ideology:ideology_autocratic 
+						has_ideology = ideology:ideology_power_hungry
+					}
+				}
+			}
+			add = -1000
+		}
+		
 	}
 	
 }

@@ -5,7 +5,21 @@ UNT = {
 	
     country_type = unrecognized
 	
-    cultures = {  }
+    cultures = { no_culturia }
+	religion = atheist
+    
+	capital = STATE_FLANDERS
+}
+
+XFC = {
+    color = { 70 130 180 }
+	
+    tier = city_state
+	
+    country_type = unrecognized
+	
+    cultures = { no_culturia }
+	religion = atheist
     
 	capital = STATE_FLANDERS
 }

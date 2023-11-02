@@ -61,14 +61,207 @@ imf_loan_creditor = {
 	country_minting_mult = 0.25
 }
 
+un_sanctions_1 = {
+	icon = gfx/interface/icons/diplo_icons/un_sanctions_1.dds
+	country_improve_relations_speed_mult = -0.20
+	country_infamy_decay_mult = -0.20
+	country_influence_mult = -0.10
+	country_prestige_mult = -0.05
+}
+
+un_sanctions_2 = {
+	icon = gfx/interface/icons/diplo_icons/un_sanctions_2.dds
+	political_movement_radicalism_add = 50
+	country_secession_progress_mult = 0.20
+	country_revolution_progress_mult = 0.20
+	country_radicals_from_conquest_mult = 0.20
+	#state_radicals_from_discrimination_mult = 0.10
+	#state_radicals_from_sol_change_mult = 0.10
+	#state_assimilation_mult = -0.10
+	#state_conversion_mult = -0.10
+}
+
+un_sanctions_3 = {
+	icon = gfx/interface/icons/diplo_icons/un_sanctions_3.dds
+	country_loan_interest_rate_mult = 0.20
+	country_trade_route_cost_mult = 0.20
+	country_tech_spread_mult = -0.20
+	country_trade_route_competitiveness_mult = -0.20
+}
+
+un_embargo_participant = {
+	icon = gfx/interface/icons/diplo_icons/un_embargo_participant.dds
+	country_infamy_decay_mult = -0.10
+}
+
+### IMF Interest Rates ###
+
+very_low_imf_interest_rate = {
+	icon = gfx/interface/icons/diplo_icons/imf_interest_rate.dds
+	country_loan_interest_rate_add = -0.20
+}
+
+low_imf_interest_rate = {
+	icon = gfx/interface/icons/diplo_icons/imf_interest_rate.dds
+	country_loan_interest_rate_add = -0.10
+}
+
+medium_imf_interest_rate = {
+	icon = gfx/interface/icons/diplo_icons/imf_interest_rate.dds
+	
+}
+
+high_imf_interest_rate = {
+	icon = gfx/interface/icons/diplo_icons/imf_interest_rate.dds
+	country_loan_interest_rate_add = 0.10
+}
+
+very_high_imf_interest_rate = {
+	icon = gfx/interface/icons/diplo_icons/imf_interest_rate.dds
+	country_loan_interest_rate_add = 0.20
+}
+
+### Currency System ###
+
+global_reserve_currency = {
+	icon = gfx/interface/icons/diplo_icons/global_reserve_currency.dds
+	country_minting_mult = 0.50
+}
+
+major_reserve_currency = {
+	icon = gfx/interface/icons/diplo_icons/global_reserve_currency.dds
+	country_minting_mult = 0.25
+}
+
+gold_standard_leader = {
+	icon = gfx/interface/icons/goods_icons/gold.dds
+	country_prestige_mult = 0.05
+	country_loan_interest_rate_add = -0.10
+}
+
+### Impeachment & Backbencher's Plot System ###
+
+impeached_politician = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	character_popularity_add = -100
+}
+
+survived_impeachment = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	character_popularity_add = 50
+}
+
+backbenchers_plot_politician = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	character_popularity_add = -50
+}
+
+survived_backbenchers_plot = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	character_popularity_add = -25
+}
+
+party_in_chaos_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
+	interest_group_pol_str_mult = -0.25
+}
+
+lost_confidence_vote_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	character_popularity_add = -100
+}
+
+survived_vote_of_no_confidence = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	character_popularity_add = 50
+}
+
+political_survivor = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	character_popularity_add = 50
+}
+
+contested_dictator = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	character_popularity_add = -50
+}
+
+politically_strengthened_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	interest_group_pol_str_mult = 0.25
+}
+
+praised_for_winning_war = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	character_popularity_add = 50
+}
+
+blamed_for_losing_war = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	character_popularity_add = -50
+}
+
+blamed_for_pointless_war = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	character_popularity_add = -25
+}
+
+### Pop Growth System ###
+
+pop_growth_1 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	state_birth_rate_mult = 0.20
+}
+pop_growth_2 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	state_birth_rate_mult = 0.10
+}
+pop_growth_3 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	state_birth_rate_mult = 0.05
+}
+pop_growth_4 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	
+}
+pop_growth_5 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	state_birth_rate_mult = -0.02
+}
+pop_growth_6 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	state_birth_rate_mult = -0.04
+}
+pop_growth_7 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	state_birth_rate_mult = -0.08
+}
+pop_growth_8 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	state_birth_rate_mult = -0.12
+}
+pop_growth_9 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	state_birth_rate_mult = -0.16
+}
+pop_growth_10 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	state_birth_rate_mult = -0.20
+}
+
 ### Effects of WW2 ###
 
 ww2_victor = {
 	icon = gfx/interface/icons/diplo_icons/ww2_victor.dds
 	country_prestige_mult = 2
-	state_radicals_from_sol_change_mult = -0.50
-	political_movement_radicalism_mult = -0.50
+	country_influence_mult = 0.50
+	country_infamy_decay_mult = 0.50
 	country_minting_mult = 0.50
+}
+
+national_pride_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	country_prestige_mult = 0.25
 }
 
 ### Colonial System ###
@@ -80,14 +273,53 @@ nationalist_agitation = {
 	state_turmoil_effects_mult = 0.25
 }
 
+national_reconciliation = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
+	state_radicals_from_discrimination_mult = -0.25
+	state_radicals_from_sol_change_mult = -0.25
+	state_turmoil_effects_mult = -0.25
+}
+
+### Open & Close Canals ###
+
+suez_canal_closed_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
+}
+
+panama_canal_closed_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
+}
+
+### Espionage System ###
+
+embarassed_by_espionage = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
+	country_prestige_mult = -0.10
+}
+
+economic_sabotage = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_negative.dds
+	building_group_bg_manufacturing_throughput_mult = -0.25
+	building_group_bg_mining_throughput_mult = -0.25
+	building_railway_throughput_mult = -0.25
+}
+
 ### Generic Domestic Events ###
 
 stirrings_of_revolution = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fire_negative.dds
-	state_radicals_from_discrimination_mult = 0.25
-	state_radicals_from_sol_change_mult = 0.25
-	state_turmoil_effects_mult = 0.25
+	interest_group_in_opposition_approval_add = -20
+	country_secession_progress_mult = 0.20
+	country_revolution_progress_mult = 0.20
+	country_radicals_from_conquest_mult = 0.20
+}
+
+domestic_unrest = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fire_negative.dds
 	interest_group_in_opposition_approval_add = -10
+	country_secession_progress_mult = 0.10
+	country_revolution_progress_mult = 0.10
+	country_radicals_from_conquest_mult = 0.10
 }
 
 ### Generic Diplomatic Events ###
@@ -95,7 +327,7 @@ stirrings_of_revolution = {
 national_humiliation = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
 	country_influence_mult = -0.50
-	country_prestige_mult = -0.50
+	country_prestige_mult = -0.25
 }
 
 ### Ruling Party Ideology System ###
@@ -191,6 +423,18 @@ warsaw_pact_leader = {
 	country_prestige_mult = 0.10
 }
 
+### CSTO ###
+
+csto_member = {
+	icon = gfx/interface/icons/diplo_icons/csto_member.dds
+	country_prestige_mult = 0.05
+}
+
+csto_leader = {
+	icon = gfx/interface/icons/diplo_icons/csto_member.dds
+	country_prestige_mult = 0.10
+}
+
 ### Commonwealth of Nations ###
 
 commonwealth_member = {
@@ -199,7 +443,8 @@ commonwealth_member = {
 	country_tech_spread_mult = 0.05
 	country_trade_route_cost_mult = -0.05
 	country_trade_route_competitiveness_mult = 0.05
-	state_radicals_from_discrimination_mult = 0.05
+	#state_radicals_from_discrimination_mult = 0.05
+	country_infamy_decay_mult = -0.10
 }
 
 commonwealth_leader = {
@@ -208,7 +453,8 @@ commonwealth_leader = {
 	country_tech_spread_mult = 0.05
 	country_trade_route_cost_mult = -0.05
 	country_trade_route_competitiveness_mult = 0.10
-	state_radicals_from_discrimination_mult = 0.05
+	#state_radicals_from_discrimination_mult = 0.05
+	country_infamy_decay_mult = -0.10
 }
 
 ### Francophonie ###
@@ -219,7 +465,8 @@ francophonie_member = {
 	country_tech_spread_mult = 0.05
 	country_trade_route_cost_mult = -0.05
 	country_trade_route_competitiveness_mult = 0.05
-	state_radicals_from_discrimination_mult = 0.05
+	#state_radicals_from_discrimination_mult = 0.05
+	country_infamy_decay_mult = -0.10
 }
 
 francophonie_leader = {
@@ -228,7 +475,8 @@ francophonie_leader = {
 	country_tech_spread_mult = 0.05
 	country_trade_route_cost_mult = -0.05
 	country_trade_route_competitiveness_mult = 0.10
-	state_radicals_from_discrimination_mult = 0.05
+	#state_radicals_from_discrimination_mult = 0.05
+	country_infamy_decay_mult = -0.10
 }
 
 ### Organisation of Ibero-American States ###
@@ -239,7 +487,8 @@ ibero_american_organisation_member = {
 	country_tech_spread_mult = 0.05
 	country_trade_route_cost_mult = -0.05
 	country_trade_route_competitiveness_mult = 0.05
-	state_radicals_from_discrimination_mult = 0.05
+	#state_radicals_from_discrimination_mult = 0.05
+	country_infamy_decay_mult = -0.10
 }
 
 ibero_american_organisation_leader = {
@@ -248,7 +497,92 @@ ibero_american_organisation_leader = {
 	country_tech_spread_mult = 0.05
 	country_trade_route_cost_mult = -0.05
 	country_trade_route_competitiveness_mult = 0.10
-	state_radicals_from_discrimination_mult = 0.05
+	#state_radicals_from_discrimination_mult = 0.05
+	country_infamy_decay_mult = -0.10
+}
+
+### Arab League ###
+
+arab_league_member = {
+	icon = gfx/interface/icons/diplo_icons/arab_league_member.dds
+	country_prestige_mult = 0.025
+	country_influence_mult = 0.05
+	country_tech_spread_mult = 0.05
+	country_trade_route_cost_mult = -0.05
+	country_trade_route_competitiveness_mult = 0.05
+	#state_radicals_from_discrimination_mult = 0.05
+}
+
+arab_league_leader = {
+	icon = gfx/interface/icons/diplo_icons/arab_league_member.dds
+	country_prestige_mult = 0.05
+	country_influence_mult = 0.10
+	country_tech_spread_mult = 0.05
+	country_trade_route_cost_mult = -0.05
+	country_trade_route_competitiveness_mult = 0.10
+	#state_radicals_from_discrimination_mult = 0.05
+	country_infamy_decay_mult = -0.10
+}
+
+### Commonwealth of Independent States ###
+
+CIS_member = {
+	icon = gfx/interface/icons/diplo_icons/CIS_member.dds
+	country_prestige_mult = 0.025
+	country_tech_spread_mult = 0.05
+	country_trade_route_cost_mult = -0.05
+	country_trade_route_competitiveness_mult = 0.05
+	#state_radicals_from_discrimination_mult = 0.05
+	country_infamy_decay_mult = -0.10
+}
+
+CIS_leader = {
+	icon = gfx/interface/icons/diplo_icons/CIS_member.dds
+	country_prestige_mult = 0.05
+	country_tech_spread_mult = 0.05
+	country_trade_route_cost_mult = -0.05
+	country_trade_route_competitiveness_mult = 0.10
+	#state_radicals_from_discrimination_mult = 0.05
+	country_infamy_decay_mult = -0.10
+}
+
+### OPEC ###
+
+OPEC_member = {
+	icon = gfx/interface/icons/diplo_icons/OPEC_member.dds
+	country_prestige_mult = 0.025
+	country_influence_mult = 0.05
+}
+
+OPEC_leader = {
+	icon = gfx/interface/icons/diplo_icons/OPEC_member.dds
+	country_prestige_mult = 0.05
+	country_influence_mult = 0.10
+}
+
+very_low_OPEC_oil_quota = {
+	icon = gfx/interface/icons/diplo_icons/OPEC_member.dds
+	building_group_bg_oil_extraction_throughput_mult = -0.5
+}
+
+low_OPEC_oil_quota = {
+	icon = gfx/interface/icons/diplo_icons/OPEC_member.dds
+	building_group_bg_oil_extraction_throughput_mult = -0.4
+}
+
+medium_OPEC_oil_quota = {
+	icon = gfx/interface/icons/diplo_icons/OPEC_member.dds
+	building_group_bg_oil_extraction_throughput_mult = -0.3
+}
+
+high_OPEC_oil_quota = {
+	icon = gfx/interface/icons/diplo_icons/OPEC_member.dds
+	building_group_bg_oil_extraction_throughput_mult = -0.2
+}
+
+very_high_OPEC_oil_quota = {
+	icon = gfx/interface/icons/diplo_icons/OPEC_member.dds
+	building_group_bg_oil_extraction_throughput_mult = -0.1
 }
 
 ### OECD ###
@@ -260,7 +594,8 @@ OECD_member = {
 	country_trade_route_cost_mult = -0.05
 	country_trade_route_competitiveness_mult = 0.05
 	country_loan_interest_rate_mult = -0.10
-	state_radicals_from_discrimination_mult = 0.05
+	#state_radicals_from_discrimination_mult = 0.05
+	country_infamy_decay_mult = -0.10
 }
 
 OECD_leader = {
@@ -270,7 +605,8 @@ OECD_leader = {
 	country_trade_route_cost_mult = -0.05
 	country_trade_route_competitiveness_mult = 0.10
 	country_loan_interest_rate_mult = -0.20
-	state_radicals_from_discrimination_mult = 0.05
+	#state_radicals_from_discrimination_mult = 0.05
+	country_infamy_decay_mult = -0.10
 }
 
 ### COMECON ###
@@ -282,7 +618,8 @@ COMECON_member = {
 	country_trade_route_cost_mult = -0.05
 	country_trade_route_competitiveness_mult = 0.05
 	country_loan_interest_rate_mult = -0.10
-	state_radicals_from_sol_change_mult = 0.05
+	#state_radicals_from_sol_change_mult = 0.05
+	country_military_wages_mult = 0.10
 }
 
 COMECON_leader = {
@@ -292,10 +629,26 @@ COMECON_leader = {
 	country_trade_route_cost_mult = -0.05
 	country_trade_route_competitiveness_mult = 0.10
 	country_loan_interest_rate_mult = -0.20
-	state_radicals_from_sol_change_mult = 0.05
+	#state_radicals_from_sol_change_mult = 0.05
+	country_military_wages_mult = 0.10
+}
+
+### World Trade Organisation ###
+
+WTO_member = {
+	icon = gfx/interface/icons/diplo_icons/WTO_member.dds
+	country_trade_route_cost_mult = -0.1
+	country_trade_route_competitiveness_mult = 0.1
+	country_trade_route_quantity_mult = 0.1
 }
 
 ### Nuclear Capability ###
+
+nuclear_dev_cost = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
+	country_military_wages_mult = 1
+	country_government_wages_mult = 1
+}
 
 nuclear_capability = {
 	icon = gfx/interface/icons/diplo_icons/nuclear_capability.dds
@@ -303,7 +656,12 @@ nuclear_capability = {
 }
 
 nuclear_attack_cooldown = {
-	icon = gfx/interface/icons/diplo_icons/nuclear_capability.dds
+	icon = gfx/interface/icons/generic_icons/goods_shortage.dds
+	
+}
+
+recently_reduced_nukes = {
+	icon = gfx/interface/icons/generic_icons/goods_shortage.dds
 	
 }
 
@@ -345,4 +703,397 @@ nuclear_damage_5 = {
 	state_urbanization_mult = -1.0
 	state_migration_push_mult = 1.0
 	state_mortality_mult = 1.0
+}
+
+nuclear_fallout_1 = {
+	icon = gfx/interface/icons/diplo_icons/nuclear_capability.dds
+	state_infrastructure_mult = -0.05
+	state_urbanization_mult = -0.05
+	state_migration_push_mult = 0.05
+	state_mortality_mult = 0.05
+}
+
+nuclear_fallout_2 = {
+	icon = gfx/interface/icons/diplo_icons/nuclear_capability.dds
+	state_infrastructure_mult = -0.10
+	state_urbanization_mult = -0.10
+	state_migration_push_mult = 0.10
+	state_mortality_mult = 0.10
+}
+
+nuclear_fallout_3 = {
+	icon = gfx/interface/icons/diplo_icons/nuclear_capability.dds
+	state_infrastructure_mult = -0.15
+	state_urbanization_mult = -0.15
+	state_migration_push_mult = 0.15
+	state_mortality_mult = 0.15
+}
+
+nuclear_fallout_4 = {
+	icon = gfx/interface/icons/diplo_icons/nuclear_capability.dds
+	state_infrastructure_mult = -0.20
+	state_urbanization_mult = -0.20
+	state_migration_push_mult = 0.20
+	state_mortality_mult = 0.20
+}
+
+nuclear_fallout_5 = {
+	icon = gfx/interface/icons/diplo_icons/nuclear_capability.dds
+	state_infrastructure_mult = -0.25
+	state_urbanization_mult = -0.25
+	state_migration_push_mult = 0.25
+	state_mortality_mult = 0.25
+}
+
+### Economic Cycle ###
+
+economic_cycle_1 = {
+	icon = gfx/interface/icons/diplo_icons/bad_economic_cycle.dds
+	country_opposition_ig_approval_add = -10
+	#state_radicals_from_discrimination_mult = 0.20
+	#political_movement_radicalism_mult = 0.20
+	
+	country_trade_route_competitiveness_mult = -0.50
+	state_capitalists_investment_pool_efficiency_mult = -0.20
+	state_shopkeepers_investment_pool_efficiency_mult = -0.20
+	state_aristocrats_investment_pool_efficiency_mult = -0.20
+	
+	state_mortality_wealth_mult = 0.02
+}
+
+economic_cycle_2 = {
+	icon = gfx/interface/icons/diplo_icons/bad_economic_cycle.dds
+	country_opposition_ig_approval_add = -5
+	#state_radicals_from_discrimination_mult = 0.10
+	#political_movement_radicalism_mult = 0.10
+	
+	country_trade_route_competitiveness_mult = -0.25
+	state_capitalists_investment_pool_efficiency_mult = -0.10
+	state_shopkeepers_investment_pool_efficiency_mult = -0.10
+	state_aristocrats_investment_pool_efficiency_mult = -0.10
+	
+	state_mortality_wealth_mult = 0.01
+}
+
+economic_cycle_3 = {
+	icon = gfx/interface/icons/diplo_icons/neutral_economic_cycle.dds
+	
+}
+
+economic_cycle_4 = {
+	icon = gfx/interface/icons/diplo_icons/good_economic_cycle.dds
+	country_opposition_ig_approval_add = 5
+	#state_radicals_from_discrimination_mult = -0.10
+	#political_movement_radicalism_mult = -0.10
+	
+	country_trade_route_competitiveness_mult = 0.25
+	state_capitalists_investment_pool_efficiency_mult = 0.10
+	state_shopkeepers_investment_pool_efficiency_mult = 0.10
+	state_aristocrats_investment_pool_efficiency_mult = 0.10
+	
+	state_mortality_wealth_mult = -0.01
+}
+
+economic_cycle_5 = {
+	icon = gfx/interface/icons/diplo_icons/good_economic_cycle.dds
+	country_opposition_ig_approval_add = 10
+	#state_radicals_from_discrimination_mult = -0.20
+	#political_movement_radicalism_mult = -0.20
+	
+	country_trade_route_competitiveness_mult = 0.50
+	state_capitalists_investment_pool_efficiency_mult = 0.20
+	state_shopkeepers_investment_pool_efficiency_mult = 0.20
+	state_aristocrats_investment_pool_efficiency_mult = 0.20
+	
+	state_mortality_wealth_mult = -0.02
+}
+
+### Wartime Measures ###
+
+wartime_measures_martial_law = {
+	icon = gfx/interface/icons/military_icons/offence.dds
+	country_military_wages_mult = 0.20
+	country_radicals_from_conquest_mult = -0.50
+	country_authority_mult = 0.50
+	political_movement_radicalism_mult = 0.25
+}
+
+wartime_measures_rationing = {
+	icon = gfx/interface/icons/sol_icons/impoverished.dds
+	country_consumption_tax_cost_mult = -0.75
+	country_military_goods_cost_mult = -0.25
+	political_movement_radicalism_mult = 0.25
+}
+
+wartime_measures_propaganda = {
+	icon = gfx/interface/icons/military_icons/manpower.dds
+	interest_group_approval_add = 10
+	country_legitimacy_ideological_incoherence_mult = -0.10
+	country_government_wages_mult = 0.25
+	country_military_wages_mult = 0.25
+}
+
+### Anti War ###
+
+military_infighting = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_negative.dds
+	interest_group_approval_add = -10
+}
+
+### Reserve Powers System ###
+
+ig_angry_with_government = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fire_negative.dds
+	interest_group_approval_add = -20
+}
+
+ig_little_angry_with_government = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fire_negative.dds
+	interest_group_approval_add = -5
+}
+
+ig_angry_with_inappropriate_monetary_policy = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fire_negative.dds
+	interest_group_approval_add = -5
+}
+
+ig_angry_with_witch_hunt = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fire_negative.dds
+	interest_group_approval_add = -10
+}
+
+ig_angry_with_weak_nuclear_weapons = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fire_negative.dds
+	interest_group_approval_add = -10
+}
+
+### Cabinet System ###
+THIS_is_ruler = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	
+}
+
+politically_weakened_character = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	character_popularity_add = -25
+}
+
+politically_weakened_interest_group = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	interest_group_pol_str_mult = -0.25
+}
+
+cabinet_minister = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	character_popularity_add = 25
+}
+
+cabinet_minister_ig = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	interest_group_in_government_approval_add = 10
+}
+
+executive_order_issued = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	country_legitimacy_base_add = 50
+	political_movement_radicalism_mult = 0.25
+}
+
+royal_decree_issued = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	country_legitimacy_ideological_incoherence_mult = -0.20
+	country_decree_cost_mult = 0.50
+	political_movement_radicalism_mult = 0.25
+}
+
+state_of_emergency_issued = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	country_voting_power_base_add = -100
+	country_legitimacy_base_add = 100
+	country_decree_cost_mult = -0.50
+	political_movement_radicalism_mult = 0.25
+}
+
+### National Values ###
+
+liberty_national_value = {
+	icon = gfx/interface/icons/timed_modifier_icons/liberty_national_value.dds
+	country_weekly_innovation_mult = 0.10
+	country_authority_mult = -0.50
+}
+
+equality_national_value = {
+	icon = gfx/interface/icons/timed_modifier_icons/equality_national_value.dds
+	state_assimilation_mult = 0.10
+}
+
+order_national_value = {
+	icon = gfx/interface/icons/timed_modifier_icons/order_national_value.dds
+	country_authority_mult = 0.10
+	political_movement_radicalism_mult = -0.20
+}
+
+happy_with_national_value = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
+	interest_group_approval_add = 5
+}
+
+### AI buffs ###
+
+pm_offense_defense_ai_boost = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_positive.dds
+	unit_offense_mult = 0.8
+	unit_defense_mult = 0.8
+}
+
+### Nobel Peace Prize ###
+
+won_nobel_peace_prize_character = {
+	icon = gfx/interface/icons/notification_icons/peace.dds
+	character_popularity_add = 25
+	
+}
+
+won_nobel_peace_prize_country = {
+	icon = gfx/interface/icons/notification_icons/peace.dds
+	country_prestige_mult = 0.05
+	country_infamy_decay_mult = 0.25
+	country_influence_mult = 0.25
+}
+
+### Character Management System ###
+
+indicted_character = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	character_popularity_add = -50
+}
+
+acquitted_character = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	character_popularity_add = 50
+}
+
+convicted_character = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	character_popularity_add = -100
+}
+
+unjustly_convicted_character = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	character_popularity_add = 100
+}
+
+convicted_character_ig = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	interest_group_pol_str_mult = -0.25
+	interest_group_pop_attraction_mult = -0.25
+}
+
+unjustly_convicted_character_ig = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	interest_group_pop_attraction_mult = 0.25
+}
+
+embarassed_by_witch_hunt = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	character_popularity_add = -25
+}
+
+### War Crimes System ###
+
+devastated_by_war_crimes = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_negative.dds
+	state_mortality_mult = 0.1
+	state_standard_of_living_add = -2
+}
+
+### Space Race ###
+
+space_program_success = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
+	country_prestige_mult = 0.10
+}
+
+space_race_leader = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
+	country_prestige_mult = 0.05
+	interest_group_approval_add = 5
+}
+
+space_race_victor = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
+	country_prestige_mult = 0.10
+}
+
+developing_space_rocket = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
+	country_expenses_add = 100000
+}
+
+developing_satellite = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
+	country_expenses_add = 200000
+}
+
+developing_astronaut = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
+	country_expenses_add = 300000
+}
+
+developing_space_probe = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
+	country_expenses_add = 400000
+}
+
+developing_moon_mission = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
+	country_expenses_add = 500000
+}
+
+developing_space_station = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
+	country_expenses_add = 600000
+}
+
+developing_space_telescope = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
+	country_expenses_add = 700000
+}
+
+developing_mars_mission = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
+	country_expenses_add = 800000
+}
+
+developing_moon_base = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
+	country_expenses_add = 900000
+}
+
+developing_mars_base = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
+	country_expenses_add = 1000000
+}
+
+### Paramilitary Groups ###
+
+conducting_great_purge = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
+	interest_group_in_opposition_approval_add = 10
+	country_secession_progress_mult = -0.50
+	country_revolution_progress_mult = -0.50
+	country_bureaucracy_mult = -0.20
+}
+
+great_purge_IG = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
+	interest_group_pol_str_mult = -0.50
+}
+
+### Non Aligned Movement ###
+
+non_aligned_movement_member = {
+	icon = gfx/interface/icons/diplo_icons/non_aligned_movement_member.dds
+	country_prestige_mult = 0.02
+	country_infamy_decay_mult = 0.10
 }

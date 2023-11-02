@@ -1,51 +1,32 @@
 ﻿# Political Institutions
 
-institution_hos_office = {
-	icon = "gfx/interface/icons/institution_icons/gulag.dds"
-	background_texture = "gfx/interface/illustrations/institutions/gulag.dds"
-	modifier = {
-		#country_authority_mult = 0.05
-	}
+institution_pop_growth = {
+	icon = "gfx/interface/icons/institution_icons/health_service.dds"
+	background_texture = "gfx/interface/illustrations/institutions/health_service.dds"
 }
-
-institution_administration_service = {
-	icon = "gfx/interface/icons/institution_icons/gulag.dds"
-	background_texture = "gfx/interface/illustrations/institutions/gulag.dds"
-}
-
-institution_elections_supervision = {
-	icon = "gfx/interface/icons/institution_icons/gulag.dds"
-	background_texture = "gfx/interface/illustrations/institutions/gulag.dds"
-	modifier = {
-		#country_voting_power_base_add = 4 
-	}
-}
-
-institution_civil_service = {
-	icon = "gfx/interface/icons/institution_icons/gulag.dds"
-	background_texture = "gfx/interface/illustrations/institutions/gulag.dds"
-}
-
-institution_diplomatic_corps = {
-	icon = "gfx/interface/icons/institution_icons/gulag.dds"
-	background_texture = "gfx/interface/illustrations/institutions/gulag.dds"
-	modifier = {
-		#country_influence_mult = 0.1
-	}
-}
-
-institution_superstate = {
-	icon = "gfx/interface/icons/institution_icons/gulag.dds"
-	background_texture = "gfx/interface/illustrations/institutions/gulag.dds"
-}
-
-# Citizen Institutions
 
 institution_gulag = {
-	icon = "gfx/interface/icons/institution_icons/gulag.dds"
-	background_texture = "gfx/interface/illustrations/institutions/gulag.dds"
+	icon = "gfx/interface/icons/institution_icons/police.dds"
+    background_texture = "gfx/interface/illustrations/institutions/police.dds"
+}
+
+institution_espionage = {
+	icon = "gfx/interface/icons/institution_icons/home_affairs.dds"
+	background_texture = "gfx/interface/illustrations/institutions/home_affairs.dds"
+}
+
+institution_social_security = {
+	icon = "gfx/interface/icons/institution_icons/social_security.dds"
+	background_texture = "gfx/interface/illustrations/institutions/social_security.dds"
 	modifier = {
-		country_revolution_progress_mult = -0.1
-		country_secession_progress_mult = -0.1
+		#state_welfare_payments_add = 0.2
+	}
+}
+
+institution_economic_planning_office = {
+	icon = "gfx/interface/icons/institution_icons/workplace_safety.dds"
+	background_texture = "gfx/interface/illustrations/institutions/workplace_safety.dds"
+	modifier = {
+		
 	}
 }

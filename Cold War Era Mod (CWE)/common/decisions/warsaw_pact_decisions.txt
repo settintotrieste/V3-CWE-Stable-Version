@@ -17,21 +17,15 @@ form_warsaw_pact_decision = {
 		#THIS is a communist regime
 		is_a_communist_government = yes
 		
-		#There is a hostile superpower
-		any_country = {
-			country_rank = rank_value:super_power
-			is_a_democracy = yes
-			has_attitude = {
-				who = ROOT
-				attitude <= antagonistic
-			}
-		}
-		
 		#THIS must not be a revolutionary
 		is_revolutionary = no
 		
 		#European countries only
-		country_is_in_europe = yes
+		OR = { 
+			country_is_in_europe = yes
+			c:SOV ?= this
+			c:RUS ?= this
+		}
 	}
 
 	possible = {
@@ -65,10 +59,35 @@ form_warsaw_pact_decision = {
 		#THIS forms Warsaw Pact by being the first member & leader
 		add_modifier = { name = warsaw_pact_leader }
 		
+		#Timer
+		set_global_variable = {
+			name = warsaw_pact_formation_var
+			months = 12
+		}
+		
 	}
 
 	ai_chance = {
-		base = 100		
+		base = 0	
+		
+		modifier = {
+			trigger = {
+				#There is a non communist hostile superpower
+				any_country = {
+					country_rank = rank_value:super_power
+					NOT = { is_a_communist_government = yes }
+					has_attitude = {
+						who = ROOT
+						attitude <= antagonistic
+					}
+				}
+				
+			}
+			add = 100
+		}
+		
+		modifier = { trigger = { has_global_variable = historical_railroading_active } add = 100 }
+		
 	}
 	
 }
@@ -118,7 +137,7 @@ join_warsaw_pact_decision = {
 		any_country = {
 			has_modifier = warsaw_pact_leader
 			
-			relations:root >= relations_threshold:amicable
+			relations:root >= relations_threshold:cordial
 		}
 		
 		#Not hostile with any Warsaw Pact member
@@ -158,7 +177,13 @@ join_warsaw_pact_decision = {
 		
 			trigger = {
 			
-				OR = { 
+				OR = {
+				
+					#Subjects will join
+					any_country = {
+						limit = { c:SOV ?= this }
+						has_subject_relation_with = ROOT
+					}
 				
 					#There is a hostile country with rank greater than THIS
 					any_country = {
@@ -196,6 +221,8 @@ join_warsaw_pact_decision = {
 			add = 100
 			
 		}
+		
+		modifier = { trigger = { has_global_variable = historical_railroading_active } add = 100 }
 
 	}
 	
@@ -219,7 +246,7 @@ leave_warsaw_pact_decision = {
 		
 			NOT = { is_sufficiently_independent = yes }
 			
-			NOT = { is_not_neutral = yes }
+			is_neutral = yes
 			
 			any_country = {
 				has_modifier = warsaw_pact_leader

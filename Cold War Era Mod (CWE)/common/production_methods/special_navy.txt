@@ -8,9 +8,9 @@ pm_battleship_0 = { #Patrol Boats
 
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_steamers_add = 1
+			building_input_ironclads_add = 1
 			building_input_ammunition_add = 1
-			building_input_refined_oil_add = 1
+			building_input_oil_add = 1
 		}
 
 		level_scaled = {
@@ -46,9 +46,9 @@ pm_battleship_1 = {
 
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_ironclads_add = 1
+			building_input_ironclads_add = 2
 			building_input_ammunition_add = 3
-			building_input_refined_oil_add = 2
+			building_input_oil_add = 2
 		}
 
 		level_scaled = {
@@ -90,9 +90,9 @@ pm_battleship_2 = {
 
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_ironclads_add = 2
+			building_input_ironclads_add = 4
 			building_input_ammunition_add = 4
-			building_input_refined_oil_add = 4
+			building_input_oil_add = 4
 		}
 
 		level_scaled = {
@@ -134,9 +134,9 @@ pm_battleship_3 = {
 	
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_ironclads_add = 3
+			building_input_ironclads_add = 6
 			building_input_ammunition_add = 6
-			building_input_refined_oil_add = 6
+			building_input_oil_add = 6
 		}
 
 		level_scaled = {
@@ -178,9 +178,9 @@ pm_battleship_4 = {
 	
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_ironclads_add = 4
+			building_input_ironclads_add = 8
 			building_input_ammunition_add = 8
-			building_input_refined_oil_add = 8
+			building_input_oil_add = 8
 		}
 
 		level_scaled = {
@@ -222,9 +222,9 @@ pm_battleship_5 = {
 	
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_advanced_ironclads_add = 5
+			building_input_ironclads_add = 10
 			building_input_ammunition_add = 10
-			building_input_refined_oil_add = 10
+			building_input_oil_add = 10
 		}
 
 		level_scaled = {
@@ -265,9 +265,9 @@ pm_battleship_6 = {
 	
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_advanced_ironclads_add = 6
+			building_input_ironclads_add = 12
 			building_input_ammunition_add = 12
-			building_input_refined_oil_add = 12
+			building_input_oil_add = 12
 		}
 
 		level_scaled = {
@@ -308,9 +308,9 @@ pm_battleship_7 = {
 	
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_advanced_ironclads_add = 7
+			building_input_ironclads_add = 14
 			building_input_ammunition_add = 14
-			building_input_refined_oil_add = 14
+			building_input_oil_add = 14
 		}
 
 		level_scaled = {
@@ -351,9 +351,9 @@ pm_battleship_8 = {
 	
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_advanced_ironclads_add = 8
+			building_input_ironclads_add = 16
 			building_input_ammunition_add = 16
-			building_input_refined_oil_add = 16
+			building_input_oil_add = 16
 		}
 
 		level_scaled = {
@@ -394,9 +394,9 @@ pm_battleship_9 = {
 	
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_advanced_ironclads_add = 9
+			building_input_ironclads_add = 18
 			building_input_ammunition_add = 18
-			building_input_refined_oil_add = 18
+			building_input_oil_add = 18
 		}
 
 		level_scaled = {
@@ -437,9 +437,9 @@ pm_battleship_10 = {
 	
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_advanced_ironclads_add = 10
+			building_input_ironclads_add = 20
 			building_input_ammunition_add = 20
-			building_input_refined_oil_add = 20
+			building_input_oil_add = 20
 		}
 
 		level_scaled = {
@@ -506,9 +506,9 @@ pm_submarine_1 = {
 	
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_advanced_ironclads_add = 1
+			building_input_ironclads_add = 2
 			building_input_ammunition_add = 2
-			building_input_refined_oil_add = 2
+			building_input_oil_add = 2
 			building_input_communication_services_add = 1
 		}
 
@@ -549,9 +549,9 @@ pm_submarine_2 = {
 	
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_advanced_ironclads_add = 2
+			building_input_ironclads_add = 4
 			building_input_ammunition_add = 4
-			building_input_refined_oil_add = 4
+			building_input_oil_add = 4
 			building_input_communication_services_add = 2
 		}
 
@@ -593,9 +593,9 @@ pm_submarine_3 = {
 	
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_advanced_ironclads_add = 3
+			building_input_ironclads_add = 6
 			building_input_ammunition_add = 6
-			building_input_refined_oil_add = 6
+			building_input_oil_add = 6
 			building_input_communication_services_add = 3
 		}
 
@@ -636,9 +636,9 @@ pm_submarine_4 = {
 	
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_advanced_ironclads_add = 4
+			building_input_ironclads_add = 6
 			building_input_ammunition_add = 6
-			building_input_refined_oil_add = 6
+			building_input_oil_add = 6
 			building_input_communication_services_add = 4
 		}
 
@@ -679,9 +679,9 @@ pm_submarine_5 = {
 	
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_advanced_ironclads_add = 5
+			building_input_ironclads_add = 8
 			building_input_ammunition_add = 8
-			building_input_refined_oil_add = 8
+			building_input_oil_add = 8
 			building_input_communication_services_add = 5
 		}
 
@@ -721,9 +721,9 @@ pm_submarine_6 = {
 	
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_advanced_ironclads_add = 6
+			building_input_ironclads_add = 10
 			building_input_ammunition_add = 10
-			building_input_refined_oil_add = 10
+			building_input_oil_add = 10
 			building_input_communication_services_add = 6
 		}
 
@@ -763,9 +763,9 @@ pm_submarine_7 = {
 	
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_advanced_ironclads_add = 7
+			building_input_ironclads_add = 12
 			building_input_ammunition_add = 12
-			building_input_refined_oil_add = 12
+			building_input_oil_add = 12
 			building_input_communication_services_add = 7
 		}
 
@@ -805,9 +805,9 @@ pm_submarine_8 = {
 	
 	building_modifiers = {
 		workforce_scaled = {
-			building_input_advanced_ironclads_add = 8
+			building_input_ironclads_add = 14
 			building_input_ammunition_add = 14
-			building_input_refined_oil_add = 14
+			building_input_oil_add = 14
 			building_input_communication_services_add = 8
 		}
 
@@ -842,7 +842,7 @@ pm_submarine_8 = {
 ### Carrier Types ###
 
 pm_carriers_0 = { #No carriers
-	texture = "gfx/interface/icons/production_method_icons/no_carriers.dds"
+	texture = "gfx/interface/icons/production_method_icons/no_military_shipbuilding.dds"
 	building_modifiers = {
 		workforce_scaled = {
 			
@@ -879,9 +879,9 @@ pm_carriers_1 = {
 	building_modifiers = {
 		workforce_scaled = {
 			# input goods
-			building_input_advanced_ironclads_add = 2
+			building_input_ironclads_add = 2
 			building_input_ammunition_add = 2
-			building_input_refined_oil_add = 2
+			building_input_oil_add = 2
 			building_input_aeroplanes_add = 2
 			building_input_communication_services_add = 2
 		}
@@ -897,7 +897,6 @@ pm_carriers_1 = {
 		}
 
 		unscaled = {
-			building_training_rate_add = -5
 			unit_morale_loss_mult = -0.05
 		}
 	}
@@ -926,9 +925,9 @@ pm_carriers_2 = {
 	building_modifiers = {
 		workforce_scaled = {
 			# input goods
-			building_input_advanced_ironclads_add = 4
+			building_input_ironclads_add = 4
 			building_input_ammunition_add = 4
-			building_input_refined_oil_add = 4
+			building_input_oil_add = 4
 			building_input_aeroplanes_add = 4
 			building_input_communication_services_add = 4
 		}
@@ -944,7 +943,6 @@ pm_carriers_2 = {
 		}
 
 		unscaled = {
-			building_training_rate_add = -10
 			unit_morale_loss_mult = -0.1
 		}
 	}
@@ -973,9 +971,9 @@ pm_carriers_3 = {
 	building_modifiers = {
 		workforce_scaled = {
 			# input goods
-			building_input_advanced_ironclads_add = 6
+			building_input_ironclads_add = 6
 			building_input_ammunition_add = 6
-			building_input_refined_oil_add = 6
+			building_input_oil_add = 6
 			building_input_aeroplanes_add = 6
 			building_input_communication_services_add = 6
 		}
@@ -991,7 +989,6 @@ pm_carriers_3 = {
 		}
 
 		unscaled = {
-			building_training_rate_add = -15
 			unit_morale_loss_mult = -0.15
 		}
 	}
@@ -1020,9 +1017,9 @@ pm_carriers_4 = {
 	building_modifiers = {
 		workforce_scaled = {
 			# input goods
-			building_input_advanced_ironclads_add = 8
+			building_input_ironclads_add = 8
 			building_input_ammunition_add = 8
-			building_input_refined_oil_add = 8
+			building_input_oil_add = 8
 			building_input_aeroplanes_add = 8
 			building_input_communication_services_add = 8
 		}
@@ -1038,7 +1035,6 @@ pm_carriers_4 = {
 		}
 
 		unscaled = {
-			building_training_rate_add = -20
 			unit_morale_loss_mult = -0.20
 		}
 	}
@@ -1067,9 +1063,9 @@ pm_carriers_5 = {
 	building_modifiers = {
 		workforce_scaled = {
 			# input goods
-			building_input_advanced_ironclads_add = 10
+			building_input_ironclads_add = 10
 			building_input_ammunition_add = 10
-			building_input_refined_oil_add = 10
+			building_input_oil_add = 10
 			building_input_aeroplanes_add = 10
 			building_input_communication_services_add = 10
 		}
@@ -1085,7 +1081,6 @@ pm_carriers_5 = {
 		}
 
 		unscaled = {
-			building_training_rate_add = -25
 			unit_morale_loss_mult = -0.25
 		}
 	}
@@ -1113,9 +1108,9 @@ pm_carriers_6 = {
 	building_modifiers = {
 		workforce_scaled = {
 			# input goods
-			building_input_advanced_ironclads_add = 12
+			building_input_ironclads_add = 12
 			building_input_ammunition_add = 12
-			building_input_refined_oil_add = 12
+			building_input_oil_add = 12
 			building_input_aeroplanes_add = 12
 			building_input_communication_services_add = 12
 		}
@@ -1131,7 +1126,6 @@ pm_carriers_6 = {
 		}
 
 		unscaled = {
-			building_training_rate_add = -30
 			unit_morale_loss_mult = -0.30
 		}
 	}
@@ -1159,9 +1153,9 @@ pm_carriers_7 = {
 	building_modifiers = {
 		workforce_scaled = {
 			# input goods
-			building_input_advanced_ironclads_add = 14
+			building_input_ironclads_add = 14
 			building_input_ammunition_add = 14
-			building_input_refined_oil_add = 14
+			building_input_oil_add = 14
 			building_input_aeroplanes_add = 14
 			building_input_communication_services_add = 14
 		}
@@ -1177,7 +1171,6 @@ pm_carriers_7 = {
 		}
 
 		unscaled = {
-			building_training_rate_add = -35
 			unit_morale_loss_mult = -0.35
 		}
 	}
@@ -1205,9 +1198,9 @@ pm_carriers_8 = {
 	building_modifiers = {
 		workforce_scaled = {
 			# input goods
-			building_input_advanced_ironclads_add = 16
+			building_input_ironclads_add = 16
 			building_input_ammunition_add = 16
-			building_input_refined_oil_add = 16
+			building_input_oil_add = 16
 			building_input_aeroplanes_add = 16
 			building_input_communication_services_add = 16
 		}
@@ -1223,7 +1216,6 @@ pm_carriers_8 = {
 		}
 
 		unscaled = {
-			building_training_rate_add = -40
 			unit_morale_loss_mult = -0.40
 		}
 	}
@@ -1274,9 +1266,10 @@ pm_navy_doctrine_1 = {
 		}
 
 		unscaled = {
-			unit_morale_loss_mult = -0.05
 			unit_morale_loss_mult = -0.1
 			unit_morale_damage_mult = 0.1
+			unit_convoy_raiding_interception_mult = 0.1
+			unit_convoy_defense_mult = 0.1
 		}
 	}
 
@@ -1305,9 +1298,10 @@ pm_navy_doctrine_2 = {
 		}
 
 		unscaled = {
-			unit_morale_loss_mult = -0.10
 			unit_morale_loss_mult = -0.2
 			unit_morale_damage_mult = 0.2
+			unit_convoy_raiding_interception_mult = 0.2
+			unit_convoy_defense_mult = 0.2
 		}
 	}
 
@@ -1336,9 +1330,10 @@ pm_navy_doctrine_3 = {
 		}
 
 		unscaled = {
-			unit_morale_loss_mult = -0.15
 			unit_morale_loss_mult = -0.3
 			unit_morale_damage_mult = 0.3
+			unit_convoy_raiding_interception_mult = 0.3
+			unit_convoy_defense_mult = 0.3
 		}
 	}
 
@@ -1367,9 +1362,10 @@ pm_navy_doctrine_4 = {
 		}
 
 		unscaled = {
-			unit_morale_loss_mult = -0.20
 			unit_morale_loss_mult = -0.4
 			unit_morale_damage_mult = 0.4
+			unit_convoy_raiding_interception_mult = 0.4
+			unit_convoy_defense_mult = 0.4
 		}
 	}
 
@@ -1398,9 +1394,10 @@ pm_navy_doctrine_5 = {
 		}
 
 		unscaled = {
-			unit_morale_loss_mult = -0.25
 			unit_morale_loss_mult = -0.5
 			unit_morale_damage_mult = 0.5
+			unit_convoy_raiding_interception_mult = 0.5
+			unit_convoy_defense_mult = 0.5
 		}
 	}
 

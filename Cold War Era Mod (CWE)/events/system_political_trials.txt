@@ -1,0 +1,345 @@
+namespace = political_trials_system
+
+#Accused is convicted
+political_trials_system.1 = {
+    type = country_event
+
+    title = won_a_political_trials.t 					# Title of the event; ADD LOCALISATION
+    desc = won_a_political_trials.d 					# Description of the event; ADD LOCALISATION
+    flavor = won_a_political_trials.f 					# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/middleeast_courtroom_upheaval.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/bicorne_hat.dds" 		# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {											# What triggers the event, if using other events or journal entries leave empty
+		
+		#Triggered by JE
+		
+    }
+	
+	immediate = {
+		
+		random_scope_character = {
+			limit = { has_variable = convicted_character_flag }
+			remove_variable = convicted_character_flag
+			
+			save_scope_as = convicted_character_scope
+			interest_group = { save_scope_as = convicted_character_ig_scope }
+		}
+		
+	}
+    
+    option = {
+        name = won_a_political_trials.option.1					# Imprison character
+		default_option = yes
+		
+		if = {
+			limit = { 
+				exists = scope:convicted_character_scope
+				scope:convicted_character_scope = { has_modifier = unjustly_convicted_character } 
+			}
+			change_infamy = 2
+		}
+		
+		if = {
+			limit = { 
+				has_law = law_type:law_slavery_political 
+				exists = scope:convicted_character_scope
+			}
+			scope:convicted_character_scope = { 
+				if = {
+					limit = { NOT = { has_trait = sickly } }
+					add_trait = sickly
+				}
+			}
+		}
+		
+		if = {
+			limit = { exists = scope:convicted_character_ig_scope }
+			add_radicals = {
+				value = medium_radicals
+				interest_group = scope:convicted_character_ig_scope
+			}
+		}
+		
+		ai_chance = {
+			base = 75
+		}
+    }
+	
+	option = {
+        name = won_a_political_trials.option.2					# Execute Character
+		trigger = {
+			is_a_dictatorship = yes
+			has_law = law_type:law_draconian_policing
+		}
+		
+		if = {
+			limit = { exists = scope:convicted_character_scope }
+			scope:convicted_character_scope = {
+				kill_character = yes
+			}
+		}
+		
+		if = {
+			limit = { exists = scope:convicted_character_ig_scope }
+			add_radicals = {
+				value = very_large_radicals
+				interest_group = scope:convicted_character_ig_scope
+			}
+		}
+		
+		change_infamy = 5
+		
+		ai_chance = {
+			base = 0
+			modifier = { 
+				trigger = {
+					exists = ruler
+					ruler = {
+						has_ideology = ideology:ideology_autocratic
+					}
+				}
+				add = 25
+			}
+		}
+    }
+
+}
+
+#Accused is acquitted
+political_trials_system.2 = {
+    type = country_event
+
+    title = lost_a_political_trials.t 					# Title of the event; ADD LOCALISATION
+    desc = lost_a_political_trials.d 					# Description of the event; ADD LOCALISATION
+    flavor = lost_a_political_trials.f 					# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/middleeast_courtroom_upheaval.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/bicorne_hat.dds" 		# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {											# What triggers the event, if using other events or journal entries leave empty
+		
+		#Triggered by JE
+		
+    }
+	
+	immediate = {
+		
+		random_scope_character = {
+			limit = { has_variable = acquitted_character_flag }
+			remove_variable = acquitted_character_flag
+			
+			save_scope_as = convicted_character_scope
+			interest_group = { save_scope_as = convicted_character_ig_scope }
+		}
+		
+	}
+    
+    option = {
+        name = lost_a_political_trials.option.1					# Let him be free
+		default_option = yes
+		
+		ruler = {
+			hidden_effect = { remove_modifier = embarassed_by_witch_hunt }
+			add_modifier = { name = embarassed_by_witch_hunt years = 5 is_decaying = yes }
+		}
+		
+		add_radicals = {
+			value = small_radicals
+			interest_group = scope:convicted_character_ig_scope
+		}
+		
+		ai_chance = {
+			base = 75
+		}
+    }
+	
+	option = {
+        name = lost_a_political_trials.option.2					# Assassinate Character
+		trigger = {
+			is_a_dictatorship = yes
+			has_law = law_type:law_secret_police
+		}
+		
+		ruler = {
+			hidden_effect = { remove_modifier = embarassed_by_witch_hunt }
+			add_modifier = { name = embarassed_by_witch_hunt years = 5 is_decaying = yes }
+		}
+		
+		#Chance of killing character
+		scope:convicted_character_scope = { set_variable = state_assassination_target }
+		trigger_event = { id = political_trials_system.3 popup = yes }
+		
+		add_radicals = {
+			value = very_large_radicals
+			interest_group = scope:convicted_character_ig_scope
+		}
+		
+		change_infamy = 5
+		
+		ai_chance = {
+			base = 0
+			modifier = { 
+				trigger = {
+					exists = ruler
+					ruler = {
+						has_ideology = ideology:ideology_autocratic
+					}
+				}
+				add = 25
+			}
+		}
+    }
+
+}
+
+#Assassination of Character
+political_trials_system.3 = {
+    type = country_event
+
+    title = {
+		first_valid = {
+			triggered_desc = {
+				desc = character_assassination.YES.t
+				trigger = { has_variable = character_assassinated_YES }
+			}
+			triggered_desc = {
+				desc = character_assassination.NO.t
+				trigger = { NOT = { has_variable = character_assassinated_YES } }
+			}
+		}
+	}
+    desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = character_assassination.YES.d
+				trigger = { has_variable = character_assassinated_YES }
+			}
+			triggered_desc = {
+				desc = character_assassination.NO.d
+				trigger = { NOT = { has_variable = character_assassinated_YES } }
+			}
+		}
+	}
+    flavor = character_assassination.f 					# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/southamerica_public_figure_assassination.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_skull.dds" 		# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {											# What triggers the event, if using other events or journal entries leave empty
+		
+		#Triggered by JE
+		
+    }
+	
+	immediate = {
+		
+		#Reset flags
+		remove_variable = character_assassinated_YES
+		
+		random_scope_character = {
+			limit = { has_variable = state_assassination_target }
+			remove_variable = state_assassination_target
+			
+			save_scope_as = assassination_character_scope
+			interest_group = { save_scope_as = assassination_character_ig_scope }
+		}
+		
+		#Chance for assassination
+		random_list = {
+
+			10 = {
+				
+			}
+
+			1 = {
+
+				#Character Assassinated
+				set_variable = character_assassinated_YES
+				
+				#More likely to have a successful assassination if Secret Police is strong
+				modifier = {
+					if = { limit = { institution_investment_level = { institution = institution_home_affairs value >= 1 } } }
+					add = 1
+				}
+				modifier = {
+					if = { limit = { institution_investment_level = { institution = institution_home_affairs value >= 2 } } }
+					add = 2
+				}
+				modifier = {
+					if = { limit = { institution_investment_level = { institution = institution_home_affairs value >= 3 } } }
+					add = 3
+				}
+				modifier = {
+					if = { limit = { institution_investment_level = { institution = institution_home_affairs value >= 4 } } }
+					add = 4
+				}
+				modifier = {
+					if = { limit = { institution_investment_level = { institution = institution_home_affairs value >= 5 } } }
+					add = 5
+				}
+				
+			}
+			
+		}
+		
+	}
+    
+    option = {
+        name = character_assassination.option
+		default_option = yes
+		
+		#Reset flags
+		remove_variable = character_assassinated_YES
+		
+		#Assassinate Character
+		if = {
+			limit = { has_variable = character_assassinated_YES }
+			scope:assassination_character_scope = {
+				kill_character = yes
+			}
+			add_radicals = {
+				value = very_large_radicals
+				interest_group = scope:assassination_character_ig_scope
+			}
+		}
+		else = {
+		
+			#Character has a chance of exile
+			random_list = {
+				1 = {
+					scope:assassination_character_scope = {
+						exile_character_with_martyrdom = yes
+					}
+				}
+				1 = {
+					
+				}
+			}
+			
+			add_radicals = {
+				value = large_radicals
+				interest_group = scope:assassination_character_ig_scope
+			}
+		
+		}
+		
+		#Infamy
+		change_infamy = 5
+		
+    }
+
+}

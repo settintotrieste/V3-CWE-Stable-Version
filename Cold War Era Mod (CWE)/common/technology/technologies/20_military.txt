@@ -6,6 +6,9 @@ tech_military_ground_forces_1 = {
 	texture = "gfx/interface/icons/invention_icons/standing_army.dds"
 	category = military
 	
+	ai_weight = {
+		value = 3 # Important tech in general
+	}
 }
 
 tech_military_ground_forces_2 = {
@@ -15,6 +18,10 @@ tech_military_ground_forces_2 = {
 	
 	unlocking_technologies = {	
 		tech_military_ground_forces_1
+	}
+	
+	ai_weight = {
+		value = 2 # Important tech in general
 	}
 }
 
@@ -26,6 +33,10 @@ tech_military_ground_forces_3 = {
 	unlocking_technologies = {	
 		tech_military_ground_forces_2
 	}
+	
+	ai_weight = {
+		value = 1 # Important tech in general
+	}
 }
 
 tech_military_ground_forces_4 = {
@@ -35,6 +46,10 @@ tech_military_ground_forces_4 = {
 	
 	unlocking_technologies = {	
 		tech_military_ground_forces_3
+	}
+	
+	ai_weight = {
+		value = 1 # Important tech in general
 	}
 }
 
@@ -46,6 +61,10 @@ tech_military_ground_forces_5 = {
 	unlocking_technologies = {	
 		tech_military_ground_forces_4
 	}
+	
+	ai_weight = {
+		value = 1 # Important tech in general
+	}
 }
 
 tech_military_ground_forces_6 = {
@@ -55,6 +74,10 @@ tech_military_ground_forces_6 = {
 	
 	unlocking_technologies = {	
 		tech_military_ground_forces_5
+	}
+	
+	ai_weight = {
+		value = 1 # Important tech in general
 	}
 }
 
@@ -66,6 +89,10 @@ tech_military_ground_forces_7 = {
 	unlocking_technologies = {	
 		tech_military_ground_forces_6
 	}
+	
+	ai_weight = {
+		value = 1 # Important tech in general
+	}
 }
 
 tech_military_ground_forces_8 = {
@@ -75,6 +102,10 @@ tech_military_ground_forces_8 = {
 	
 	unlocking_technologies = {	
 		tech_military_ground_forces_7
+	}
+	
+	ai_weight = {
+		value = 1 # Important tech in general
 	}
 }
 
@@ -86,6 +117,10 @@ tech_military_ground_forces_9 = {
 	unlocking_technologies = {	
 		tech_military_ground_forces_8
 	}
+	
+	ai_weight = {
+		value = 1 # Important tech in general
+	}
 }
 
 tech_military_ground_forces_10 = {
@@ -95,6 +130,10 @@ tech_military_ground_forces_10 = {
 	
 	unlocking_technologies = {	
 		tech_military_ground_forces_9
+	}
+	
+	ai_weight = {
+		value = 1 # Important tech in general
 	}
 }
 
@@ -106,6 +145,9 @@ tech_military_airforce_1 = {
 	texture = "gfx/interface/icons/invention_icons/military_aviation.dds"
 	category = military
 	
+	ai_weight = {
+		value = 3 # Important tech in general
+	}
 }
 
 tech_military_airforce_2 = {
@@ -115,6 +157,10 @@ tech_military_airforce_2 = {
 	
 	unlocking_technologies = {	
 		tech_military_airforce_1
+	}
+	
+	ai_weight = {
+		value = 2 # Important tech in general
 	}
 }
 
@@ -126,6 +172,10 @@ tech_military_airforce_3 = {
 	unlocking_technologies = {	
 		tech_military_airforce_2
 	}
+	
+	ai_weight = {
+		value = 1 # Important tech in general
+	}
 }
 
 tech_military_airforce_4 = {
@@ -135,6 +185,10 @@ tech_military_airforce_4 = {
 	
 	unlocking_technologies = {	
 		tech_military_airforce_3
+	}
+	
+	ai_weight = {
+		value = 1 # Important tech in general
 	}
 }
 
@@ -146,6 +200,10 @@ tech_military_airforce_5 = {
 	unlocking_technologies = {	
 		tech_military_airforce_4
 	}
+	
+	ai_weight = {
+		value = 1 # Important tech in general
+	}
 }
 
 tech_military_airforce_6 = {
@@ -155,6 +213,10 @@ tech_military_airforce_6 = {
 	
 	unlocking_technologies = {	
 		tech_military_airforce_5
+	}
+	
+	ai_weight = {
+		value = 1 # Important tech in general
 	}
 }
 
@@ -166,6 +228,10 @@ tech_military_airforce_7 = {
 	unlocking_technologies = {	
 		tech_military_airforce_6
 	}
+	
+	ai_weight = {
+		value = 1 # Important tech in general
+	}
 }
 
 tech_military_airforce_8 = {
@@ -175,6 +241,10 @@ tech_military_airforce_8 = {
 	
 	unlocking_technologies = {	
 		tech_military_airforce_7
+	}
+	
+	ai_weight = {
+		value = 1 # Important tech in general
 	}
 }
 
@@ -196,6 +266,10 @@ tech_military_airforce_10 = {
 	unlocking_technologies = {	
 		tech_military_airforce_9
 	}
+	
+	ai_weight = {
+		value = 1 # Important tech in general
+	}
 }
 
 ### Support ###
@@ -206,6 +280,9 @@ tech_military_support_1 = {
 	texture = "gfx/interface/icons/invention_icons/logistics_tech.dds"
 	category = military
 	
+	ai_weight = {
+		value = 3 # Important tech in general
+	}
 }
 
 tech_military_support_2 = {
@@ -215,6 +292,10 @@ tech_military_support_2 = {
 	
 	unlocking_technologies = {	
 		tech_military_support_1
+	}
+	
+	ai_weight = {
+		value = 2 # Important tech in general
 	}
 }
 
@@ -226,6 +307,10 @@ tech_military_support_3 = {
 	unlocking_technologies = {	
 		tech_military_support_2
 	}
+	
+	ai_weight = {
+		value = 1 # Important tech in general
+	}
 }
 
 tech_military_support_4 = {
@@ -235,6 +320,10 @@ tech_military_support_4 = {
 	
 	unlocking_technologies = {	
 		tech_military_support_3
+	}
+	
+	ai_weight = {
+		value = 1 # Important tech in general
 	}
 }
 
@@ -246,6 +335,10 @@ tech_military_support_5 = {
 	unlocking_technologies = {	
 		tech_military_support_4
 	}
+	
+	ai_weight = {
+		value = 1 # Important tech in general
+	}
 }
 
 tech_military_support_6 = {
@@ -255,6 +348,10 @@ tech_military_support_6 = {
 	
 	unlocking_technologies = {	
 		tech_military_support_5
+	}
+	
+	ai_weight = {
+		value = 1 # Important tech in general
 	}
 }
 
@@ -266,6 +363,10 @@ tech_military_support_7 = {
 	unlocking_technologies = {	
 		tech_military_support_6
 	}
+	
+	ai_weight = {
+		value = 1 # Important tech in general
+	}
 }
 
 tech_military_support_8 = {
@@ -275,6 +376,10 @@ tech_military_support_8 = {
 	
 	unlocking_technologies = {	
 		tech_military_support_7
+	}
+	
+	ai_weight = {
+		value = 1 # Important tech in general
 	}
 }
 
@@ -286,6 +391,10 @@ tech_military_support_9 = {
 	unlocking_technologies = {	
 		tech_military_support_8
 	}
+	
+	ai_weight = {
+		value = 1 # Important tech in general
+	}
 }
 
 tech_military_support_10 = {
@@ -296,104 +405,147 @@ tech_military_support_10 = {
 	unlocking_technologies = {	
 		tech_military_support_9
 	}
+	
+	ai_weight = {
+		value = 1 # Important tech in general
+	}
 }
 
 ### Space Program ###
 
 tech_military_space_program_1 = {
 	era = era_1
-	texture = "gfx/interface/icons/invention_icons/space_program.dds"
+	texture = "gfx/interface/icons/invention_icons/analytical_philosophy.dds"
 	category = military
 	
+	ai_weight = {
+		value = 1
+	}
 }
 
 tech_military_space_program_2 = {
 	era = era_2
-	texture = "gfx/interface/icons/invention_icons/space_program.dds"
+	texture = "gfx/interface/icons/invention_icons/analytical_philosophy.dds"
 	category = military
 	
 	unlocking_technologies = {	
 		tech_military_space_program_1
 	}
+	
+	ai_weight = {
+		value = 1
+	}
 }
 
 tech_military_space_program_3 = {
 	era = era_3
-	texture = "gfx/interface/icons/invention_icons/space_program.dds"
+	texture = "gfx/interface/icons/invention_icons/analytical_philosophy.dds"
 	category = military
 	
 	unlocking_technologies = {	
 		tech_military_space_program_2
 	}
+	
+	ai_weight = {
+		value = 1
+	}
 }
 
 tech_military_space_program_4 = {
 	era = era_4
-	texture = "gfx/interface/icons/invention_icons/space_program.dds"
+	texture = "gfx/interface/icons/invention_icons/analytical_philosophy.dds"
 	category = military
 	
 	unlocking_technologies = {	
 		tech_military_space_program_3
 	}
+	
+	ai_weight = {
+		value = 1
+	}
 }
 
 tech_military_space_program_5 = {
 	era = era_5
-	texture = "gfx/interface/icons/invention_icons/space_program.dds"
+	texture = "gfx/interface/icons/invention_icons/analytical_philosophy.dds"
 	category = military
 	
 	unlocking_technologies = {	
 		tech_military_space_program_4
 	}
+	
+	ai_weight = {
+		value = 1
+	}
 }
 
 tech_military_space_program_6 = {
 	era = era_6
-	texture = "gfx/interface/icons/invention_icons/space_program.dds"
+	texture = "gfx/interface/icons/invention_icons/analytical_philosophy.dds"
 	category = military
 	
 	unlocking_technologies = {	
 		tech_military_space_program_5
 	}
+	
+	ai_weight = {
+		value = 1
+	}
 }
 
 tech_military_space_program_7 = {
 	era = era_7
-	texture = "gfx/interface/icons/invention_icons/space_program.dds"
+	texture = "gfx/interface/icons/invention_icons/analytical_philosophy.dds"
 	category = military
 	
 	unlocking_technologies = {	
 		tech_military_space_program_6
 	}
+	
+	ai_weight = {
+		value = 1
+	}
 }
 
 tech_military_space_program_8 = {
 	era = era_8
-	texture = "gfx/interface/icons/invention_icons/space_program.dds"
+	texture = "gfx/interface/icons/invention_icons/analytical_philosophy.dds"
 	category = military
 	
 	unlocking_technologies = {	
 		tech_military_space_program_7
 	}
+	
+	ai_weight = {
+		value = 1
+	}
 }
 
 tech_military_space_program_9 = {
 	era = era_9
-	texture = "gfx/interface/icons/invention_icons/space_program.dds"
+	texture = "gfx/interface/icons/invention_icons/analytical_philosophy.dds"
 	category = military
 	
 	unlocking_technologies = {	
 		tech_military_space_program_8
 	}
+	
+	ai_weight = {
+		value = 1
+	}
 }
 
 tech_military_space_program_10 = {
 	era = era_10
-	texture = "gfx/interface/icons/invention_icons/space_program.dds"
+	texture = "gfx/interface/icons/invention_icons/analytical_philosophy.dds"
 	category = military
 	
 	unlocking_technologies = {	
 		tech_military_space_program_9
+	}
+	
+	ai_weight = {
+		value = 1
 	}
 }
 
@@ -401,38 +553,51 @@ tech_military_space_program_10 = {
 
 tech_military_nuclear_1 = {
 	era = era_1
-	texture = "gfx/interface/icons/invention_icons/nuclear_tech.dds"
+	texture = "gfx/interface/icons/invention_icons/submarine.dds"
 	category = military
 	
 	unlocking_laws = {
-		OR = {
-			law_wmd_allowed
-			law_nuclear_energy
-		}
+		law_wmd_allowed
+		law_nuclear_energy
 	}
 	
+	ai_weight = {
+		value = 1
+		
+		if = {
+			limit = { country_rank >= rank_value:great_power }
+			add = 2
+		}
+	}
 }
 
 tech_military_nuclear_2 = {
 	era = era_2
-	texture = "gfx/interface/icons/invention_icons/nuclear_tech.dds"
+	texture = "gfx/interface/icons/invention_icons/submarine.dds"
 	category = military
 	
 	unlocking_laws = {
-		OR = {
-			law_wmd_allowed
-			law_nuclear_energy
-		}
+		law_wmd_allowed
+		law_nuclear_energy
 	}
 	
 	unlocking_technologies = {	
 		tech_military_nuclear_1
 	}
+	
+	ai_weight = {
+		value = 1
+		
+		if = {
+			limit = { country_rank >= rank_value:great_power }
+			add = 2
+		}
+	}
 }
 
 tech_military_nuclear_3 = {
 	era = era_3
-	texture = "gfx/interface/icons/invention_icons/nuclear_tech.dds"
+	texture = "gfx/interface/icons/invention_icons/submarine.dds"
 	category = military
 	
 	unlocking_laws = {
@@ -442,11 +607,20 @@ tech_military_nuclear_3 = {
 	unlocking_technologies = {	
 		tech_military_nuclear_2
 	}
+	
+	ai_weight = {
+		value = 1
+		
+		if = {
+			limit = { country_rank >= rank_value:great_power }
+			add = 2
+		}
+	}
 }
 
 tech_military_nuclear_4 = {
 	era = era_4
-	texture = "gfx/interface/icons/invention_icons/nuclear_tech.dds"
+	texture = "gfx/interface/icons/invention_icons/submarine.dds"
 	category = military
 	
 	unlocking_laws = {
@@ -456,11 +630,20 @@ tech_military_nuclear_4 = {
 	unlocking_technologies = {	
 		tech_military_nuclear_3
 	}
+	
+	ai_weight = {
+		value = 1
+		
+		if = {
+			limit = { country_rank >= rank_value:great_power }
+			add = 2
+		}
+	}
 }
 
 tech_military_nuclear_5 = {
 	era = era_5
-	texture = "gfx/interface/icons/invention_icons/nuclear_tech.dds"
+	texture = "gfx/interface/icons/invention_icons/submarine.dds"
 	category = military
 	
 	unlocking_laws = {
@@ -470,11 +653,20 @@ tech_military_nuclear_5 = {
 	unlocking_technologies = {	
 		tech_military_nuclear_4
 	}
+	
+	ai_weight = {
+		value = 1
+		
+		if = {
+			limit = { country_rank >= rank_value:great_power }
+			add = 2
+		}
+	}
 }
 
 tech_military_nuclear_6 = {
 	era = era_6
-	texture = "gfx/interface/icons/invention_icons/nuclear_tech.dds"
+	texture = "gfx/interface/icons/invention_icons/submarine.dds"
 	category = military
 	
 	unlocking_laws = {
@@ -484,11 +676,20 @@ tech_military_nuclear_6 = {
 	unlocking_technologies = {	
 		tech_military_nuclear_5
 	}
+	
+	ai_weight = {
+		value = 1
+		
+		if = {
+			limit = { country_rank >= rank_value:great_power }
+			add = 2
+		}
+	}
 }
 
 tech_military_nuclear_7 = {
 	era = era_7
-	texture = "gfx/interface/icons/invention_icons/nuclear_tech.dds"
+	texture = "gfx/interface/icons/invention_icons/submarine.dds"
 	category = military
 	
 	unlocking_laws = {
@@ -498,11 +699,20 @@ tech_military_nuclear_7 = {
 	unlocking_technologies = {	
 		tech_military_nuclear_6
 	}
+	
+	ai_weight = {
+		value = 1
+		
+		if = {
+			limit = { country_rank >= rank_value:great_power }
+			add = 2
+		}
+	}
 }
 
 tech_military_nuclear_8 = {
 	era = era_8
-	texture = "gfx/interface/icons/invention_icons/nuclear_tech.dds"
+	texture = "gfx/interface/icons/invention_icons/submarine.dds"
 	category = military
 	
 	unlocking_laws = {
@@ -512,11 +722,20 @@ tech_military_nuclear_8 = {
 	unlocking_technologies = {	
 		tech_military_nuclear_7
 	}
+	
+	ai_weight = {
+		value = 1
+		
+		if = {
+			limit = { country_rank >= rank_value:great_power }
+			add = 2
+		}
+	}
 }
 
 tech_military_nuclear_9 = {
 	era = era_9
-	texture = "gfx/interface/icons/invention_icons/nuclear_tech.dds"
+	texture = "gfx/interface/icons/invention_icons/submarine.dds"
 	category = military
 	
 	unlocking_laws = {
@@ -526,11 +745,20 @@ tech_military_nuclear_9 = {
 	unlocking_technologies = {	
 		tech_military_nuclear_8
 	}
+	
+	ai_weight = {
+		value = 1
+		
+		if = {
+			limit = { country_rank >= rank_value:great_power }
+			add = 2
+		}
+	}
 }
 
 tech_military_nuclear_10 = {
 	era = era_10
-	texture = "gfx/interface/icons/invention_icons/nuclear_tech.dds"
+	texture = "gfx/interface/icons/invention_icons/submarine.dds"
 	category = military
 	
 	unlocking_laws = {
@@ -539,6 +767,15 @@ tech_military_nuclear_10 = {
 	
 	unlocking_technologies = {	
 		tech_military_nuclear_9
+	}
+	
+	ai_weight = {
+		value = 1
+		
+		if = {
+			limit = { country_rank >= rank_value:great_power }
+			add = 2
+		}
 	}
 }
 
@@ -549,6 +786,15 @@ tech_military_naval_forces_1 = {
 	texture = "gfx/interface/icons/invention_icons/dreadnought.dds"
 	category = military
 	
+	ai_weight = {
+		value = 1
+		
+		# Important for anyone with a navy
+		if = {
+			limit = { navy_size >= 5 }
+			add = 0.5
+		}		
+	}
 }
 
 tech_military_naval_forces_2 = {
@@ -558,6 +804,16 @@ tech_military_naval_forces_2 = {
 	
 	unlocking_technologies = {	
 		tech_military_naval_forces_1
+	}
+	
+	ai_weight = {
+		value = 1
+		
+		# Important for anyone with a navy
+		if = {
+			limit = { navy_size >= 5 }
+			add = 0.5
+		}		
 	}
 }
 
@@ -569,6 +825,16 @@ tech_military_naval_forces_3 = {
 	unlocking_technologies = {	
 		tech_military_naval_forces_2
 	}
+	
+	ai_weight = {
+		value = 1
+		
+		# Important for anyone with a navy
+		if = {
+			limit = { navy_size >= 5 }
+			add = 0.5
+		}		
+	}
 }
 
 tech_military_naval_forces_4 = {
@@ -578,6 +844,16 @@ tech_military_naval_forces_4 = {
 	
 	unlocking_technologies = {	
 		tech_military_naval_forces_3
+	}
+	
+	ai_weight = {
+		value = 1
+		
+		# Important for anyone with a navy
+		if = {
+			limit = { navy_size >= 5 }
+			add = 0.5
+		}		
 	}
 }
 
@@ -589,6 +865,16 @@ tech_military_naval_forces_5 = {
 	unlocking_technologies = {	
 		tech_military_naval_forces_4
 	}
+	
+	ai_weight = {
+		value = 1
+		
+		# Important for anyone with a navy
+		if = {
+			limit = { navy_size >= 5 }
+			add = 0.5
+		}		
+	}
 }
 
 tech_military_naval_forces_6 = {
@@ -598,6 +884,16 @@ tech_military_naval_forces_6 = {
 	
 	unlocking_technologies = {	
 		tech_military_naval_forces_5
+	}
+	
+	ai_weight = {
+		value = 1
+		
+		# Important for anyone with a navy
+		if = {
+			limit = { navy_size >= 5 }
+			add = 0.5
+		}		
 	}
 }
 
@@ -609,6 +905,16 @@ tech_military_naval_forces_7 = {
 	unlocking_technologies = {	
 		tech_military_naval_forces_6
 	}
+	
+	ai_weight = {
+		value = 1
+		
+		# Important for anyone with a navy
+		if = {
+			limit = { navy_size >= 5 }
+			add = 0.5
+		}		
+	}
 }
 
 tech_military_naval_forces_8 = {
@@ -618,6 +924,16 @@ tech_military_naval_forces_8 = {
 	
 	unlocking_technologies = {	
 		tech_military_naval_forces_7
+	}
+	
+	ai_weight = {
+		value = 1
+		
+		# Important for anyone with a navy
+		if = {
+			limit = { navy_size >= 5 }
+			add = 0.5
+		}		
 	}
 }
 
@@ -629,6 +945,16 @@ tech_military_naval_forces_9 = {
 	unlocking_technologies = {	
 		tech_military_naval_forces_8
 	}
+	
+	ai_weight = {
+		value = 1
+		
+		# Important for anyone with a navy
+		if = {
+			limit = { navy_size >= 5 }
+			add = 0.5
+		}		
+	}
 }
 
 tech_military_naval_forces_10 = {
@@ -638,6 +964,16 @@ tech_military_naval_forces_10 = {
 	
 	unlocking_technologies = {	
 		tech_military_naval_forces_9
+	}
+	
+	ai_weight = {
+		value = 1
+		
+		# Important for anyone with a navy
+		if = {
+			limit = { navy_size >= 5 }
+			add = 0.5
+		}		
 	}
 }
 
@@ -652,6 +988,16 @@ tech_military_navy_doctrine_1 = {
 	modifier = {
 		state_building_naval_base_max_level_add = 5
     }
+	
+	ai_weight = {
+		value = 1
+		
+		# Important for naval powers
+		if = {
+			limit = { navy_size >= 20 }
+			add = 0.5
+		}			
+	}
 }
 
 tech_military_navy_doctrine_2 = {
@@ -669,6 +1015,16 @@ tech_military_navy_doctrine_2 = {
 	unlocking_technologies = {	
 		tech_military_navy_doctrine_1
 	}
+	
+	ai_weight = {
+		value = 1
+		
+		# Important for naval powers
+		if = {
+			limit = { navy_size >= 20 }
+			add = 0.5
+		}			
+	}
 }
 
 tech_military_navy_doctrine_3 = {
@@ -682,6 +1038,16 @@ tech_military_navy_doctrine_3 = {
 	
 	unlocking_technologies = {	
 		tech_military_navy_doctrine_2
+	}
+	
+	ai_weight = {
+		value = 1
+		
+		# Important for naval powers
+		if = {
+			limit = { navy_size >= 20 }
+			add = 0.5
+		}			
 	}
 }
 
@@ -697,6 +1063,16 @@ tech_military_navy_doctrine_4 = {
 	unlocking_technologies = {	
 		tech_military_navy_doctrine_3
 	}
+	
+	ai_weight = {
+		value = 1
+		
+		# Important for naval powers
+		if = {
+			limit = { navy_size >= 20 }
+			add = 0.5
+		}			
+	}
 }
 
 tech_military_navy_doctrine_5 = {
@@ -710,6 +1086,16 @@ tech_military_navy_doctrine_5 = {
 	
 	unlocking_technologies = {	
 		tech_military_navy_doctrine_4
+	}
+	
+	ai_weight = {
+		value = 1
+		
+		# Important for naval powers
+		if = {
+			limit = { navy_size >= 20 }
+			add = 0.5
+		}			
 	}
 }
 
@@ -725,6 +1111,16 @@ tech_military_navy_doctrine_6 = {
 	unlocking_technologies = {	
 		tech_military_navy_doctrine_5
 	}
+	
+	ai_weight = {
+		value = 1
+		
+		# Important for naval powers
+		if = {
+			limit = { navy_size >= 20 }
+			add = 0.5
+		}			
+	}
 }
 
 tech_military_navy_doctrine_7 = {
@@ -738,6 +1134,16 @@ tech_military_navy_doctrine_7 = {
 	
 	unlocking_technologies = {	
 		tech_military_navy_doctrine_6
+	}
+	
+	ai_weight = {
+		value = 1
+		
+		# Important for naval powers
+		if = {
+			limit = { navy_size >= 20 }
+			add = 0.5
+		}			
 	}
 }
 
@@ -753,6 +1159,16 @@ tech_military_navy_doctrine_8 = {
 	unlocking_technologies = {	
 		tech_military_navy_doctrine_7
 	}
+	
+	ai_weight = {
+		value = 1
+		
+		# Important for naval powers
+		if = {
+			limit = { navy_size >= 20 }
+			add = 0.5
+		}			
+	}
 }
 
 tech_military_navy_doctrine_9 = {
@@ -767,6 +1183,16 @@ tech_military_navy_doctrine_9 = {
 	unlocking_technologies = {	
 		tech_military_navy_doctrine_8
 	}
+	
+	ai_weight = {
+		value = 1
+		
+		# Important for naval powers
+		if = {
+			limit = { navy_size >= 20 }
+			add = 0.5
+		}			
+	}
 }
 
 tech_military_navy_doctrine_10 = {
@@ -780,6 +1206,16 @@ tech_military_navy_doctrine_10 = {
 	
 	unlocking_technologies = {	
 		tech_military_navy_doctrine_9
+	}
+	
+	ai_weight = {
+		value = 1
+		
+		# Important for naval powers
+		if = {
+			limit = { navy_size >= 20 }
+			add = 0.5
+		}			
 	}
 }
 
@@ -799,7 +1235,11 @@ tech_military_theory_1 = {
 		country_war_exhaustion_casualties_mult = -0.05
 		building_mobilization_cost_mult = -0.05
 		
-		state_building_command_post_max_level_add = 1
+		#state_building_command_post_max_level_add = 1
+	}
+	
+	ai_weight = {
+		value = 1
 	}
 	
 }
@@ -817,11 +1257,15 @@ tech_military_theory_2 = {
 		country_war_exhaustion_casualties_mult = -0.05
 		building_mobilization_cost_mult = -0.05
 		
-		state_building_command_post_max_level_add = 1
+		#state_building_command_post_max_level_add = 1
 	}
 	
 	unlocking_technologies = {
 		tech_military_theory_1
+	}
+	
+	ai_weight = {
+		value = 1
 	}
 }
 
@@ -838,11 +1282,15 @@ tech_military_theory_3 = {
 		country_war_exhaustion_casualties_mult = -0.05
 		building_mobilization_cost_mult = -0.05
 		
-		state_building_command_post_max_level_add = 1
+		#state_building_command_post_max_level_add = 1
 	}
 	
 	unlocking_technologies = {
 		tech_military_theory_2
+	}
+	
+	ai_weight = {
+		value = 1
 	}
 }
 
@@ -859,11 +1307,15 @@ tech_military_theory_4 = {
 		country_war_exhaustion_casualties_mult = -0.05
 		building_mobilization_cost_mult = -0.05
 		
-		state_building_command_post_max_level_add = 1
+		#state_building_command_post_max_level_add = 1
 	}
 	
 	unlocking_technologies = {
 		tech_military_theory_3
+	}
+	
+	ai_weight = {
+		value = 1
 	}
 }
 
@@ -880,11 +1332,15 @@ tech_military_theory_5 = {
 		country_war_exhaustion_casualties_mult = -0.05
 		building_mobilization_cost_mult = -0.05
 		
-		state_building_command_post_max_level_add = 1
+		#state_building_command_post_max_level_add = 1
 	}
 	
 	unlocking_technologies = {
 		tech_military_theory_4
+	}
+	
+	ai_weight = {
+		value = 1
 	}
 }
 
@@ -901,11 +1357,15 @@ tech_military_theory_6 = {
 		country_war_exhaustion_casualties_mult = -0.05
 		building_mobilization_cost_mult = -0.05
 		
-		state_building_command_post_max_level_add = 1
+		#state_building_command_post_max_level_add = 1
 	}
 	
 	unlocking_technologies = {
 		tech_military_theory_5
+	}
+	
+	ai_weight = {
+		value = 1
 	}
 }
 
@@ -922,11 +1382,15 @@ tech_military_theory_7 = {
 		country_war_exhaustion_casualties_mult = -0.05
 		building_mobilization_cost_mult = -0.05
 		
-		state_building_command_post_max_level_add = 1
+		#state_building_command_post_max_level_add = 1
 	}
 	
 	unlocking_technologies = {
 		tech_military_theory_6
+	}
+	
+	ai_weight = {
+		value = 1
 	}
 }
 
@@ -943,11 +1407,15 @@ tech_military_theory_8 = {
 		country_war_exhaustion_casualties_mult = -0.05
 		building_mobilization_cost_mult = -0.05
 		
-		state_building_command_post_max_level_add = 1
+		#state_building_command_post_max_level_add = 1
 	}
 	
 	unlocking_technologies = {
 		tech_military_theory_7
+	}
+	
+	ai_weight = {
+		value = 1
 	}
 }
 
@@ -964,11 +1432,15 @@ tech_military_theory_9 = {
 		country_war_exhaustion_casualties_mult = -0.05
 		building_mobilization_cost_mult = -0.05
 		
-		state_building_command_post_max_level_add = 1
+		#state_building_command_post_max_level_add = 1
 	}
 	
 	unlocking_technologies = {
 		tech_military_theory_8
+	}
+	
+	ai_weight = {
+		value = 1
 	}
 }
 
@@ -985,11 +1457,15 @@ tech_military_theory_10 = {
 		country_war_exhaustion_casualties_mult = -0.05
 		building_mobilization_cost_mult = -0.05
 		
-		state_building_command_post_max_level_add = 1
+		#state_building_command_post_max_level_add = 1
 	}
 	
 	unlocking_technologies = {
 		tech_military_theory_9
+	}
+	
+	ai_weight = {
+		value = 1
 	}
 	
 }

@@ -99,7 +99,7 @@ building_naval_base = {
 		pmg_battleship_military
 		pmg_carriers_military
 		pmg_submarine_military
-		#pmg_navy_doctrine_military
+		pmg_navy_doctrine_military
 		pmg_corruption_government
 	}
 	
@@ -116,7 +116,7 @@ building_naval_base = {
 
 building_nuclear_naval_base = {
 	building_group = bg_nuclear_weapons
-	texture = "gfx/interface/icons/building_icons/placeholder.dds"
+	texture = "gfx/interface/icons/building_icons/nuclear_naval_base.dds"
 	
 	has_max_level = yes
 	
@@ -160,7 +160,7 @@ building_nuclear_naval_base = {
 
 building_nuclear_weapons_silo = {
 	building_group = bg_nuclear_weapons
-	texture = "gfx/interface/icons/building_icons/nuclear_research_facility.dds"
+	texture = "gfx/interface/icons/building_icons/nuclear_weapons_silo.dds"
 	
 	has_max_level = yes
 	downsizeable = no

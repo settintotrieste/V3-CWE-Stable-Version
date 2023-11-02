@@ -50,9 +50,11 @@ ideology_far_right_economy = {
 	}
 	
 	lawgroup_monetary_policy = {
-		law_deflationary_monetary_policy = strongly_approve
-		law_neutral_monetary_policy = approve
-		law_expansionary_monetary_policy = strongly_disapprove
+		law_very_deflationary_monetary_policy = approve
+		law_deflationary_monetary_policy = approve
+		law_neutral_monetary_policy = disapprove
+		law_expansionary_monetary_policy = disapprove
+		law_very_expansionary_monetary_policy = disapprove
 	}
 	
 	lawgroup_taxation = {
@@ -120,9 +122,11 @@ ideology_right_economy = {
 	}
 	
 	lawgroup_monetary_policy = {
+		law_very_deflationary_monetary_policy = approve
 		law_deflationary_monetary_policy = approve
 		law_neutral_monetary_policy = neutral
 		law_expansionary_monetary_policy = disapprove
+		law_very_expansionary_monetary_policy = disapprove
 	}
 	
 	lawgroup_taxation = {
@@ -149,7 +153,7 @@ ideology_right_economy = {
 }
 
 ideology_centre_economy = {
-	icon = "gfx/interface/icons/ideology_icons/stratocratic.dds"
+	icon = "gfx/interface/icons/ideology_icons/meritocratic.dds"
 	
 	lawgroup_monetary_system = {
 		law_gold_standard = neutral
@@ -190,9 +194,11 @@ ideology_centre_economy = {
 	}
 	
 	lawgroup_monetary_policy = {
-		law_deflationary_monetary_policy = neutral
-		law_neutral_monetary_policy = neutral
-		law_expansionary_monetary_policy = neutral
+		law_very_deflationary_monetary_policy = disapprove
+		law_deflationary_monetary_policy = disapprove
+		law_neutral_monetary_policy = approve
+		law_expansionary_monetary_policy = disapprove
+		law_very_expansionary_monetary_policy = disapprove
 	}
 	
 	lawgroup_taxation = {
@@ -219,7 +225,7 @@ ideology_centre_economy = {
 }
 
 ideology_left_economy = {
-	icon = "gfx/interface/icons/ideology_icons/egalitarian.dds"
+	icon = "gfx/interface/icons/ideology_icons/proletarian.dds"
 	
 	lawgroup_monetary_system = {
 		law_gold_standard = disapprove
@@ -260,9 +266,11 @@ ideology_left_economy = {
 	}
 	
 	lawgroup_monetary_policy = {
+		law_very_deflationary_monetary_policy = disapprove
 		law_deflationary_monetary_policy = disapprove
 		law_neutral_monetary_policy = neutral
 		law_expansionary_monetary_policy = approve
+		law_very_expansionary_monetary_policy = approve
 	}
 	
 	lawgroup_taxation = {
@@ -289,7 +297,7 @@ ideology_left_economy = {
 }
 
 ideology_far_left_economy = {
-	icon = "gfx/interface/icons/ideology_icons/proletarian.dds"
+	icon = "gfx/interface/icons/ideology_icons/socialist.dds"
 	
 	lawgroup_monetary_system = {
 		law_gold_standard = strongly_disapprove
@@ -330,9 +338,11 @@ ideology_far_left_economy = {
 	}
 	
 	lawgroup_monetary_policy = {
-		law_deflationary_monetary_policy = strongly_disapprove
-		law_neutral_monetary_policy = approve
-		law_expansionary_monetary_policy = strongly_approve
+		law_very_deflationary_monetary_policy = disapprove
+		law_deflationary_monetary_policy = disapprove
+		law_neutral_monetary_policy = disapprove
+		law_expansionary_monetary_policy = approve
+		law_very_expansionary_monetary_policy = approve
 	}
 	
 	lawgroup_taxation = {
@@ -371,25 +381,15 @@ ideology_natural_resource_focus = {
 		law_services_focus = strongly_disapprove
 	}
 	
-	lawgroup_space_program = {	
-		law_no_space_program = approve
-		law_space_program = disapprove
-	}
-	
 }
 ideology_manufacturing_focus = {
-	icon = "gfx/interface/icons/ideology_icons/laissez_faire.dds"
+	icon = "gfx/interface/icons/ideology_icons/proletarian.dds"
 	
 	lawgroup_economic_specialisation = {	
 		law_no_economic_specialisation = approve
 		law_natural_resource_focus = disapprove
 		law_manufacturing_focus = strongly_approve
 		law_services_focus = strongly_disapprove
-	}
-	
-	lawgroup_space_program = {	
-		law_no_space_program = disapprove
-		law_space_program = approve
 	}
 	
 }
@@ -403,11 +403,6 @@ ideology_services_focus = {
 		law_services_focus = strongly_approve
 	}
 	
-	lawgroup_space_program = {	
-		law_no_space_program = neutral
-		law_space_program = neutral
-	}
-	
 }
 ideology_no_economic_focus = {
 	icon = "gfx/interface/icons/ideology_icons/laissez_faire.dds"
@@ -419,16 +414,11 @@ ideology_no_economic_focus = {
 		law_services_focus = disapprove
 	}
 	
-	lawgroup_space_program = {	
-		law_no_space_program = neutral
-		law_space_program = neutral
-	}
-	
 }
 
 #Environmental Laws
 ideology_anti_environment = {
-	icon = "gfx/interface/icons/ideology_icons/agrarian.dds"
+	icon = "gfx/interface/icons/ideology_icons/buddhist_moralist.dds"
 	
 	lawgroup_environmental_policy = {
 		law_no_environment_law = strongly_approve
@@ -444,7 +434,7 @@ ideology_anti_environment = {
 	
 }
 ideology_balanced_environment = {
-	icon = "gfx/interface/icons/ideology_icons/agrarian.dds"
+	icon = "gfx/interface/icons/ideology_icons/buddhist_moralist.dds"
 	
 	lawgroup_environmental_policy = {
 		law_no_environment_law = disapprove
@@ -460,7 +450,7 @@ ideology_balanced_environment = {
 	
 }
 ideology_pro_environment = {
-	icon = "gfx/interface/icons/ideology_icons/agrarian.dds"
+	icon = "gfx/interface/icons/ideology_icons/buddhist_moralist.dds"
 	
 	lawgroup_environmental_policy = {
 		law_no_environment_law = strongly_disapprove
@@ -478,7 +468,7 @@ ideology_pro_environment = {
 
 #Foreign Economic Policy
 ideology_nationalist = {
-	icon = "gfx/interface/icons/ideology_icons/loyalist.dds"
+	icon = "gfx/interface/icons/ideology_icons/isolationist.dds"
 	
 	lawgroup_foreign_policy = {
 		law_nationalist_fp = strongly_approve
@@ -506,7 +496,7 @@ ideology_nationalist = {
 	
 }
 ideology_regionalist = {
-	icon = "gfx/interface/icons/ideology_icons/patriotic.dds"
+	icon = "gfx/interface/icons/ideology_icons/frontier_expansionist.dds"
 	
 	lawgroup_foreign_policy = {
 		law_nationalist_fp = disapprove
@@ -567,7 +557,7 @@ ideology_globalist = {
 # General Political Beliefs #
 
 ideology_totalitarian = {
-	icon = "gfx/interface/icons/ideology_icons/reactionary.dds"
+	icon = "gfx/interface/icons/ideology_icons/caudillismo.dds"
 	
 	lawgroup_free_speech = {
 		law_outlawed_dissent = strongly_approve
@@ -693,7 +683,7 @@ ideology_individualist = {
 # Specific Political Beliefs #
 
 ideology_traditionalist = {
-	icon = "gfx/interface/icons/ideology_icons/moralist.dds"
+	icon = "gfx/interface/icons/ideology_icons/orthodox_patriarch.dds"
 	
 	lawgroup_rights_of_women = {
 		law_no_womens_rights = strongly_approve
@@ -712,6 +702,12 @@ ideology_traditionalist = {
 		law_pro_pop_growth_policy = strongly_approve
 		law_no_pop_growth_policy = approve
 		law_anti_pop_growth_policy = disapprove
+	}
+	
+	lawgroup_space_program = {	
+		law_no_space_program = approve
+		law_space_program_public = disapprove
+		law_space_program_private = disapprove
 	}
 	
 }
@@ -738,10 +734,16 @@ ideology_conservative = {
 		law_anti_pop_growth_policy = disapprove
 	}
 	
+	lawgroup_space_program = {	
+		law_no_space_program = disapprove
+		law_space_program_public = approve
+		law_space_program_private = strongly_approve
+	}
+	
 }
 
 ideology_progressive = {
-	icon = "gfx/interface/icons/ideology_icons/anti_clerical.dds"
+	icon = "gfx/interface/icons/ideology_icons/particularist.dds"
 	
 	lawgroup_rights_of_women = {
 		law_no_womens_rights = strongly_disapprove
@@ -762,12 +764,18 @@ ideology_progressive = {
 		law_anti_pop_growth_policy = neutral
 	}
 	
+	lawgroup_space_program = {	
+		law_no_space_program = disapprove
+		law_space_program_public = strongly_approve
+		law_space_program_private = approve
+	}
+	
 }
 
 #### Government Types ####
 
 ideology_monarchist = {
-	icon = "gfx/interface/icons/ideology_icons/paternalistic.dds"
+	icon = "gfx/interface/icons/ideology_icons/junker_paternalistic.dds"
 	
 	lawgroup_head_of_state = {
 		law_HOS_monarch = strongly_approve
@@ -793,7 +801,7 @@ ideology_republican = {
 }
 
 ideology_theocrat = {
-	icon = "gfx/interface/icons/ideology_icons/moralist.dds"
+	icon = "gfx/interface/icons/ideology_icons/coptic_patriarch.dds"
 	
 	lawgroup_head_of_state = {
 		law_HOS_monarch = approve
@@ -806,7 +814,7 @@ ideology_theocrat = {
 }
 
 ideology_militarist = {
-	icon = "gfx/interface/icons/ideology_icons/reactionary.dds"
+	icon = "gfx/interface/icons/ideology_icons/patriotic.dds"
 	
 	lawgroup_head_of_state = {
 		law_HOS_monarch = neutral
@@ -819,7 +827,7 @@ ideology_militarist = {
 }
 
 ideology_communist = {
-	icon = "gfx/interface/icons/ideology_icons/proletarian.dds"
+	icon = "gfx/interface/icons/ideology_icons/socialist.dds"
 	
 	lawgroup_head_of_state = {
 		law_HOS_monarch = strongly_disapprove

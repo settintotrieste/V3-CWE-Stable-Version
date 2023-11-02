@@ -3,14 +3,15 @@ namespace = spanish_decolonisation
 # Equatorial Guinea
 spanish_decolonisation.1 = {
     type = country_event
+	placement = scope:colonial_state
 
     title = spanish_equatorial_guinea.sgc.t 			# Title of the event; ADD LOCALISATION
     desc = spanish_equatorial_guinea.sgc.d 				# Description of the event; ADD LOCALISATION
     #flavor = spanish_equatorial_guinea.sgc.f 			# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -104,9 +105,12 @@ spanish_decolonisation.1 = {
 		}
 		
 		# Overlord create self governing colony pact with colony
-		create_diplomatic_pact = {
-			country = c:EQG											# Change TAG ****
-			type = semi_autonomous_colony
+		if = {
+			limit = { exists = c:EQG }
+			create_diplomatic_pact = {
+				country = c:EQG											# Change TAG ****
+				type = semi_autonomous_colony
+			}
 		}
 		
 		# Fire only once
@@ -126,7 +130,7 @@ spanish_decolonisation.1 = {
 			limit = {
 		 		state_region = { is_homeland = cu:equatoguinean }	# Change homeland identity to match colony to be released ****
 		 	}
-			add_radicals = {
+			add_radicals_in_state = {
 				culture = cu:equatoguinean							# Change culture ****
 				value = large_radicals
 			}
@@ -137,7 +141,7 @@ spanish_decolonisation.1 = {
 		set_variable = spanish_equatorial_guinea_sgc				# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }
@@ -147,14 +151,15 @@ spanish_decolonisation.1 = {
 #Western Sahara (INDEPENDENCE)
 spanish_decolonisation.2 = {
     type = country_event
+	placement = scope:colonial_state
 
     title = spanish_sahara.indy.t 					# Title of the event; ADD LOCALISATION
     desc = spanish_sahara.indy.d 					# Description of the event; ADD LOCALISATION
     #flavor = spanish_sahara.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -264,7 +269,7 @@ spanish_decolonisation.2 = {
 			limit = {
 		 		state_region = { is_homeland = cu:saharan }	# Change homeland identity to match colony to be released ****
 		 	}
-			add_radicals = {
+			add_radicals_in_state = {
 				culture = cu:saharan							# Change culture ****
 				value = large_radicals
 			}
@@ -275,7 +280,7 @@ spanish_decolonisation.2 = {
 		set_variable = spanish_sahara_indy						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }

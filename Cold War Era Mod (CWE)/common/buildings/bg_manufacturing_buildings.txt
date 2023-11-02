@@ -17,7 +17,7 @@ building_munition_plants = {
 		pmg_ammunition_manufacturing 		#Goods
 		pmg_automation_manufacturing 		#Automation
 		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing		#Organisation
+		#pmg_organisation_manufacturing		#Organisation
 		pmg_corruption_private			#Corruption
 		pmg_ownership_manufacturing			#Ownership
 	}
@@ -30,72 +30,11 @@ building_munition_plants = {
 			OR = { 
 				is_incorporated = yes 
 				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-building_advanced_ammunition_plants = {
-	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/placeholder.dds"
-	
-	#city_type = city
-	#levels_per_mesh = 5
-	
-	unlocking_technologies = {
-		tech_military_ground_forces_4
-	}
-
-	production_method_groups = {
-		pmg_advanced_ammunition_manufacturing 		#Goods
-		pmg_automation_manufacturing 				#Automation
-		#pmg_technique_manufacturing					#Technique
-		pmg_organisation_manufacturing				#Organisation
-		pmg_corruption_private					#Corruption
-		pmg_ownership_manufacturing					#Ownership
-	}
-	
-	required_construction = construction_cost_very_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-building_refined_uranium_plant = {
-	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/uranium_refineries.dds"
-	
-	#city_type = city
-	#levels_per_mesh = 5
-	
-	unlocking_technologies = {
-		tech_military_nuclear_2
-	}
-
-	production_method_groups = {
-		pmg_refined_uranium_manufacturing 		#Goods
-		pmg_automation_manufacturing 			#Automation
-		#pmg_technique_manufacturing				#Technique
-		pmg_organisation_manufacturing			#Organisation
-		pmg_corruption_private				#Corruption
-		pmg_ownership_manufacturing				#Ownership
-	}
-	
-	required_construction = construction_cost_very_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
+				this = {
+					owner = { 
+						has_law = law_type:law_colonial_resettlement
+					}
+				}
 			}
 		}
 	}
@@ -116,7 +55,7 @@ building_small_arms_industry = {
 		pmg_small_arms_manufacturing 		#Goods
 		pmg_automation_manufacturing 		#Automation
 		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing		#Organisation
+		#pmg_organisation_manufacturing		#Organisation
 		pmg_corruption_private			#Corruption
 		pmg_ownership_manufacturing			#Ownership
 	}
@@ -129,39 +68,11 @@ building_small_arms_industry = {
 			OR = { 
 				is_incorporated = yes 
 				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-building_advanced_weaponry_industry = {
-	building_group = bg_light_industry
-	texture = "gfx/interface/icons/building_icons/chemical_weapons_facility.dds"
-	
-	#city_type = city
-	#levels_per_mesh = 5
-	
-	unlocking_technologies = {
-		tech_military_ground_forces_4
-	}
-
-	production_method_groups = {
-		pmg_advanced_weaponry_manufacturing 		#Goods
-		pmg_automation_manufacturing 				#Automation
-		#pmg_technique_manufacturing					#Technique
-		pmg_organisation_manufacturing				#Organisation
-		pmg_corruption_private					#Corruption
-		pmg_ownership_manufacturing					#Ownership
-	}
-	
-	required_construction = construction_cost_very_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
+				this = {
+					owner = { 
+						has_law = law_type:law_colonial_resettlement
+					}
+				}
 			}
 		}
 	}
@@ -169,7 +80,7 @@ building_advanced_weaponry_industry = {
 
 building_artillery_industry = {
 	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/placeholder.dds"
+	texture = "gfx/interface/icons/building_icons/artillery_industry.dds"
 	
 	#city_type = city
 	#levels_per_mesh = 5
@@ -182,7 +93,7 @@ building_artillery_industry = {
 		pmg_artillery_manufacturing 		#Goods
 		pmg_automation_manufacturing 		#Automation
 		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing		#Organisation
+		#pmg_organisation_manufacturing		#Organisation
 		pmg_corruption_private			#Corruption
 		pmg_ownership_manufacturing			#Ownership
 	}
@@ -195,6 +106,11 @@ building_artillery_industry = {
 			OR = { 
 				is_incorporated = yes 
 				is_treaty_port = yes 
+				this = {
+					owner = { 
+						has_law = law_type:law_colonial_resettlement
+					}
+				}
 			}
 		}
 	}
@@ -202,7 +118,7 @@ building_artillery_industry = {
 
 building_war_machine_industry = {
 	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/advanced_military.dds"
+	texture = "gfx/interface/icons/building_icons/war_machine_industry.dds"
 	
 	city_type = city
 	levels_per_mesh = 5
@@ -215,7 +131,7 @@ building_war_machine_industry = {
 		pmg_tanks_manufacturing 			#Goods
 		pmg_automation_manufacturing 		#Automation
 		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing		#Organisation
+		#pmg_organisation_manufacturing		#Organisation
 		pmg_corruption_private			#Corruption
 		pmg_ownership_manufacturing			#Ownership
 	}
@@ -228,6 +144,11 @@ building_war_machine_industry = {
 			OR = { 
 				is_incorporated = yes 
 				is_treaty_port = yes 
+				this = {
+					owner = { 
+						has_law = law_type:law_colonial_resettlement
+					}
+				}
 			}
 		}
 	}
@@ -248,7 +169,7 @@ building_warplanes_industry = {
 		pmg_warplanes_manufacturing 		#Goods
 		pmg_automation_manufacturing 		#Automation
 		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing		#Organisation
+		#pmg_organisation_manufacturing		#Organisation
 		pmg_corruption_private			#Corruption
 		pmg_ownership_manufacturing			#Ownership
 	}
@@ -261,6 +182,11 @@ building_warplanes_industry = {
 			OR = { 
 				is_incorporated = yes 
 				is_treaty_port = yes 
+				this = {
+					owner = { 
+						has_law = law_type:law_colonial_resettlement
+					}
+				}
 			}
 		}
 	}
@@ -268,7 +194,7 @@ building_warplanes_industry = {
 
 building_warship_industry = {
 	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/placeholder.dds"
+	texture = "gfx/interface/icons/building_icons/warship_industry.dds"
 	
 	#city_type = port
 
@@ -280,7 +206,7 @@ building_warship_industry = {
 		pmg_ironclads_manufacturing 		#Goods
 		pmg_automation_manufacturing 		#Automation
 		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing		#Organisation
+		#pmg_organisation_manufacturing		#Organisation
 		pmg_corruption_private			#Corruption
 		pmg_ownership_manufacturing			#Ownership
 	}
@@ -297,42 +223,49 @@ building_warship_industry = {
 			OR = { 
 				is_incorporated = yes 
 				is_treaty_port = yes 
+				this = {
+					owner = { 
+						has_law = law_type:law_colonial_resettlement
+					}
+				}
 			}
 		}
 	}
 }
 
-building_advanced_warship_industry = {
+building_advanced_weaponry_industry = {
 	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/placeholder.dds"
+	texture = "gfx/interface/icons/building_icons/advanced_weaponry_industry.dds"
 	
-	#city_type = port
-
+	#city_type = city
+	#levels_per_mesh = 5
+	
 	unlocking_technologies = {
-		tech_military_naval_forces_3
+		tech_military_ground_forces_4
 	}
 
 	production_method_groups = {
-		pmg_advanced_ironclads_manufacturing 		#Goods
+		pmg_advanced_weaponry_manufacturing 		#Goods
 		pmg_automation_manufacturing 				#Automation
-		#pmg_technique_manufacturing				#Technique
-		pmg_organisation_manufacturing				#Organisation
-		pmg_corruption_private						#Corruption
+		#pmg_technique_manufacturing					#Technique
+		#pmg_organisation_manufacturing				#Organisation
+		pmg_corruption_private					#Corruption
 		pmg_ownership_manufacturing					#Ownership
 	}
-
+	
 	required_construction = construction_cost_very_high
 	
 	possible = {
 		error_check = {
 			severity = fail
-			is_coastal = yes
-		}
-		error_check = {
-			severity = fail
 			OR = { 
 				is_incorporated = yes 
 				is_treaty_port = yes 
+				this = {
+					owner = { 
+						has_law = law_type:law_colonial_resettlement
+					}
+				}
 			}
 		}
 	}
@@ -342,20 +275,20 @@ building_advanced_warship_industry = {
 
 building_aeroplane_industry = {
 	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/aircraft_industry.dds"
+	texture = "gfx/interface/icons/building_icons/aeroplane_industry.dds"
 	
 	#city_type = city
 	#levels_per_mesh = 5
 	
 	unlocking_technologies = {
-		tech_manufacturing_1
+		tech_manufacturing_2
 	}
 
 	production_method_groups = {
 		pmg_aeroplanes_manufacturing 		#Goods
 		pmg_automation_manufacturing 		#Automation
 		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing		#Organisation
+		#pmg_organisation_manufacturing		#Organisation
 		pmg_corruption_private			#Corruption
 		pmg_ownership_manufacturing			#Ownership
 	}
@@ -368,6 +301,11 @@ building_aeroplane_industry = {
 			OR = { 
 				is_incorporated = yes 
 				is_treaty_port = yes 
+				this = {
+					owner = { 
+						has_law = law_type:law_colonial_resettlement
+					}
+				}
 			}
 		}
 	}
@@ -387,7 +325,7 @@ building_shipyards = {
 		pmg_steamers_manufacturing 			#Goods
 		pmg_automation_manufacturing 		#Automation
 		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing		#Organisation
+		#pmg_organisation_manufacturing		#Organisation
 		pmg_corruption_private			#Corruption
 		pmg_ownership_manufacturing			#Ownership
 	}
@@ -404,6 +342,11 @@ building_shipyards = {
 			OR = { 
 				is_incorporated = yes 
 				is_treaty_port = yes 
+				this = {
+					owner = { 
+						has_law = law_type:law_colonial_resettlement
+					}
+				}
 			}
 		}
 	}
@@ -411,7 +354,7 @@ building_shipyards = {
 
 building_locomotives_industry = {
 	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/placeholder.dds"
+	texture = "gfx/interface/icons/building_icons/motor_industry.dds"
 	
 	#city_type = city
 	#levels_per_mesh = 5
@@ -424,7 +367,7 @@ building_locomotives_industry = {
 		pmg_locomotives_manufacturing		#Goods
 		pmg_automation_manufacturing 		#Automation
 		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing		#Organisation
+		#pmg_organisation_manufacturing		#Organisation
 		pmg_corruption_private			#Corruption
 		pmg_ownership_manufacturing			#Ownership
 	}
@@ -437,6 +380,11 @@ building_locomotives_industry = {
 			OR = { 
 				is_incorporated = yes 
 				is_treaty_port = yes 
+				this = {
+					owner = { 
+						has_law = law_type:law_colonial_resettlement
+					}
+				}
 			}
 		}
 	}
@@ -444,7 +392,47 @@ building_locomotives_industry = {
 
 building_motor_industry = {
 	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/automobile_industry.dds"
+	texture = "gfx/interface/icons/building_icons/car_industry.dds"
+	
+	city_type = city
+	levels_per_mesh = 5
+	
+	unlocking_technologies = {
+		tech_manufacturing_2
+	}
+
+	production_method_groups = {
+		pmg_automobiles_manufacturing 		#Goods
+		pmg_automation_manufacturing 		#Automation
+		#pmg_technique_manufacturing			#Technique
+		#pmg_organisation_manufacturing		#Organisation
+		pmg_corruption_private			#Corruption
+		pmg_ownership_manufacturing			#Ownership
+	}
+	
+	required_construction = construction_cost_high
+	
+	possible = {
+		error_check = {
+			severity = fail
+			OR = { 
+				is_incorporated = yes 
+				is_treaty_port = yes 
+				this = {
+					owner = { 
+						has_law = law_type:law_colonial_resettlement
+					}
+				}
+			}
+		}
+	}
+}
+
+### Consumer Goods ###
+
+building_food_industry = { # Processed Food Factory
+	building_group = bg_light_industry
+	texture = "gfx/interface/icons/building_icons/food_industry.dds"
 	
 	city_type = city
 	levels_per_mesh = 5
@@ -454,45 +442,10 @@ building_motor_industry = {
 	}
 
 	production_method_groups = {
-		pmg_automobiles_manufacturing 		#Goods
-		pmg_automation_manufacturing 		#Automation
-		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing		#Organisation
-		pmg_corruption_private			#Corruption
-		pmg_ownership_manufacturing			#Ownership
-	}
-	
-	required_construction = construction_cost_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-### Consumer Goods ###
-
-building_food_industry = {
-	building_group = bg_light_industry
-	texture = "gfx/interface/icons/building_icons/food_industry.dds"
-	
-	city_type = city
-	levels_per_mesh = 5
-	
-	unlocking_technologies = {
-		tech_consumer_manufacturing_1
-	}
-
-	production_method_groups = {
 		pmg_groceries_manufacturing 		#Goods
 		pmg_automation_manufacturing 		#Automation
 		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing		#Organisation
+		#pmg_organisation_manufacturing		#Organisation
 		pmg_corruption_private			#Corruption
 		pmg_ownership_manufacturing			#Ownership
 	}
@@ -505,45 +458,17 @@ building_food_industry = {
 			OR = { 
 				is_incorporated = yes 
 				is_treaty_port = yes 
+				this = {
+					owner = { 
+						has_law = law_type:law_colonial_resettlement
+					}
+				}
 			}
 		}
 	}
 }
 
-building_textile_mills = {
-	building_group = bg_light_industry
-	texture = "gfx/interface/icons/building_icons/textile_industry.dds"
-	
-	city_type = city
-	levels_per_mesh = 5
-	
-	unlocking_technologies = {
-		tech_consumer_manufacturing_1
-	}
-
-	production_method_groups = {
-		pmg_clothes_manufacturing 			#Goods
-		pmg_automation_manufacturing 		#Automation
-		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing		#Organisation
-		pmg_corruption_private			#Corruption
-		pmg_ownership_manufacturing			#Ownership
-	}
-	
-	required_construction = construction_cost_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-building_furniture_manufacturies = {
+building_furniture_manufacturies = { # Consumer Products Factory
 	building_group = bg_light_industry
 	texture = "gfx/interface/icons/building_icons/furniture_manufacturies.dds"
 	
@@ -554,7 +479,7 @@ building_furniture_manufacturies = {
 		pmg_furniture_manufacturing 		#Goods
 		pmg_automation_manufacturing 		#Automation
 		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing		#Organisation
+		#pmg_organisation_manufacturing		#Organisation
 		pmg_corruption_private			#Corruption
 		pmg_ownership_manufacturing			#Ownership
 	}
@@ -567,234 +492,19 @@ building_furniture_manufacturies = {
 			OR = { 
 				is_incorporated = yes 
 				is_treaty_port = yes 
+				this = {
+					owner = { 
+						has_law = law_type:law_colonial_resettlement
+					}
+				}
 			}
 		}
 	}
 }
 
-building_paper_mills = {
-	building_group = bg_light_industry
-	texture = "gfx/interface/icons/building_icons/paper_mills.dds"
-
-	city_type = city
-	levels_per_mesh = 5
-	
-	unlocking_technologies = {
-		tech_consumer_manufacturing_1
-	}
-
-	production_method_groups = {
-		pmg_paper_manufacturing 			#Goods
-		pmg_automation_manufacturing 		#Automation
-		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing		#Organisation
-		pmg_corruption_private			#Corruption
-		pmg_ownership_manufacturing			#Ownership
-	}
-	
-	required_construction = construction_cost_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-building_liquor_industry = {
-	building_group = bg_light_industry
-	texture = "gfx/interface/icons/building_icons/placeholder.dds"
-	
-	#city_type = city
-	#levels_per_mesh = 5
-
-	production_method_groups = {
-		pmg_liquor_manufacturing 			#Goods
-		pmg_automation_manufacturing 		#Automation
-		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing		#Organisation
-		pmg_corruption_private			#Corruption
-		pmg_ownership_manufacturing			#Ownership
-	}
-
-	required_construction = construction_cost_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-### Luxury ###
-
-building_arts_academy = {
-	building_group = bg_light_industry
-	texture = "gfx/interface/icons/building_icons/building_arts_academy.dds"
-	
-	city_type = city
-	levels_per_mesh = 5
-
-	production_method_groups = {
-		pmg_fine_art_manufacturing 			#Goods
-		pmg_ownership_building_arts_academy	#Ownership
-	}
-
-	required_construction = construction_cost_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-#building_luxury_clothes_mills = {
-#	building_group = bg_light_industry
-#	texture = "gfx/interface/icons/building_icons/textile_industry.dds"
-#	
-#	city_type = city
-#	levels_per_mesh = 5
-#
-#	unlocking_technologies = {
-#		
-#	}
-#
-#	production_method_groups = {
-#		pmg_luxury_clothes_manufacturing 	#Goods
-#		pmg_automation_manufacturing 		#Automation
-#		#pmg_technique_manufacturing			#Technique
-#		pmg_organisation_manufacturing		#Organisation
-#		pmg_corruption_private			#Corruption
-#		pmg_ownership_manufacturing			#Ownership
-#	}
-#	
-#	required_construction = construction_cost_high
-#}
-
-#building_luxury_furniture_manufacturies = {
-#	building_group = bg_light_industry
-#	texture = "gfx/interface/icons/building_icons/furniture_manufacturies.dds"
-#	
-#	city_type = city
-#	levels_per_mesh = 5
-#	
-#	unlocking_technologies = {
-#		
-#	}
-#
-#	production_method_groups = {
-#		pmg_luxury_furniture_manufacturing 	#Goods
-#		pmg_automation_manufacturing 		#Automation
-#		#pmg_technique_manufacturing			#Technique
-#		pmg_organisation_manufacturing		#Organisation
-#		pmg_corruption_private			#Corruption
-#		pmg_ownership_manufacturing			#Ownership
-#	}
-#
-#	required_construction = construction_cost_high
-#}
-
-#building_luxury_automobiles_industry = {
-#	building_group = bg_heavy_industry
-#	texture = "gfx/interface/icons/building_icons/luxury_automobiles_industry.dds"
-#	
-#	city_type = city
-#	levels_per_mesh = 5
-#	
-#	unlocking_technologies = {
-#		tech_luxury_automobiles
-#	}
-#
-#	production_method_groups = {
-#		pmg_luxury_automobiles_manufacturing 		#Goods
-#		pmg_automation_manufacturing 				#Automation
-#		#pmg_technique_manufacturing					#Technique
-#		pmg_organisation_manufacturing				#Organisation
-#		pmg_corruption_private					#Corruption
-#		pmg_ownership_manufacturing					#Ownership
-#	}
-#	
-#	required_construction = construction_cost_high
-#}
-
-building_jewellery_industry = {
-	building_group = bg_light_industry
-	texture = "gfx/interface/icons/building_icons/jewelry_industry.dds"
-	
-	#city_type = city
-	#levels_per_mesh = 5
-
-	production_method_groups = {
-		pmg_jewellery_manufacturing 			#Goods
-		pmg_automation_manufacturing 			#Automation
-		#pmg_technique_manufacturing				#Technique
-		pmg_organisation_manufacturing			#Organisation
-		pmg_corruption_private				#Corruption
-		pmg_ownership_manufacturing				#Ownership
-	}
-
-	required_construction = construction_cost_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-building_home_products_plant = {
+building_electrics_industry = { # Basic Electronics Factory
 	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/placeholder.dds"
-
-	#city_type = city
-	#levels_per_mesh = 5
-	
-	unlocking_technologies = {
-		tech_consumer_manufacturing_1
-	}
-
-	production_method_groups = {
-		pmg_home_products_manufacturing 		#Goods
-		pmg_automation_manufacturing 			#Automation
-		#pmg_technique_manufacturing				#Technique
-		pmg_organisation_manufacturing			#Organisation
-		pmg_corruption_private				#Corruption
-		pmg_ownership_manufacturing				#Ownership
-	}
-	
-	required_construction = construction_cost_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-building_electrics_industry = {
-	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/television_industry.dds"
+	texture = "gfx/interface/icons/building_icons/electrics_industry.dds"
 	
 	city_type = city
 	levels_per_mesh = 5
@@ -807,7 +517,7 @@ building_electrics_industry = {
 		pmg_telecommunications_manufacturing 	#Goods
 		pmg_automation_manufacturing 			#Automation
 		#pmg_technique_manufacturing				#Technique
-		pmg_organisation_manufacturing			#Organisation
+		#pmg_organisation_manufacturing			#Organisation
 		pmg_corruption_private				#Corruption
 		pmg_ownership_manufacturing				#Ownership
 	}
@@ -820,221 +530,37 @@ building_electrics_industry = {
 			OR = { 
 				is_incorporated = yes 
 				is_treaty_port = yes 
+				this = {
+					owner = { 
+						has_law = law_type:law_colonial_resettlement
+					}
+				}
 			}
 		}
 	}
 }
 
-building_home_appliances_plant = {
+building_synthetics_plants = { # Advanced Electronics Factory (Used a vanilla building for now so as to reduce game slowdown. This is as using buildings with no meshes would consume computational power through the daily RemoveDeadObjects tick.)
 	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/appliance_industry.dds"
-
-	#city_type = city
-	#levels_per_mesh = 5
+	texture = "gfx/interface/icons/building_icons/advanced_electrics_industry.dds"
+	
+	city_type = city
+	levels_per_mesh = 5
 	
 	unlocking_technologies = {
-		tech_consumer_manufacturing_2
-	}
-
-	production_method_groups = {
-		pmg_home_appliances_manufacturing 		#Goods
-		pmg_automation_manufacturing 			#Automation
-		#pmg_technique_manufacturing				#Technique
-		pmg_organisation_manufacturing			#Organisation
-		pmg_corruption_private				#Corruption
-		pmg_ownership_manufacturing				#Ownership
-	}
-	
-	required_construction = construction_cost_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-building_consumer_robots_plant = {
-	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/placeholder.dds"
-
-	#city_type = city
-	#levels_per_mesh = 5
-	
-	unlocking_technologies = {
-		tech_consumer_manufacturing_6
-	}
-
-	production_method_groups = {
-		pmg_consumer_robots_manufacturing 		#Goods
-		pmg_automation_manufacturing 			#Automation
-		#pmg_technique_manufacturing				#Technique
-		pmg_organisation_manufacturing			#Organisation
-		pmg_corruption_private				#Corruption
-		pmg_ownership_manufacturing				#Ownership
-	}
-	
-	required_construction = construction_cost_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-building_mobile_devices_plant = {
-	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/placeholder.dds"
-
-	#city_type = city
-	#levels_per_mesh = 5
-	
-	unlocking_technologies = {
-		tech_consumer_manufacturing_5
-	}
-
-	production_method_groups = {
-		pmg_mobile_devices_manufacturing 		#Goods
-		pmg_automation_manufacturing 			#Automation
-		#pmg_technique_manufacturing				#Technique
-		pmg_organisation_manufacturing			#Organisation
-		pmg_corruption_private				#Corruption
-		pmg_ownership_manufacturing				#Ownership
-	}
-	
-	required_construction = construction_cost_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-building_computers_plant = {
-	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/computer_industry.dds"
-
-	#city_type = city
-	#levels_per_mesh = 5
-	
-	unlocking_technologies = {
-		tech_consumer_manufacturing_4
+		tech_manufacturing_5
 	}
 
 	production_method_groups = {
 		pmg_computers_manufacturing 			#Goods
 		pmg_automation_manufacturing 			#Automation
-		#pmg_technique_manufacturing				#Technique
-		pmg_organisation_manufacturing			#Organisation
-		pmg_corruption_private				#Corruption
-		pmg_ownership_manufacturing				#Ownership
-	}
-	
-	required_construction = construction_cost_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-building_pharmaceuticals_plant = {
-	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/pharmaceutical_industry.dds"
-
-	#city_type = city
-	#levels_per_mesh = 5
-	
-	unlocking_technologies = {
-		tech_consumer_manufacturing_2
-	}
-
-	production_method_groups = {
-		pmg_pharmaceuticals_manufacturing 		#Goods
-		pmg_automation_manufacturing 			#Automation
-		#pmg_technique_manufacturing				#Technique
-		pmg_organisation_manufacturing			#Organisation
-		pmg_corruption_private				#Corruption
-		pmg_ownership_manufacturing				#Ownership
-	}
-	
-	required_construction = construction_cost_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-building_satellites_plant = {
-	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/placeholder.dds"
-	
-	disallowing_laws = {
-		law_no_space_program
-	}
-	
-	unlocking_technologies = {
-		tech_military_space_program_3
-	}
-
-	production_method_groups = {
-		pmg_satellites_manufacturing 			#Goods
-		pmg_automation_manufacturing 			#Automation
 		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing			#Organisation
+		#pmg_organisation_manufacturing			#Organisation
 		pmg_corruption_private					#Corruption
 		pmg_ownership_manufacturing				#Ownership
 	}
 	
-	required_construction = construction_cost_monument
-}
-
-building_space_rockets_plant = {
-	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/placeholder.dds"
-
-	#city_type = city
-	#levels_per_mesh = 5
-	
-	unlocking_technologies = {
-		tech_military_space_program_3
-	}
-
-	production_method_groups = {
-		pmg_space_rockets_manufacturing 		#Goods
-		pmg_automation_manufacturing 			#Automation
-		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing			#Organisation
-		pmg_corruption_private					#Corruption
-		pmg_ownership_manufacturing				#Ownership
-	}
-	
-	required_construction = construction_cost_high
+	required_construction = construction_cost_very_high
 	
 	possible = {
 		error_check = {
@@ -1042,14 +568,21 @@ building_space_rockets_plant = {
 			OR = { 
 				is_incorporated = yes 
 				is_treaty_port = yes 
+				this = {
+					owner = { 
+						has_law = law_type:law_colonial_resettlement
+					}
+				}
 			}
 		}
 	}
 }
 
-building_industrial_robots_plant = {
+### Industrial Goods ###
+
+building_tooling_workshops = { # Machinery Factory
 	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/placeholder.dds"
+	texture = "gfx/interface/icons/building_icons/tooling_workshops.dds"
 
 	#city_type = city
 	#levels_per_mesh = 5
@@ -1060,10 +593,10 @@ building_industrial_robots_plant = {
 
 	production_method_groups = {
 		pmg_industrial_robots_manufacturing 	#Goods
-		pmg_automation_manufacturing 			#Automation
-		#pmg_technique_manufacturing				#Technique
-		pmg_organisation_manufacturing			#Organisation
-		pmg_corruption_private				#Corruption
+		pmg_automation_manufacturing_1 			#Automation
+		#pmg_technique_manufacturing			#Technique
+		#pmg_organisation_manufacturing			#Organisation
+		pmg_corruption_private					#Corruption
 		pmg_ownership_manufacturing				#Ownership
 	}
 	
@@ -1075,206 +608,17 @@ building_industrial_robots_plant = {
 			OR = { 
 				is_incorporated = yes 
 				is_treaty_port = yes 
+				this = {
+					owner = { 
+						has_law = law_type:law_colonial_resettlement
+					}
+				}
 			}
 		}
 	}
 }
 
-building_tooling_workshops = {
-	building_group = bg_light_industry
-	texture = "gfx/interface/icons/building_icons/tooling_workshops.dds"
-
-	city_type = city
-	levels_per_mesh = 5
-
-	production_method_groups = {
-		pmg_tools_manufacturing 			#Goods
-		pmg_automation_manufacturing 		#Automation
-		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing		#Organisation
-		pmg_corruption_private			#Corruption
-		pmg_ownership_manufacturing			#Ownership
-	}
-
-	required_construction = construction_cost_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-building_engine_factory = {
-	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/synthetics_plants.dds"
-	
-	#city_type = city
-	#levels_per_mesh = 5
-	
-	unlocking_technologies = {
-		tech_manufacturing_1
-	}
-	
-	production_method_groups = {
-		pmg_engines_manufacturing 			#Goods
-		pmg_automation_manufacturing 		#Automation
-		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing		#Organisation
-		pmg_corruption_private			#Corruption
-		pmg_ownership_manufacturing			#Ownership
-	}
-	
-	required_construction = construction_cost_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-building_precision_components_factory = {
-	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/placeholder.dds"
-	
-	#city_type = city
-	#levels_per_mesh = 5
-	
-	unlocking_technologies = {
-		tech_manufacturing_1
-	}
-	
-	production_method_groups = {
-		pmg_precision_components_manufacturing 			#Goods
-		pmg_automation_manufacturing 					#Automation
-		#pmg_technique_manufacturing						#Technique
-		pmg_organisation_manufacturing					#Organisation
-		pmg_corruption_private						#Corruption
-		pmg_ownership_manufacturing						#Ownership
-	}
-	
-	required_construction = construction_cost_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-building_circuit_boards_factory = {
-	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/electrics_industry.dds"
-	
-	#city_type = city
-	#levels_per_mesh = 5
-	
-	unlocking_technologies = {
-		tech_manufacturing_2
-	}
-	
-	production_method_groups = {
-		pmg_circuit_boards_manufacturing 				#Goods
-		pmg_automation_manufacturing 					#Automation
-		#pmg_technique_manufacturing						#Technique
-		pmg_organisation_manufacturing					#Organisation
-		pmg_corruption_private						#Corruption
-		pmg_ownership_manufacturing						#Ownership
-	}
-	
-	required_construction = construction_cost_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-building_semiconductors_factory = {
-	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/semiconductor_industry.dds"
-	
-	#city_type = city
-	#levels_per_mesh = 5
-	
-	unlocking_technologies = {
-		tech_manufacturing_3
-	}
-	
-	production_method_groups = {
-		pmg_semiconductors_manufacturing 				#Goods
-		pmg_automation_manufacturing 					#Automation
-		#pmg_technique_manufacturing						#Technique
-		pmg_organisation_manufacturing					#Organisation
-		pmg_corruption_private						#Corruption
-		pmg_ownership_manufacturing						#Ownership
-	}
-	
-	required_construction = construction_cost_very_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-building_fuel_cells_factory = {
-	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/battery_industry.dds"
-	
-	#city_type = city
-	#levels_per_mesh = 5
-	
-	unlocking_technologies = {
-		tech_manufacturing_5
-	}
-	
-	production_method_groups = {
-		pmg_fuel_cells_manufacturing 					#Goods
-		pmg_automation_manufacturing 					#Automation
-		#pmg_technique_manufacturing						#Technique
-		pmg_organisation_manufacturing					#Organisation
-		pmg_corruption_private						#Corruption
-		pmg_ownership_manufacturing						#Ownership
-	}
-	
-	required_construction = construction_cost_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-building_steel_mills = {
+building_steel_mills = { #Industrial Materials Factory
 	building_group = bg_heavy_industry
 	texture = "gfx/interface/icons/building_icons/steel_mills.dds"
 	
@@ -1289,7 +633,7 @@ building_steel_mills = {
 		pmg_steel_manufacturing 			#Goods
 		pmg_automation_manufacturing 		#Automation
 		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing		#Organisation
+		#pmg_organisation_manufacturing		#Organisation
 		pmg_corruption_private			#Corruption
 		pmg_ownership_manufacturing			#Ownership
 	}
@@ -1302,144 +646,17 @@ building_steel_mills = {
 			OR = { 
 				is_incorporated = yes 
 				is_treaty_port = yes 
+				this = {
+					owner = { 
+						has_law = law_type:law_colonial_resettlement
+					}
+				}
 			}
 		}
 	}
 }
 
-building_glassworks = {
-	building_group = bg_light_industry
-	texture = "gfx/interface/icons/building_icons/glassworks.dds"
-	
-	city_type = city
-	levels_per_mesh = 5
-	
-	unlocking_technologies = {
-		tech_manufacturing_1
-	}
-
-	production_method_groups = {
-		pmg_glass_manufacturing 			#Goods
-		pmg_automation_manufacturing 		#Automation
-		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing		#Organisation
-		pmg_corruption_private			#Corruption
-		pmg_ownership_manufacturing			#Ownership
-	}
-	
-	required_construction = construction_cost_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-building_plastic_factory = {
-	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/placeholder.dds"
-	
-	#city_type = city
-	#levels_per_mesh = 5
-	
-	unlocking_technologies = {
-		tech_manufacturing_2
-	}
-
-	production_method_groups = {
-		pmg_plastic_manufacturing 			#Goods
-		pmg_automation_manufacturing 		#Automation
-		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing		#Organisation
-		pmg_corruption_private			#Corruption
-		pmg_ownership_manufacturing			#Ownership
-	}
-	
-	required_construction = construction_cost_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-building_aluminium_factory = {
-	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/foundries.dds"
-	
-	#city_type = city
-	#levels_per_mesh = 5
-	
-	unlocking_technologies = {
-		tech_manufacturing_2
-	}
-
-	production_method_groups = {
-		pmg_aluminium_manufacturing 		#Goods
-		pmg_automation_manufacturing 		#Automation
-		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing		#Organisation
-		pmg_corruption_private			#Corruption
-		pmg_ownership_manufacturing			#Ownership
-	}
-	
-	required_construction = construction_cost_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-building_carbon_fibre_factory = {
-	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/placeholder.dds"
-	
-	#city_type = city
-	#levels_per_mesh = 5
-	
-	unlocking_technologies = {
-		tech_manufacturing_5
-	}
-
-	production_method_groups = {
-		pmg_carbon_fibre_manufacturing 		#Goods
-		pmg_automation_manufacturing 		#Automation
-		#pmg_technique_manufacturing		#Technique
-		pmg_organisation_manufacturing		#Organisation
-		pmg_corruption_private				#Corruption
-		pmg_ownership_manufacturing			#Ownership
-	}
-	
-	required_construction = construction_cost_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-building_chemical_plants = {
+building_chemical_plants = { #Industrial Chemicals Factory
 	building_group = bg_heavy_industry
 	texture = "gfx/interface/icons/building_icons/chemicals_industry.dds"
 	
@@ -1451,10 +668,10 @@ building_chemical_plants = {
 	}
 
 	production_method_groups = {
-		pmg_fertilizer_manufacturing 		#Goods
+		pmg_industrial_chemicals_manufacturing 		#Goods
 		pmg_automation_manufacturing 		#Automation
 		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing		#Organisation
+		#pmg_organisation_manufacturing		#Organisation
 		pmg_corruption_private			#Corruption
 		pmg_ownership_manufacturing			#Ownership
 	}
@@ -1467,171 +684,11 @@ building_chemical_plants = {
 			OR = { 
 				is_incorporated = yes 
 				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-building_explosives_plants = {
-	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/chemical_weapons_facility.dds"
-	
-	#city_type = city
-	#levels_per_mesh = 5
-	
-	unlocking_technologies = {
-		tech_manufacturing_1
-	}
-
-	production_method_groups = {
-		pmg_explosives_manufacturing 		#Goods
-		pmg_automation_manufacturing 		#Automation
-		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing		#Organisation
-		pmg_corruption_private			#Corruption
-		pmg_ownership_manufacturing			#Ownership
-	}
-
-	required_construction = construction_cost_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-building_oil_refinery = {
-	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/fuel_industry.dds"
-	
-	#city_type = city
-	#levels_per_mesh = 5
-	
-	unlocking_technologies = {
-		tech_manufacturing_1
-	}
-
-	production_method_groups = {
-		pmg_refined_oil_manufacturing 		#Goods
-		pmg_automation_manufacturing 		#Automation
-		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing		#Organisation
-		pmg_corruption_private			#Corruption
-		pmg_ownership_manufacturing			#Ownership
-	}
-
-	required_construction = construction_cost_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-building_synthetic_silk_plants = {
-	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/placeholder.dds"
-
-	#city_type = city
-	#levels_per_mesh = 5
-	
-	unlocking_technologies = {
-		tech_manufacturing_2
-	}
-
-	production_method_groups = {
-		pmg_silk_manufacturing 		#Goods
-		pmg_automation_manufacturing 		#Automation
-		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing		#Organisation
-		pmg_corruption_private			#Corruption
-		pmg_ownership_manufacturing			#Ownership
-	}
-	
-	required_construction = construction_cost_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-building_synthetic_dye_plants = {
-	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/placeholder.dds"
-	
-	#city_type = city
-	#levels_per_mesh = 5
-	
-	unlocking_technologies = {
-		tech_manufacturing_2
-	}
-	
-	production_method_groups = {
-		pmg_dye_manufacturing 				#Goods
-		pmg_automation_manufacturing 		#Automation
-		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing		#Organisation
-		pmg_corruption_private			#Corruption
-		pmg_ownership_manufacturing			#Ownership
-	}
-	
-	required_construction = construction_cost_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
-			}
-		}
-	}
-}
-
-building_synthetic_rubber_plants = {
-	building_group = bg_heavy_industry
-	texture = "gfx/interface/icons/building_icons/placeholder.dds"
-	
-	#city_type = city
-	#levels_per_mesh = 5
-	
-	unlocking_technologies = {
-		tech_manufacturing_2
-	}
-	
-	production_method_groups = {
-		pmg_rubber_manufacturing 			#Goods
-		pmg_automation_manufacturing 		#Automation
-		#pmg_technique_manufacturing			#Technique
-		pmg_organisation_manufacturing		#Organisation
-		pmg_corruption_private			#Corruption
-		pmg_ownership_manufacturing			#Ownership
-	}
-	
-	required_construction = construction_cost_high
-	
-	possible = {
-		error_check = {
-			severity = fail
-			OR = { 
-				is_incorporated = yes 
-				is_treaty_port = yes 
+				this = {
+					owner = { 
+						has_law = law_type:law_colonial_resettlement
+					}
+				}
 			}
 		}
 	}

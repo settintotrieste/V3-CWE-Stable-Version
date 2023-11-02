@@ -44,6 +44,17 @@
 		}
 		else_if = {
 			limit = {
+				var:coup_for_law = 4
+			}
+			random_law = {
+				limit = {
+					type = law_type:law_HOG_prime_minister
+				}
+				save_scope_as = coup_desired_law
+			}
+		}
+		else_if = {
+			limit = {
 				var:coup_for_law = 5
 			}
 			random_law = {
@@ -142,7 +153,36 @@
 			set_variable = achievement_military_junta_var
 		}
 		remove_variable = coup_var
+		
 		custom_tooltip = coup_success_tt
+		
+		if = {
+			limit = {
+				exists = currently_enacting_law
+			}
+			currently_enacting_law = {
+				type = {
+					save_scope_as = law_being_enacted
+				}
+				currently_active_law_in_group = {
+					type = {
+						save_scope_as = law_being_replaced
+					}
+				}
+			}
+			if = {
+				limit = {
+					scope:coup_ig = {
+						prefers_law = { # If we prefer the current law to the enacting law
+							law = scope:law_being_replaced
+							comparison_law = scope:law_being_enacted
+						}
+					}
+				}
+				cancel_enactment = yes
+			}	
+		}
+		
 		trigger_event = { id = coup.2 popup = yes }
 		hidden_effect = {
 			random_list = {
@@ -172,6 +212,22 @@
 			# fail if the IG is kicked out of government
 			scope:coup_ig = {
 				is_in_government = no
+			}
+			# fail if the IG leader is imprisoned or assassinated
+			scope:coup_ig = {
+				custom_tooltip = {
+					text = assassinated_or_imprisoned_by_the_state.tt
+					leader = {
+						OR = {
+							has_modifier = convicted_character
+							has_modifier = unjustly_convicted_character
+							custom_tooltip = {
+								text = assassinated_by_the_state.tt
+								has_variable = state_assassination_target
+							}
+						}
+					}
+				}
 			}
 			# fail if IG changes law stances
 			scope:coup_ig = {
@@ -226,7 +282,15 @@
 	}
 
 	invalid = {
-		has_law = scope:coup_desired_law.type
+		OR = {
+			NOT = {
+				exists = scope:coup_desired_law
+			}
+			NOT = {
+				exists = scope:coup_ig
+			}
+			has_law = scope:coup_desired_law.type
+		}
 	}
 
 	on_invalid = {
@@ -269,6 +333,9 @@
 	progressbar = yes
 
 	should_be_pinned_by_default = yes
+
+	transferable = no
+	can_revolution_inherit = no
 
 	weight = 100
 }

@@ -136,7 +136,7 @@ STATE_HAITI = {
 		bg_logging = 7
 		bg_fishing = 6
 		bg_rubber = 12
-		bg_bauxite_mining = 4
+		bg_sulfur_mining = 4
 	}
     naval_exit_id = 3061
 }
@@ -158,7 +158,7 @@ STATE_SANTO_DOMINGO = {
 		bg_rubber = 12
 	}
 	resource = {
-		type = "bg_bauxite_mining"
+		type = "bg_sulfur_mining"
 		undiscovered_amount = 2
 	}
     naval_exit_id = 3061
@@ -185,7 +185,7 @@ STATE_PUERTO_RICO = {
 STATE_BAHAMAS = {
     id = 347
     subsistence_building = "building_subsistence_farms"
-    provinces = { "x4EBC79" "x686279" "x72C072" "x7A6FA3" }
+    provinces = { "x4EBC79" "x686279" "x72C072" }
     city = "x686279"
     port = "x72C072"
     farm = "x4EBC79"
@@ -201,7 +201,7 @@ STATE_BAHAMAS = {
 STATE_WEST_INDIES = {
     id = 348
     subsistence_building = "building_subsistence_farms"
-    provinces = { "x30F080" "x335389" "x33895B" "x445B6C" "x446C63" "x5299CA" "x606060" "x707080" "x70F001" "x89334D" "x89337A" "x9C52CA" "xD496B1" "xECC061" "xF0F001" }
+    provinces = { "x30F080" "x335389" "x33895B" "x445B6C" "x446C63" "x5299CA" "x606060" "x707080" "x70F001" "x89334D" "x89337A" "x9C52CA" "xD496B1" "xECC061" "xF0F001" "x7A6FA3" }
     prime_land = { "x9C52CA" "x33895B" }
     city = "x9C52CA"
     port = "x5299CA"
@@ -234,7 +234,7 @@ STATE_JAMAICA = {
 		bg_logging = 4
 		bg_fishing = 5
 		bg_rubber = 14
-		bg_bauxite_mining = 25
+		bg_sulfur_mining = 25
 	}
     naval_exit_id = 3061
 }

@@ -10,9 +10,9 @@ french_decolonisation_indy.1 = {
     desc = french_cameroon.indy.d 					# Description of the event; ADD LOCALISATION
     #flavor = french_cameroon.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -29,6 +29,7 @@ french_decolonisation_indy.1 = {
 		is_at_war = no											# war = no
 		
 		#Colony conditions
+		exists = c:CMR
 		c:CMR = { 												# Change TOG of the colony ****
 			is_direct_subject_of = ROOT
 			is_not_sufficiently_independent = yes
@@ -53,6 +54,10 @@ french_decolonisation_indy.1 = {
 			country = c:CMR										# Change TOG ****
 			type = protectorate
 		}
+		create_diplomatic_pact = {
+			country = c:CMR										# Change TOG ****
+			type = customs_union
+		}
 		
 		# Fire only once
 		set_variable = french_cameroon_indy						# Change variable ****
@@ -71,7 +76,7 @@ french_decolonisation_indy.1 = {
 		
 			# Natives are angry!
 			every_scope_state = {
-				add_radicals = {
+				add_radicals_in_state = {
 					value = large_radicals
 				}
 				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
@@ -91,7 +96,7 @@ french_decolonisation_indy.1 = {
 		set_variable = french_cameroon_indy						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }
@@ -106,9 +111,9 @@ french_decolonisation_indy.2 = {
     desc = french_togo.indy.d 					# Description of the event; ADD LOCALISATION
     #flavor = french_togo.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -125,6 +130,7 @@ french_decolonisation_indy.2 = {
 		is_at_war = no											# war = no
 		
 		#Colony conditions
+		exists = c:TOG
 		c:TOG = { 												# Change TOG of the colony ****
 			is_direct_subject_of = ROOT
 			is_not_sufficiently_independent = yes
@@ -149,6 +155,10 @@ french_decolonisation_indy.2 = {
 			country = c:TOG										# Change TOG ****
 			type = protectorate
 		}
+		create_diplomatic_pact = {
+			country = c:TOG										# Change TOG ****
+			type = customs_union
+		}
 		
 		# Fire only once
 		set_variable = french_togo_indy						# Change variable ****
@@ -167,7 +177,7 @@ french_decolonisation_indy.2 = {
 		
 			# Natives are angry!
 			every_scope_state = {
-				add_radicals = {
+				add_radicals_in_state = {
 					value = large_radicals
 				}
 				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
@@ -187,7 +197,7 @@ french_decolonisation_indy.2 = {
 		set_variable = french_togo_indy						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }
@@ -202,9 +212,9 @@ french_decolonisation_indy.3 = {
     desc = french_mali.indy.d 					# Description of the event; ADD LOCALISATION
     #flavor = french_mali.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -221,6 +231,7 @@ french_decolonisation_indy.3 = {
 		is_at_war = no											# war = no
 		
 		#Colony conditions
+		exists = c:MAL
 		c:MAL = { 												# Change MAL of the colony ****
 			is_direct_subject_of = ROOT
 			is_not_sufficiently_independent = yes
@@ -245,6 +256,10 @@ french_decolonisation_indy.3 = {
 			country = c:MAL										# Change MAL ****
 			type = protectorate
 		}
+		create_diplomatic_pact = {
+			country = c:MAL										# Change TOG ****
+			type = customs_union
+		}
 		
 		# Fire only once
 		set_variable = french_mali_indy						# Change variable ****
@@ -263,7 +278,7 @@ french_decolonisation_indy.3 = {
 		
 			# Natives are angry!
 			every_scope_state = {
-				add_radicals = {
+				add_radicals_in_state = {
 					value = large_radicals
 				}
 				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
@@ -280,7 +295,7 @@ french_decolonisation_indy.3 = {
 		set_variable = french_mali_indy						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }
@@ -295,9 +310,9 @@ french_decolonisation_indy.4 = {
     desc = french_madagascar.indy.d 					# Description of the event; ADD LOCALISATION
     #flavor = french_madagascar.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -314,6 +329,7 @@ french_decolonisation_indy.4 = {
 		is_at_war = no											# war = no
 		
 		#Colony conditions
+		exists = c:MAD
 		c:MAD = { 												# Change MAD of the colony ****
 			is_direct_subject_of = ROOT
 			is_not_sufficiently_independent = yes
@@ -338,6 +354,10 @@ french_decolonisation_indy.4 = {
 			country = c:MAD										# Change MAD ****
 			type = protectorate
 		}
+		create_diplomatic_pact = {
+			country = c:MAD										# Change TOG ****
+			type = customs_union
+		}
 		
 		# Fire only once
 		set_variable = french_madagascar_indy						# Change variable ****
@@ -356,7 +376,7 @@ french_decolonisation_indy.4 = {
 		
 			# Natives are angry!
 			every_scope_state = {
-				add_radicals = {
+				add_radicals_in_state = {
 					value = large_radicals
 				}
 				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
@@ -373,7 +393,7 @@ french_decolonisation_indy.4 = {
 		set_variable = french_madagascar_indy						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }
@@ -388,9 +408,9 @@ french_decolonisation_indy.5 = {
     desc = french_benin.indy.d 					# Description of the event; ADD LOCALISATION
     #flavor = french_benin.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -407,6 +427,7 @@ french_decolonisation_indy.5 = {
 		is_at_war = no											# war = no
 		
 		#Colony conditions
+		exists = c:BEN
 		c:BEN = { 												# Change BEN of the colony ****
 			is_direct_subject_of = ROOT
 			is_not_sufficiently_independent = yes
@@ -431,6 +452,10 @@ french_decolonisation_indy.5 = {
 			country = c:BEN										# Change BEN ****
 			type = protectorate
 		}
+		create_diplomatic_pact = {
+			country = c:BEN										# Change TOG ****
+			type = customs_union
+		}
 		
 		# Fire only once
 		set_variable = french_benin_indy						# Change variable ****
@@ -449,7 +474,7 @@ french_decolonisation_indy.5 = {
 		
 			# Natives are angry!
 			every_scope_state = {
-				add_radicals = {
+				add_radicals_in_state = {
 					value = large_radicals
 				}
 				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
@@ -466,7 +491,7 @@ french_decolonisation_indy.5 = {
 		set_variable = french_benin_indy						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }
@@ -481,9 +506,9 @@ french_decolonisation_indy.6 = {
     desc = french_niger.indy.d 					# Description of the event; ADD LOCALISATION
     #flavor = french_niger.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -500,6 +525,7 @@ french_decolonisation_indy.6 = {
 		is_at_war = no											# war = no
 		
 		#Colony conditions
+		exists = c:NIG
 		c:NIG = { 												# Change NIG of the colony ****
 			is_direct_subject_of = ROOT
 			is_not_sufficiently_independent = yes
@@ -524,6 +550,10 @@ french_decolonisation_indy.6 = {
 			country = c:NIG										# Change NIG ****
 			type = protectorate
 		}
+		create_diplomatic_pact = {
+			country = c:NIG										# Change TOG ****
+			type = customs_union
+		}
 		
 		# Fire only once
 		set_variable = french_niger_indy						# Change variable ****
@@ -542,7 +572,7 @@ french_decolonisation_indy.6 = {
 		
 			# Natives are angry!
 			every_scope_state = {
-				add_radicals = {
+				add_radicals_in_state = {
 					value = large_radicals
 				}
 				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
@@ -559,7 +589,7 @@ french_decolonisation_indy.6 = {
 		set_variable = french_niger_indy						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }
@@ -574,9 +604,9 @@ french_decolonisation_indy.7 = {
     desc = french_burkina_faso.indy.d 					# Description of the event; ADD LOCALISATION
     #flavor = french_burkina_faso.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -593,6 +623,7 @@ french_decolonisation_indy.7 = {
 		is_at_war = no											# war = no
 		
 		#Colony conditions
+		exists = c:BUF
 		c:BUF = { 												# Change BUF of the colony ****
 			is_direct_subject_of = ROOT
 			is_not_sufficiently_independent = yes
@@ -617,6 +648,10 @@ french_decolonisation_indy.7 = {
 			country = c:BUF										# Change BUF ****
 			type = protectorate
 		}
+		create_diplomatic_pact = {
+			country = c:BUF										# Change TOG ****
+			type = customs_union
+		}
 		
 		# Fire only once
 		set_variable = french_burkina_faso_indy						# Change variable ****
@@ -635,7 +670,7 @@ french_decolonisation_indy.7 = {
 		
 			# Natives are angry!
 			every_scope_state = {
-				add_radicals = {
+				add_radicals_in_state = {
 					value = large_radicals
 				}
 				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
@@ -652,7 +687,7 @@ french_decolonisation_indy.7 = {
 		set_variable = french_burkina_faso_indy						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }
@@ -667,9 +702,9 @@ french_decolonisation_indy.8 = {
     desc = french_ivory_coast.indy.d 					# Description of the event; ADD LOCALISATION
     #flavor = french_ivory_coast.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -686,6 +721,7 @@ french_decolonisation_indy.8 = {
 		is_at_war = no											# war = no
 		
 		#Colony conditions
+		exists = c:IVC
 		c:IVC = { 												# Change IVC of the colony ****
 			is_direct_subject_of = ROOT
 			is_not_sufficiently_independent = yes
@@ -710,6 +746,10 @@ french_decolonisation_indy.8 = {
 			country = c:IVC										# Change IVC ****
 			type = protectorate
 		}
+		create_diplomatic_pact = {
+			country = c:IVC										# Change TOG ****
+			type = customs_union
+		}
 		
 		# Fire only once
 		set_variable = french_ivory_coast_indy						# Change variable ****
@@ -728,7 +768,7 @@ french_decolonisation_indy.8 = {
 		
 			# Natives are angry!
 			every_scope_state = {
-				add_radicals = {
+				add_radicals_in_state = {
 					value = large_radicals
 				}
 				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
@@ -745,7 +785,7 @@ french_decolonisation_indy.8 = {
 		set_variable = french_ivory_coast_indy						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }
@@ -760,9 +800,9 @@ french_decolonisation_indy.9 = {
     desc = french_chad.indy.d 					# Description of the event; ADD LOCALISATION
     #flavor = french_chad.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -779,6 +819,7 @@ french_decolonisation_indy.9 = {
 		is_at_war = no											# war = no
 		
 		#Colony conditions
+		exists = c:CHA
 		c:CHA = { 												# Change CHA of the colony ****
 			is_direct_subject_of = ROOT
 			is_not_sufficiently_independent = yes
@@ -803,6 +844,10 @@ french_decolonisation_indy.9 = {
 			country = c:CHA										# Change CHA ****
 			type = protectorate
 		}
+		create_diplomatic_pact = {
+			country = c:CHA										# Change TOG ****
+			type = customs_union
+		}
 		
 		# Fire only once
 		set_variable = french_chad_indy						# Change variable ****
@@ -821,7 +866,7 @@ french_decolonisation_indy.9 = {
 		
 			# Natives are angry!
 			every_scope_state = {
-				add_radicals = {
+				add_radicals_in_state = {
 					value = large_radicals
 				}
 				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
@@ -838,7 +883,7 @@ french_decolonisation_indy.9 = {
 		set_variable = french_chad_indy						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }
@@ -853,9 +898,9 @@ french_decolonisation_indy.10 = {
     desc = french_central_african_republic.indy.d 					# Description of the event; ADD LOCALISATION
     #flavor = french_central_african_republic.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -872,6 +917,7 @@ french_decolonisation_indy.10 = {
 		is_at_war = no											# war = no
 		
 		#Colony conditions
+		exists = c:CAR
 		c:CAR = { 												# Change CAR of the colony ****
 			is_direct_subject_of = ROOT
 			is_not_sufficiently_independent = yes
@@ -896,6 +942,10 @@ french_decolonisation_indy.10 = {
 			country = c:CAR										# Change CAR ****
 			type = protectorate
 		}
+		create_diplomatic_pact = {
+			country = c:CAR										# Change TOG ****
+			type = customs_union
+		}
 		
 		# Fire only once
 		set_variable = french_central_african_republic_indy						# Change variable ****
@@ -914,7 +964,7 @@ french_decolonisation_indy.10 = {
 		
 			# Natives are angry!
 			every_scope_state = {
-				add_radicals = {
+				add_radicals_in_state = {
 					value = large_radicals
 				}
 				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
@@ -931,7 +981,7 @@ french_decolonisation_indy.10 = {
 		set_variable = french_central_african_republic_indy						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }
@@ -946,9 +996,9 @@ french_decolonisation_indy.11 = {
     desc = french_congo.indy.d 					# Description of the event; ADD LOCALISATION
     #flavor = french_congo.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -965,6 +1015,7 @@ french_decolonisation_indy.11 = {
 		is_at_war = no											# war = no
 		
 		#Colony conditions
+		exists = c:KNG
 		c:KNG = { 												# Change KNG of the colony ****
 			is_direct_subject_of = ROOT
 			is_not_sufficiently_independent = yes
@@ -989,6 +1040,10 @@ french_decolonisation_indy.11 = {
 			country = c:KNG										# Change KNG ****
 			type = protectorate
 		}
+		create_diplomatic_pact = {
+			country = c:KNG										# Change TOG ****
+			type = customs_union
+		}
 		
 		# Fire only once
 		set_variable = french_congo_indy						# Change variable ****
@@ -1007,7 +1062,7 @@ french_decolonisation_indy.11 = {
 		
 			# Natives are angry!
 			every_scope_state = {
-				add_radicals = {
+				add_radicals_in_state = {
 					value = large_radicals
 				}
 				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
@@ -1024,7 +1079,7 @@ french_decolonisation_indy.11 = {
 		set_variable = french_congo_indy						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }
@@ -1039,9 +1094,9 @@ french_decolonisation_indy.12 = {
     desc = french_gabon.indy.d 					# Description of the event; ADD LOCALISATION
     #flavor = french_gabon.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -1058,6 +1113,7 @@ french_decolonisation_indy.12 = {
 		is_at_war = no											# war = no
 		
 		#Colony conditions
+		exists = c:GAB
 		c:GAB = { 												# Change GAB of the colony ****
 			is_direct_subject_of = ROOT
 			is_not_sufficiently_independent = yes
@@ -1082,6 +1138,10 @@ french_decolonisation_indy.12 = {
 			country = c:GAB										# Change GAB ****
 			type = protectorate
 		}
+		create_diplomatic_pact = {
+			country = c:GAB										# Change TOG ****
+			type = customs_union
+		}
 		
 		# Fire only once
 		set_variable = french_gabon_indy						# Change variable ****
@@ -1100,7 +1160,7 @@ french_decolonisation_indy.12 = {
 		
 			# Natives are angry!
 			every_scope_state = {
-				add_radicals = {
+				add_radicals_in_state = {
 					value = large_radicals
 				}
 				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
@@ -1117,7 +1177,7 @@ french_decolonisation_indy.12 = {
 		set_variable = french_gabon_indy						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }
@@ -1132,9 +1192,9 @@ french_decolonisation_indy.13 = {
     desc = french_senegal.indy.d 					# Description of the event; ADD LOCALISATION
     #flavor = french_senegal.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -1151,6 +1211,7 @@ french_decolonisation_indy.13 = {
 		is_at_war = no											# war = no
 		
 		#Colony conditions
+		exists = c:SEN
 		c:SEN = { 												# Change SEN of the colony ****
 			is_direct_subject_of = ROOT
 			is_not_sufficiently_independent = yes
@@ -1175,6 +1236,10 @@ french_decolonisation_indy.13 = {
 			country = c:SEN										# Change SEN ****
 			type = protectorate
 		}
+		create_diplomatic_pact = {
+			country = c:SEN										# Change TOG ****
+			type = customs_union
+		}
 		
 		# Fire only once
 		set_variable = french_senegal_indy						# Change variable ****
@@ -1193,7 +1258,7 @@ french_decolonisation_indy.13 = {
 		
 			# Natives are angry!
 			every_scope_state = {
-				add_radicals = {
+				add_radicals_in_state = {
 					value = large_radicals
 				}
 				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
@@ -1210,7 +1275,7 @@ french_decolonisation_indy.13 = {
 		set_variable = french_senegal_indy						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }
@@ -1225,9 +1290,9 @@ french_decolonisation_indy.14 = {
     desc = french_mauritania.indy.d 					# Description of the event; ADD LOCALISATION
     #flavor = french_mauritania.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -1244,6 +1309,7 @@ french_decolonisation_indy.14 = {
 		is_at_war = no											# war = no
 		
 		#Colony conditions
+		exists = c:MAU
 		c:MAU = { 												# Change MAU of the colony ****
 			is_direct_subject_of = ROOT
 			is_not_sufficiently_independent = yes
@@ -1268,6 +1334,10 @@ french_decolonisation_indy.14 = {
 			country = c:MAU										# Change MAU ****
 			type = protectorate
 		}
+		create_diplomatic_pact = {
+			country = c:MAU										# Change TOG ****
+			type = customs_union
+		}
 		
 		# Fire only once
 		set_variable = french_mauritania_indy						# Change variable ****
@@ -1286,7 +1356,7 @@ french_decolonisation_indy.14 = {
 		
 			# Natives are angry!
 			every_scope_state = {
-				add_radicals = {
+				add_radicals_in_state = {
 					value = large_radicals
 				}
 				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
@@ -1303,7 +1373,7 @@ french_decolonisation_indy.14 = {
 		set_variable = french_mauritania_indy						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }
@@ -1318,9 +1388,9 @@ french_decolonisation_indy.15 = {
     desc = french_comoros.indy.d 					# Description of the event; ADD LOCALISATION
     #flavor = french_comoros.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -1337,6 +1407,7 @@ french_decolonisation_indy.15 = {
 		is_at_war = no											# war = no
 		
 		#Colony conditions
+		exists = c:COM
 		c:COM = { 												# Change COM of the colony ****
 			is_direct_subject_of = ROOT
 			is_not_sufficiently_independent = yes
@@ -1379,7 +1450,7 @@ french_decolonisation_indy.15 = {
 		
 			# Natives are angry!
 			every_scope_state = {
-				add_radicals = {
+				add_radicals_in_state = {
 					value = large_radicals
 				}
 				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
@@ -1396,7 +1467,7 @@ french_decolonisation_indy.15 = {
 		set_variable = french_comoros_indy						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }
@@ -1411,9 +1482,9 @@ french_decolonisation_indy.16 = {
     desc = french_djibouti.indy.d 					# Description of the event; ADD LOCALISATION
     #flavor = french_djibouti.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -1430,6 +1501,7 @@ french_decolonisation_indy.16 = {
 		is_at_war = no											# war = no
 		
 		#Colony conditions
+		exists = c:DJI
 		c:DJI = { 												# Change DJI of the colony ****
 			is_direct_subject_of = ROOT
 			is_not_sufficiently_independent = yes
@@ -1472,7 +1544,7 @@ french_decolonisation_indy.16 = {
 		
 			# Natives are angry!
 			every_scope_state = {
-				add_radicals = {
+				add_radicals_in_state = {
 					value = large_radicals
 				}
 				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
@@ -1489,7 +1561,7 @@ french_decolonisation_indy.16 = {
 		set_variable = french_djibouti_indy						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }
@@ -1504,9 +1576,9 @@ french_decolonisation_indy.17 = {
     desc = french_morocco.indy.d 					# Description of the event; ADD LOCALISATION
     #flavor = french_morocco.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -1523,6 +1595,7 @@ french_decolonisation_indy.17 = {
 		is_at_war = no											# war = no
 		
 		#Colony conditions
+		exists = c:MOR
 		c:MOR = { 												# Change MOR of the colony ****
 			is_direct_subject_of = ROOT
 			is_not_sufficiently_independent = yes
@@ -1540,6 +1613,13 @@ french_decolonisation_indy.17 = {
 		# Colony becomes independent
 		c:MOR = { 												# Change MOR of the colony ****
 			make_independent = yes
+		}
+		every_scope_state = {
+			limit = {
+		 		state_region = { is_homeland = cu:moroccan }	# Change homeland identity to match colony to be released ****
+				is_incorporated = no							# State is a colony
+		 	}
+			set_state_owner = c:MOR								# Change TAG to colony ****
 		}
 		
 		# Overlord create client state pact with colony
@@ -1565,7 +1645,7 @@ french_decolonisation_indy.17 = {
 		
 			# Natives are angry!
 			every_scope_state = {
-				add_radicals = {
+				add_radicals_in_state = {
 					value = large_radicals
 				}
 				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
@@ -1582,7 +1662,7 @@ french_decolonisation_indy.17 = {
 		set_variable = french_morocco_indy						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }
@@ -1597,9 +1677,9 @@ french_decolonisation_indy.18 = {
     desc = french_tunisia.indy.d 					# Description of the event; ADD LOCALISATION
     #flavor = french_tunisia.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -1616,6 +1696,7 @@ french_decolonisation_indy.18 = {
 		is_at_war = no											# war = no
 		
 		#Colony conditions
+		exists = c:TUN
 		c:TUN = { 												# Change TUN of the colony ****
 			is_direct_subject_of = ROOT
 			is_not_sufficiently_independent = yes
@@ -1658,7 +1739,7 @@ french_decolonisation_indy.18 = {
 		
 			# Natives are angry!
 			every_scope_state = {
-				add_radicals = {
+				add_radicals_in_state = {
 					value = large_radicals
 				}
 				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
@@ -1675,7 +1756,7 @@ french_decolonisation_indy.18 = {
 		set_variable = french_tunisia_indy						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }
@@ -1692,9 +1773,9 @@ french_decolonisation_indy.19 = {
     desc = french_vietnam.indy.d 					# Description of the event; ADD LOCALISATION
     #flavor = french_vietnam.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -1711,6 +1792,7 @@ french_decolonisation_indy.19 = {
 		is_at_war = no											# war = no
 		
 		#Colony conditions
+		exists = c:SVM
 		c:SVM = { 												# Change TAG of the colony ****
 			is_direct_subject_of = ROOT
 			OR = { is_not_sufficiently_independent = yes is_in_our_sphere_of_influence = yes }
@@ -1747,7 +1829,7 @@ french_decolonisation_indy.19 = {
 		
 			# Natives are angry!
 			every_scope_state = {
-				add_radicals = {
+				add_radicals_in_state = {
 					value = large_radicals
 				}
 				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
@@ -1767,7 +1849,7 @@ french_decolonisation_indy.19 = {
 		set_variable = french_vietnam_indy						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }
@@ -1782,9 +1864,9 @@ french_decolonisation_indy.20 = {
     desc = french_cambodia.indy.d 					# Description of the event; ADD LOCALISATION
     #flavor = french_cambodia.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -1801,6 +1883,7 @@ french_decolonisation_indy.20 = {
 		is_at_war = no											# war = no
 		
 		#Colony conditions
+		exists = c:CAM
 		c:CAM = { 												# Change TAG of the colony ****
 			is_direct_subject_of = ROOT
 			is_not_sufficiently_independent = yes
@@ -1837,7 +1920,7 @@ french_decolonisation_indy.20 = {
 		
 			# Natives are angry!
 			every_scope_state = {
-				add_radicals = {
+				add_radicals_in_state = {
 					value = large_radicals
 				}
 				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
@@ -1854,7 +1937,7 @@ french_decolonisation_indy.20 = {
 		set_variable = french_cambodia_indy						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }
@@ -1869,9 +1952,9 @@ french_decolonisation_indy.21 = {
     desc = french_laos.indy.d 					# Description of the event; ADD LOCALISATION
     #flavor = french_laos.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -1888,6 +1971,7 @@ french_decolonisation_indy.21 = {
 		is_at_war = no											# war = no
 		
 		#Colony conditions
+		exists = c:LAO
 		c:LAO = { 												# Change TAG of the colony ****
 			is_direct_subject_of = ROOT
 			is_not_sufficiently_independent = yes
@@ -1924,7 +2008,7 @@ french_decolonisation_indy.21 = {
 		
 			# Natives are angry!
 			every_scope_state = {
-				add_radicals = {
+				add_radicals_in_state = {
 					value = large_radicals
 				}
 				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
@@ -1941,7 +2025,7 @@ french_decolonisation_indy.21 = {
 		set_variable = french_laos_indy						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }

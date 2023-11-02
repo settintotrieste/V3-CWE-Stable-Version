@@ -22,6 +22,10 @@ COUNTRIES = {
 		effect_starting_politics_trade_policy_free_trade = yes
 		effect_starting_politics_anti_nuclear_policy = yes
 		
+		effect_starting_politics_specialisation_services = yes
+		
+		effect_starting_politics_semi_gold_system = yes
+		
 		set_institution_investment_level = {
 			institution = institution_colonial_affairs
 			level = 2
@@ -41,6 +45,7 @@ COUNTRIES = {
 		add_modifier = { name = unga_member }
 		add_modifier = { name = nato_member }
 		add_modifier = { name = unsg_country months = 60 }
+		set_global_variable = passive_unsg
 
 	}
 }

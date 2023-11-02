@@ -5,44 +5,42 @@ join_unga_decision = {
 	}
 
 	possible = {
-	
-		NOT = { has_modifier = unga_member }
 		
+		#THIS is not at war
 		is_at_war = no
 	
-		#THIS will join the UNGA UNLESS vetoed by the UNSC permanent members
+		#Diplomatic conditions for joining UN
 		OR = {
 		
-			#There are no UNSC permanent members to oppose THIS joining the UNGA
-			NOT = {
-				any_country = {
-					exists = yes
-					has_modifier = unsc_permanent_member
-				}
-			}
-		
-			#No UNSC permanent member is angry with THIS
-			NOT = {
-				any_country = {
-					exists = yes
-					has_modifier = unsc_permanent_member
-					
-					has_attitude = {
-						who = ROOT
-						attitude <= antagonistic
+			#THIS will join the UNGA UNLESS vetoed by the UNSC permanent members
+			custom_tooltip = {
+				text = join_unga_decision.tt
+				NOT = {
+					any_country = {
+						has_modifier = unsc_permanent_member
+						relations:root <= relations_threshold:cold
 					}
 				}
 			}
 			
+			#THIS has greater prestige than all UNSC perm members
+			custom_tooltip = {
+				text = join_unga_decision_2.tt
+				NOT = {
+					any_country = {
+						has_modifier = unsc_permanent_member
+						country_rank > root.country_rank
+					}
+				}
+			}
+			
+			#Cold War is over
+			NOT = { cold_war_ongoing = yes }
+			
 		}
 		
 		#THIS has enough autonomy to join the UNGA
-		NOR = {
-			is_subject_type = subject_type_puppet
-			is_subject_type = subject_type_special_administrative_region
-			is_subject_type = subject_type_semi_autonomous_colony
-			is_subject_type = subject_type_mandate
-		}
+		is_sufficiently_independent = yes
 		
 		#THIS must not be a revolutionary
 		is_revolutionary = no
@@ -53,39 +51,49 @@ join_unga_decision = {
 		### Special Conditions ###
 		
 		#One China Policy
-		NAND = { 
-			exists = c:ROC
-			c:PRC ?= this
-			c:ROC ?= { is_country_type = recognized }
-		}
-		NAND = { 
-			exists = c:PRC
-			c:ROC ?= this
-			c:PRC ?= { is_country_type = recognized }
-		}
-		
-		#Divided Germany
-		NAND = { 
-			c:WGR ?= this
-			cold_war_ongoing = yes
-			game_date < 1973.9.18
-		}
-		NAND = { 
-			c:EGR ?= this
-			cold_war_ongoing = yes
-			game_date < 1973.9.18
+		custom_tooltip = {
+			text = join_unga_decision_4.tt
+			
+			NAND = { 
+				exists = c:ROC
+				c:PRC ?= this
+				c:ROC ?= { is_country_type = recognized }
+			}
+			NAND = { 
+				exists = c:PRC
+				c:ROC ?= this
+				c:PRC ?= { is_country_type = recognized }
+			}
+			
 		}
 		
-		#Divided Korea
-		NAND = { 
-			c:SKO ?= this
-			cold_war_ongoing = yes
-			game_date < 1991.9.17
-		}
-		NAND = { 
-			c:NKO ?= this
-			cold_war_ongoing = yes
-			game_date < 1991.9.17
+		custom_tooltip = {
+			text = join_unga_decision_3.tt
+		
+			#Divided Germany
+			NAND = { 
+				c:WGR ?= this
+				cold_war_ongoing = yes
+				game_date < 1973.9.18
+			}
+			NAND = { 
+				c:EGR ?= this
+				cold_war_ongoing = yes
+				game_date < 1973.9.18
+			}
+			
+			#Divided Korea
+			NAND = { 
+				c:SKO ?= this
+				cold_war_ongoing = yes
+				game_date < 1991.9.17
+			}
+			NAND = { 
+				c:NKO ?= this
+				cold_war_ongoing = yes
+				game_date < 1991.9.17
+			}
+		
 		}
 		
 	}
@@ -131,16 +139,15 @@ join_unsc_perm_decision = {
 		}
 		
 		#No UNSC member is angry with THIS
-		NOT = {
-			any_country = {
-				exists = yes
-				OR = { 
-					has_modifier = unsc_permanent_member 
-					has_modifier = unsc_non_permanent_member
-				}
-				has_attitude = {
-					who = ROOT
-					attitude < cooperative
+		custom_tooltip = {
+			text = join_unsc_perm_decision_tt
+			NOT = {
+				any_country = {
+					OR = { 
+						has_modifier = unsc_permanent_member 
+						has_modifier = unsc_non_permanent_member
+					}
+					relations:root < relations_threshold:friendly
 				}
 			}
 		}
@@ -157,7 +164,7 @@ join_unsc_perm_decision = {
 		is_revolutionary = no
 		
 		#THIS is not a pariah
-		infamy < infamy_threshold:pariah
+		infamy < infamy_threshold:infamous
 		
 	}
 	
@@ -166,6 +173,23 @@ join_unsc_perm_decision = {
 		#THIS joins the UNSC as a permanent member
 		add_modifier = { name = unsc_permanent_member }
 		remove_modifier = unsc_non_permanent_member
+		
+		#Mark as new member
+		set_variable = { 
+			name = new_unsc_member_flag
+			months = 1 
+		}
+		
+		#Indicate which countries are Perm UNSC members
+		custom_tooltip = {
+			text = UNSC_members_list.tt
+		}
+		
+		#Notify fellow UNSC perm members of new member
+		every_country = {
+			limit = { has_modifier = unsc_permanent_member }
+			trigger_event = { id = united_nations.28 }
+		}
 		
 	}
 
@@ -265,7 +289,9 @@ request_un_peacekeeping_decision = {
 				}
 			}
 			trigger_event = { id = united_nations.6 }
+			add_journal_entry = { type = je_un_peacekeeping_system }
 		}
+		add_journal_entry = { type = je_un_peacekeeping_system }
 		
 		#Timer
 		set_variable = { name = un_peackeeping_timer months = 12 }
@@ -294,7 +320,7 @@ request_imf_loan_decision = {
 			#is_player = yes
 		
 			AND = { 
-				OR = { in_default = yes taking_loans = yes } 
+				in_default = yes
 				has_healthy_economy = no
 			}
 			

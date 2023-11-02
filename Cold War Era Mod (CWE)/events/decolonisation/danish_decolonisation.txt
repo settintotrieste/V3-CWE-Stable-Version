@@ -3,14 +3,15 @@ namespace = danish_decolonisation
 # Greenland
 danish_decolonisation.1 = {
     type = country_event
+	placement = scope:colonial_state
 
     title = danish_greenland.sgc.t 				# Title of the event; ADD LOCALISATION
     desc = danish_greenland.sgc.d 				# Description of the event; ADD LOCALISATION
     #flavor = danish_greenland.sgc.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -28,7 +29,7 @@ danish_decolonisation.1 = {
 		
 		#Colony conditions
 		NOT = { 												# Colony to be released must not already exist on the map
-			exists = c:GRL										# Change TAG of the colony ****
+			exists = c:GRN										# Change TAG of the colony ****
 		}
 		any_scope_state = { 									# Overlord owns the states of the colony to be released
 			state_region = { is_homeland = cu:inuit }		# Change homeland identity to match colony to be released ****
@@ -48,7 +49,7 @@ danish_decolonisation.1 = {
 			limit = {
 				state_region = { is_homeland = cu:inuit }	# Change homeland identity to match colony to be released ****
 				is_incorporated = no							# State is a colony
-				#contains_capital_of = c:GRL						# State is the capital of colony ****
+				#contains_capital_of = c:GRN						# State is the capital of colony ****
 			}
 			save_scope_as = colonial_state
 		}
@@ -61,7 +62,7 @@ danish_decolonisation.1 = {
 		
 		#Release country
 		create_country = {
-			tag = GRL										# Change TAG of country being released ****
+			tag = GRN										# Change TAG of country being released ****
 			origin = THIS									# TAG where the created country takes tech from
 			state = scope:colonial_state
 			
@@ -100,13 +101,16 @@ danish_decolonisation.1 = {
 		 		state_region = { is_homeland = cu:inuit }	# Change homeland identity to match colony to be released ****
 				is_incorporated = no							# State is a colony
 		 	}
-			set_state_owner = c:GRL								# Change TAG to colony ****
+			set_state_owner = c:GRN								# Change TAG to colony ****
 		}
 		
 		# Overlord create self governing colony pact with colony
-		create_diplomatic_pact = {
-			country = c:GRL										# Change TAG ****
-			type = special_administrative_region
+		if = {
+			limit = { exists = c:GRN }
+			create_diplomatic_pact = {
+				country = c:GRN										# Change TAG ****
+				type = special_administrative_region
+			}
 		}
 		
 		# Fire only once
@@ -126,7 +130,7 @@ danish_decolonisation.1 = {
 			limit = {
 		 		state_region = { is_homeland = cu:inuit }	# Change homeland identity to match colony to be released ****
 		 	}
-			add_radicals = {
+			add_radicals_in_state = {
 				culture = cu:inuit							# Change culture ****
 				value = large_radicals
 			}
@@ -137,7 +141,7 @@ danish_decolonisation.1 = {
 		set_variable = danish_greenland_sgc						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }

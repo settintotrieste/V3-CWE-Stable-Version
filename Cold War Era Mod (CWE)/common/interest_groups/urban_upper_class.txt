@@ -23,13 +23,20 @@
 		always = yes
 	}
 	
+	# Deprecated; use on_enable effect to assign traits instead
 	traits = {
 		ig_trait_engines_of_progress
 		ig_trait_job_creators
 		ig_trait_tax_avoidance
 	}	
 	
-	on_enable = {}
+	on_enable = {
+		ig:ig_industrialists = {
+			set_ig_trait = ig_trait:ig_trait_tax_avoidance
+			set_ig_trait = ig_trait:ig_trait_engines_of_progress
+			set_ig_trait = ig_trait:ig_trait_job_creators
+		}
+	}
 	on_disable = {}
 	on_character_ig_membership = {}
 	
@@ -41,6 +48,7 @@
 		#Correct pop type
 		OR = { 
 			is_pop_type = capitalists
+			is_pop_type = engineers 			#Professionals
 			is_pop_type = academics
 		}
 		
@@ -52,15 +60,18 @@
 	pop_weight = {
 		value = 1
 		
-		multiply = {
-			desc = "LEADER_POPULARITY"
-			scope:interest_group = {
-				leader = {
-					value = popularity
-					multiply = 0.0025
-					add = 1
-					max = 1.25
-					min = 0.75
+		if = {
+			limit = { exists = scope:interest_group exists = leader }
+			multiply = {
+				desc = "LEADER_POPULARITY"
+				scope:interest_group = {
+					leader ?= {
+						value = popularity
+						multiply = 0.0025
+						add = 1
+						max = 1.25
+						min = 0.75
+					}
 				}
 			}
 		}
@@ -166,6 +177,31 @@
 			}
 			add = {
 				value = 0.2
+			}
+		}
+		
+		if = {
+			limit = {
+				owner = {
+					is_a_dictatorship = yes
+				}
+			}
+			add = {
+				value = -100
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					OR = { 
+						has_modifier = traditionalist_ruling_party_ideology
+						has_modifier = conservative_ruling_party_ideology
+						has_modifier = fascist_ruling_party_ideology
+					}
+				}
+			}
+			add = {
+				value = -0.1
 			}
 		}
 		

@@ -41,7 +41,6 @@ STATES = {
 		create_state = {
 			country = c:GBR
 			owned_provinces = { 
-				x7A6FA3
 				x72C072 x4EBC79 x686279 # BAH
 			}
 			state_type = unincorporated
@@ -56,7 +55,7 @@ STATES = {
 			state_type = unincorporated
 		}
 		
-		add_claim = c:BEU
+		add_claim = c:BEU add_homeland = afro_caribbean
 	}
 	s:STATE_JAMAICA = {
 		create_state = {
@@ -73,33 +72,41 @@ STATES = {
 	
 	s:STATE_WEST_INDIES = {	
 		create_state = {
-			country = c:FRA
-			owned_provinces = { x33895B x9C52CA }
+			country = c:NET
+			owned_provinces = { 
+				xECC061 # Sint Maarten
+			}
 			state_type = unincorporated
 		}
 		create_state = {
-			country = c:USA
-			owned_provinces = { x30F080 }
+			country = c:FRA
+			owned_provinces = { 
+				x33895B #Guadeloupe
+				x9C52CA #Martinique
+			}
 			state_type = unincorporated
 		}
 		create_state = {
 			country = c:GBR
 			owned_provinces = { 
-				x335389 x606060
-				xECC061 #NET
+				x606060 #British Virgin Islands
+				x30F080 #Anguilla
+				x335389	#Montserrat
 				x707080 xD496B1 # TAT
 				x445B6C # BAR
 				xF0F001 # GND
 				x446C63 # SVG
 				x5299CA # STL
-				x70F001 # DMN
+				x70F001 # DMC
 				x89334D # AAB
 				x89337A # SKN
+				x7A6FA3 # TCI
 			 }
 			state_type = unincorporated
 		}
 		
-		add_claim = c:WIF add_homeland = afro_antillean
+		add_claim = c:WIF add_homeland = afro_caribbean
+		add_claim = c:DAN add_homeland = afro_antillean
 	}
 	
 }

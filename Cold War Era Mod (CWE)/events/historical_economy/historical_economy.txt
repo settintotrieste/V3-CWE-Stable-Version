@@ -1,0 +1,261 @@
+namespace = historical_economy
+
+# Recession of 1950
+historical_economy.1 = {
+    type = country_event
+
+    title = 1950_recession.t 							# Title of the event; ADD LOCALISATION
+    desc = 1950_recession.d 							# Description of the event; ADD LOCALISATION
+    flavor = 1950_recession.f 							# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/europenorthamerica_rich_and_poor.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_newspaper.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		is_player = yes
+		game_date >= 1950.1.1									# START DATE: Date colony became self governing ****
+		game_date < 1951.1.1									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		# Event has not been fired before
+		NOT = { has_variable = 1950_recession_hee }				# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Fire only once
+		set_variable = 1950_recession_hee						# Change variable ****
+		
+	}
+    
+    option = {
+        name = historical_economy.1								# Interesting
+		
+    }
+
+}
+
+# End of the Bretton Woods System
+historical_economy.2 = {
+    type = country_event
+
+    title = 1971_bretton_woods_system.t 						# Title of the event; ADD LOCALISATION
+    desc = 1971_bretton_woods_system.d 							# Description of the event; ADD LOCALISATION
+    flavor = 1971_bretton_woods_system.f 						# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/unspecific_factory_closed.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_newspaper.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		exists = c:USA this = c:USA
+		has_journal_entry = je_bretton_woods_system_leader
+		
+		game_date >= 1971.8.15									# START DATE: Date colony became self governing ****
+		game_date < 1981.8.15									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		# Event has not been fired before
+		NOT = { has_variable = 1971_bretton_woods_system_hee }			# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Fire only once
+		set_variable = 1971_bretton_woods_system_hee					# Change variable ****
+		
+	}
+    
+    option = {
+        name = 1971_bretton_woods_system.1								# End the system
+		
+		activate_law = law_type:law_fiat_standard
+		
+		ai_chance = { 
+			base = 90 
+		}
+    }
+	
+	option = {
+        name = 1971_bretton_woods_system.2								# Leave it be
+		
+		if = { limit = { NOT = { has_modifier = economic_cycle_1 } } add_modifier = { name = economic_cycle_1 } }
+		if = { limit = { has_modifier = economic_cycle_2 } remove_modifier = economic_cycle_2 }
+		if = { limit = { has_modifier = economic_cycle_3 } remove_modifier = economic_cycle_3 }
+		if = { limit = { has_modifier = economic_cycle_4 } remove_modifier = economic_cycle_4 }
+		if = { limit = { has_modifier = economic_cycle_5 } remove_modifier = economic_cycle_5 }
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+    }
+
+}
+
+# Year 2000
+historical_economy.3 = {
+    type = country_event
+
+    title = 2000_new_year.t 							# Title of the event; ADD LOCALISATION
+    desc = 2000_new_year.d 								# Description of the event; ADD LOCALISATION
+    flavor = 2000_new_year.f 							# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/unspecific_world_fair.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_newspaper.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		game_date >= 2000.1.1									# START DATE: Date colony became self governing ****
+		game_date < 2001.1.1									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		# Event has not been fired before
+		NOT = { has_variable = 2000_new_year_hee }				# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Fire only once
+		set_variable = 2000_new_year_hee						# Change variable ****
+		
+	}
+    
+    option = {
+        name = historical_economy_2000.1							# Interesting
+		
+		#Dot Com boom
+		every_scope_culture = {
+			add_cultural_obsession = telecommunications
+			add_cultural_obsession = computers
+		}
+		
+    }
+
+}
+
+# Socialism with X Characteristics
+historical_economy.4 = {
+    type = country_event
+
+    title = communist_economic_liberalisation.t 					# Title of the event; ADD LOCALISATION
+    desc = communist_economic_liberalisation.d 						# Description of the event; ADD LOCALISATION
+    flavor = communist_economic_liberalisation.f 					# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/europenorthamerica_rich_and_poor.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/event_newspaper.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		has_law = law_type:law_command_economy
+		
+		is_a_communist_government = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no
+		
+		#1980s onwards only OR Cold War is over
+		OR = {
+		
+			AND = {
+				has_technology_researched = tech_economy_5
+				NOT = { 
+					any_country = {
+						country_rank = rank_value:super_power
+						is_a_communist_government = yes
+						has_law = law_type:law_command_economy
+					}
+				}
+			}
+			
+			AND = {
+				has_global_variable = historical_railroading_active
+				NOT = { cold_war_ongoing = yes }
+			}
+			
+		}
+		
+		#Historical OR generic conditions
+		OR = {
+			AND = { 
+				OR = { c:PRC ?= this c:CHI ?= this }
+				game_date >= 1992.1.18
+				game_date < 2002.1.18
+			}
+			AND = { 
+				OR = { c:DAI ?= this c:NVM ?= this }
+				game_date >= 1992.1.1
+				game_date < 2002.1.1
+			}
+			AND = { 
+				c:CUB ?= this
+				game_date >= 2018.1.1
+				game_date < 2028.1.1
+			}
+			has_healthy_economy = no
+			in_default = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = communist_economic_liberalisation_hee }				# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Fire only once
+		set_variable = communist_economic_liberalisation_hee						# Change variable ****
+		
+	}
+	
+	option = {
+        name = historical_economy_communist.option.1				# Accept
+        highlighted_option = yes
+		
+		#Enact new regime
+		effect_starting_politics_economic_policy_state_capitalism = yes
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_economy_communist.option.2				# Reject
+		default_option = yes
+		
+		#Major discontent
+		add_radicals = {
+			value = very_large_radicals
+			strate = rich
+		}
+		add_radicals = {
+			value = very_large_radicals
+			strate = middle
+		}
+		add_modifier = { 
+			name = stirrings_of_revolution
+			months = 60 
+			is_decaying = yes 
+		}
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}

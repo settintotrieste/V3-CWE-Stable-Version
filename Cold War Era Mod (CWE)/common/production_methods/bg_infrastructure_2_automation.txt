@@ -11,35 +11,21 @@ pm_automation_1_building_infrastructure = {
 	texture = "gfx/interface/icons/production_method_icons/assembly_lines.dds"
 
 	unlocking_technologies = {
-		tech_energy_infrastructure_1
+		tech_manufacturing_1
 	}
 	
 	pollution_generation = 3
 
 	building_modifiers = {
 	
-		#More productivity
-		unscaled = {
-			building_throughput_mult = 0.05
-			building_output_mult = 0.05
-		}
-	
-		#More electricity required
+		#Less workers = more productivity
 		workforce_scaled = {
-			#building_input_communication_services_add = 5
-			building_input_industrial_robots_add = 5
-			#building_input_refined_oil_add = 5
-			#building_input_transportation_add = 5
+			building_input_industrial_robots_add = 1
 			building_input_intellectual_property_add = 1
-		}
-	
-		#Less employees required
-		unscaled = {
-			building_employment_laborers_mult = -0.05
-			building_employment_machinists_mult = -0.05
-			building_employment_capitalists_mult = -0.05
-			building_employment_engineers_mult = -0.05
-			building_employment_clerks_mult = -0.05
+			
+			building_input_professional_services_add = 1
+			
+			building_employment_machinists_add = -500
 		}
 		
 	}
@@ -50,35 +36,21 @@ pm_automation_2_building_infrastructure = {
 	texture = "gfx/interface/icons/production_method_icons/assembly_lines.dds"
 
 	unlocking_technologies = {
-		tech_energy_infrastructure_2
+		tech_manufacturing_2
 	}
 	
 	pollution_generation = 6
 
 	building_modifiers = {
 	
-		#More productivity
-		unscaled = {
-			building_throughput_mult = 0.10
-			building_output_mult = 0.10
-		}
-	
-		#More electricity required
+		#Less workers = more productivity
 		workforce_scaled = {
-			#building_input_communication_services_add = 10
-			building_input_industrial_robots_add = 10
-			#building_input_refined_oil_add = 10
-			#building_input_transportation_add = 10
+			building_input_industrial_robots_add = 2
 			building_input_intellectual_property_add = 2
-		}
-	
-		#Less employees required
-		unscaled = {
-			building_employment_laborers_mult = -0.10
-			building_employment_machinists_mult = -0.10
-			building_employment_capitalists_mult = -0.10
-			building_employment_engineers_mult = -0.10
-			building_employment_clerks_mult = -0.10
+			
+			building_input_professional_services_add = 2
+			
+			building_employment_machinists_add = -1000
 		}
 		
 	}
@@ -89,35 +61,21 @@ pm_automation_3_building_infrastructure = {
 	texture = "gfx/interface/icons/production_method_icons/assembly_lines.dds"
 
 	unlocking_technologies = {
-		tech_energy_infrastructure_3
+		tech_manufacturing_3
 	}
 	
 	pollution_generation = 9
 
 	building_modifiers = {
 	
-		#More productivity
-		unscaled = {
-			building_throughput_mult = 0.15
-			building_output_mult = 0.15
-		}
-	
-		#More electricity required
+		#Less workers = more productivity
 		workforce_scaled = {
-			#building_input_communication_services_add = 15
-			building_input_industrial_robots_add = 15
-			#building_input_refined_oil_add = 15
-			#building_input_transportation_add = 15
+			building_input_industrial_robots_add = 3
 			building_input_intellectual_property_add = 3
-		}
-	
-		#Less employees required
-		unscaled = {
-			building_employment_laborers_mult = -0.15
-			building_employment_machinists_mult = -0.15
-			building_employment_capitalists_mult = -0.15
-			building_employment_engineers_mult = -0.15
-			building_employment_clerks_mult = -0.15
+			
+			building_input_professional_services_add = 3
+			
+			building_employment_machinists_add = -1500
 		}
 		
 	}
@@ -128,35 +86,21 @@ pm_automation_4_building_infrastructure = {
 	texture = "gfx/interface/icons/production_method_icons/assembly_lines.dds"
 
 	unlocking_technologies = {
-		tech_energy_infrastructure_4
+		tech_manufacturing_4
 	}
 	
 	pollution_generation = 12
 
 	building_modifiers = {
 	
-		#More productivity
-		unscaled = {
-			building_throughput_mult = 0.20
-			building_output_mult = 0.20
-		}
-	
-		#More electricity required
+		#Less workers = more productivity
 		workforce_scaled = {
-			building_input_computers_add = 20
-			building_input_industrial_robots_add = 20
-			#building_input_refined_oil_add = 20
-			#building_input_transportation_add = 20
+			building_input_industrial_robots_add = 4
 			building_input_intellectual_property_add = 4
-		}
-	
-		#Less employees required
-		unscaled = {
-			building_employment_laborers_mult = -0.20
-			building_employment_machinists_mult = -0.20
-			building_employment_capitalists_mult = -0.20
-			building_employment_engineers_mult = -0.20
-			building_employment_clerks_mult = -0.20
+			
+			building_input_professional_services_add = 4
+			
+			building_employment_machinists_add = -2000
 		}
 		
 	}
@@ -167,35 +111,21 @@ pm_automation_5_building_infrastructure = {
 	texture = "gfx/interface/icons/production_method_icons/assembly_lines.dds"
 
 	unlocking_technologies = {
-		tech_energy_infrastructure_5
+		tech_manufacturing_5
 	}
 	
 	pollution_generation = 15
 
 	building_modifiers = {
 	
-		#More productivity
-		unscaled = {
-			building_throughput_mult = 0.25
-			building_output_mult = 0.25
-		}
-	
-		#More electricity required
+		#Less workers = more productivity
 		workforce_scaled = {
-			building_input_computers_add = 25
-			building_input_industrial_robots_add = 25
-			#building_input_refined_oil_add = 25
-			#building_input_transportation_add = 25
+			building_input_industrial_robots_add = 5
 			building_input_intellectual_property_add = 5
-		}
-	
-		#Less employees required
-		unscaled = {
-			building_employment_laborers_mult = -0.25
-			building_employment_machinists_mult = -0.25
-			building_employment_capitalists_mult = -0.25
-			building_employment_engineers_mult = -0.25
-			building_employment_clerks_mult = -0.25
+			
+			building_input_professional_services_add = 5
+			
+			building_employment_machinists_add = -2500
 		}
 		
 	}
@@ -206,35 +136,21 @@ pm_automation_6_building_infrastructure = {
 	texture = "gfx/interface/icons/production_method_icons/assembly_lines.dds"
 
 	unlocking_technologies = {
-		tech_energy_infrastructure_6
+		tech_manufacturing_6
 	}
 	
 	pollution_generation = 18
 
 	building_modifiers = {
 	
-		#More productivity
-		unscaled = {
-			building_throughput_mult = 0.30
-			building_output_mult = 0.30
-		}
-	
-		#More electricity required
+		#Less workers = more productivity
 		workforce_scaled = {
-			building_input_computers_add = 30
-			building_input_industrial_robots_add = 30
-			#building_input_refined_oil_add = 30
-			#building_input_transportation_add = 30
+			building_input_industrial_robots_add = 6
 			building_input_intellectual_property_add = 6
-		}
-	
-		#Less employees required
-		unscaled = {
-			building_employment_laborers_mult = -0.30
-			building_employment_machinists_mult = -0.30
-			building_employment_capitalists_mult = -0.30
-			building_employment_engineers_mult = -0.30
-			building_employment_clerks_mult = -0.30
+			
+			building_input_professional_services_add = 6
+			
+			building_employment_machinists_add = -3000
 		}
 		
 	}
@@ -245,35 +161,21 @@ pm_automation_7_building_infrastructure = {
 	texture = "gfx/interface/icons/production_method_icons/assembly_lines.dds"
 
 	unlocking_technologies = {
-		tech_energy_infrastructure_7
+		tech_manufacturing_7
 	}
 	
 	pollution_generation = 21
 
 	building_modifiers = {
 	
-		#More productivity
-		unscaled = {
-			building_throughput_mult = 0.35
-			building_output_mult = 0.35
-		}
-	
-		#More electricity required
+		#Less workers = more productivity
 		workforce_scaled = {
-			building_input_computers_add = 35
-			building_input_industrial_robots_add = 35
-			#building_input_refined_oil_add = 35
-			#building_input_transportation_add = 35
+			building_input_industrial_robots_add = 7
 			building_input_intellectual_property_add = 7
-		}
-	
-		#Less employees required
-		unscaled = {
-			building_employment_laborers_mult = -0.35
-			building_employment_machinists_mult = -0.35
-			building_employment_capitalists_mult = -0.35
-			building_employment_engineers_mult = -0.35
-			building_employment_clerks_mult = -0.35
+			
+			building_input_professional_services_add = 7
+			
+			building_employment_machinists_add = -3500
 		}
 		
 	}
@@ -284,35 +186,21 @@ pm_automation_8_building_infrastructure = {
 	texture = "gfx/interface/icons/production_method_icons/assembly_lines.dds"
 
 	unlocking_technologies = {
-		tech_energy_infrastructure_8
+		tech_manufacturing_8
 	}
 	
 	pollution_generation = 24
 
 	building_modifiers = {
 	
-		#More productivity
-		unscaled = {
-			building_throughput_mult = 0.40
-			building_output_mult = 0.40
-		}
-	
-		#More electricity required
+		#Less workers = more productivity
 		workforce_scaled = {
-			building_input_computers_add = 40
-			building_input_industrial_robots_add = 40
-			#building_input_refined_oil_add = 40
-			#building_input_transportation_add = 40
+			building_input_industrial_robots_add = 8
 			building_input_intellectual_property_add = 8
-		}
-	
-		#Less employees required
-		unscaled = {
-			building_employment_laborers_mult = -0.40
-			building_employment_machinists_mult = -0.40
-			building_employment_capitalists_mult = -0.40
-			building_employment_engineers_mult = -0.40
-			building_employment_clerks_mult = -0.40
+			
+			building_input_professional_services_add = 8
+			
+			building_employment_machinists_add = -4000
 		}
 		
 	}
@@ -323,35 +211,21 @@ pm_automation_9_building_infrastructure = {
 	texture = "gfx/interface/icons/production_method_icons/assembly_lines.dds"
 
 	unlocking_technologies = {
-		tech_energy_infrastructure_9
+		tech_manufacturing_9
 	}
 	
 	pollution_generation = 27
 
 	building_modifiers = {
 	
-		#More productivity
-		unscaled = {
-			building_throughput_mult = 0.45
-			building_output_mult = 0.45
-		}
-	
-		#More electricity required
+		#Less workers = more productivity
 		workforce_scaled = {
-			building_input_computers_add = 45
-			building_input_industrial_robots_add = 45
-			#building_input_refined_oil_add = 45
-			#building_input_transportation_add = 45
+			building_input_industrial_robots_add = 9
 			building_input_intellectual_property_add = 9
-		}
-	
-		#Less employees required
-		unscaled = {
-			building_employment_laborers_mult = -0.45
-			building_employment_machinists_mult = -0.45
-			building_employment_capitalists_mult = -0.45
-			building_employment_engineers_mult = -0.45
-			building_employment_clerks_mult = -0.45
+			
+			building_input_professional_services_add = 9
+			
+			building_employment_machinists_add = -4500
 		}
 		
 	}
@@ -362,35 +236,21 @@ pm_automation_10_building_infrastructure = {
 	texture = "gfx/interface/icons/production_method_icons/assembly_lines.dds"
 
 	unlocking_technologies = {
-		tech_energy_infrastructure_10
+		tech_manufacturing_10
 	}
 	
 	pollution_generation = 30
 
 	building_modifiers = {
 	
-		#More productivity
-		unscaled = {
-			building_throughput_mult = 0.50
-			building_output_mult = 0.50
-		}
-	
-		#More electricity required
+		#Less workers = more productivity
 		workforce_scaled = {
-			building_input_computers_add = 50
-			building_input_industrial_robots_add = 50
-			#building_input_refined_oil_add = 50
-			#building_input_transportation_add = 50
+			building_input_industrial_robots_add = 10
 			building_input_intellectual_property_add = 10
-		}
-	
-		#Less employees required
-		unscaled = {
-			building_employment_laborers_mult = -0.50
-			building_employment_machinists_mult = -0.50
-			building_employment_capitalists_mult = -0.50
-			building_employment_engineers_mult = -0.50
-			building_employment_clerks_mult = -0.50
+			
+			building_input_professional_services_add = 10
+			
+			building_employment_machinists_add = -5000
 		}
 		
 	}

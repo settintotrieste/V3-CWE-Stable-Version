@@ -1,0 +1,117 @@
+namespace = dominion_clean_up_system
+
+#Convert certain subjects into satellite states
+dominion_clean_up_system.1 = {
+	type = country_event
+
+	title = dominion_clean_up_system.1.t
+	desc = dominion_clean_up_system.1.d
+	flavor = dominion_clean_up_system.1.f
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_ruler_speaking_to_people.bk2"
+	}
+
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/leader_speaking_to_a_group_of_people"
+
+	duration = 1
+
+	trigger = {
+	
+		#THIS has a dominion
+		any_country = {
+			is_subject_type = subject_type_dominion
+			has_diplomatic_pact = { who = ROOT type = dominion is_initiator = no }
+		}
+		
+		#THIS is not a monarchy
+		NOT = { is_a_monarchy = yes }
+		
+		#Prevent event from firing 2 times at the same time
+		NOT = { has_variable = dominion_clean_up_system }
+		
+	}
+
+	immediate = {
+	
+		#THIS becomes a satellite state
+		random_country = {
+			limit = { 
+				has_subject_relation_with = ROOT
+				is_subject_type = subject_type_dominion
+			}
+			save_scope_as = dominion_to_satellite_country
+			save_scope_as = target_country_indy_scope
+		}
+		
+		#Prevent event from firing 2 times at the same time
+		set_variable = dominion_clean_up_system
+		
+	}
+
+	option = {
+		name = dominion_clean_up_system_option #Unfortunate
+		default_option = yes
+		
+		#Turn subject into a satellite state
+		custom_tooltip = {
+			text = DIPLO_ACTION_CREATE_SATELLITE_SUBJECT_TYPE
+			remove_diplomatic_pact = {
+				country = scope:dominion_to_satellite_country
+				type = dominion
+			}
+			create_diplomatic_pact = {
+				country = scope:dominion_to_satellite_country
+				type = satellite
+			}
+		}
+		
+		custom_tooltip = {
+			text = demand_change_puppet_government_2.tt
+			#Legislature laws
+			if = { 
+				limit = { has_law = law_type:law_appointed_legislature scope:dominion_to_satellite_country = { NOT = { has_law = law_type:law_appointed_legislature } } }
+				scope:dominion_to_satellite_country = { activate_law = law_type:law_appointed_legislature }
+			}
+			if = { 
+				limit = { has_law = law_type:law_technocratic_legislature scope:dominion_to_satellite_country = { NOT = { has_law = law_type:law_technocratic_legislature } } }
+				scope:dominion_to_satellite_country = { activate_law = law_type:law_technocratic_legislature }
+			}
+			if = { 
+				limit = { has_law = law_type:law_democratic_legislature scope:dominion_to_satellite_country = { NOT = { has_law = law_type:law_democratic_legislature } } }
+				scope:dominion_to_satellite_country = { activate_law = law_type:law_democratic_legislature }
+			}
+			
+			#Head of State laws
+			if = { 
+				limit = { has_law = law_type:law_HOS_monarch scope:dominion_to_satellite_country = { NOT = { has_law = law_type:law_HOS_monarch } } }
+				scope:dominion_to_satellite_country = { activate_law = law_type:law_HOS_monarch }
+			}
+			if = { 
+				limit = { has_law = law_type:law_HOS_president scope:dominion_to_satellite_country = { NOT = { has_law = law_type:law_HOS_president } } }
+				scope:dominion_to_satellite_country = { activate_law = law_type:law_HOS_president }
+			}
+			if = { 
+				limit = { has_law = law_type:law_HOS_religious_leader scope:dominion_to_satellite_country = { NOT = { has_law = law_type:law_HOS_religious_leader } } }
+				scope:dominion_to_satellite_country = { activate_law = law_type:law_HOS_religious_leader }
+			}
+			if = { 
+				limit = { has_law = law_type:law_HOS_nationalist_leader scope:dominion_to_satellite_country = { NOT = { has_law = law_type:law_HOS_nationalist_leader } } }
+				scope:dominion_to_satellite_country = { activate_law = law_type:law_HOS_nationalist_leader }
+			}
+			if = { 
+				limit = { has_law = law_type:law_HOS_communist_leader scope:dominion_to_satellite_country = { NOT = { has_law = law_type:law_HOS_communist_leader } } }
+				scope:dominion_to_satellite_country = { activate_law = law_type:law_HOS_communist_leader }
+			}
+		}
+		
+		#Event can fire again once option is selected
+		remove_variable = dominion_clean_up_system
+		
+	}
+	
+	
+}

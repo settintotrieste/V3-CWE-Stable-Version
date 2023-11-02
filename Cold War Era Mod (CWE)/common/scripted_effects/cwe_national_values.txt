@@ -1,0 +1,68 @@
+determine_national_value = {
+
+	#Order National Value
+	if = {
+		limit = {
+			NOT = { has_modifier = order_national_value }
+			any_interest_group = {
+				ig_clout > 0.5
+				OR = { 
+					has_ideology = ideology:ideology_totalitarian
+					has_ideology = ideology:ideology_authoritarian
+				}
+			}
+		}
+		add_modifier = { name = order_national_value }
+		remove_modifier = equality_national_value
+		remove_modifier = liberty_national_value
+		
+		post_notification = national_value_updated
+	}
+	
+	#Equality National Value
+	if = {
+		limit = {
+			NOT = { has_modifier = equality_national_value }
+			any_interest_group = {
+				ig_clout > 0.5
+				has_ideology = ideology:ideology_communitarian
+			}
+		}
+		remove_modifier = order_national_value
+		add_modifier = { name = equality_national_value }
+		remove_modifier = liberty_national_value
+		
+		post_notification = national_value_updated
+	}
+	
+	#Liberty National Value
+	if = {
+		limit = {
+			NOT = { has_modifier = liberty_national_value }
+			any_interest_group = {
+				ig_clout > 0.5
+				has_ideology = ideology:ideology_individualist
+			}
+		}
+		remove_modifier = order_national_value
+		remove_modifier = equality_national_value
+		add_modifier = { name = liberty_national_value }
+		
+		post_notification = national_value_updated
+	}
+	
+	#Default is Order
+	if = {
+		limit = { 
+			NOR = { 
+				has_modifier = order_national_value
+				has_modifier = equality_national_value
+				has_modifier = liberty_national_value
+			}
+		}
+		add_modifier = { name = order_national_value }
+		
+		post_notification = national_value_updated
+	}
+
+}

@@ -28,15 +28,15 @@
 	}
 	
 	pact = {	
-		cost = 100
+		cost = 10
 	
 		is_two_sided_pact = no
 		show_in_outliner = yes
 		
 		relations_progress_per_day = 3 # At 100, +1 relations
-		relations_improvement_max = 80
+		relations_improvement_max = 100
 		
-		income_transfer = 0.50
+		income_transfer = 0.25
 		recipient_gets_income_transfer = yes
 		income_transfer_based_on_recipient = yes
 		

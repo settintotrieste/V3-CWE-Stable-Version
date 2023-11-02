@@ -1,0 +1,93 @@
+﻿je_upper_house = {
+	icon = "gfx/interface/icons/law_icons/parliamentary_republic.dds"
+
+	scripted_button = je_abolish_filibuster_button
+	scripted_button = je_seek_bipartisanship_button
+
+	possible = {
+		
+		OR = { 
+			has_an_elected_parliament = yes
+			has_law = law_type:law_federal_state
+		}
+		
+		has_law = law_type:law_bicameralism
+		
+		NOT = { has_law = law_type:law_executive_supremacy }
+	}
+
+	immediate = {
+		
+		#Filibuster rule for US Senate
+		if = {
+			limit = { c:USA ?= this }
+			set_variable = upper_house_filibuster_rule
+		}
+		
+		set_variable = {
+			name = upper_house_size_var
+			value = 0
+		}
+		set_variable = {
+			name = pro_government_senators_var
+			value = 0
+		}
+		
+		#Set up
+		calculate_upper_house_composition = yes
+		
+		#Initial numbers
+		set_variable = { name = upper_house_upper_limit_var value = 0.25 }
+		set_variable = { name = upper_house_lower_limit_var value = 0.15 }
+		set_variable = { name = upper_house_upper_limit_var_display value = root.var:upper_house_upper_limit_var }
+		change_variable = { name = upper_house_upper_limit_var_display multiply = 100 }
+		set_variable = { name = upper_house_lower_limit_var_display value = root.var:upper_house_lower_limit_var }
+		change_variable = { name = upper_house_lower_limit_var_display multiply = 100 }
+		
+	}
+	
+	fail = {
+	
+		OR = { 
+			NOR = { 
+				has_an_elected_parliament = yes
+				has_law = law_type:law_federal_state
+			}
+			NOT = { has_law = law_type:law_bicameralism }
+			has_law = law_type:law_executive_supremacy
+		}
+	
+	}
+	
+	on_fail = {
+		
+		#Reset upper_house size
+		remove_variable = upper_house_size_var
+		remove_variable = pro_government_senators_var
+		remove_variable = upper_house_majority_var
+		
+		remove_variable = upper_house_has_simple_majority
+		remove_variable = upper_house_has_filibuster_majority
+		remove_variable = upper_house_has_super_majority
+		
+	}
+
+	on_yearly_pulse = {
+		
+		#Compute UH every year
+		effect = {
+		
+			calculate_upper_house_composition = yes
+			
+		}
+		
+	}
+
+	weight = 1
+
+	should_be_pinned_by_default = no
+
+	transferable = no
+
+	progressbar = no
+}

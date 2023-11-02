@@ -152,6 +152,18 @@
 				size = 20632
 			}
 		}
+		region_state:GBR = {
+			create_pop = {
+				culture = egyptian
+				size = 10000
+			}
+		}
+		region_state:FRA = {
+			create_pop = {
+				culture = egyptian
+				size = 10000
+			}
+		}
 	}
 	s:STATE_ERITREA = {
 		region_state:GBR = {
@@ -430,16 +442,18 @@
 				size = 315768
 			}
 			create_pop = {
-				culture = saharan
-				size = 166652
-			}
-			create_pop = {
 				culture = moroccan
 				size = 740427
 			}
 			create_pop = {
 				culture = moroccan
 				size = 63555
+			}
+		}
+		region_state:SPA = {
+			create_pop = {
+				culture = saharan
+				size = 166652
 			}
 		}
 	}
@@ -540,7 +554,7 @@
 				size = 3523
 			}
 			create_pop = {
-				culture = south_italian
+				culture = italian
 				size = 190963
 			}
 			create_pop = {
@@ -555,6 +569,8 @@
 				culture = tunisian
 				size = 236603
 			}
+		}
+		region_state:FRA = {
 			create_pop = {
 				culture = tunisian
 				size = 58815

@@ -18,8 +18,9 @@ grant_command_to_ruler = {
 
 	potential = {
 		is_ruler = yes
-		NOT = {
+		NOR = {
 			has_role = general
+			has_role = admiral
 		}
 		owner = scope:actor
 	}
@@ -39,6 +40,12 @@ grant_command_to_ruler = {
 
 	ai_chance = {
 		value = 5
+		if = {
+			limit = {
+				NOT = { is_interest_group_type = ig_armed_forces }
+			}
+			add = -50
+		}
 		if = {
 			limit = {
 				NOT = {
@@ -64,9 +71,9 @@ grant_command_to_ruler = {
 		}
 		if = {
 			limit = {
-				NOT = { is_interest_group_type = ig_armed_forces }
+				is_interest_group_type = ig_armed_forces
 			}
-			add = -50
+			add = 25
 		}
 		if = {
 			limit = {
@@ -151,7 +158,7 @@ grant_leadership_to_agitator = {
 		}
 		
 		# Foreigners cannot be IG leaders unless the country is multicultural
-		owner = {
+		scope:actor ?= {
 			has_law = law_type:law_multicultural
 		}
 		
@@ -161,9 +168,13 @@ grant_leadership_to_agitator = {
 				culture_is_discriminated_in = scope:actor
 			}
 		}
+		
 	}
 
 	effect = {
+		
+		convert_agitator_ideology_to_IG_ideology = yes
+		
 		remove_character_role = agitator
 		add_character_role = politician
 		custom_tooltip = {
@@ -229,7 +240,7 @@ grant_command_to_agitator = {
 		exists = owner.capital.land_hq
 		
 		#Foreigners cannot be military leaders unless the country is multicultural
-		owner = {
+		scope:actor ?= {
 			has_law = law_type:law_multicultural
 		}
 		
@@ -239,6 +250,7 @@ grant_command_to_agitator = {
 				culture_is_discriminated_in = scope:actor
 			}
 		}
+		
 	}
 
 	effect = {
@@ -299,7 +311,7 @@ marry_ruler_or_heir = {
 			is_heir = yes
 		}
 		scope:actor ?= {
-			has_law = law_type:law_HOS_monarch OR = { has_law = law_type:law_HOG_none has_law = law_type:law_HOG_president_prime_minister }
+			is_a_regime_monarchy = yes
 			religion = {
 				has_discrimination_trait = christian
 			}
@@ -312,7 +324,7 @@ marry_ruler_or_heir = {
 	possible = {
 		any_country = {
 			NOT = { THIS = scope:actor }
-			has_law = law_type:law_HOS_monarch OR = { has_law = law_type:law_HOG_none has_law = law_type:law_HOG_president_prime_minister }
+			is_a_regime_monarchy = yes
 			religion = scope:actor.religion
 			ruler = {
 				age > 36
@@ -343,7 +355,7 @@ abdicate_monarch = {
 		owner = scope:actor
 		is_ruler = yes
 		owner = {
-			has_law = law_type:law_HOS_monarch OR = { has_law = law_type:law_HOG_none has_law = law_type:law_HOG_president_prime_minister }
+			is_a_regime_monarchy = yes
 		}
 		exists = owner.heir
 	}
@@ -426,25 +438,33 @@ exile_character = {
 	clicksound = "event:/SFX/DLC/1.3_ip1/UI/exile_character"
 
 	potential = {
+	
 		is_in_exile_pool = no
 		is_ruler = no
 		is_heir = no
+		
 		# Cannot exile pure commanders, we have the retire interaction for that
 		OR = {
 			has_role = politician
 			has_role = agitator
 		}
+		
 	}
 
 	show_requirements = yes
 
 	possible = {
+	
 		owner = {
-			NOR = {
-				has_law = law_type:law_full_free_speech
-				has_law = law_type:law_closed_borders
+			OR = { 
+				has_law = law_type:law_outlawed_dissent
+				AND = { 
+					is_a_dictatorship = yes
+					NOT = { has_law = law_type:law_full_free_speech }
+				}
 			}
 		}
+		
 		OR = {
 			interest_group = {
 				is_in_government = no
@@ -453,6 +473,23 @@ exile_character = {
 			}
 			has_role = agitator
 		}
+		
+		#Cannot exile cabinet ministers, must fire them first
+		custom_tooltip = {
+			text = not_a_cabinet_minister.tt
+			NOT = { has_modifier = cabinet_minister }
+		}
+		
+		owner = {
+			exists = ruler
+			ruler = {
+				OR = {
+					has_ideology = ideology:ideology_autocratic
+					has_ideology = ideology:ideology_power_hungry
+				}
+			}
+		}
+		
 	}
 
 	effect = {
@@ -520,7 +557,7 @@ exile_character = {
 		# Standard radicals from having Right of Assembly
 		if = {
 			limit = {
-				owner = { has_law = law_type:law_type:law_limited_free_speech }
+				owner = { has_law = law_type:law_limited_free_speech }
 			}
 			owner = {
 				add_radicals = {
@@ -542,12 +579,19 @@ exile_character = {
 			}
 		}
 		# Boring characters should be made interesting when being exiled
-		if = {
-			limit = {
-				has_ideology = ideology:ideology:ideology_moderate
-			}
-			adopt_random_antigovernment_ideology = yes
-		}
+		#if = {
+		#	limit = {
+		#		has_ideology = ideology:ideology_elitist
+		#	}
+		#	random_list = { 
+		#		1 = {
+		#			set_ideology = ideology:ideology_power_hungry
+		#		}
+		#		1 = {
+		#			set_ideology = ideology:ideology_autocratic
+		#		}
+		#	}
+		#}
 		hidden_effect = {
 			if = {
 				limit = {
@@ -556,6 +600,12 @@ exile_character = {
 				add_modifier = {
 					name = in_exile_modifier
 				}
+				every_country = {
+					limit = {
+						has_diplomatic_relevance = scope:exiling_country_scope
+					}
+					post_notification = exile_notification
+				}
 			}
 			else = {
 				add_modifier = {
@@ -563,13 +613,8 @@ exile_character = {
 					multiplier = 3
 				}
 			}
-			every_country = {
-				limit = {
-					has_interest_marker_in_region = scope:exiling_country_scope.capital.region
-				}
-				post_notification = exile_notification
-			}
 		}
+		convert_IG_ideology_to_agitator_ideology = yes
 		custom_tooltip = {
 			text = exile_dissident_tt
 			exile_character_with_martyrdom = yes
@@ -581,6 +626,12 @@ exile_character = {
 
 	ai_chance = {
 		value = -50
+		if = {
+			limit = {
+				is_historical = yes
+			}
+			add = -1000
+		}
 		if = {
 			limit = {
 				interest_group = {
@@ -655,8 +706,59 @@ exile_character = {
 					has_law = law_type:law_limited_free_speech
 				}			
 			}
+			add = -10
+		}
+		if = {
+			limit = {
+				scope:actor ?= {
+					has_law = law_type:law_full_free_speech
+				}			
+			}
 			add = -20
 		}
+	}
+}
+
+demobilize_general = {
+	clicksound = "event:/SFX/DLC/1.3_ip1/UI/exile_character"
+
+	potential = {
+		has_role = general
+		is_mobilized = yes
+	}
+
+	show_requirements = yes
+
+	possible = {
+		custom_tooltip = {
+			text = demobilize_general_tt
+			has_variable = num_months_mobilized
+			var:num_months_mobilized >= num_months_before_permit_demobilization
+		}
+		commander_is_available = yes
+	}
+
+	effect = {
+		owner = {
+			add_modifier = {
+				name = early_demobilization
+				multiplier = {	# round down to 100s
+					value = root.mobilization_cost
+					divide = 100
+					round = yes
+					multiply = 100
+				}
+				months = num_months_mobilization_cost_after_early_demobilization
+				is_decaying = yes
+			}
+		}
+		demobilize = yes
+	}
+	
+	show_confirmation_box = yes
+	
+	ai_chance = {
+		value = 0
 	}
 }
 
@@ -684,7 +786,7 @@ invite_exile = {
 		        religion = scope:actor.religion
 		    }
 		}
-		# If you have state religion, exiles must hav eyour religion
+		# If you have state religion, exiles must have your religion
 		trigger_if = {
 			limit = {
 				NOT = { is_interest_group_type = ig_devout }
@@ -715,27 +817,6 @@ invite_exile = {
 		custom_tooltip = invite_exile_start_join_movement_effect
 		hidden_effect = {
 			remove_modifier = in_exile_modifier
-		}
-		hidden_effect = {
-			if = {
-				limit = {
-					has_variable = mazzini_var
-					has_dlc_feature = voice_of_the_people_content
-				}
-				scope:actor = {
-					trigger_event = { id = historical_agitators.7 days = 3 }
-				}
-			}
-			if = {
-				limit = {
-					has_variable = garibaldi_var
-					has_dlc_feature = voice_of_the_people_content
-				}
-				set_variable = {
-					name = garibaldi_cooldown_var
-					months = short_modifier_time
-				}
-			}
 		}
 	}
 
@@ -819,7 +900,7 @@ retire_commander = {
 		interest_group = {
 			is_insurrectionary = no
 		}
-		is_busy = no
+		commander_is_available = yes
 	}
 
 	effect = {

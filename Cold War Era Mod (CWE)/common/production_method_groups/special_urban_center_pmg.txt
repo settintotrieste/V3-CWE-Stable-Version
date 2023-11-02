@@ -59,7 +59,7 @@ pmg_city_transport_urban_center = {
 
 pmg_city_greeness_urban_center = {
 	texture = "gfx/interface/icons/generic_icons/mixed_icon_refining.dds"
-	ai_selection = most_productive
+	#ai_selection = most_profitable
 	production_methods = {
 		pm_city_greeness_0
 		pm_city_greeness_1
@@ -74,6 +74,7 @@ pmg_city_greeness_urban_center = {
 
 pmg_city_clergy_urban_center = {
 	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	ai_selection = most_productive
 	production_methods = {
 		pm_yes_city_clergy
 		pm_no_city_clergy

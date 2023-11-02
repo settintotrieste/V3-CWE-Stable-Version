@@ -1,28 +1,100 @@
 namespace = ruling_party_ideology
 
+#Set ideology for voting systems (If ruler has no party)
 ruling_party_ideology.1 = {
 	type = country_event
 	hidden = yes
 
 	trigger = {
 		
+		OR = { 
+		
+			AND = { 
+				country_has_voting_franchise = yes
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_party = no
+				}
+			}
+			
+			AND = {
+				any_interest_group = {
+					exists = leader leader = { is_ruler = no }
+					is_interest_group_type = ig_industrialists
+				}
+				ruler = { is_interest_group_type = ig_industrialists }
+			}
+			AND = {
+				any_interest_group = {
+					exists = leader leader = { is_ruler = no }
+					is_interest_group_type = ig_petty_bourgeoisie
+				}
+				ruler = { is_interest_group_type = ig_petty_bourgeoisie }
+			}
+			AND = {
+				any_interest_group = {
+					exists = leader leader = { is_ruler = no }
+					is_interest_group_type = ig_trade_unions
+				}
+				ruler = { is_interest_group_type = ig_trade_unions }
+			}
+			AND = {
+				any_interest_group = {
+					exists = leader leader = { is_ruler = no }
+					is_interest_group_type = ig_landowners
+				}
+				ruler = { is_interest_group_type = ig_landowners }
+			}
+			AND = {
+				any_interest_group = {
+					exists = leader leader = { is_ruler = no }
+					is_interest_group_type = ig_devout
+				}
+				ruler = { is_interest_group_type = ig_devout }
+			}
+			AND = {
+				any_interest_group = {
+					exists = leader leader = { is_ruler = no }
+					is_interest_group_type = ig_rural_folk
+				}
+				ruler = { is_interest_group_type = ig_rural_folk }
+			}
+			AND = {
+				any_interest_group = {
+					exists = leader leader = { is_ruler = no }
+					is_interest_group_type = ig_bureaucrats
+				}
+				ruler = { is_interest_group_type = ig_bureaucrats }
+			}
+			AND = {
+				any_interest_group = {
+					exists = leader leader = { is_ruler = no }
+					is_interest_group_type = ig_armed_forces
+				}
+				ruler = { is_interest_group_type = ig_armed_forces }
+			}
+			
+		}
+		
 		OR = {
 		
 			#Communist
 			AND = { 
+				exists = ruler
 				ruler = { OR = { has_ideology = ideology:ideology_autocratic has_ideology = ideology:ideology_power_hungry } }
 				any_interest_group = { 
-					is_in_government = yes ig_government_power_share > 0.5 
+					is_in_government = yes is_strongest_ig_in_government = yes
 					has_ideology = ideology:ideology_far_left_economy 
 				}
 				NOT = { has_modifier = communist_ruling_party_ideology }
 			}
 			
 			#Market Socialist
-			AND = { 
+			AND = {
+				exists = ruler
 				ruler = { has_ideology = ideology:ideology_autocratic }
 				any_interest_group = { 
-					is_in_government = yes ig_government_power_share > 0.5 
+					is_in_government = yes is_strongest_ig_in_government = yes
 					has_ideology = ideology:ideology_left_economy
 				}
 				NOT = { has_modifier = market_socialist_ruling_party_ideology }
@@ -30,9 +102,10 @@ ruling_party_ideology.1 = {
 			
 			#Socialist
 			AND = { 
+				exists = ruler
 				ruler = { has_ideology = ideology:ideology_power_hungry }
 				any_interest_group = { 
-					is_in_government = yes ig_government_power_share > 0.5 
+					is_in_government = yes is_strongest_ig_in_government = yes
 					has_ideology = ideology:ideology_left_economy
 				}
 				NOT = { has_modifier = socialist_ruling_party_ideology }
@@ -40,9 +113,10 @@ ruling_party_ideology.1 = {
 			
 			#Social Democratic
 			AND = { 
+				exists = ruler
 				ruler = { OR = { has_ideology = ideology:ideology_elitist has_ideology = ideology:ideology_democratic } }
 				any_interest_group = { 
-					is_in_government = yes ig_government_power_share > 0.5 
+					is_in_government = yes is_strongest_ig_in_government = yes
 					OR = { has_ideology = ideology:ideology_far_left_economy has_ideology = ideology:ideology_left_economy }
 				}
 				NOT = { has_modifier = social_democratic_ruling_party_ideology }
@@ -50,9 +124,10 @@ ruling_party_ideology.1 = {
 			
 			#Progressive
 			AND = { 
+				exists = ruler
 				ruler = { has_ideology = ideology:ideology_liberal }
 				any_interest_group = { 
-					is_in_government = yes ig_government_power_share > 0.5 
+					is_in_government = yes is_strongest_ig_in_government = yes
 					OR = { has_ideology = ideology:ideology_far_left_economy has_ideology = ideology:ideology_left_economy }
 				}
 				NOT = { has_modifier = progressive_ruling_party_ideology }
@@ -60,9 +135,10 @@ ruling_party_ideology.1 = {
 			
 			#Traditionalist
 			AND = { 
-				ruler = { has_ideology = ideology:ideology_autocratic }
+				exists = ruler
+				ruler = { OR = { has_ideology = ideology:ideology_autocratic has_ideology = ideology:ideology_power_hungry has_ideology = ideology:ideology_elitist } }
 				any_interest_group = { 
-					is_in_government = yes ig_government_power_share > 0.5 
+					is_in_government = yes is_strongest_ig_in_government = yes
 					has_ideology = ideology:ideology_centre_economy
 					has_ideology = ideology:ideology_traditionalist
 					NOT = { has_ideology = ideology:ideology_militarist }
@@ -72,9 +148,10 @@ ruling_party_ideology.1 = {
 			
 			#Fascist
 			AND = { 
-				ruler = { has_ideology = ideology:ideology_autocratic }
+				exists = ruler
+				ruler = { OR = { has_ideology = ideology:ideology_autocratic has_ideology = ideology:ideology_power_hungry has_ideology = ideology:ideology_elitist } }
 				any_interest_group = { 
-					is_in_government = yes ig_government_power_share > 0.5 
+					is_in_government = yes is_strongest_ig_in_government = yes
 					has_ideology = ideology:ideology_centre_economy
 					NOT = { has_ideology = ideology:ideology_traditionalist }
 					has_ideology = ideology:ideology_militarist
@@ -84,9 +161,10 @@ ruling_party_ideology.1 = {
 			
 			#Conservative
 			AND = { 
+				exists = ruler
 				ruler = { OR = { has_ideology = ideology:ideology_autocratic has_ideology = ideology:ideology_power_hungry has_ideology = ideology:ideology_elitist } }
 				any_interest_group = { 
-					is_in_government = yes ig_government_power_share > 0.5 
+					is_in_government = yes is_strongest_ig_in_government = yes
 					OR = { has_ideology = ideology:ideology_far_right_economy has_ideology = ideology:ideology_right_economy }
 				}
 				NOT = { has_modifier = conservative_ruling_party_ideology }
@@ -94,9 +172,10 @@ ruling_party_ideology.1 = {
 			
 			#Liberal
 			AND = { 
+				exists = ruler
 				ruler = { has_ideology = ideology:ideology_democratic }
 				any_interest_group = { 
-					is_in_government = yes ig_government_power_share > 0.5 
+					is_in_government = yes is_strongest_ig_in_government = yes
 					OR = { has_ideology = ideology:ideology_far_right_economy has_ideology = ideology:ideology_right_economy }
 				}
 				NOT = { has_modifier = liberal_ruling_party_ideology }
@@ -104,9 +183,10 @@ ruling_party_ideology.1 = {
 			
 			#Libertarian
 			AND = { 
+				exists = ruler
 				ruler = { has_ideology = ideology:ideology_liberal }
 				any_interest_group = { 
-					is_in_government = yes ig_government_power_share > 0.5 
+					is_in_government = yes is_strongest_ig_in_government = yes
 					has_ideology = ideology:ideology_far_right_economy
 				}
 				NOT = { has_modifier = libertarian_ruling_party_ideology }
@@ -153,7 +233,7 @@ ruling_party_ideology.1 = {
 			limit = { 
 				ruler = { OR = { has_ideology = ideology:ideology_autocratic has_ideology = ideology:ideology_power_hungry } }
 				any_interest_group = { 
-					is_in_government = yes ig_government_power_share > 0.5 
+					is_in_government = yes is_strongest_ig_in_government = yes
 					has_ideology = ideology:ideology_far_left_economy 
 				}
 			}
@@ -163,7 +243,7 @@ ruling_party_ideology.1 = {
 			limit = { 
 				ruler = { has_ideology = ideology:ideology_autocratic }
 				any_interest_group = { 
-					is_in_government = yes ig_government_power_share > 0.5 
+					is_in_government = yes is_strongest_ig_in_government = yes
 					has_ideology = ideology:ideology_left_economy
 				}
 			}
@@ -173,7 +253,7 @@ ruling_party_ideology.1 = {
 			limit = { 
 				ruler = { has_ideology = ideology:ideology_power_hungry }
 				any_interest_group = { 
-					is_in_government = yes ig_government_power_share > 0.5 
+					is_in_government = yes is_strongest_ig_in_government = yes
 					has_ideology = ideology:ideology_left_economy
 				}
 			}
@@ -183,7 +263,7 @@ ruling_party_ideology.1 = {
 			limit = { 
 				ruler = { OR = { has_ideology = ideology:ideology_elitist has_ideology = ideology:ideology_democratic } }
 				any_interest_group = { 
-					is_in_government = yes ig_government_power_share > 0.5 
+					is_in_government = yes is_strongest_ig_in_government = yes
 					OR = { has_ideology = ideology:ideology_far_left_economy has_ideology = ideology:ideology_left_economy }
 				}
 			}
@@ -193,7 +273,7 @@ ruling_party_ideology.1 = {
 			limit = { 
 				ruler = { has_ideology = ideology:ideology_liberal }
 				any_interest_group = { 
-					is_in_government = yes ig_government_power_share > 0.5 
+					is_in_government = yes is_strongest_ig_in_government = yes
 					OR = { has_ideology = ideology:ideology_far_left_economy has_ideology = ideology:ideology_left_economy }
 				}
 			}
@@ -201,9 +281,9 @@ ruling_party_ideology.1 = {
 		}
 		else_if = {
 			limit = { 
-				ruler = { has_ideology = ideology:ideology_autocratic }
+				ruler = { OR = { has_ideology = ideology:ideology_autocratic has_ideology = ideology:ideology_power_hungry has_ideology = ideology:ideology_elitist } }
 				any_interest_group = { 
-					is_in_government = yes ig_government_power_share > 0.5 
+					is_in_government = yes is_strongest_ig_in_government = yes
 					has_ideology = ideology:ideology_centre_economy
 					has_ideology = ideology:ideology_traditionalist
 					NOT = { has_ideology = ideology:ideology_militarist }
@@ -213,9 +293,9 @@ ruling_party_ideology.1 = {
 		}
 		else_if = {
 			limit = { 
-				ruler = { has_ideology = ideology:ideology_autocratic }
+				ruler = { OR = { has_ideology = ideology:ideology_autocratic has_ideology = ideology:ideology_power_hungry has_ideology = ideology:ideology_elitist } }
 				any_interest_group = { 
-					is_in_government = yes ig_government_power_share > 0.5 
+					is_in_government = yes is_strongest_ig_in_government = yes
 					has_ideology = ideology:ideology_centre_economy
 					NOT = { has_ideology = ideology:ideology_traditionalist }
 					has_ideology = ideology:ideology_militarist
@@ -227,7 +307,7 @@ ruling_party_ideology.1 = {
 			limit = { 
 				ruler = { OR = { has_ideology = ideology:ideology_autocratic has_ideology = ideology:ideology_power_hungry has_ideology = ideology:ideology_elitist } }
 				any_interest_group = { 
-					is_in_government = yes ig_government_power_share > 0.5 
+					is_in_government = yes is_strongest_ig_in_government = yes
 					OR = { has_ideology = ideology:ideology_far_right_economy has_ideology = ideology:ideology_right_economy }
 				}
 			}
@@ -237,7 +317,7 @@ ruling_party_ideology.1 = {
 			limit = { 
 				ruler = { has_ideology = ideology:ideology_democratic }
 				any_interest_group = { 
-					is_in_government = yes ig_government_power_share > 0.5 
+					is_in_government = yes is_strongest_ig_in_government = yes
 					OR = { has_ideology = ideology:ideology_far_right_economy has_ideology = ideology:ideology_right_economy }
 				}
 			}
@@ -247,7 +327,586 @@ ruling_party_ideology.1 = {
 			limit = { 
 				ruler = { has_ideology = ideology:ideology_liberal }
 				any_interest_group = { 
-					is_in_government = yes ig_government_power_share > 0.5 
+					is_in_government = yes is_strongest_ig_in_government = yes
+					has_ideology = ideology:ideology_far_right_economy
+				}
+			}
+			add_modifier = { name = libertarian_ruling_party_ideology }
+		}
+		else = {
+			limit = { 
+				NOR = {
+					has_modifier = communist_ruling_party_ideology
+					has_modifier = market_socialist_ruling_party_ideology
+					has_modifier = socialist_ruling_party_ideology
+					has_modifier = social_democratic_ruling_party_ideology
+					has_modifier = progressive_ruling_party_ideology
+					has_modifier = traditionalist_ruling_party_ideology
+					has_modifier = fascist_ruling_party_ideology
+					has_modifier = conservative_ruling_party_ideology
+					has_modifier = liberal_ruling_party_ideology
+					has_modifier = libertarian_ruling_party_ideology
+				
+					has_modifier = centrist_ruling_party_ideology
+				}
+			}
+			add_modifier = { name = centrist_ruling_party_ideology }
+		}
+		
+	}
+
+}
+
+#Set ideology for voting systems (If ruler has party)
+ruling_party_ideology.2 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		
+		country_has_voting_franchise = yes
+		
+		any_interest_group = {
+			exists = leader leader = { is_ruler = yes }
+			has_party = yes
+		}
+		
+		OR = {
+		
+			#Communist
+			AND = {
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_ideology = ideology:ideology_far_left_economy 
+					has_party = yes
+					party = { is_party_type = communist_party }
+				}
+				NOT = { has_modifier = communist_ruling_party_ideology }
+			}
+			
+			#Market Socialist
+			AND = { 
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_ideology = ideology:ideology_left_economy
+					has_party = yes
+					party = { is_party_type = communist_party }
+				}
+				NOT = { has_modifier = market_socialist_ruling_party_ideology }
+			}
+			
+			#Socialist
+			AND = {
+				exists = ruler
+				ruler = { OR = { has_ideology = ideology:ideology_autocratic has_ideology = ideology:ideology_power_hungry } }
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_party = yes
+					party = { is_party_type = socialist_party }
+				}
+				NOT = { has_modifier = socialist_ruling_party_ideology }
+			}
+			
+			#Social Democratic
+			AND = { 
+				exists = ruler
+				ruler = { OR = { has_ideology = ideology:ideology_elitist has_ideology = ideology:ideology_democratic has_ideology = ideology:ideology_liberal } }
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_party = yes
+					party = { is_party_type = socialist_party }
+				}
+				NOT = { has_modifier = social_democratic_ruling_party_ideology }
+			}
+			
+			#Progressive
+			AND = { 
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_party = yes
+					party = { is_party_type = progressive_party }
+				}
+				NOT = { has_modifier = progressive_ruling_party_ideology }
+			}
+			
+			#Traditionalist
+			AND = { 
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_party = yes
+					party = { is_party_type = traditionalist_party }
+				}
+				NOT = { has_modifier = traditionalist_ruling_party_ideology }
+			}
+			
+			#Fascist
+			AND = { 
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_party = yes
+					party = { is_party_type = fascist_party }
+				}
+				NOT = { has_modifier = fascist_ruling_party_ideology }
+			}
+			
+			#Conservative
+			AND = { 
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_party = yes
+					party = { is_party_type = conservative_party }
+				}
+				NOT = { has_modifier = conservative_ruling_party_ideology }
+			}
+			
+			#Liberal
+			AND = { 
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_party = yes
+					party = { is_party_type = liberal_party }
+				}
+				NOT = { has_modifier = liberal_ruling_party_ideology }
+			}
+			
+			#Libertarian
+			AND = { 
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_party = yes
+					party = { is_party_type = libertarian_party }
+				}
+				NOT = { has_modifier = libertarian_ruling_party_ideology }
+			}
+			
+			#Centrist
+			#Remaining combinations
+			NOR = {
+				has_modifier = communist_ruling_party_ideology
+				has_modifier = market_socialist_ruling_party_ideology
+				has_modifier = socialist_ruling_party_ideology
+				has_modifier = social_democratic_ruling_party_ideology
+				has_modifier = progressive_ruling_party_ideology
+				has_modifier = traditionalist_ruling_party_ideology
+				has_modifier = fascist_ruling_party_ideology
+				has_modifier = conservative_ruling_party_ideology
+				has_modifier = liberal_ruling_party_ideology
+				has_modifier = libertarian_ruling_party_ideology
+				
+				has_modifier = centrist_ruling_party_ideology
+			}
+			
+		}
+		
+	}
+
+	immediate = {
+		
+		#Clear all modifiers
+		remove_modifier = communist_ruling_party_ideology
+		remove_modifier = market_socialist_ruling_party_ideology
+		remove_modifier = socialist_ruling_party_ideology
+		remove_modifier = social_democratic_ruling_party_ideology
+		remove_modifier = progressive_ruling_party_ideology
+		remove_modifier = traditionalist_ruling_party_ideology
+		remove_modifier = fascist_ruling_party_ideology
+		remove_modifier = conservative_ruling_party_ideology
+		remove_modifier = liberal_ruling_party_ideology
+		remove_modifier = libertarian_ruling_party_ideology	
+		remove_modifier = centrist_ruling_party_ideology
+		
+		#Apply correct modifier
+		if = {
+			limit = { 
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_ideology = ideology:ideology_far_left_economy 
+					has_party = yes
+					party = { is_party_type = communist_party }
+				}
+			}
+			add_modifier = { name = communist_ruling_party_ideology }
+		}
+		else_if = {
+			limit = { 
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_ideology = ideology:ideology_left_economy
+					has_party = yes
+					party = { is_party_type = communist_party }
+				}
+			}
+			add_modifier = { name = market_socialist_ruling_party_ideology }
+		}
+		else_if = {
+			limit = { 
+				exists = ruler
+				ruler = { OR = { has_ideology = ideology:ideology_autocratic has_ideology = ideology:ideology_power_hungry } }
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_party = yes
+					party = { is_party_type = socialist_party }
+				}
+			}
+			add_modifier = { name = socialist_ruling_party_ideology }
+		}
+		else_if = {
+			limit = { 
+				exists = ruler
+				ruler = { OR = { has_ideology = ideology:ideology_elitist has_ideology = ideology:ideology_democratic has_ideology = ideology:ideology_liberal } }
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_party = yes
+					party = { is_party_type = socialist_party }
+				}
+			}
+			add_modifier = { name = social_democratic_ruling_party_ideology }
+		}
+		else_if = {
+			limit = { 
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_party = yes
+					party = { is_party_type = progressive_party }
+				}
+			}
+			add_modifier = { name = progressive_ruling_party_ideology }
+		}
+		else_if = {
+			limit = { 
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_party = yes
+					party = { is_party_type = traditionalist_party }
+				}
+			}
+			add_modifier = { name = traditionalist_ruling_party_ideology }
+		}
+		else_if = {
+			limit = { 
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_party = yes
+					party = { is_party_type = fascist_party }
+				}
+			}
+			add_modifier = { name = fascist_ruling_party_ideology }
+		}
+		else_if = {
+			limit = { 
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_party = yes
+					party = { is_party_type = conservative_party }
+				}
+			}
+			add_modifier = { name = conservative_ruling_party_ideology }
+		}
+		else_if = {
+			limit = { 
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_party = yes
+					party = { is_party_type = liberal_party }
+				}
+			}
+			add_modifier = { name = liberal_ruling_party_ideology }
+		}
+		else_if = {
+			limit = { 
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_party = yes
+					party = { is_party_type = libertarian_party }
+				}
+			}
+			add_modifier = { name = libertarian_ruling_party_ideology }
+		}
+		else = {
+			limit = { 
+				NOR = {
+					has_modifier = communist_ruling_party_ideology
+					has_modifier = market_socialist_ruling_party_ideology
+					has_modifier = socialist_ruling_party_ideology
+					has_modifier = social_democratic_ruling_party_ideology
+					has_modifier = progressive_ruling_party_ideology
+					has_modifier = traditionalist_ruling_party_ideology
+					has_modifier = fascist_ruling_party_ideology
+					has_modifier = conservative_ruling_party_ideology
+					has_modifier = liberal_ruling_party_ideology
+					has_modifier = libertarian_ruling_party_ideology
+				
+					has_modifier = centrist_ruling_party_ideology
+				}
+			}
+			add_modifier = { name = centrist_ruling_party_ideology }
+		}
+		
+	}
+
+}
+
+#Set ideology for non voting systems
+ruling_party_ideology.3 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		
+		NOT = { country_has_voting_franchise = yes }
+		
+		OR = {
+		
+			#Communist
+			AND = { 
+				exists = ruler
+				ruler = { OR = { has_ideology = ideology:ideology_autocratic has_ideology = ideology:ideology_power_hungry } }
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_ideology = ideology:ideology_far_left_economy 
+				}
+				NOT = { has_modifier = communist_ruling_party_ideology }
+			}
+			
+			#Market Socialist
+			AND = { 
+				exists = ruler
+				ruler = { has_ideology = ideology:ideology_autocratic }
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_ideology = ideology:ideology_left_economy
+				}
+				NOT = { has_modifier = market_socialist_ruling_party_ideology }
+			}
+			
+			#Socialist
+			AND = {
+				exists = ruler
+				ruler = { has_ideology = ideology:ideology_power_hungry }
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_ideology = ideology:ideology_left_economy
+				}
+				NOT = { has_modifier = socialist_ruling_party_ideology }
+			}
+			
+			#Social Democratic
+			AND = { 
+				exists = ruler
+				ruler = { OR = { has_ideology = ideology:ideology_elitist has_ideology = ideology:ideology_democratic } }
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					OR = { has_ideology = ideology:ideology_far_left_economy has_ideology = ideology:ideology_left_economy }
+				}
+				NOT = { has_modifier = social_democratic_ruling_party_ideology }
+			}
+			
+			#Progressive
+			AND = { 
+				exists = ruler
+				ruler = { has_ideology = ideology:ideology_liberal }
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					OR = { has_ideology = ideology:ideology_far_left_economy has_ideology = ideology:ideology_left_economy }
+				}
+				NOT = { has_modifier = progressive_ruling_party_ideology }
+			}
+			
+			#Traditionalist
+			AND = { 
+				exists = ruler
+				ruler = { OR = { has_ideology = ideology:ideology_autocratic has_ideology = ideology:ideology_power_hungry has_ideology = ideology:ideology_elitist } }
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_ideology = ideology:ideology_centre_economy
+					has_ideology = ideology:ideology_traditionalist
+					NOT = { has_ideology = ideology:ideology_militarist }
+				}
+				NOT = { has_modifier = traditionalist_ruling_party_ideology }
+			}
+			
+			#Fascist
+			AND = { 
+				exists = ruler
+				ruler = { OR = { has_ideology = ideology:ideology_autocratic has_ideology = ideology:ideology_power_hungry has_ideology = ideology:ideology_elitist } }
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_ideology = ideology:ideology_centre_economy
+					NOT = { has_ideology = ideology:ideology_traditionalist }
+					has_ideology = ideology:ideology_militarist
+				}
+				NOT = { has_modifier = fascist_ruling_party_ideology }
+			}
+			
+			#Conservative
+			AND = { 
+				exists = ruler
+				ruler = { OR = { has_ideology = ideology:ideology_autocratic has_ideology = ideology:ideology_power_hungry has_ideology = ideology:ideology_elitist } }
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					OR = { has_ideology = ideology:ideology_far_right_economy has_ideology = ideology:ideology_right_economy }
+				}
+				NOT = { has_modifier = conservative_ruling_party_ideology }
+			}
+			
+			#Liberal
+			AND = { 
+				exists = ruler
+				ruler = { has_ideology = ideology:ideology_democratic }
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					OR = { has_ideology = ideology:ideology_far_right_economy has_ideology = ideology:ideology_right_economy }
+				}
+				NOT = { has_modifier = liberal_ruling_party_ideology }
+			}
+			
+			#Libertarian
+			AND = { 
+				exists = ruler
+				ruler = { has_ideology = ideology:ideology_liberal }
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_ideology = ideology:ideology_far_right_economy
+				}
+				NOT = { has_modifier = libertarian_ruling_party_ideology }
+			}
+			
+			#Centrist
+			#Remaining combinations
+			NOR = {
+				has_modifier = communist_ruling_party_ideology
+				has_modifier = market_socialist_ruling_party_ideology
+				has_modifier = socialist_ruling_party_ideology
+				has_modifier = social_democratic_ruling_party_ideology
+				has_modifier = progressive_ruling_party_ideology
+				has_modifier = traditionalist_ruling_party_ideology
+				has_modifier = fascist_ruling_party_ideology
+				has_modifier = conservative_ruling_party_ideology
+				has_modifier = liberal_ruling_party_ideology
+				has_modifier = libertarian_ruling_party_ideology
+				
+				has_modifier = centrist_ruling_party_ideology
+			}
+			
+		}
+		
+	}
+
+	immediate = {
+		
+		#Clear all modifiers
+		remove_modifier = communist_ruling_party_ideology
+		remove_modifier = market_socialist_ruling_party_ideology
+		remove_modifier = socialist_ruling_party_ideology
+		remove_modifier = social_democratic_ruling_party_ideology
+		remove_modifier = progressive_ruling_party_ideology
+		remove_modifier = traditionalist_ruling_party_ideology
+		remove_modifier = fascist_ruling_party_ideology
+		remove_modifier = conservative_ruling_party_ideology
+		remove_modifier = liberal_ruling_party_ideology
+		remove_modifier = libertarian_ruling_party_ideology	
+		remove_modifier = centrist_ruling_party_ideology
+		
+		#Apply correct modifier
+		if = {
+			limit = { 
+				ruler = { OR = { has_ideology = ideology:ideology_autocratic has_ideology = ideology:ideology_power_hungry } }
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_ideology = ideology:ideology_far_left_economy 
+				}
+			}
+			add_modifier = { name = communist_ruling_party_ideology }
+		}
+		else_if = {
+			limit = { 
+				ruler = { has_ideology = ideology:ideology_autocratic }
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_ideology = ideology:ideology_left_economy
+				}
+			}
+			add_modifier = { name = market_socialist_ruling_party_ideology }
+		}
+		else_if = {
+			limit = { 
+				ruler = { has_ideology = ideology:ideology_power_hungry }
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_ideology = ideology:ideology_left_economy
+				}
+			}
+			add_modifier = { name = socialist_ruling_party_ideology }
+		}
+		else_if = {
+			limit = { 
+				ruler = { OR = { has_ideology = ideology:ideology_elitist has_ideology = ideology:ideology_democratic } }
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					OR = { has_ideology = ideology:ideology_far_left_economy has_ideology = ideology:ideology_left_economy }
+				}
+			}
+			add_modifier = { name = social_democratic_ruling_party_ideology }
+		}
+		else_if = {
+			limit = { 
+				ruler = { has_ideology = ideology:ideology_liberal }
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					OR = { has_ideology = ideology:ideology_far_left_economy has_ideology = ideology:ideology_left_economy }
+				}
+			}
+			add_modifier = { name = progressive_ruling_party_ideology }
+		}
+		else_if = {
+			limit = { 
+				ruler = { OR = { has_ideology = ideology:ideology_autocratic has_ideology = ideology:ideology_power_hungry has_ideology = ideology:ideology_elitist } }
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_ideology = ideology:ideology_centre_economy
+					has_ideology = ideology:ideology_traditionalist
+					NOT = { has_ideology = ideology:ideology_militarist }
+				}
+			}
+			add_modifier = { name = traditionalist_ruling_party_ideology }
+		}
+		else_if = {
+			limit = { 
+				ruler = { OR = { has_ideology = ideology:ideology_autocratic has_ideology = ideology:ideology_power_hungry has_ideology = ideology:ideology_elitist } }
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					has_ideology = ideology:ideology_centre_economy
+					NOT = { has_ideology = ideology:ideology_traditionalist }
+					has_ideology = ideology:ideology_militarist
+				}
+			}
+			add_modifier = { name = fascist_ruling_party_ideology }
+		}
+		else_if = {
+			limit = { 
+				ruler = { OR = { has_ideology = ideology:ideology_autocratic has_ideology = ideology:ideology_power_hungry has_ideology = ideology:ideology_elitist } }
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					OR = { has_ideology = ideology:ideology_far_right_economy has_ideology = ideology:ideology_right_economy }
+				}
+			}
+			add_modifier = { name = conservative_ruling_party_ideology }
+		}
+		else_if = {
+			limit = { 
+				ruler = { has_ideology = ideology:ideology_democratic }
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
+					OR = { has_ideology = ideology:ideology_far_right_economy has_ideology = ideology:ideology_right_economy }
+				}
+			}
+			add_modifier = { name = liberal_ruling_party_ideology }
+		}
+		else_if = {
+			limit = { 
+				ruler = { has_ideology = ideology:ideology_liberal }
+				any_interest_group = { 
+					exists = leader leader = { is_ruler = yes }
 					has_ideology = ideology:ideology_far_right_economy
 				}
 			}

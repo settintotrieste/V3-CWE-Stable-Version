@@ -8,9 +8,9 @@ historical_union_dissolution.1 = {
     desc = malaysia_singapore.d 				# Description of the event; ADD LOCALISATION
     #flavor = malaysia_singapore.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -23,11 +23,12 @@ historical_union_dissolution.1 = {
 		game_date >= 1965.8.9									# START DATE: Date colony became self governing ****
 		game_date < 1975.8.9									# END DATE: All historical events must not fire 10 years after the START DATE ****
 		
-		is_a_democracy = yes									# Correct gov types
+		is_some_kind_of_democracy = yes							# Correct gov types
 		is_sufficiently_independent = yes						# is_vassal = no		
 		is_at_war = no											# war = no
 		
 		#Member state conditions
+		exists = c:SGP
 		c:SGP = { 												# Change TAG of the transferee ****
 			is_direct_subject_of = ROOT
 			is_subject_type = subject_type_special_administrative_region
@@ -42,10 +43,10 @@ historical_union_dissolution.1 = {
         name = historical_union_dissolution.option.1			# Accept secesssion
         highlighted_option = yes
 		
-		
 		#Subject becomes independent
 		c:SGP = { 												# Change TAG of the colony ****
 			make_independent = yes
+			effect_starting_politics_parliamentary_republic = yes
 		}
 		
 		#British protection continues over expelled state
@@ -76,7 +77,7 @@ historical_union_dissolution.1 = {
 		
 		# Internal unrest
 		every_scope_state = {
-			add_radicals = {
+			add_radicals_in_state = {
 				culture = cu:malay
 				value = large_radicals
 			}
@@ -84,7 +85,7 @@ historical_union_dissolution.1 = {
 		}
 		c:SGP = {
 			every_scope_state = {
-				add_radicals = {
+				add_radicals_in_state = {
 					culture = cu:malay
 					value = large_radicals
 				}
@@ -96,7 +97,7 @@ historical_union_dissolution.1 = {
 		set_variable = malaysia_singapore_hud					# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }
@@ -111,9 +112,9 @@ historical_union_dissolution.2 = {
     desc = CAF_rhodesia.d 					# Description of the event; ADD LOCALISATION
     #flavor = CAF_rhodesia.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -130,6 +131,7 @@ historical_union_dissolution.2 = {
 		is_at_war = no											# war = no
 		
 		#Member state conditions
+		exists = c:CAF
 		c:CAF = { 												# Change TAG of the transferee ****
 			is_direct_subject_of = ROOT
 			is_not_sufficiently_independent = yes
@@ -269,6 +271,8 @@ historical_union_dissolution.2 = {
 			country = c:RHO
 			type = dominion
 		}
+		
+		#Zambia & Malawi are given self-government
 		create_diplomatic_pact = {
 			country = c:ZAM
 			type = semi_autonomous_colony
@@ -294,7 +298,7 @@ historical_union_dissolution.2 = {
 		# Internal unrest
 		c:CAF = {
 			every_scope_state = {
-				add_radicals = {
+				add_radicals_in_state = {
 					value = large_radicals
 				}
 				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
@@ -305,7 +309,1192 @@ historical_union_dissolution.2 = {
 		set_variable = CAF_rhodesia_hud						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+#United Arab Republic
+historical_union_dissolution.3 = {
+    type = country_event
+
+    title = uar_syria.t 				# Title of the event; ADD LOCALISATION
+    desc = uar_syria.d 					# Description of the event; ADD LOCALISATION
+    #flavor = uar_syria.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:UAR
+		this = c:UAR											# Change TAG of the overlord ****
+		game_date >= 1961.9.28									# START DATE: Date colony became self governing ****
+		game_date < 1971.9.28									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_nationalist_government = yes						# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Release country
+		NOT = { 												# Colony to be released must not already exist on the map
+			exists = c:SYR										# Change TAG of the colony ****
+		}
+		any_scope_state = { 									# Overlord owns the states of the colony to be released
+			state_region = { is_homeland = cu:syrian }			# Change homeland identity to match colony to be released ****
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = uar_syria_hud }					# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Generate list of provinces to be released				# DO NOT TOUCH ROOT SECTION
+		every_scope_state = {
+			limit = {
+				state_region = { is_homeland = cu:syrian }		# Change homeland identity to match colony to be released ****
+				#contains_capital_of = c:SYR					# State is the capital of colony ****
+			}
+			save_scope_as = colonial_state
+		}
+	
+		# Fire only once
+		set_variable = uar_syria_hud							# Change variable ****
+	
+	}
+    
+    option = {
+        name = historical_union_dissolution.option.1			# Accept secesssion
+        highlighted_option = yes
+		
+		#Subject becomes independent
+		create_country = {
+			tag = SYR										# Change TAG of country being released ****
+			origin = ROOT									# TAG where the created country takes tech from
+			state = scope:colonial_state
+			
+			on_created = {									# Set government laws & rulers here
+				
+				set_variable = UAR_formed_before
+				
+				# SET laws for colony ****
+				effect_starting_politics_nationalist_republic = yes
+				effect_starting_politics_dictatorship = yes
+				effect_starting_politics_war_policy_jingoism = yes
+				effect_starting_politics_economic_policy_state_capitalism = yes
+				effect_socialist_ruling_coalition = yes
+				
+				# CREATE leader for colony ****
+				create_character = {
+					first_name = "guy_incognito_first_name"		# CHANGE
+					last_name = "guy_incognito_last_name"		# CHANGE
+					ruler = yes
+					#birth_date = 1910.1.1						# CHANGE
+					interest_group = ig_rural_folk				# CHANGE
+					ideology = ideology_democratic				# CHANGE
+					traits = {
+						charismatic								# CHANGE
+						persistent								# CHANGE
+						meticulous								# CHANGE
+					}
+				}
+				
+				# Set diplomatic recognition
+				set_country_type = unrecognized
+			}
+		}
+		every_scope_state = {
+			limit = {
+		 		state_region = { is_homeland = cu:syrian }	# Change homeland identity to match colony to be released ****
+		 	}
+			set_state_owner = c:SYR								# Change TAG to colony ****
+		}
+		
+		#Return to being Egypt
+		change_tag = EGY
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_union_dissolution.option.2			# Refuse secesssion
+		default_option = yes
+		
+		# Internal unrest
+		custom_tooltip = {
+			text = everyone_is_angry_custom_tooltip
+			every_scope_state = {
+				add_radicals_in_state = {
+					culture = cu:syrian
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+		}
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+#West Indies Federation
+historical_union_dissolution.4 = {
+    type = country_event
+
+    title = west_indies_dissolution.t 				# Title of the event; ADD LOCALISATION
+    desc = west_indies_dissolution.d 				# Description of the event; ADD LOCALISATION
+    #flavor = west_indies_dissolution.f 			# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:GBR
+		this = c:GBR											# Change TAG of the overlord ****
+		game_date >= 1962.5.31									# START DATE: Date colony became self governing ****
+		game_date < 1972.5.31									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		is_a_democratic_monarchy = yes							# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Member state conditions
+		exists = c:WIF
+		c:WIF = { 												# Change TAG of the transferee ****
+			is_direct_subject_of = ROOT
+			is_not_sufficiently_independent = yes
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = west_indies_dissolution_hud }	# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Fire only once
+		set_variable = west_indies_dissolution_hud				# Change variable ****
+	
+	}
+    
+    option = {
+        name = historical_union_dissolution.option.1			# Accept secesssion
+        highlighted_option = yes
+		
+		#WIF release states
+		c:WIF = {
+			
+			#Saint Kitts & Nevis
+			create_country = {
+				tag = SKN										# Change TAG of country being released ****
+				origin = c:WIF									# TAG where the created country takes tech from
+				province = p:x89337A
+			
+				on_created = {									# Set government laws & rulers here
+				
+					# SET laws for colony ****
+					effect_starting_politics_constitutional_monarchy = yes
+					effect_starting_politics_democratic = yes
+					effect_starting_politics_constitutional_unitary_state = yes
+					effect_starting_politics_war_policy_anti_military = yes
+					effect_starting_politics_economic_policy_interventionism = yes
+					effect_starting_politics_trade_policy_protectionism = yes
+					effect_starting_politics_anti_nuclear_policy = yes
+				
+					# Set diplomatic recognition
+					set_country_type = unrecognized
+					
+					# Overlord create Personal Union pact with colony
+					c:GBR = { create_diplomatic_pact = { country = c:SKN type = personal_union } }
+					
+				}
+			}
+			
+			#Antigua & Barbuda
+			create_country = {
+				tag = AAB										# Change TAG of country being released ****
+				origin = c:WIF									# TAG where the created country takes tech from
+				province = p:x89334D
+			
+				on_created = {									# Set government laws & rulers here
+				
+					# SET laws for colony ****
+					effect_starting_politics_constitutional_monarchy = yes
+					effect_starting_politics_democratic = yes
+					effect_starting_politics_constitutional_unitary_state = yes
+					effect_starting_politics_war_policy_anti_military = yes
+					effect_starting_politics_economic_policy_interventionism = yes
+					effect_starting_politics_trade_policy_protectionism = yes
+					effect_starting_politics_anti_nuclear_policy = yes
+				
+					# Set diplomatic recognition
+					set_country_type = unrecognized
+					
+					# Overlord create Personal Union pact with colony
+					c:GBR = { create_diplomatic_pact = { country = c:AAB type = personal_union } }
+					
+				}
+			}
+			
+			#Dominica
+			create_country = {
+				tag = DMC										# Change TAG of country being released ****
+				origin = c:WIF									# TAG where the created country takes tech from
+				province = p:x70F001
+			
+				on_created = {									# Set government laws & rulers here
+				
+					# SET laws for colony ****
+					effect_starting_politics_constitutional_monarchy = yes
+					effect_starting_politics_democratic = yes
+					effect_starting_politics_constitutional_unitary_state = yes
+					effect_starting_politics_war_policy_anti_military = yes
+					effect_starting_politics_economic_policy_interventionism = yes
+					effect_starting_politics_trade_policy_protectionism = yes
+					effect_starting_politics_anti_nuclear_policy = yes
+				
+					# Set diplomatic recognition
+					set_country_type = unrecognized
+					
+					# Overlord create Personal Union pact with colony
+					c:GBR = { create_diplomatic_pact = { country = c:DMC type = personal_union } }
+					
+				}
+			}
+			
+			#Saint Lucia
+			create_country = {
+				tag = STL										# Change TAG of country being released ****
+				origin = c:WIF									# TAG where the created country takes tech from
+				province = p:x5299CA
+			
+				on_created = {									# Set government laws & rulers here
+				
+					# SET laws for colony ****
+					effect_starting_politics_constitutional_monarchy = yes
+					effect_starting_politics_democratic = yes
+					effect_starting_politics_constitutional_unitary_state = yes
+					effect_starting_politics_war_policy_anti_military = yes
+					effect_starting_politics_economic_policy_interventionism = yes
+					effect_starting_politics_trade_policy_protectionism = yes
+					effect_starting_politics_anti_nuclear_policy = yes
+				
+					# Set diplomatic recognition
+					set_country_type = unrecognized
+					
+					# Overlord create Personal Union pact with colony
+					c:GBR = { create_diplomatic_pact = { country = c:STL type = personal_union } }
+					
+				}
+			}
+			
+			#Saint Vincent & the Grenadines
+			create_country = {
+				tag = SVG										# Change TAG of country being released ****
+				origin = c:WIF									# TAG where the created country takes tech from
+				province = p:x446C63
+			
+				on_created = {									# Set government laws & rulers here
+				
+					# SET laws for colony ****
+					effect_starting_politics_constitutional_monarchy = yes
+					effect_starting_politics_democratic = yes
+					effect_starting_politics_constitutional_unitary_state = yes
+					effect_starting_politics_war_policy_anti_military = yes
+					effect_starting_politics_economic_policy_interventionism = yes
+					effect_starting_politics_trade_policy_protectionism = yes
+					effect_starting_politics_anti_nuclear_policy = yes
+				
+					# Set diplomatic recognition
+					set_country_type = unrecognized
+					
+					# Overlord create Personal Union pact with colony
+					c:GBR = { create_diplomatic_pact = { country = c:SVG type = personal_union } }
+					
+				}
+			}
+			
+			#Grenada
+			create_country = {
+				tag = GND										# Change TAG of country being released ****
+				origin = c:WIF									# TAG where the created country takes tech from
+				province = p:xF0F001
+			
+				on_created = {									# Set government laws & rulers here
+				
+					# SET laws for colony ****
+					effect_starting_politics_constitutional_monarchy = yes
+					effect_starting_politics_democratic = yes
+					effect_starting_politics_constitutional_unitary_state = yes
+					effect_starting_politics_war_policy_anti_military = yes
+					effect_starting_politics_economic_policy_interventionism = yes
+					effect_starting_politics_trade_policy_protectionism = yes
+					effect_starting_politics_anti_nuclear_policy = yes
+				
+					# Set diplomatic recognition
+					set_country_type = unrecognized
+					
+					# Overlord create Personal Union pact with colony
+					c:GBR = { create_diplomatic_pact = { country = c:GND type = personal_union } }
+					
+				}
+			}
+			
+			#Barbados
+			create_country = {
+				tag = BAR										# Change TAG of country being released ****
+				origin = c:WIF									# TAG where the created country takes tech from
+				province = p:x445B6C
+			
+				on_created = {									# Set government laws & rulers here
+				
+					# SET laws for colony ****
+					effect_starting_politics_constitutional_monarchy = yes
+					effect_starting_politics_democratic = yes
+					effect_starting_politics_constitutional_unitary_state = yes
+					effect_starting_politics_war_policy_anti_military = yes
+					effect_starting_politics_economic_policy_interventionism = yes
+					effect_starting_politics_trade_policy_protectionism = yes
+					effect_starting_politics_anti_nuclear_policy = yes
+				
+					# Set diplomatic recognition
+					set_country_type = unrecognized
+					
+					# Overlord create Personal Union pact with colony
+					c:GBR = { create_diplomatic_pact = { country = c:BAR type = personal_union } }
+					
+				}
+			}
+			
+			#Trinidad & Tobago
+			create_country = {
+				tag = TAT										# Change TAG of country being released ****
+				origin = c:WIF									# TAG where the created country takes tech from
+				province = p:x707080 
+				province = p:xD496B1
+			
+				on_created = {									# Set government laws & rulers here
+				
+					# SET laws for colony ****
+					effect_starting_politics_constitutional_monarchy = yes
+					effect_starting_politics_democratic = yes
+					effect_starting_politics_constitutional_unitary_state = yes
+					effect_starting_politics_war_policy_anti_military = yes
+					effect_starting_politics_economic_policy_interventionism = yes
+					effect_starting_politics_trade_policy_protectionism = yes
+					effect_starting_politics_anti_nuclear_policy = yes
+				
+					# Set diplomatic recognition
+					set_country_type = unrecognized
+					
+					# Overlord create Personal Union pact with colony
+					c:GBR = { create_diplomatic_pact = { country = c:TAT type = personal_union } }
+					
+				}
+			}
+			
+			#Jamaica
+			create_country = {
+				tag = JAM										# Change TAG of country being released ****
+				origin = c:WIF									# TAG where the created country takes tech from
+				province = p:x535B49
+				province = p:x7070B8
+			
+				on_created = {									# Set government laws & rulers here
+				
+					# SET laws for colony ****
+					effect_starting_politics_constitutional_monarchy = yes
+					effect_starting_politics_democratic = yes
+					effect_starting_politics_constitutional_unitary_state = yes
+					effect_starting_politics_war_policy_anti_military = yes
+					effect_starting_politics_economic_policy_interventionism = yes
+					effect_starting_politics_trade_policy_protectionism = yes
+					effect_starting_politics_anti_nuclear_policy = yes
+				
+					# Set diplomatic recognition
+					set_country_type = unrecognized
+					
+					# Overlord create Personal Union pact with colony
+					c:GBR = { create_diplomatic_pact = { country = c:JAM type = personal_union } }
+					
+				}
+			}
+			
+		}
+		
+		#GBR annexes the remainder
+		annex = c:WIF
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_union_dissolution.option.2			# Refuse secesssion
+		default_option = yes
+		
+		c:WIF = {
+		
+			# Internal unrest
+			every_scope_state = {
+				add_radicals_in_state = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+			
+		}
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+#Netherlands-Indonesia Confederation
+historical_union_dissolution.5 = {
+    type = country_event
+
+    title = NET_IDO.t 					# Title of the event; ADD LOCALISATION
+    desc = NET_IDO.d 					# Description of the event; ADD LOCALISATION
+    #flavor = NET_IDO.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 		# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:IDO
+		this = c:IDO											# Change TAG of the overlord ****
+		game_date >= 1956.1.1									# START DATE: Date colony became self governing ****
+		game_date < 1966.1.1									# END DATE: All historical events must not fire 10 years after the START DATE ****
+		
+		NOT = { is_a_democracy = yes }							# Correct gov types
+		is_subject_type = subject_type_confederal_state			# is_vassal = no
+		exists = c:NET
+		is_direct_subject_of = c:NET
+		is_at_war = no											# war = no
+		
+		# Event has not been fired before
+		NOT = { has_variable = NET_IDO_hud }					# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Fire only once
+		set_variable = NET_IDO_hud								# Change variable ****
+	
+	}
+    
+    option = {
+        name = historical_union_dissolution.option.1			# Accept secesssion
+        highlighted_option = yes
+		
+		#Becomes independent
+		make_independent = yes
+		
+		#Lose relations with NET
+		change_relations = { country = ROOT value = -100 }
+		
+		#Prestige from victory!
+		add_modifier = { 
+			name = national_pride_modifier 
+			years = 5
+			is_decaying = yes 
+		}
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_union_dissolution.option.2			# Refuse secesssion
+		default_option = yes
+		
+		# Internal unrest
+		custom_tooltip = {
+			text = everyone_is_angry_custom_tooltip
+			every_scope_state = {
+				add_radicals_in_state = {
+					value = large_radicals
+				}
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes }
+			}
+		}
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+#Soviet Union
+historical_union_dissolution.6 = {
+    type = country_event
+
+    title = ussr_dissolution.t 					# Title of the event; ADD LOCALISATION
+    desc = ussr_dissolution.d 					# Description of the event; ADD LOCALISATION
+    flavor = ussr_dissolution.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:SOV
+		this = c:SOV											# Change TAG of the overlord ****
+		
+		#When
+		OR = { 
+		
+			#Historical date
+			AND = { 
+				game_date >= 1991.9.26
+				game_date < 2001.9.26
+				has_global_variable = historical_railroading_active
+			}
+			
+			#Has a Democratic Revolution when economy is bad
+			AND = {
+				any_political_movement = {
+					is_revolutionary_movement = yes
+					OR = {
+						any_supporting_interest_group = {
+							law_stance = {
+								law = law_type:law_HOS_communist_leader
+								value < neutral
+							}
+						}
+						any_supporting_interest_group = {
+							law_stance = {
+								law = law_type:law_HOS_president
+								value > neutral
+							}
+						}
+						any_supporting_interest_group = {
+							law_stance = {
+								law = law_type:law_multicultural
+								value > strongly_approve
+							}
+						}
+					}
+				}
+				OR = {
+					in_default = yes
+					has_healthy_economy = no
+				}
+				has_technology_researched = tech_politics_5
+			}
+			
+		}
+		
+		is_a_communist_dictatorship = yes						# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Soviet Union has countries to release
+		any_scope_state = {
+			state_region = { is_homeland = cu:soviet NOT = { is_homeland = cu:russian } }
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = ussr_dissolution_hud }			# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Fire only once
+		set_variable = ussr_dissolution_hud						# Change variable ****
+	
+	}
+    
+    option = {
+        name = historical_union_dissolution.option.1			# Accept secesssion
+        highlighted_option = yes
+		
+		custom_tooltip = {
+			text = dissolve_the_warsaw_pact.tt
+		
+			### Dissolve the Warsaw Pact ###
+			every_country = {
+				limit = { is_direct_subject_of = ROOT }
+				make_independent = yes
+				if = {
+					limit = { is_a_communist_government = yes }
+					trigger_event = { id = eastern_europe_indy.4 }
+				}
+			}
+			
+		}
+			
+		custom_tooltip = {
+			text = dissolve_the_ussr.tt
+			
+			### Release all soviet states ###
+			
+			# Baltic States, if not already released
+			if = { 
+				limit = { NOT = { exists = c:EST } has_state_in_state_region = STATE_ESTONIA }
+				create_country = { tag = EST state = s:STATE_ESTONIA.region_state:SOV origin = ROOT on_created = { soviet_SSR_dissolution_laws = yes } }
+				if = { limit = { exists = c:EST } create_diplomatic_pact = { country = c:EST type = protectorate } every_scope_state = { limit = { state_region = { is_homeland = cu:estonian } } set_state_owner = c:EST } }
+			}
+			if = { 
+				limit = { NOT = { exists = c:LIT } has_state_in_state_region = STATE_LITHUANIA }
+				create_country = { tag = LIT state = s:STATE_LITHUANIA.region_state:SOV origin = ROOT on_created = { soviet_SSR_dissolution_laws = yes } }
+				if = { limit = { exists = c:LIT } create_diplomatic_pact = { country = c:LIT type = protectorate } every_scope_state = { limit = { state_region = { is_homeland = cu:lithuanian } } set_state_owner = c:LIT } }
+			}
+			if = { 
+				limit = { NOT = { exists = c:LAT } has_state_in_state_region = STATE_LATVIA }
+				create_country = { tag = LAT state = s:STATE_LATVIA.region_state:SOV origin = ROOT on_created = { soviet_SSR_dissolution_laws = yes } }
+				if = { limit = { exists = c:LAT } create_diplomatic_pact = { country = c:LAT type = protectorate } every_scope_state = { limit = { state_region = { is_homeland = cu:latvian } } set_state_owner = c:LAT } }
+			}
+			
+			# SSRs
+			if = { 
+				limit = { NOT = { exists = c:AZB } has_state_in_state_region = STATE_AZERBAIJAN }
+				create_country = { tag = AZB state = s:STATE_AZERBAIJAN.region_state:SOV origin = ROOT on_created = { soviet_SSR_dissolution_laws = yes } }
+				if = { limit = { exists = c:AZB } create_diplomatic_pact = { country = c:AZB type = protectorate } every_scope_state = { limit = { state_region = { is_homeland = cu:azerbaijani } } set_state_owner = c:AZB } }
+			}
+			if = {
+				limit = { NOT = { exists = c:UKR } has_state_in_state_region = STATE_KIEV }
+				create_country = { tag = UKR state = s:STATE_KIEV.region_state:SOV origin = ROOT on_created = { soviet_SSR_dissolution_laws = yes } }
+				if = { limit = { exists = c:UKR } create_diplomatic_pact = { country = c:UKR type = protectorate } every_scope_state = { limit = { OR = { state_region = { is_homeland = cu:ukrainian } state_region = s:STATE_MOLDAVIA } NOR = { state_region = s:STATE_KURSK state_region = s:STATE_ROSTOV } } set_state_owner = c:UKR } }
+				
+				#Crimean issue
+				if = { 
+					limit = { exists = c:UKR } 
+					c:UKR = {
+						if = { 
+							limit = { NOT = { exists = c:CRI } has_state_in_state_region = STATE_CRIMEA }
+							create_country = { tag = CRI state = s:STATE_CRIMEA.region_state:UKR origin = ROOT on_created = { soviet_SSR_dissolution_laws = yes } }
+							if = { limit = { exists = c:CRI } create_diplomatic_pact = { country = c:CRI type = special_administrative_region } }
+						} 
+					}
+				}
+			}
+			if = { 
+				limit = { NOT = { exists = c:BYE } has_state_in_state_region = STATE_MINSK }
+				create_country = { tag = BYE state = s:STATE_MINSK.region_state:SOV origin = ROOT on_created = { soviet_SSR_dissolution_laws = yes } }
+				if = { limit = { exists = c:BYE } create_diplomatic_pact = { country = c:BYE type = protectorate } every_scope_state = { limit = { state_region = { is_homeland = cu:byelorussian } } set_state_owner = c:BYE } }
+			}
+			if = { 
+				limit = { NOT = { exists = c:GEO } has_state_in_state_region = STATE_GREATER_CAUCASUS }
+				create_country = { tag = GEO state = s:STATE_GREATER_CAUCASUS.region_state:SOV origin = ROOT on_created = { soviet_SSR_dissolution_laws = yes } }
+				if = { limit = { exists = c:GEO } create_diplomatic_pact = { country = c:GEO type = protectorate } every_scope_state = { limit = { state_region = { is_homeland = cu:georgian } } set_state_owner = c:GEO } }
+			}
+			if = { 
+				limit = { NOT = { exists = c:ARM } has_state_in_state_region = STATE_ARMENIA }
+				create_country = { tag = ARM state = s:STATE_ARMENIA.region_state:SOV origin = ROOT on_created = { soviet_SSR_dissolution_laws = yes } }
+				if = { limit = { exists = c:ARM } create_diplomatic_pact = { country = c:ARM type = protectorate } every_scope_state = { limit = { state_region = { is_homeland = cu:armenian } } set_state_owner = c:ARM } }
+			}
+			if = { 
+				limit = { NOT = { exists = c:TKM } has_state_in_state_region = STATE_TURKMENIA }
+				create_country = { tag = TKM state = s:STATE_TURKMENIA.region_state:SOV origin = ROOT on_created = { soviet_SSR_dissolution_laws = yes } }
+				if = { limit = { exists = c:TKM } create_diplomatic_pact = { country = c:TKM type = protectorate } every_scope_state = { limit = { state_region = { is_homeland = cu:turkmen } } set_state_owner = c:TKM } }
+			}
+			if = { 
+				limit = { NOT = { exists = c:MOL } has_state_in_state_region = STATE_BESSARABIA }
+				create_country = { tag = MOL state = s:STATE_BESSARABIA.region_state:SOV origin = ROOT on_created = { soviet_SSR_dissolution_laws = yes } }
+				if = { limit = { exists = c:MOL } every_scope_state = { limit = { state_region = { is_homeland = cu:moldovan } } set_state_owner = c:MOL } }
+				
+				#Transnistrian issue
+				if = { 
+					limit = { exists = c:MOL } 
+					c:MOL = {
+						if = { 
+							limit = { NOT = { exists = c:TRD } owns_entire_state_region = STATE_BESSARABIA }
+							create_country = { 
+								tag = TRD 
+								province = p:x8ACA9B 
+								province = p:xFC9EFE 
+								province = p:x1E1DEF
+								origin = ROOT 
+								on_created = { soviet_SSR_dissolution_laws = yes } 
+							}
+						}
+					}
+					if = { limit = { exists = c:TRD } set_relations = { who = c:TRD value = 100 } create_diplomatic_pact = { country = c:TRD type = protectorate } }
+				}
+			}
+			if = { 
+				limit = { NOT = { exists = c:UZB } has_state_in_state_region = STATE_UZBEKIA }
+				create_country = { tag = UZB state = s:STATE_UZBEKIA.region_state:SOV origin = ROOT on_created = { soviet_SSR_dissolution_laws = yes } }
+				if = { limit = { exists = c:UZB } create_diplomatic_pact = { country = c:UZB type = protectorate } every_scope_state = { limit = { state_region = { is_homeland = cu:uzbek } } set_state_owner = c:UZB } }
+			}
+			if = { 
+				limit = { NOT = { exists = c:KAZ } has_state_in_state_region = STATE_SEMIRECHE }
+				create_country = { tag = KAZ state = s:STATE_SEMIRECHE.region_state:SOV origin = ROOT on_created = { soviet_SSR_dissolution_laws = yes } }
+				if = { limit = { exists = c:KAZ } create_diplomatic_pact = { country = c:KAZ type = protectorate } every_scope_state = { limit = { state_region = { is_homeland = cu:kazak } } set_state_owner = c:KAZ } }
+			}
+			if = { 
+				limit = { NOT = { exists = c:KYR } has_state_in_state_region = STATE_KIRGHIZIA }
+				create_country = { tag = KYR state = s:STATE_KIRGHIZIA.region_state:SOV origin = ROOT on_created = { soviet_SSR_dissolution_laws = yes } }
+				if = { limit = { exists = c:KYR } create_diplomatic_pact = { country = c:KYR type = protectorate } every_scope_state = { limit = { state_region = { is_homeland = cu:kirgiz } } set_state_owner = c:KYR } }
+			}
+			if = { 
+				limit = { NOT = { exists = c:TAJ } has_state_in_state_region = STATE_TAJIKISTAN }
+				create_country = { tag = TAJ state = s:STATE_TAJIKISTAN.region_state:SOV origin = ROOT on_created = { soviet_SSR_dissolution_laws = yes } }
+				if = { limit = { exists = c:TAJ } create_diplomatic_pact = { country = c:TAJ type = protectorate } every_scope_state = { limit = { state_region = { is_homeland = cu:tajik } } set_state_owner = c:TAJ } }
+			}
+			
+			# Post WW2 occupied regions
+			if = { limit = { exists = c:CHI NOT = { exists = c:MCK } } every_scope_state = { limit = { state_region = { is_homeland = cu:manchu NOT = { is_homeland = cu:russian } } } set_state_owner = c:CHI } }
+			if = { limit = { exists = c:PRC NOT = { exists = c:MCK } } every_scope_state = { limit = { state_region = { is_homeland = cu:manchu NOT = { is_homeland = cu:russian } } } set_state_owner = c:PRC } }
+			if = { limit = { exists = c:ROC NOT = { exists = c:MCK } } every_scope_state = { limit = { state_region = { is_homeland = cu:manchu NOT = { is_homeland = cu:russian } } } set_state_owner = c:ROC } }
+			if = { limit = { exists = c:MCK } every_scope_state = { limit = { state_region = { is_homeland = cu:manchu NOT = { is_homeland = cu:russian } } } set_state_owner = c:MCK } }
+			
+			if = { limit = { exists = c:NKO NOT = { exists = c:KOR } } every_scope_state = { limit = { state_region = { is_homeland = cu:korean } } set_state_owner = c:NKO } }
+			if = { limit = { exists = c:SKO NOT = { exists = c:KOR } } every_scope_state = { limit = { state_region = { is_homeland = cu:korean } } set_state_owner = c:SKO } }
+			if = { limit = { exists = c:KOR } every_scope_state = { limit = { state_region = { is_homeland = cu:korean } } set_state_owner = c:KOR } }
+			
+			if = { 
+				limit = { NOT = { exists = c:MCK } has_state_in_state_region = STATE_SOUTHERN_MANCHURIA }
+				create_country = { tag = MCK state = s:STATE_SOUTHERN_MANCHURIA.region_state:SOV origin = ROOT on_created = { soviet_SSR_dissolution_laws = yes } }
+				if = { limit = { exists = c:MCK } create_diplomatic_pact = { country = c:MCK type = protectorate } every_scope_state = { limit = { state_region = { is_homeland = cu:manchu NOT = { is_homeland = cu:russian } } } set_state_owner = c:MCK } }
+			}
+			if = { 
+				limit = { NOT = { exists = c:NKO } has_state_in_state_region = STATE_PYONGYANG }
+				create_country = { tag = NKO state = s:STATE_PYONGYANG.region_state:SOV origin = ROOT on_created = { soviet_SSR_dissolution_laws = yes } }
+				if = { limit = { exists = c:NKO } create_diplomatic_pact = { country = c:NKO type = protectorate } every_scope_state = { limit = { state_region = { is_homeland = cu:korean } } set_state_owner = c:NKO } }
+			}
+			
+			# If any Eastern European satellite states were annexed
+			if = { limit = { exists = c:EGR NOT = { exists = c:GER } } every_scope_state = { limit = { state_region = { is_homeland = cu:german } } set_state_owner = c:EGR } }
+			if = { limit = { exists = c:WGR NOT = { exists = c:GER } } every_scope_state = { limit = { state_region = { is_homeland = cu:german } } set_state_owner = c:WGR } }
+			if = { limit = { exists = c:GER } every_scope_state = { limit = { state_region = { is_homeland = cu:german } } set_state_owner = c:GER } }
+			if = { 
+				limit = { NOT = { exists = c:EGR } has_state_in_state_region = STATE_BRANDENBURG }
+				create_country = { tag = EGR state = s:STATE_BRANDENBURG.region_state:SOV origin = ROOT on_created = { soviet_SSR_dissolution_laws = yes } }
+				if = { limit = { exists = c:EGR } create_diplomatic_pact = { country = c:EGR type = protectorate } every_scope_state = { limit = { state_region = { is_homeland = cu:german } } set_state_owner = c:EGR } }
+			}
+			if = { 
+				limit = { NOT = { exists = c:CZH } has_state_in_state_region = STATE_BOHEMIA }
+				create_country = { tag = CZH state = s:STATE_BOHEMIA.region_state:SOV origin = ROOT on_created = { soviet_SSR_dissolution_laws = yes } }
+				if = { limit = { exists = c:CZH } create_diplomatic_pact = { country = c:CZH type = protectorate } every_scope_state = { limit = { state_region = { is_homeland = cu:czechoslovakian } } set_state_owner = c:CZH } }
+			}
+			if = { 
+				limit = { NOT = { exists = c:POL } has_state_in_state_region = STATE_MAZOVIA }
+				create_country = { tag = POL state = s:STATE_MAZOVIA.region_state:SOV origin = ROOT on_created = { soviet_SSR_dissolution_laws = yes } }
+				if = { limit = { exists = c:POL } create_diplomatic_pact = { country = c:POL type = protectorate } every_scope_state = { limit = { state_region = { is_homeland = cu:polish } } set_state_owner = c:POL } }
+			}
+			if = { 
+				limit = { NOT = { exists = c:HUN } has_state_in_state_region = STATE_CENTRAL_HUNGARY }
+				create_country = { tag = HUN state = s:STATE_CENTRAL_HUNGARY.region_state:SOV origin = ROOT on_created = { soviet_SSR_dissolution_laws = yes } }
+				if = { limit = { exists = c:HUN } create_diplomatic_pact = { country = c:HUN type = protectorate } every_scope_state = { limit = { state_region = { is_homeland = cu:hungarian } } set_state_owner = c:HUN } }
+			}
+			if = { 
+				limit = { NOT = { exists = c:BUL } has_state_in_state_region = STATE_NORTHERN_THRACE }
+				create_country = { tag = BUL state = s:STATE_NORTHERN_THRACE.region_state:SOV origin = ROOT on_created = { soviet_SSR_dissolution_laws = yes } }
+				if = { limit = { exists = c:BUL } create_diplomatic_pact = { country = c:BUL type = protectorate } every_scope_state = { limit = { state_region = { is_homeland = cu:bulgarian } } set_state_owner = c:BUL } }
+			}
+			if = { 
+				limit = { NOT = { exists = c:ROM } has_state_in_state_region = STATE_WALLACHIA }
+				create_country = { tag = ROM state = s:STATE_WALLACHIA.region_state:SOV origin = ROOT on_created = { soviet_SSR_dissolution_laws = yes } }
+				if = { limit = { exists = c:ROM } create_diplomatic_pact = { country = c:ROM type = protectorate } every_scope_state = { limit = { state_region = { is_homeland = cu:romanian } } set_state_owner = c:ROM } }
+			}
+			if = { 
+				limit = { NOT = { exists = c:AUS } has_state_in_state_region = STATE_AUSTRIA }
+				create_country = { tag = AUS state = s:STATE_AUSTRIA.region_state:SOV origin = ROOT on_created = { soviet_SSR_dissolution_laws = yes } }
+				if = { limit = { exists = c:AUS } create_diplomatic_pact = { country = c:AUS type = protectorate } every_scope_state = { limit = { state_region = { is_homeland = cu:austrian } } set_state_owner = c:AUS } }
+			}
+			
+			# If Mongolia was annexed
+			if = { 
+				limit = { NOT = { exists = c:MGL } has_state_in_state_region = STATE_URGA }
+				create_country = { tag = MGL state = s:STATE_URGA.region_state:SOV origin = ROOT on_created = { soviet_SSR_dissolution_laws = yes } }
+				if = { limit = { exists = c:MGL } create_diplomatic_pact = { country = c:MGL type = protectorate } every_scope_state = { limit = { state_region = { is_homeland = cu:mongol } } set_state_owner = c:MGL } }
+			}
+		
+		}
+		
+		### Return to being Russia ###
+		custom_tooltip = {
+			text = create_russian_federation.tt
+			
+			#Become Russia
+			change_tag = RUS
+			remove_primary_culture = cu:soviet
+			
+			#Russian Federation
+			effect_starting_politics_presidential_republic = yes
+			effect_starting_politics_democratic = yes
+			effect_starting_politics_constitutional_federal_state = yes
+			effect_starting_politics_economic_policy_interventionism = yes
+		
+			#Historical Ruler
+			if = {
+				limit = { 
+					game_date >= 1990.1.1
+					game_date < 2000.1.1
+				}
+				create_character = {
+					first_name = "Boris_Yeltsin_first_name"
+					last_name = "Boris_Yeltsin_last_name"
+					ruler = yes ig_leader = yes historical = yes
+					birth_date = 1931.2.1
+					interest_group = ig_industrialists
+					ideology = ideology_democratic
+					culture = cu:russian
+					traits = {
+						alcoholic
+						charismatic
+						expensive_tastes
+					}
+				}
+			}
+		
+		}
+		
+		#World is happy
+		change_infamy = -50
+		every_country = {
+			limit = { 
+				is_a_democracy = yes 
+				is_sufficiently_independent = yes
+				country_rank >= rank_value:great_power 
+			}
+			change_relations = { country = ROOT value = 100 }
+		}
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_union_dissolution.option.2			# Refuse secesssion
+		default_option = yes
+		
+		# Internal unrest
+		custom_tooltip = {
+			text = everyone_is_angry_custom_tooltip
+			add_radicals = {
+				value = large_radicals
+			}
+			every_scope_state = {
+				limit = { state_region = { is_homeland = cu:soviet } }
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes }
+			}
+		}
+		
+		change_infamy = 25
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+#Dissolve Czechoslovakia
+historical_union_dissolution.7 = {
+    type = country_event
+	placement = scope:colonial_state
+
+    title = CZH_dissolution.t 						# Title of the event; ADD LOCALISATION
+    desc = CZH_dissolution.d 						# Description of the event; ADD LOCALISATION
+    #flavor = CZH_dissolution.f 					# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:CZH
+		this = c:CZH											# Change TAG of the overlord ****
+		
+		#When
+		OR = { 
+		
+			#Historical date
+			AND = { 
+				game_date >= 1992.12.31
+				game_date < 2002.12.31
+				has_global_variable = historical_railroading_active
+			}
+			
+			#Has a Democratic Revolution when economy is bad
+			AND = {
+				any_political_movement = {
+					is_revolutionary_movement = yes
+					OR = {
+						any_supporting_interest_group = {
+							law_stance = {
+								law = law_type:law_HOS_communist_leader
+								value < neutral
+							}
+						}
+						any_supporting_interest_group = {
+							law_stance = {
+								law = law_type:law_HOS_president
+								value > neutral
+							}
+						}
+						any_supporting_interest_group = {
+							law_stance = {
+								law = law_type:law_multicultural
+								value > strongly_approve
+							}
+						}
+					}
+				}
+				OR = {
+					in_default = yes
+					has_healthy_economy = no
+				}
+			}
+			
+		}
+		
+		is_a_democracy = yes									# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Release country
+		NOT = { 												# Colony to be released must not already exist on the map
+			exists = c:SLV										# Change TAG of the colony ****
+		}
+		any_scope_state = { 									# Overlord owns the states of the colony to be released
+			state_region = { is_homeland = cu:slovak }			# Change homeland identity to match colony to be released ****
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = CZH_dissolution_hud }			# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Generate list of provinces to be released				# DO NOT TOUCH ROOT SECTION
+		random_scope_state = {
+			limit = {
+				state_region = { is_homeland = cu:slovak }		# Change homeland identity to match colony to be released ****
+			}
+			save_scope_as = colonial_state
+		}
+	
+		# Fire only once
+		set_variable = CZH_dissolution_hud						# Change variable ****
+	
+	}
+    
+    option = {
+        name = historical_union_dissolution.option.1			# Accept secesssion
+        highlighted_option = yes
+		
+		#Subject becomes independent
+		create_country = {
+			tag = SLV										# Change TAG of country being released ****
+			origin = ROOT									# TAG where the created country takes tech from
+			state = scope:colonial_state
+			
+			on_created = {									# Set government laws & rulers here
+				
+				soviet_SSR_dissolution_laws = yes
+				
+			}
+		}
+		if = {
+			limit = { exists = c:SLV }
+			every_scope_state = {
+				limit = {
+					state_region = { is_homeland = cu:slovak }	# Change homeland identity to match colony to be released ****
+				}
+				set_state_owner = c:SLV								# Change TAG to colony ****
+			}
+		}
+		
+		#Return to being Czechia
+		change_tag = BOH
+		remove_primary_culture = cu:czechoslovakian
+		remove_primary_culture = cu:slovak
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_union_dissolution.option.2			# Refuse secesssion
+		default_option = yes
+		
+		# Internal unrest
+		custom_tooltip = {
+			text = everyone_is_angry_custom_tooltip
+			add_radicals = {
+				culture = cu:slovak
+				value = large_radicals
+			}
+			every_scope_state = {
+				limit = { state_region = { is_homeland = cu:slovak } }
+				add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+			}
+		}
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
+		}
+		
+    }
+
+}
+
+#Dissolve Serbia & Montenegro
+historical_union_dissolution.8 = {
+    type = country_event
+	placement = scope:colonial_state
+
+    title = SER_MON_dissolution.t 						# Title of the event; ADD LOCALISATION
+    desc = SER_MON_dissolution.d 						# Description of the event; ADD LOCALISATION
+    #flavor = SER_MON_dissolution.f 					# Flavor for event; ADD LOCALISATION, IF REQUIRED
+
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
+
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 		# Icon that shows on the map or the outliner
+    on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
+
+    duration = 1 # Duration to fire if triggers are met
+	
+	trigger = {													# What triggers the event, if using other events or journal entries leave empty
+		
+		#Overlord conditions
+		exists = c:SER
+		this = c:SER											# Change TAG of the overlord ****
+		game_date >= 2006.6.3
+		game_date < 2016.6.3
+		
+		is_a_democracy = yes									# Correct gov types
+		is_sufficiently_independent = yes						# is_vassal = no		
+		is_at_war = no											# war = no
+		
+		#Release country
+		NOT = { 												# Colony to be released must not already exist on the map
+			exists = c:MON										# Change TAG of the colony ****
+		}
+		any_scope_state = { 									# Overlord owns the states of the colony to be released
+			state_region = { is_homeland = cu:montenegrin }		# Change homeland identity to match colony to be released ****
+		}
+		
+		# Event has not been fired before
+		NOT = { has_variable = SER_MON_dissolution_hud }		# CHANGE ****
+		
+    }
+	
+	immediate = {
+	
+		# Generate list of provinces to be released				# DO NOT TOUCH ROOT SECTION
+		random_scope_state = {
+			limit = {
+				state_region = { is_homeland = cu:montenegrin }	# Change homeland identity to match colony to be released ****
+			}
+			save_scope_as = colonial_state
+		}
+	
+		# Fire only once
+		set_variable = SER_MON_dissolution_hud					# Change variable ****
+	
+	}
+    
+    option = {
+        name = historical_union_dissolution.option.1			# Accept secesssion
+        highlighted_option = yes
+		
+		#Subject becomes independent
+		create_country = {
+			tag = MON										# Change TAG of country being released ****
+			origin = ROOT									# TAG where the created country takes tech from
+			state = scope:colonial_state
+			
+			on_created = {									# Set government laws & rulers here
+				
+				soviet_SSR_dissolution_laws = yes
+				
+			}
+		}
+		if = {
+			limit = { exists = c:MON }
+			every_scope_state = {
+				limit = {
+					state_region = { is_homeland = cu:montenegrin }	# Change homeland identity to match colony to be released ****
+				}
+				set_state_owner = c:MON								# Change TAG to colony ****
+			}
+		}
+		
+		#Remove Montenegrin
+		remove_primary_culture = cu:montenegrin
+		
+		ai_chance = { 
+			base = 90 
+		}
+		
+    }
+	
+	option = {
+        name = historical_union_dissolution.option.2			# Refuse secesssion
+		default_option = yes
+		
+		# Internal unrest
+		add_radicals = {
+			culture = cu:montenegrin
+			value = large_radicals
+		}
+		every_scope_state = {
+			limit = { state_region = { is_homeland = cu:montenegrin } }
+			add_modifier = { name = nationalist_agitation months = 60 is_decaying = yes } 
+		}
+		
+		ai_chance = { 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }

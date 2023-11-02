@@ -1,0 +1,301 @@
+﻿je_one_china_policy_PRC = {
+	icon = "gfx/interface/icons/diplo_icons/unsg_country.dds"
+
+	possible = {
+		
+		#THIS is Communist China & ROC exists
+		c:PRC ?= this
+		
+		#China is split
+		exists = c:PRC
+		exists = c:ROC
+		
+		#Communist China is not in the UNGA BUT ROC is
+		c:PRC ?= { NOT = { is_country_type = recognized } }
+		c:ROC ?= { is_country_type = recognized }
+		
+		#THIS is not at war
+		is_at_war = no
+		
+	}
+
+	immediate = {
+	
+		c:ROC = { save_scope_as = republic_of_china_un_seat }
+		
+	}
+
+	complete = {
+	
+		OR = {
+		
+			#Cold War: PRC has good relations with a democratic Super Power & PRC has higher rank than ROC & is not a pariah
+			AND = { 
+				cold_war_ongoing = yes
+				custom_tooltip = {
+					text = je_one_china_policy_PRC.tt
+					OR = {
+						any_country = {
+							country_rank = rank_value:super_power
+							is_a_democracy = yes
+							relations:root >= relations_threshold:cordial
+						}
+						AND = {
+							has_global_variable = historical_railroading_active
+							cold_war_ongoing = yes
+							game_date >= 1971.10.25
+							is_player = no
+						}
+					}
+				}
+				c:ROC = {
+					save_temporary_scope_as = prestige_comparator_country
+					custom_tooltip = {
+						text = lower_prestige_than_THIS.tt
+						prestige < root.prestige 
+					}
+				}
+				infamy < infamy_threshold:pariah
+			}
+			
+			#Cold War is over: PRC has higher rank than ROC and is not a pariah
+			AND = {
+				NOT = { cold_war_ongoing = yes }
+				c:ROC = { country_rank < root.country_rank }
+				infamy < infamy_threshold:pariah
+			}
+			
+			#Communist China has somehow joined the UN
+			c:PRC ?= { 
+				is_country_type = recognized 
+				has_modifier = unga_member 
+			}
+			
+		}
+		
+	}
+	
+	on_complete = {
+	
+		#PRC joins the UNGA & UNSC
+		add_modifier = { name = unga_member }
+		if = {
+			limit = { c:ROC = { has_modifier = unsc_permanent_member } }
+			add_modifier = { name = unsc_permanent_member }
+			if = {
+				limit = { has_modifier = unsc_non_permanent_member }
+				remove_modifier = unsc_non_permanent_member
+			}
+		}
+		if = {
+			limit = { c:ROC = { has_modifier = unsc_non_permanent_member } }
+			add_modifier = { name = unsc_non_permanent_member }
+		}
+		set_country_type = recognized
+		
+		#ROC leaves the UNGA & UNSC
+		c:ROC = {
+			remove_modifier = unga_member
+			remove_modifier = unsc_permanent_member
+			remove_modifier = unsc_non_permanent_member
+			set_country_type = unrecognized
+			
+			#National humiliation
+			add_modifier = { 
+				name = national_humiliation 
+				years = 5
+				is_decaying = yes 
+			}
+		}
+		
+		#Prestige from victory!
+		add_modifier = { 
+			name = national_pride_modifier 
+			years = 5
+			is_decaying = yes 
+		}
+		
+	}
+	
+	invalid = {
+	
+		c:CHI ?= this
+		
+	}
+	
+	on_invalid = {
+		
+		#KMT wants to conquer China
+		if = {
+			limit = {
+				exists = c:ROC
+			}
+			c:ROC = {
+				hidden_effect = {
+					set_secret_goal = {
+						country = ROOT
+						secret_goal = conquer
+					}
+				}
+				change_relations = { country = ROOT value = -100 }
+			}
+		}
+		
+	}
+
+	weight = 100
+
+	should_be_pinned_by_default = yes
+
+	transferable = no
+
+	progressbar = no
+}
+
+je_one_china_policy_ROC = {
+	icon = "gfx/interface/icons/diplo_icons/unsg_country.dds"
+
+	scripted_button = je_kmt_becomes_taiwan_button
+
+	possible = {
+		
+		#THIS is Communist China & PRC exists
+		c:ROC ?= this
+		
+		#China is split
+		exists = c:ROC
+		exists = c:PRC
+		
+		#Communist China is not in the UNGA BUT PRC is
+		c:ROC ?= { NOT = { is_country_type = recognized } }
+		c:PRC ?= { is_country_type = recognized }
+		
+		#THIS is not at war
+		is_at_war = no
+		
+	}
+
+	immediate = {
+	
+		c:PRC = { save_scope_as = republic_of_china_un_seat }
+		
+	}
+
+	complete = {
+	
+		OR = {
+		
+			#Cold War: ROC has good relations with a democratic Super Power & ROC has higher rank than PRC & is not a pariah
+			AND = { 
+				cold_war_ongoing = yes
+				custom_tooltip = {
+					text = je_one_china_policy_ROC.tt
+					any_country = {
+						country_rank = rank_value:super_power
+						is_a_communist_government = yes
+						relations:root >= relations_threshold:amicable
+					}
+				}
+				c:PRC = {
+					save_temporary_scope_as = prestige_comparator_country
+					custom_tooltip = {
+						text = lower_prestige_than_THIS.tt
+						prestige < root.prestige 
+					}
+				}
+				infamy < infamy_threshold:pariah
+			}
+			
+			#Cold War is over: ROC has higher rank than PRC and is not a pariah
+			AND = {
+				NOT = { cold_war_ongoing = yes }
+				c:PRC = { country_rank < root.country_rank }
+				infamy < infamy_threshold:pariah
+			}
+			
+			#Communist China has somehow joined the UN
+			c:ROC ?= { 
+				is_country_type = recognized 
+				has_modifier = unga_member 
+			}
+			
+		}
+		
+	}
+	
+	on_complete = {
+	
+		#ROC joins the UNGA & UNSC
+		add_modifier = { name = unga_member }
+		if = {
+			limit = { c:PRC = { has_modifier = unsc_permanent_member } }
+			add_modifier = { name = unsc_permanent_member }
+			if = {
+				limit = { has_modifier = unsc_non_permanent_member }
+				remove_modifier = unsc_non_permanent_member
+			}
+		}
+		if = {
+			limit = { c:PRC = { has_modifier = unsc_non_permanent_member } }
+			add_modifier = { name = unsc_non_permanent_member }
+		}
+		set_country_type = recognized
+		
+		#PRC leaves the UNGA & UNSC
+		c:PRC = {
+			remove_modifier = unga_member
+			remove_modifier = unsc_permanent_member
+			remove_modifier = unsc_non_permanent_member
+			set_country_type = unrecognized
+			
+			#National humiliation
+			add_modifier = { 
+				name = national_humiliation 
+				years = 5
+				is_decaying = yes 
+			}
+		}
+		
+		#Prestige from victory!
+		add_modifier = { 
+			name = national_pride_modifier 
+			years = 5
+			is_decaying = yes 
+		}
+		
+	}
+	
+	invalid = {
+	
+		c:TAI ?= this
+		
+	}
+	
+	on_invalid = {
+		
+		#China wants to conquer Taiwan
+		if = {
+			limit = {
+				exists = c:CHI
+			}
+			c:CHI = {
+				hidden_effect = {
+					set_secret_goal = {
+						country = ROOT
+						secret_goal = conquer
+					}
+				}
+				change_relations = { country = ROOT value = -100 }
+			}
+		}
+		
+	}
+
+	weight = 100
+
+	should_be_pinned_by_default = yes
+
+	transferable = no
+
+	progressbar = no
+}

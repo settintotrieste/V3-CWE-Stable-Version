@@ -43,6 +43,8 @@ bg_manufacturing = {
 	should_auto_expand = { 
 		default_auto_expand_rule = yes
 	}
+	
+	economy_of_scale_ai_factor = 4.0
 }
 
 bg_light_industry = {
@@ -50,7 +52,7 @@ bg_light_industry = {
 
 	lens = light_industry
 	
-	urbanization = 1
+	urbanization = 2
 	infrastructure_usage_per_level = 1
 }
 
@@ -59,7 +61,7 @@ bg_heavy_industry = {
 
 	lens = heavy_industry
 	
-	urbanization = 2
+	urbanization = 5
 	infrastructure_usage_per_level = 2
 }
 
@@ -75,12 +77,15 @@ bg_agriculture = {
 	economy_of_scale = yes
 	
 	can_use_slaves = yes
+	cash_reserves_max = 25000
 	
 	infrastructure_usage_per_level = 1
 	
 	should_auto_expand = { 
 		default_auto_expand_rule = yes
 	}
+	
+	economy_of_scale_ai_factor = 2.0
 }
 
 bg_rye_farms = {
@@ -215,13 +220,12 @@ bg_sugar_plantations = {
 bg_banana_plantations = {
 	parent_group = bg_agriculture
 	
-	default_building = building_fruit_plantation
+	default_building = building_banana_plantation
 }
 
 bg_whaling = {
-	parent_group = bg_agriculture
-
-	#capped_by_resources = yes
+	category = rural
+	capped_by_resources = yes
 	
 	economy_of_scale = yes
 	
@@ -240,9 +244,8 @@ bg_whaling = {
 }
 
 bg_fishing = {
-	parent_group = bg_agriculture
-
-	#capped_by_resources = yes
+	category = rural
+	capped_by_resources = yes
 	
 	economy_of_scale = yes
 	
@@ -258,6 +261,8 @@ bg_fishing = {
 	should_auto_expand = { 
 		default_auto_expand_rule = yes
 	}
+	
+	economy_of_scale_ai_factor = 2.0
 }
 
 # Mining BG
@@ -271,6 +276,7 @@ bg_mining = {
 	
 	lens = mine
 	
+	can_use_slaves = yes
 	cash_reserves_max = 25000
 	
 	infrastructure_usage_per_level = 2
@@ -278,6 +284,8 @@ bg_mining = {
 	should_auto_expand = { 
 		default_auto_expand_rule = yes
 	}
+	
+	economy_of_scale_ai_factor = 3.0
 }
 
 bg_gold_fields = {
@@ -458,6 +466,8 @@ bg_logging = {
 	should_auto_expand = { 
 		default_auto_expand_rule = yes
 	}
+	
+	economy_of_scale_ai_factor = 2.0
 }
 
 bg_rubber = {
@@ -523,7 +533,7 @@ bg_service = {
 # Government BG
 
 bg_government = {
-	category = urban
+	category = development
 
 	always_possible = yes
 	
@@ -533,12 +543,16 @@ bg_government = {
 	
 	lens = government
 	
-	urbanization = 5
+	urbanization = 1
 	infrastructure_usage_per_level = 1
 }
 
 bg_technology = {
 	parent_group = bg_government
+	
+	should_auto_expand = { 
+		default_auto_expand_rule = yes
+	}
 }
 
 bg_bureaucracy = {
@@ -573,11 +587,9 @@ bg_navy = {
 }
 
 bg_nuclear_weapons = {
-	category = urban
+	category = development
 
 	always_possible = yes
-	
-	is_military = yes
 	
 	is_government_funded = yes
 	
@@ -598,6 +610,8 @@ bg_infrastructure = {
 	lens = infrastructure
 	
 	stateregion_max_level = yes
+	
+	economy_of_scale_ai_factor = 1.5
 }
 
 bg_public_infrastructure = {
@@ -605,7 +619,11 @@ bg_public_infrastructure = {
 	
 	is_government_funded = yes
 	
-	urbanization = 1
+	urbanization = 2
+	
+	should_auto_expand = { 
+		default_auto_expand_rule = yes
+	}
 }
 
 bg_private_infrastructure = {
@@ -616,7 +634,7 @@ bg_private_infrastructure = {
 	
 	cash_reserves_max = 25000
 	
-	urbanization = 1
+	urbanization = 2
 	
 	should_auto_expand = { 
 		default_auto_expand_rule = yes
@@ -624,7 +642,7 @@ bg_private_infrastructure = {
 }
 
 bg_construction = {
-	parent_group = bg_public_infrastructure
+	parent_group = bg_private_infrastructure
 
 	subsidized = yes
 
@@ -633,6 +651,8 @@ bg_construction = {
 	can_use_slaves = yes
 	
 	#urbanization = 1
+	
+	infrastructure_usage_per_level = 1
 	
 	should_auto_expand = { 
 		default_auto_expand_rule = yes
@@ -666,13 +686,15 @@ bg_trade = {
 	
 	proportionality_limit = 1.0
 	
-	economy_of_scale = no
+	economy_of_scale = yes
+	
+	subsidized = yes
 	
 	default_building = building_trade_center
 	
 	cash_reserves_max = 5000	
 	
-	urbanization = 5
+	urbanization = 1
 	
 	infrastructure_usage_per_level = 0.1
 	
@@ -703,11 +725,11 @@ bg_urban_facilities = {
 }
 
 bg_arts = {
-	parent_group = bg_infrastructure
+	parent_group = bg_private_infrastructure
 }
 
 bg_power = {
-	parent_group = bg_infrastructure
+	parent_group = bg_private_infrastructure
 	
 	should_auto_expand = { 
 		default_auto_expand_rule = yes
@@ -729,7 +751,7 @@ bg_monuments_hidden = {
 }
 
 bg_skyscraper = {
-	parent_group = bg_infrastructure
+	parent_group = bg_private_infrastructure
 	
 	should_auto_expand = { 
 		default_auto_expand_rule = no

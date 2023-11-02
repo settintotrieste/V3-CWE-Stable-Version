@@ -1,18 +1,24 @@
 ﻿#### [16] ####
 
 ideology_autocratic = {
-	icon = "gfx/interface/icons/ideology_icons/ideology_leader/ideology_leader_fascist.dds"
+	icon = "gfx/interface/icons/ideology_icons/ideology_leader/authoritarian.dds"
 	
 	character_ideology = yes
 	
 	possible = {
-		always = yes
+		NOT = { has_role = agitator }
 	}
 	
 	lawgroup_war_policy = {
-		law_no_war = strongly_disapprove
+		law_no_war = disapprove
 		law_defensive_war = disapprove
 		law_offensive_war = approve
+	}
+	
+	lawgroup_espionage_policy = {
+		law_no_espionage = disapprove
+		law_defensive_espionage = disapprove
+		law_offensive_espionage = approve
 	}
 	
 	lawgroup_wmd_policy = {
@@ -23,12 +29,15 @@ ideology_autocratic = {
 	lawgroup_citizenship = {
 		law_ethnostate = strongly_approve
 		law_national_supremacy = approve
-		law_multicultural = disapprove
+		law_racial_segregation = neutral
+		law_cultural_exclusion = disapprove
+		law_multicultural = strongly_disapprove
 	}
 	
 	lawgroup_slavery = {
 		law_slavery_banned = disapprove
-		law_slavery_allowed = approve
+		law_slavery_political = strongly_approve
+		law_slavery_cultural = approve
 	}
 	
 	lawgroup_army_model = {
@@ -85,6 +94,12 @@ ideology_autocratic = {
 		law_democratic_legislature = disapprove
 	}
 	
+	lawgroup_legislative_chambers = {
+		law_unicameralism = strongly_approve
+		law_hybrid_chamber = approve
+		law_bicameralism = disapprove
+	}
+	
 	lawgroup_political_parties = {
 		law_parties_not_allowed = strongly_approve
 		law_single_party_state = approve
@@ -107,6 +122,15 @@ ideology_autocratic = {
 		law_very_high_anti_corruption = strongly_disapprove
 	}
 	
+	lawgroup_civil_defence_policy = {
+		law_no_civil_defence_law = disapprove
+		law_very_weak_civil_defence_law = disapprove
+		law_weak_civil_defence_law = disapprove
+		law_moderate_civil_defence_law = disapprove
+		law_strong_civil_defence_law = approve
+		law_very_strong_civil_defence_law = approve
+	}
+	
 	leader_weight = {
 		value = 100	
 		
@@ -115,6 +139,14 @@ ideology_autocratic = {
 			limit = {
 				scope:interest_group = {
 					ig_approval < -5
+				}
+			}
+			add = 25
+		}
+		if = {
+			limit = {
+				scope:interest_group = {
+					ig_approval < -10
 				}
 			}
 			add = 50
@@ -130,16 +162,79 @@ ideology_autocratic = {
 			add = 50
 		}
 		
+		# more likely if you border a rival
+		if = {
+			limit = {
+				owner = {
+					any_rival_country = {
+						any_neighbouring_state = {
+							owner = root.owner
+						}
+					}
+				}
+			}
+			add = 25
+		}
+		# more likely if you're the defender in a war
+		if = {
+			limit = {
+				owner = {
+					is_at_war = yes
+					any_scope_war = {
+						defender_warleader = { this = ROOT.owner }
+					}
+				}
+			}
+			add = 25
+		}
+		
+		# Cycle of life
+		if = {
+			limit = {
+				scope:interest_group = {
+					is_in_government = no
+				}
+				owner = { is_a_democracy = yes }
+			}
+			add = 50
+		}
+		if = {
+			limit = {
+				scope:interest_group = {
+					is_in_government = no
+				}
+				owner = { is_a_dictatorship = yes }
+			}
+			add = -50
+		}
+		
+		# National Values
+		if = {
+			limit = {
+				owner = { has_modifier = order_national_value }
+			}
+			add = 25
+		}
+		
+		# World Tension
+		if = {
+			limit = {
+				owner = { has_global_variable = very_high_world_tension }
+			}
+			add = 25
+		}
+		
 	}
+	
 }
 
 ideology_power_hungry = {
-	icon = "gfx/interface/icons/ideology_icons/ideology_leader/ideology_leader_radical.dds"
+	icon = "gfx/interface/icons/ideology_icons/ideology_leader/ideology_leader_jingoist.dds"
 	
 	character_ideology = yes
 	
 	possible = {
-		always = yes
+		NOT = { has_role = agitator }
 	}
 	
 	lawgroup_war_policy = {
@@ -148,20 +243,29 @@ ideology_power_hungry = {
 		law_offensive_war = approve
 	}
 	
+	lawgroup_espionage_policy = {
+		law_no_espionage = disapprove
+		law_defensive_espionage = neutral
+		law_offensive_espionage = approve
+	}
+	
 	lawgroup_wmd_policy = {
 		law_wmd_banned = disapprove
 		law_wmd_allowed = approve
 	}
 	
 	lawgroup_citizenship = {
-		law_ethnostate = approve
+		law_ethnostate = disapprove
 		law_national_supremacy = strongly_approve
+		law_racial_segregation = approve
+		law_cultural_exclusion = neutral
 		law_multicultural = disapprove
 	}
 	
 	lawgroup_slavery = {
 		law_slavery_banned = disapprove
-		law_slavery_allowed = approve
+		law_slavery_political = approve
+		law_slavery_cultural = neutral
 	}
 	
 	lawgroup_army_model = {
@@ -218,6 +322,12 @@ ideology_power_hungry = {
 		law_democratic_legislature = disapprove
 	}
 	
+	lawgroup_legislative_chambers = {
+		law_unicameralism = approve
+		law_hybrid_chamber = neutral
+		law_bicameralism = disapprove
+	}
+	
 	lawgroup_political_parties = {
 		law_parties_not_allowed = approve
 		law_single_party_state = strongly_approve
@@ -240,10 +350,27 @@ ideology_power_hungry = {
 		law_very_high_anti_corruption = strongly_disapprove
 	}
 	
+	lawgroup_civil_defence_policy = {
+		law_no_civil_defence_law = disapprove
+		law_very_weak_civil_defence_law = disapprove
+		law_weak_civil_defence_law = disapprove
+		law_moderate_civil_defence_law = approve
+		law_strong_civil_defence_law = approve
+		law_very_strong_civil_defence_law = disapprove
+	}
+	
 	leader_weight = {
 		value = 100	
 		
 		# angry IGs are more likely to have autocratic opinions
+		if = {
+			limit = {
+				scope:interest_group = {
+					ig_approval < 0
+				}
+			}
+			add = 25
+		}
 		if = {
 			limit = {
 				scope:interest_group = {
@@ -263,16 +390,52 @@ ideology_power_hungry = {
 			add = 50
 		}
 		
+		# Cycle of life
+		if = {
+			limit = {
+				scope:interest_group = {
+					is_in_government = no
+				}
+				owner = { is_a_democracy = yes }
+			}
+			add = 50
+		}
+		if = {
+			limit = {
+				scope:interest_group = {
+					is_in_government = no
+				}
+				owner = { is_a_dictatorship = yes }
+			}
+			add = -50
+		}
+		
+		# National Values
+		if = {
+			limit = {
+				owner = { has_modifier = order_national_value }
+			}
+			add = 25
+		}
+		
+		# World Tension
+		if = {
+			limit = {
+				owner = { has_global_variable = high_world_tension }
+			}
+			add = 25
+		}
+		
 	}
 }
 
 ideology_elitist = {
-	icon = "gfx/interface/icons/ideology_icons/ideology_leader/ideology_leader_ethno_nationalist.dds"
+	icon = "gfx/interface/icons/ideology_icons/ideology_leader/ideology_leader_radical.dds"
 	
 	character_ideology = yes
 	
 	possible = {
-		always = yes
+		NOT = { has_role = agitator }
 	}
 	
 	lawgroup_war_policy = {
@@ -281,20 +444,29 @@ ideology_elitist = {
 		law_offensive_war = neutral
 	}
 	
+	lawgroup_espionage_policy = {
+		law_no_espionage = neutral
+		law_defensive_espionage = approve
+		law_offensive_espionage = neutral
+	}
+	
 	lawgroup_wmd_policy = {
 		law_wmd_banned = neutral
 		law_wmd_allowed = neutral
 	}
 	
 	lawgroup_citizenship = {
-		law_ethnostate = neutral
-		law_national_supremacy = approve
+		law_ethnostate = strongly_disapprove
+		law_national_supremacy = disapprove
+		law_racial_segregation = strongly_approve
+		law_cultural_exclusion = approve
 		law_multicultural = neutral
 	}
 	
 	lawgroup_slavery = {
-		law_slavery_banned = neutral
-		law_slavery_allowed = neutral
+		law_slavery_banned = approve
+		law_slavery_political = disapprove
+		law_slavery_cultural = strongly_disapprove
 	}
 	
 	lawgroup_army_model = {
@@ -351,6 +523,12 @@ ideology_elitist = {
 		law_democratic_legislature = neutral
 	}
 	
+	lawgroup_legislative_chambers = {
+		law_unicameralism = neutral
+		law_hybrid_chamber = approve
+		law_bicameralism = neutral
+	}
+	
 	lawgroup_political_parties = {
 		law_parties_not_allowed = disapprove
 		law_single_party_state = neutral
@@ -373,6 +551,15 @@ ideology_elitist = {
 		law_very_high_anti_corruption = disapprove
 	}
 	
+	lawgroup_civil_defence_policy = {
+		law_no_civil_defence_law = disapprove
+		law_very_weak_civil_defence_law = disapprove
+		law_weak_civil_defence_law = approve
+		law_moderate_civil_defence_law = approve
+		law_strong_civil_defence_law = disapprove
+		law_very_strong_civil_defence_law = disapprove
+	}
+	
 	leader_weight = {
 		value = 100	
 		
@@ -386,23 +573,45 @@ ideology_elitist = {
 			add = 50
 		}
 		
+		# National Values
+		if = {
+			limit = {
+				owner = { has_modifier = equality_national_value }
+			}
+			add = 25
+		}
+		
+		# World Tension
+		if = {
+			limit = {
+				owner = { has_global_variable = medium_world_tension }
+			}
+			add = 25
+		}
+		
 	}
 	
 }
 
 ideology_democratic = {
-	icon = "gfx/interface/icons/ideology_icons/ideology_leader/ideology_moderate.dds"
+	icon = "gfx/interface/icons/ideology_icons/ideology_leader/ideology_leader_reformer.dds"
 	
 	character_ideology = yes
 	
 	possible = {
-		always = yes
+		NOT = { has_role = agitator }
 	}
 	
 	lawgroup_war_policy = {
 		law_no_war = approve
-		law_defensive_war = strongly_approve
+		law_defensive_war = approve
 		law_offensive_war = disapprove
+	}
+	
+	lawgroup_espionage_policy = {
+		law_no_espionage = neutral
+		law_defensive_espionage = approve
+		law_offensive_espionage = disapprove
 	}
 	
 	lawgroup_wmd_policy = {
@@ -411,14 +620,17 @@ ideology_democratic = {
 	}
 	
 	lawgroup_citizenship = {
-		law_ethnostate = disapprove
-		law_national_supremacy = neutral
+		law_ethnostate = strongly_disapprove
+		law_national_supremacy = strongly_disapprove
+		law_racial_segregation = disapprove
+		law_cultural_exclusion = strongly_approve
 		law_multicultural = approve
 	}
 	
 	lawgroup_slavery = {
-		law_slavery_banned = approve
-		law_slavery_allowed = disapprove
+		law_slavery_banned = strongly_approve
+		law_slavery_political = strongly_disapprove
+		law_slavery_cultural = strongly_disapprove
 	}
 	
 	lawgroup_army_model = {
@@ -475,6 +687,12 @@ ideology_democratic = {
 		law_democratic_legislature = strongly_approve
 	}
 	
+	lawgroup_legislative_chambers = {
+		law_unicameralism = disapprove
+		law_hybrid_chamber = approve
+		law_bicameralism = strongly_approve
+	}
+	
 	lawgroup_political_parties = {
 		law_parties_not_allowed = disapprove
 		law_single_party_state = disapprove
@@ -497,6 +715,24 @@ ideology_democratic = {
 		law_very_high_anti_corruption = approve
 	}
 	
+	lawgroup_civil_defence_policy = {
+		law_no_civil_defence_law = disapprove
+		law_very_weak_civil_defence_law = approve
+		law_weak_civil_defence_law = approve
+		law_moderate_civil_defence_law = disapprove
+		law_strong_civil_defence_law = disapprove
+		law_very_strong_civil_defence_law = disapprove
+	}
+	
+	### SPECIAL ###
+	lawgroup_head_of_state = {
+		law_HOS_monarch = disapprove
+		law_HOS_president = approve
+		law_HOS_religious_leader = disapprove
+		law_HOS_nationalist_leader = disapprove
+		law_HOS_communist_leader = disapprove
+	}
+	
 	leader_weight = {
 		value = 100	
 		
@@ -504,10 +740,18 @@ ideology_democratic = {
 		if = {
 			limit = {
 				scope:interest_group = {
-					ig_approval > 5
+					ig_approval > 0
 				}
 			}
 			add = 25
+		}
+		if = {
+			limit = {
+				scope:interest_group = {
+					ig_approval > 5
+				}
+			}
+			add = 50
 		}
 		
 		# IGs in opposition are more likely to have autocratic opinions
@@ -520,23 +764,70 @@ ideology_democratic = {
 			add = 100
 		}
 		
+		# Cycle of life
+		if = {
+			limit = {
+				scope:interest_group = {
+					is_in_government = no
+				}
+				owner = { is_a_democracy = yes }
+			}
+			add = -50
+		}
+		if = {
+			limit = {
+				scope:interest_group = {
+					is_in_government = no
+				}
+				owner = { is_a_dictatorship = yes }
+			}
+			add = 50
+		}
+		
+		# National Values
+		if = {
+			limit = {
+				owner = { 
+					OR = { 
+						has_modifier = equality_national_value 
+						has_modifier = liberty_national_value
+					}
+				}
+			}
+			add = 25
+		}
+		
+		# World Tension
+		if = {
+			limit = {
+				owner = { has_global_variable = low_world_tension }
+			}
+			add = 25
+		}
+		
 	}
 	
 }
 
 ideology_liberal = {
-	icon = "gfx/interface/icons/ideology_icons/ideology_leader/ideology_leader_reformer.dds"
+	icon = "gfx/interface/icons/ideology_icons/ideology_leader/ideology_leader_atheist.dds"
 	
 	character_ideology = yes
 	
 	possible = {
-		always = yes
+		NOT = { has_role = agitator }
 	}
 	
 	lawgroup_war_policy = {
-		law_no_war = strongly_approve
+		law_no_war = approve
 		law_defensive_war = approve
 		law_offensive_war = disapprove
+	}
+	
+	lawgroup_espionage_policy = {
+		law_no_espionage = approve
+		law_defensive_espionage = approve
+		law_offensive_espionage = disapprove
 	}
 	
 	lawgroup_wmd_policy = {
@@ -546,13 +837,16 @@ ideology_liberal = {
 	
 	lawgroup_citizenship = {
 		law_ethnostate = strongly_disapprove
-		law_national_supremacy = disapprove
-		law_multicultural = approve
+		law_national_supremacy = strongly_disapprove
+		law_racial_segregation = strongly_disapprove
+		law_cultural_exclusion = disapprove
+		law_multicultural = strongly_approve
 	}
 	
 	lawgroup_slavery = {
-		law_slavery_banned = approve
-		law_slavery_allowed = disapprove
+		law_slavery_banned = strongly_approve
+		law_slavery_political = strongly_disapprove
+		law_slavery_cultural = strongly_disapprove
 	}
 	
 	lawgroup_army_model = {
@@ -609,6 +903,12 @@ ideology_liberal = {
 		law_democratic_legislature = approve
 	}
 	
+	lawgroup_legislative_chambers = {
+		law_unicameralism = strongly_disapprove
+		law_hybrid_chamber = disapprove
+		law_bicameralism = approve
+	}
+	
 	lawgroup_political_parties = {
 		law_parties_not_allowed = strongly_disapprove
 		law_single_party_state = strongly_disapprove
@@ -629,6 +929,24 @@ ideology_liberal = {
 		law_medium_anti_corruption = strongly_disapprove
 		law_high_anti_corruption = approve
 		law_very_high_anti_corruption = strongly_approve
+	}
+	
+	lawgroup_civil_defence_policy = {
+		law_no_civil_defence_law = approve
+		law_very_weak_civil_defence_law = approve
+		law_weak_civil_defence_law = disapprove
+		law_moderate_civil_defence_law = disapprove
+		law_strong_civil_defence_law = disapprove
+		law_very_strong_civil_defence_law = disapprove
+	}
+	
+	### SPECIAL ###
+	lawgroup_head_of_state = {
+		law_HOS_monarch = disapprove
+		law_HOS_president = strongly_approve
+		law_HOS_religious_leader = disapprove
+		law_HOS_nationalist_leader = disapprove
+		law_HOS_communist_leader = disapprove
 	}
 	
 	leader_weight = {
@@ -660,6 +978,90 @@ ideology_liberal = {
 				}
 			}
 			add = 100
+		}
+		
+		# emerges to counter powerful armed forces
+		if = {
+			limit = {
+				scope:interest_group = {
+					is_in_government = no
+				}
+				owner = {
+					exists = ig:ig_armed_forces
+					ig:ig_armed_forces = {
+						is_powerful = yes
+						is_in_government = yes
+					}
+				}
+			}
+			add = 10
+		}
+		# more likely if a war you started isn't going well
+		if = {
+			limit = {
+				scope:interest_group = {
+					is_in_government = no
+				}
+				owner = {
+					is_at_war = yes
+					any_scope_war = {
+						attacker_warleader = { this = ROOT.owner }
+						has_war_support = {
+							target = root.owner
+							value < 0
+						}
+					}
+				}
+			}
+			add = 100
+		}
+		# more likely with devastation in incorporated states
+		if = {
+			limit = {
+				owner = {
+					any_scope_state = {
+						is_incorporated = yes
+						devastation > 20
+					}
+				}
+			}
+			add = 50
+		}
+		
+		# Cycle of life
+		if = {
+			limit = {
+				scope:interest_group = {
+					is_in_government = no
+				}
+				owner = { is_a_democracy = yes }
+			}
+			add = -50
+		}
+		if = {
+			limit = {
+				scope:interest_group = {
+					is_in_government = no
+				}
+				owner = { is_a_dictatorship = yes }
+			}
+			add = 50
+		}
+		
+		# National Values
+		if = {
+			limit = {
+				owner = { has_modifier = liberty_national_value }
+			}
+			add = 25
+		}
+		
+		# World Tension
+		if = {
+			limit = {
+				owner = { has_global_variable = very_low_world_tension }
+			}
+			add = 25
 		}
 		
 	}

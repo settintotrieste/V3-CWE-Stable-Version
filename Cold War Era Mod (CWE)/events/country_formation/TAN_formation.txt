@@ -8,9 +8,9 @@ tanzania_formation.1 = {
     desc = tanzania_formation_zanzibar.d 			# Description of the event; ADD LOCALISATION
     #flavor = tanzania_formation_zanzibar.f 		# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_ruler_speaking_to_people.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -33,7 +33,10 @@ tanzania_formation.1 = {
 		#Recipent conditions
 		exists = c:ZAN
 		c:ZAN = { 												# Change TAG of the transferee ****
-			is_a_democracy = yes
+			OR = { 
+				is_a_democracy = yes
+				is_a_monarchy = yes
+			}
 			is_sufficiently_independent = yes
 			is_at_war = no
 		}
@@ -71,7 +74,7 @@ tanzania_formation.1 = {
 		change_infamy = -10
 		
 		ai_chance = { 
-			base = 1
+			base = 1 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 }
 		}
     }
 
@@ -85,9 +88,9 @@ tanzania_formation.2 = {
     desc = tanzania_formation_zanzibar.d 		# Description of the event; ADD LOCALISATION
     #flavor = tanzania_formation_zanzibar.f 		# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_ruler_speaking_to_people.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -102,16 +105,17 @@ tanzania_formation.2 = {
         name = tanzania_formation.option.1			# Accept land transfer request by FROM
         highlighted_option = yes
 		
-		c:TGY = { annex = c:ZAN }
-		
-		every_scope_state = {
-			limit = { is_homeland = cu:zanzibari }
-			state_region = {
+		c:TGY = { 
+			effect_starting_politics_presidential_republic = yes
+			
+			annex = c:ZAN
+			every_scope_state = {
+				limit = { state_region = { is_homeland = cu:zanzibari } }
 				set_state_type = incorporated
 			}
+			
+			change_tag = TAN
 		}
-		
-		change_tag = TAN
 		
 		ai_chance = { 
 			base = 99 
@@ -130,7 +134,7 @@ tanzania_formation.2 = {
 		}
 		
 		ai_chance = { 
-			base = 1 
+			base = 1 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 }
 		}
 		
     }

@@ -3,14 +3,15 @@ namespace = portuguese_decolonisation
 #Angola (INDEPENDENCE)
 portuguese_decolonisation.1 = {
     type = country_event
+	placement = scope:colonial_state
 
     title = portuguese_angola.indy.t 					# Title of the event; ADD LOCALISATION
     desc = portuguese_angola.indy.d 					# Description of the event; ADD LOCALISATION
     #flavor = portuguese_angola.indy.f 					# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -120,7 +121,7 @@ portuguese_decolonisation.1 = {
 			limit = {
 		 		state_region = { is_homeland = cu:angolan }			# Change homeland identity to match colony to be released ****
 		 	}
-			add_radicals = {
+			add_radicals_in_state = {
 				culture = cu:angolan								# Change culture ****
 				value = large_radicals
 			}
@@ -131,7 +132,7 @@ portuguese_decolonisation.1 = {
 		set_variable = portuguese_angola_indy						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }
@@ -141,14 +142,15 @@ portuguese_decolonisation.1 = {
 #Mozambique (INDEPENDENCE)
 portuguese_decolonisation.2 = {
     type = country_event
+	placement = scope:colonial_state
 
     title = portuguese_mozambique.indy.t 					# Title of the event; ADD LOCALISATION
     desc = portuguese_mozambique.indy.d 					# Description of the event; ADD LOCALISATION
     #flavor = portuguese_mozambique.indy.f 					# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -258,7 +260,7 @@ portuguese_decolonisation.2 = {
 			limit = {
 		 		state_region = { is_homeland = cu:mozambican }	# Change homeland identity to match colony to be released ****
 		 	}
-			add_radicals = {
+			add_radicals_in_state = {
 				culture = cu:mozambican							# Change culture ****
 				value = large_radicals
 			}
@@ -269,7 +271,7 @@ portuguese_decolonisation.2 = {
 		set_variable = portuguese_mozambique_indy				# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }
@@ -279,14 +281,15 @@ portuguese_decolonisation.2 = {
 #Guinea Bissau (INDEPENDENCE)
 portuguese_decolonisation.3 = {
     type = country_event
+	placement = scope:colonial_state
 
     title = portuguese_guinea_bissau.indy.t 					# Title of the event; ADD LOCALISATION
     desc = portuguese_guinea_bissau.indy.d 						# Description of the event; ADD LOCALISATION
     #flavor = portuguese_guinea_bissau.indy.f 					# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -396,7 +399,7 @@ portuguese_decolonisation.3 = {
 			limit = {
 		 		state_region = { is_homeland = cu:bissau_guinean }	# Change homeland identity to match colony to be released ****
 		 	}
-			add_radicals = {
+			add_radicals_in_state = {
 				culture = cu:bissau_guinean							# Change culture ****
 				value = large_radicals
 			}
@@ -407,7 +410,7 @@ portuguese_decolonisation.3 = {
 		set_variable = portuguese_guinea_bissau_indy						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }
@@ -417,14 +420,15 @@ portuguese_decolonisation.3 = {
 #Cape Verde (INDEPENDENCE)
 portuguese_decolonisation.4 = {
     type = country_event
+	placement = scope:colonial_state
 
     title = portuguese_cape_verde.indy.t 					# Title of the event; ADD LOCALISATION
     desc = portuguese_cape_verde.indy.d 					# Description of the event; ADD LOCALISATION
     #flavor = portuguese_cape_verde.indy.f 					# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -534,7 +538,7 @@ portuguese_decolonisation.4 = {
 			limit = {
 		 		state_region = { is_homeland = cu:cabo_verdean }	# Change homeland identity to match colony to be released ****
 		 	}
-			add_radicals = {
+			add_radicals_in_state = {
 				culture = cu:cabo_verdean							# Change culture ****
 				value = large_radicals
 			}
@@ -545,7 +549,7 @@ portuguese_decolonisation.4 = {
 		set_variable = portuguese_cape_verde_indy						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }
@@ -555,14 +559,15 @@ portuguese_decolonisation.4 = {
 #Sao Tome and Principe (INDEPENDENCE)
 portuguese_decolonisation.5 = {
     type = country_event
+	placement = scope:colonial_state
 
     title = portuguese_sao_tome.indy.t 					# Title of the event; ADD LOCALISATION
     desc = portuguese_sao_tome.indy.d 					# Description of the event; ADD LOCALISATION
     #flavor = portuguese_sao_tome.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -672,7 +677,7 @@ portuguese_decolonisation.5 = {
 			limit = {
 		 		state_region = { is_homeland = cu:santomean }	# Change homeland identity to match colony to be released ****
 		 	}
-			add_radicals = {
+			add_radicals_in_state = {
 				culture = cu:santomean							# Change culture ****
 				value = large_radicals
 			}
@@ -683,7 +688,7 @@ portuguese_decolonisation.5 = {
 		set_variable = portuguese_sao_tome_indy						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }
@@ -693,14 +698,15 @@ portuguese_decolonisation.5 = {
 #East Timor (INDEPENDENCE)
 portuguese_decolonisation.6 = {
     type = country_event
+	placement = scope:colonial_state
 
     title = portuguese_timor.indy.t 				# Title of the event; ADD LOCALISATION
     desc = portuguese_timor.indy.d 					# Description of the event; ADD LOCALISATION
     #flavor = portuguese_timor.indy.f 				# Flavor for event; ADD LOCALISATION, IF REQUIRED
 
-    event_image = { video = "gfx/event_pictures/asia_sepoy_mutiny.bk2" }
+    event_image = { video = "gfx/event_pictures/unspecific_signed_contract.bk2" }
 
-    icon = "gfx/interface/icons/event_icons/event_portrait.dds" 	# Icon that shows on the map or the outliner
+    icon = "gfx/interface/icons/event_icons/waving_flag.dds" 	# Icon that shows on the map or the outliner
     on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear" 	# Sound effect if needed
 
     duration = 1 # Duration to fire if triggers are met
@@ -810,7 +816,7 @@ portuguese_decolonisation.6 = {
 			limit = {
 		 		state_region = { is_homeland = cu:timorese }	# Change homeland identity to match colony to be released ****
 		 	}
-			add_radicals = {
+			add_radicals_in_state = {
 				culture = cu:timorese							# Change culture ****
 				value = large_radicals
 			}
@@ -821,7 +827,7 @@ portuguese_decolonisation.6 = {
 		set_variable = portuguese_timor_indy						# Change variable ****
 		
 		ai_chance = { 
-			base = 10 
+			base = 10 modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 } 
 		}
 		
     }

@@ -1,26 +1,38 @@
 is_sufficiently_independent = {
 
-	#scope:actor = {
+	custom_tooltip = {
+		text = is_sufficiently_independent_tt
 		NOR = {
 			is_subject_type = subject_type_puppet
 			is_subject_type = subject_type_special_administrative_region
 			is_subject_type = subject_type_semi_autonomous_colony
 			is_subject_type = subject_type_mandate
 		}
-	#}
+	}
 	
 }
 
 is_not_sufficiently_independent = {
 
-	#scope:actor = {
+	custom_tooltip = {
+		text = is_not_sufficiently_independent_tt
 		OR = {
 			is_subject_type = subject_type_puppet
 			is_subject_type = subject_type_special_administrative_region
 			is_subject_type = subject_type_semi_autonomous_colony
 			is_subject_type = subject_type_mandate
 		}
-	#}
+	}
+	
+}
+
+is_a_colonial_subject_gov = {
+
+	OR = {
+		is_subject_type = subject_type_dominion
+		is_subject_type = subject_type_semi_autonomous_colony
+		is_subject_type = subject_type_mandate
+	}
 	
 }
 
@@ -72,6 +84,7 @@ is_a_democracy = {
 is_some_kind_of_democracy = {
 
 	OR = {
+		has_government_type = gov_constitutional_monarchy_regime
 		has_government_type = gov_constitutional_monarchy
 		has_government_type = gov_semi_constitutional_monarchy
 		has_government_type = gov_presidential_democracy
@@ -83,20 +96,70 @@ is_some_kind_of_democracy = {
 	
 }
 
-is_a_dictatorship = {
+is_a_republican_regime = {
 
 	OR = {
-		has_government_type = gov_absolute_kingdom
-		has_government_type = gov_presidential_dictatorship
 		has_government_type = gov_presidential_regime
-		has_government_type = gov_parliamentary_dictatorship
 		has_government_type = gov_parliamentary_regime
-		has_government_type = gov_nationalist_dictatorship
+	}
+	
+}
+
+is_a_regime_type_government = {
+
+	OR = {
+		has_government_type = gov_constitutional_monarchy_regime
+		has_government_type = gov_presidential_regime
 		has_government_type = gov_nationalist_regime
-		has_government_type = gov_soviet_dictatorship
-		has_government_type = gov_soviet_republic
-		has_government_type = gov_theocratic_dictatorship
+		has_government_type = gov_parliamentary_regime
 		has_government_type = gov_theocratic_democracy
+		has_government_type = gov_soviet_republic
+	}
+	
+}
+
+is_a_dictatorship = {
+
+	custom_tooltip = {
+		text = is_a_dictatorship_tt
+		OR = {
+			has_government_type = gov_absolute_empire
+			has_government_type = gov_absolute_monarchy
+			has_government_type = gov_semi_constitutional_monarchy
+			has_government_type = gov_constitutional_monarchy_dictatorship
+			has_government_type = gov_constitutional_monarchy_regime
+			has_government_type = gov_presidential_dictatorship
+			has_government_type = gov_presidential_regime
+			has_government_type = gov_parliamentary_dictatorship
+			has_government_type = gov_parliamentary_regime
+			has_government_type = gov_nationalist_dictatorship
+			has_government_type = gov_nationalist_regime
+			has_government_type = gov_soviet_dictatorship
+			has_government_type = gov_soviet_republic
+			has_government_type = gov_theocratic_dictatorship
+			has_government_type = gov_theocratic_democracy
+		}
+	}
+	
+}
+
+is_a_presidential_regime = {
+
+	custom_tooltip = {
+		text = is_a_presidential_regime.tt
+		OR = {
+			has_government_type = gov_presidential_dictatorship
+			has_government_type = gov_presidential_regime
+		}
+	}
+	
+}
+
+is_a_presidential_democracy = {
+
+	OR = {
+		has_government_type = gov_presidential_democracy
+		has_government_type = gov_semi_presidential_democracy
 	}
 	
 }
@@ -111,9 +174,34 @@ is_a_republican_democracy = {
 	
 }
 
+is_a_parliamentary_regime = {
+
+	custom_tooltip = {
+		text = is_a_parliamentary_regime.tt
+		OR = {
+			has_government_type = gov_parliamentary_dictatorship
+			has_government_type = gov_parliamentary_regime
+		}
+	}
+	
+}
+
+is_a_parliamentary_democracy = {
+
+	OR = {
+		has_government_type = gov_constitutional_monarchy_regime
+		has_government_type = gov_constitutional_monarchy
+		has_government_type = gov_parliamentary_regime
+		has_government_type = gov_parliamentary_democracy
+	}
+	
+}
+
 is_a_parliamentary_government = {
 
 	OR = {
+		has_government_type = gov_constitutional_monarchy_dictatorship
+		has_government_type = gov_constitutional_monarchy_regime
 		has_government_type = gov_constitutional_monarchy
 		has_government_type = gov_parliamentary_dictatorship
 		has_government_type = gov_parliamentary_regime
@@ -125,6 +213,7 @@ is_a_parliamentary_government = {
 is_a_democratic_monarchy = {
 
 	OR = {
+		has_government_type = gov_constitutional_monarchy_regime
 		has_government_type = gov_constitutional_monarchy
 		has_government_type = gov_semi_constitutional_monarchy
 	}
@@ -136,6 +225,16 @@ is_a_regime_monarchy = {
 	OR = {
 		has_government_type = gov_semi_constitutional_monarchy
 		has_government_type = gov_absolute_monarchy
+		has_government_type = gov_absolute_empire
+	}
+	
+}
+
+is_a_absolute_monarchy = {
+
+	OR = {
+		has_government_type = gov_absolute_monarchy
+		has_government_type = gov_absolute_empire
 	}
 	
 }
@@ -143,9 +242,12 @@ is_a_regime_monarchy = {
 is_a_monarchy = {
 
 	OR = {
+		has_government_type = gov_constitutional_monarchy_dictatorship
+		has_government_type = gov_constitutional_monarchy_regime
 		has_government_type = gov_constitutional_monarchy
 		has_government_type = gov_semi_constitutional_monarchy
 		has_government_type = gov_absolute_monarchy
+		has_government_type = gov_absolute_empire
 	}
 	
 }
@@ -153,10 +255,30 @@ is_a_monarchy = {
 is_not_a_monarchy = {
 
 	NOR = {
+		has_government_type = gov_constitutional_monarchy_dictatorship
+		has_government_type = gov_constitutional_monarchy_regime
 		has_government_type = gov_constitutional_monarchy
 		has_government_type = gov_semi_constitutional_monarchy
 		has_government_type = gov_absolute_monarchy
+		has_government_type = gov_absolute_empire
 	}
+	
+}
+
+is_a_racist_dictatorship = {
+
+	has_law = law_type:law_ethnostate
+
+	OR = {
+		has_government_type = gov_nationalist_dictatorship
+		has_government_type = gov_nationalist_regime
+	}
+	
+}
+
+is_a_nationalist_dictatorship = {
+
+	has_government_type = gov_nationalist_dictatorship
 	
 }
 
@@ -169,12 +291,24 @@ is_a_nationalist_government = {
 	
 }
 
+is_a_communist_dictatorship = {
+
+	has_government_type = gov_soviet_dictatorship
+	
+}
+
 is_a_communist_government = {
 
 	OR = {
 		has_government_type = gov_soviet_dictatorship
 		has_government_type = gov_soviet_republic
 	}
+	
+}
+
+is_a_theocratic_dictatorship = {
+
+	has_government_type = gov_theocratic_dictatorship
 	
 }
 
@@ -196,6 +330,21 @@ is_a_colonial_government = {
 	
 }
 
+is_a_colonial_democracy = {
+
+	has_government_type = gov_colonial_administration_elective
+	
+}
+
+character_is_autocratic = {
+	
+	OR = {
+		has_ideology = ideology:ideology_autocratic
+		has_ideology = ideology:ideology_power_hungry
+	}
+	
+}
+
 can_go_to_war = {
 
 	#THIS does not have restricted war rights
@@ -205,6 +354,29 @@ can_go_to_war = {
 	}
 	
 	#Ruler is jingoistic
+	exists = ruler
+	ruler = {
+		OR = {
+			has_ideology = ideology:ideology_autocratic
+			has_ideology = ideology:ideology_power_hungry
+		}
+	}
+	
+}
+
+has_interventionist_fp = {
+
+	#THIS does not have restricted war rights
+	OR = { 
+		has_law = law_type:law_regionalist_fp
+		has_law = law_type:law_globalist_fp
+	}
+	
+	#THIS does not have restricted war rights
+	NOT = { has_law = law_type:law_no_war }
+	
+	#Ruler is jingoistic
+	exists = ruler
 	ruler = {
 		OR = {
 			has_ideology = ideology:ideology_autocratic
@@ -215,11 +387,22 @@ can_go_to_war = {
 }
 
 has_jingoistic_ruler = {
+	exists = ruler
 	ruler = {
 		OR = {
 			has_ideology = ideology:ideology_autocratic
 			has_ideology = ideology:ideology_power_hungry
 			has_ideology = ideology:ideology_elitist
+		}
+	}
+}
+
+has_dictatorial_ruler = {
+	exists = ruler
+	ruler = {
+		OR = {
+			has_ideology = ideology:ideology_autocratic
+			has_ideology = ideology:ideology_power_hungry
 		}
 	}
 }
@@ -239,18 +422,30 @@ is_neutral = {
 }
 
 cold_war_ongoing = {
-	any_country = {
-		country_rank = rank_value:super_power
-		is_a_communist_government = yes
+
+	custom_tooltip = {
+		text = cold_war_ongoing_tt
+		any_country = {
+			country_rank = rank_value:super_power
+			is_a_communist_government = yes
+		}
+		any_country = {
+			country_rank = rank_value:super_power
+			is_a_democracy = yes
+		}
 	}
-	any_country = {
-		country_rank = rank_value:super_power
-		is_a_democracy = yes
-	}
+	
 }
 
 is_a_superpower = {
 	country_rank = rank_value:super_power
+}
+
+radical_left_wing_ruling_coalition = {
+	OR = { 
+		has_modifier = communist_ruling_party_ideology
+		has_modifier = market_socialist_ruling_party_ideology
+	}
 }
 
 left_wing_ruling_coalition = {
@@ -259,5 +454,480 @@ left_wing_ruling_coalition = {
 		has_modifier = market_socialist_ruling_party_ideology
 		has_modifier = socialist_ruling_party_ideology
 		has_modifier = social_democratic_ruling_party_ideology
+		
+		has_modifier = progressive_ruling_party_ideology
 	}
+}
+
+right_wing_ruling_coalition = {
+	OR = { 
+		has_modifier = traditionalist_ruling_party_ideology
+		has_modifier = conservative_ruling_party_ideology
+		has_modifier = fascist_ruling_party_ideology
+		
+		has_modifier = liberal_ruling_party_ideology
+		has_modifier = libertarian_ruling_party_ideology
+	}
+}
+
+conservative_ruling_coalition = {
+	OR = {
+		has_modifier = traditionalist_ruling_party_ideology
+		has_modifier = conservative_ruling_party_ideology
+	}
+}
+
+liberal_ruling_coalition = {
+	OR = {
+		has_modifier = liberal_ruling_party_ideology
+		has_modifier = libertarian_ruling_party_ideology
+	}
+}
+
+communist_ruling_coalition = {
+	OR = {
+		has_modifier = communist_ruling_party_ideology
+		has_modifier = market_socialist_ruling_party_ideology
+	}
+}
+
+socialist_ruling_coalition = {
+	OR = {
+		has_modifier = socialist_ruling_party_ideology
+		has_modifier = social_democratic_ruling_party_ideology
+	}
+}
+
+nationalist_ruling_coalition = {
+	has_modifier = fascist_ruling_party_ideology
+}
+
+radical_right_wing_ruling_coalition = {
+	OR = { 
+		has_modifier = traditionalist_ruling_party_ideology
+		has_modifier = fascist_ruling_party_ideology
+	}
+}
+
+is_a_command_economy = {
+	OR = { 
+		has_law = law_type:law_command_economy
+		has_law = law_type:law_semi_command_economy
+	}
+}
+
+has_an_elected_parliament = {
+	OR = { 
+		has_law = law_type:law_technocratic_legislature
+		has_law = law_type:law_democratic_legislature
+	}
+}
+
+government_has_legislative_simple_majority = {
+	
+	custom_tooltip = {
+		text = has_lower_house_simple_majority.tt
+		NAND = {
+			has_journal_entry = je_lower_house
+			NOT = { has_variable = lower_house_has_simple_majority }
+			NOT = { has_modifier = executive_order_issued }
+			NOT = { has_modifier = state_of_emergency_issued }
+		}
+	}
+	
+	OR = {
+	
+		has_upper_house_support_simple_majority = yes
+		
+		custom_tooltip = {
+			text = has_no_upper_house.tt
+			NOT = { has_journal_entry = je_upper_house }
+		}
+		
+		has_modifier = executive_order_issued
+		
+		has_modifier = state_of_emergency_issued
+		
+	}
+	
+	custom_tooltip = {
+		text = has_no_low_cabinet_unity.tt
+		NOT = { has_variable = low_cabinet_unity }
+	}
+	
+}
+
+government_has_legislative_super_majority = {
+	
+	custom_tooltip = {
+		text = has_lower_house_super_majority.tt
+		NAND = {
+			has_journal_entry = je_lower_house
+			NOT = { has_variable = lower_house_has_super_majority }
+			NOT = { has_modifier = executive_order_issued }
+			NOT = { has_modifier = state_of_emergency_issued }
+		}
+	}
+	
+	OR = {
+	
+		AND = { 
+			has_law = law_type:law_constitutional_supremacy
+			has_upper_house_support_667 = yes
+			government_legitimacy > 66
+		}
+		
+		AND = { 
+			NOT = { has_law = law_type:law_constitutional_supremacy }
+			has_upper_house_support_simple_majority = yes
+		}
+		
+		has_modifier = state_of_emergency_issued
+		
+	}
+	
+	custom_tooltip = {
+		text = has_no_medium_cabinet_unity.tt
+		NOT = { has_variable = low_cabinet_unity }
+		NOT = { has_variable = medium_cabinet_unity }
+	}
+	
+}
+
+has_upper_house_support_simple_majority = {
+
+	custom_tooltip = {
+		text = has_upper_house_support_50.tt
+		NAND = {
+			NOT = { has_variable = upper_house_filibuster_rule }
+			has_journal_entry = je_upper_house
+			NOT = { has_variable = upper_house_has_simple_majority }
+		}
+	}
+	
+	custom_tooltip = {
+		text = has_upper_house_support_60.tt
+		NAND = {
+			has_variable = upper_house_filibuster_rule
+			has_journal_entry = je_upper_house
+			NOT = { has_variable = upper_house_has_filibuster_majority }
+		}
+	}
+
+}
+
+has_upper_house_support_667 = {
+	
+	custom_tooltip = {
+		text = has_upper_house_support_667.tt
+		NAND = {
+			has_journal_entry = je_upper_house
+			NOT = { has_variable = upper_house_has_super_majority }
+		}
+	}
+	
+}
+
+in_alliance_with_THIS = {
+	OR = { 
+		has_diplomatic_pact = { who = ROOT type = alliance }
+		has_diplomatic_pact = { who = ROOT type = defensive_pact }
+	}
+}
+
+has_very_positive_economic_outlook = {
+	has_modifier = economic_cycle_5
+}
+
+
+has_positive_economic_outlook = {
+	has_modifier = economic_cycle_4
+}
+
+has_neutral_economic_outlook = {
+	has_modifier = economic_cycle_3
+}
+
+has_negative_economic_outlook = {
+	has_modifier = economic_cycle_2
+}
+
+has_very_negative_economic_outlook = {
+	has_modifier = economic_cycle_1
+}
+
+country_has_an_open_media = {
+	NOR = { 
+		has_law = law_type:law_outlawed_dissent
+		has_law = law_type:law_censorship
+	}
+}
+
+country_has_free_trade_unions = {
+	NOR = { 
+		has_law = law_type:law_trade_unions_banned
+		has_law = law_type:law_state_trade_unions
+	}
+}
+
+country_has_free_political_parties = {
+	has_law = law_type:law_parties_allowed
+}
+
+restore_capital_check = {
+	is_capital = no 
+	is_in_revolt = no
+}
+
+has_no_non_aggression_pact_with_target = {
+
+	custom_tooltip = {
+		text = has_no_non_aggression_pact_with_target_tt
+		NOT = {
+			has_diplomatic_pact = { who = scope:target_country type = non_aggression_pact }
+		}
+	}
+	
+}
+
+ideologically_different_civil_service = {
+
+	custom_tooltip = {
+		text = je_subverted_civil_service_3.tt
+		
+		NAND = {
+	
+			OR = {
+				AND = { any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_far_right_economy } ig:ig_bureaucrats = { has_ideology = ideology:ideology_far_right_economy } }
+				AND = { any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_right_economy } ig:ig_bureaucrats = { has_ideology = ideology:ideology_right_economy } }
+				AND = { any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_centre_economy } ig:ig_bureaucrats = { has_ideology = ideology:ideology_centre_economy } }
+				AND = { any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_left_economy } ig:ig_bureaucrats = { has_ideology = ideology:ideology_left_economy } }
+				AND = { any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_far_left_economy } ig:ig_bureaucrats = { has_ideology = ideology:ideology_far_left_economy } }
+			}
+			OR = {
+				AND = { any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_natural_resource_focus } ig:ig_bureaucrats = { has_ideology = ideology:ideology_natural_resource_focus } }
+				AND = { any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_manufacturing_focus } ig:ig_bureaucrats = { has_ideology = ideology:ideology_manufacturing_focus } }
+				AND = { any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_services_focus } ig:ig_bureaucrats = { has_ideology = ideology:ideology_services_focus } }
+				AND = { any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_no_economic_focus } ig:ig_bureaucrats = { has_ideology = ideology:ideology_no_economic_focus } }
+			}
+			OR = {
+				AND = { any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_anti_environment } ig:ig_bureaucrats = { has_ideology = ideology:ideology_anti_environment } }
+				AND = { any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_balanced_environment } ig:ig_bureaucrats = { has_ideology = ideology:ideology_balanced_environment } }
+				AND = { any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_pro_environment } ig:ig_bureaucrats = { has_ideology = ideology:ideology_pro_environment } }
+			}
+			OR = {
+				AND = { any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_nationalist } ig:ig_bureaucrats = { has_ideology = ideology:ideology_nationalist } }
+				AND = { any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_regionalist } ig:ig_bureaucrats = { has_ideology = ideology:ideology_regionalist } }
+				AND = { any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_globalist } ig:ig_bureaucrats = { has_ideology = ideology:ideology_globalist } }
+			}
+			OR = {
+				AND = { any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_totalitarian } ig:ig_bureaucrats = { has_ideology = ideology:ideology_totalitarian } }
+				AND = { any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_authoritarian } ig:ig_bureaucrats = { has_ideology = ideology:ideology_authoritarian } }
+				AND = { any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_communitarian } ig:ig_bureaucrats = { has_ideology = ideology:ideology_communitarian } }
+				AND = { any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_individualist } ig:ig_bureaucrats = { has_ideology = ideology:ideology_individualist } }
+			}
+			OR = {
+				AND = { any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_traditionalist } ig:ig_bureaucrats = { has_ideology = ideology:ideology_traditionalist } }
+				AND = { any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_conservative } ig:ig_bureaucrats = { has_ideology = ideology:ideology_conservative } }
+				AND = { any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_progressive } ig:ig_bureaucrats = { has_ideology = ideology:ideology_progressive } }
+			}
+			OR = {
+				AND = { any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_monarchist } ig:ig_bureaucrats = { has_ideology = ideology:ideology_monarchist } }
+				AND = { any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_republican } ig:ig_bureaucrats = { has_ideology = ideology:ideology_republican } }
+				AND = { any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_theocrat } ig:ig_bureaucrats = { has_ideology = ideology:ideology_theocrat } }
+				AND = { any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_militarist } ig:ig_bureaucrats = { has_ideology = ideology:ideology_militarist } }
+				AND = { any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_communist } ig:ig_bureaucrats = { has_ideology = ideology:ideology_communist } }
+			}
+			
+		}
+		
+	}
+	
+}
+
+ideologically_different_civil_service_evolve = {
+
+	custom_tooltip = {
+		text = je_evolved_civil_service_3.tt
+		
+		NAND = {
+	
+			OR = {
+				AND = { any_interest_group = { ig_clout > 0.5 has_ideology = ideology:ideology_far_right_economy } ig:ig_bureaucrats = { has_ideology = ideology:ideology_far_right_economy } }
+				AND = { any_interest_group = { ig_clout > 0.5 has_ideology = ideology:ideology_right_economy } ig:ig_bureaucrats = { has_ideology = ideology:ideology_right_economy } }
+				AND = { any_interest_group = { ig_clout > 0.5 has_ideology = ideology:ideology_centre_economy } ig:ig_bureaucrats = { has_ideology = ideology:ideology_centre_economy } }
+				AND = { any_interest_group = { ig_clout > 0.5 has_ideology = ideology:ideology_left_economy } ig:ig_bureaucrats = { has_ideology = ideology:ideology_left_economy } }
+				AND = { any_interest_group = { ig_clout > 0.5 has_ideology = ideology:ideology_far_left_economy } ig:ig_bureaucrats = { has_ideology = ideology:ideology_far_left_economy } }
+			}
+			OR = {
+				AND = { any_interest_group = { ig_clout > 0.5 has_ideology = ideology:ideology_natural_resource_focus } ig:ig_bureaucrats = { has_ideology = ideology:ideology_natural_resource_focus } }
+				AND = { any_interest_group = { ig_clout > 0.5 has_ideology = ideology:ideology_manufacturing_focus } ig:ig_bureaucrats = { has_ideology = ideology:ideology_manufacturing_focus } }
+				AND = { any_interest_group = { ig_clout > 0.5 has_ideology = ideology:ideology_services_focus } ig:ig_bureaucrats = { has_ideology = ideology:ideology_services_focus } }
+				AND = { any_interest_group = { ig_clout > 0.5 has_ideology = ideology:ideology_no_economic_focus } ig:ig_bureaucrats = { has_ideology = ideology:ideology_no_economic_focus } }
+			}
+			OR = {
+				AND = { any_interest_group = { ig_clout > 0.5 has_ideology = ideology:ideology_anti_environment } ig:ig_bureaucrats = { has_ideology = ideology:ideology_anti_environment } }
+				AND = { any_interest_group = { ig_clout > 0.5 has_ideology = ideology:ideology_balanced_environment } ig:ig_bureaucrats = { has_ideology = ideology:ideology_balanced_environment } }
+				AND = { any_interest_group = { ig_clout > 0.5 has_ideology = ideology:ideology_pro_environment } ig:ig_bureaucrats = { has_ideology = ideology:ideology_pro_environment } }
+			}
+			OR = {
+				AND = { any_interest_group = { ig_clout > 0.5 has_ideology = ideology:ideology_nationalist } ig:ig_bureaucrats = { has_ideology = ideology:ideology_nationalist } }
+				AND = { any_interest_group = { ig_clout > 0.5 has_ideology = ideology:ideology_regionalist } ig:ig_bureaucrats = { has_ideology = ideology:ideology_regionalist } }
+				AND = { any_interest_group = { ig_clout > 0.5 has_ideology = ideology:ideology_globalist } ig:ig_bureaucrats = { has_ideology = ideology:ideology_globalist } }
+			}
+			OR = {
+				AND = { any_interest_group = { ig_clout > 0.5 has_ideology = ideology:ideology_totalitarian } ig:ig_bureaucrats = { has_ideology = ideology:ideology_totalitarian } }
+				AND = { any_interest_group = { ig_clout > 0.5 has_ideology = ideology:ideology_authoritarian } ig:ig_bureaucrats = { has_ideology = ideology:ideology_authoritarian } }
+				AND = { any_interest_group = { ig_clout > 0.5 has_ideology = ideology:ideology_communitarian } ig:ig_bureaucrats = { has_ideology = ideology:ideology_communitarian } }
+				AND = { any_interest_group = { ig_clout > 0.5 has_ideology = ideology:ideology_individualist } ig:ig_bureaucrats = { has_ideology = ideology:ideology_individualist } }
+			}
+			OR = {
+				AND = { any_interest_group = { ig_clout > 0.5 has_ideology = ideology:ideology_traditionalist } ig:ig_bureaucrats = { has_ideology = ideology:ideology_traditionalist } }
+				AND = { any_interest_group = { ig_clout > 0.5 has_ideology = ideology:ideology_conservative } ig:ig_bureaucrats = { has_ideology = ideology:ideology_conservative } }
+				AND = { any_interest_group = { ig_clout > 0.5 has_ideology = ideology:ideology_progressive } ig:ig_bureaucrats = { has_ideology = ideology:ideology_progressive } }
+			}
+			OR = {
+				AND = { any_interest_group = { ig_clout > 0.5 has_ideology = ideology:ideology_monarchist } ig:ig_bureaucrats = { has_ideology = ideology:ideology_monarchist } }
+				AND = { any_interest_group = { ig_clout > 0.5 has_ideology = ideology:ideology_republican } ig:ig_bureaucrats = { has_ideology = ideology:ideology_republican } }
+				AND = { any_interest_group = { ig_clout > 0.5 has_ideology = ideology:ideology_theocrat } ig:ig_bureaucrats = { has_ideology = ideology:ideology_theocrat } }
+				AND = { any_interest_group = { ig_clout > 0.5 has_ideology = ideology:ideology_militarist } ig:ig_bureaucrats = { has_ideology = ideology:ideology_militarist } }
+				AND = { any_interest_group = { ig_clout > 0.5 has_ideology = ideology:ideology_communist } ig:ig_bureaucrats = { has_ideology = ideology:ideology_communist } }
+			}
+			
+		}
+	
+	}
+	
+}
+
+is_a_colonial_province = {
+	NOT = { is_homeland_of_country_cultures = ROOT }
+	is_incorporated = no
+}
+
+capable_of_release = {
+	NOT = { is_homeland_of_country_cultures = ROOT }
+	is_incorporated = no
+	is_treaty_port = no
+}
+
+capable_of_release_devolution = {
+	NOT = { is_homeland_of_country_cultures = ROOT }
+	is_incorporated = yes
+	is_treaty_port = no
+}
+
+candidate_for_autonomy = {
+	#has_modifier = calls_for_independence
+}
+
+is_a_decolonisation_utility_tag = {
+	OR = { 
+		c:XFC ?= this
+		c:UNT ?= this
+	}
+}
+
+country_has_an_investment_pool = {
+	NOT = { has_law = law_type:law_command_economy }
+}
+
+supreme_court_is_progressive = {
+	root.var:judiciary_progressiveness > root.var:judiciary_size_majority
+}
+
+supreme_court_is_regressive = {
+	root.var:judiciary_progressiveness < root.var:judiciary_size_majority
+}
+
+judiciary_can_change_political_laws = {
+	has_law = law_type:law_common_law
+}
+
+judiciary_can_change_state_structure_laws = {
+	OR = {
+		has_law = law_type:law_common_law
+		has_law = law_type:law_civil_law
+	}
+}
+
+has_a_power_hungry_ig_in_gov = {
+
+	any_interest_group = {
+		is_in_government = yes
+		leader = {
+			OR = {
+				has_ideology = ideology:ideology_autocratic
+				has_ideology = ideology:ideology_power_hungry
+			}
+		}
+	}
+
+}
+
+THIS_is_not_restricted_by_confederal_law = {
+
+	custom_tooltip = {
+		text = THIS_is_not_restricted_by_confederal_law.tt
+		NAND = {
+			has_variable = THIS_in_confederal_legal_union
+			is_subject_type = subject_type_confederal_state
+			any_scope_diplomatic_pact = {
+				is_diplomatic_action_type = legal_union
+			}
+		}
+	}
+
+}
+
+state_has_sufficient_population = {
+	
+	#NOR = { 
+	#	has_state_trait = state_trait_northern_canadian_terrain 
+	#	state_region = s:STATE_SOUTH_ATLANTIC_ISLANDS
+	#	state_region = s:STATE_NAURU
+	#	state_region = s:STATE_SINAI
+	#	state_region = s:STATE_TAHITI
+	#	AND = { state_region = s:STATE_TAJIKISTAN is_split_state = yes }
+	#}
+	
+}
+
+is_a_useless_building = {
+
+	OR = { 
+		weekly_profit <= 0
+		AND = { 
+			occupancy < 0.02
+			has_failed_hires = yes
+		}
+	}
+	OR = {
+		is_government_funded = no
+		building_has_goods_shortage = yes
+		has_failed_hires = yes
+	}
+	
+	occupancy < 0.10
+	
+	is_under_construction = no
+
+}
+
+completed_the_space_race = {
+
+	custom_tooltip = {
+		text = completed_space_race_je.tt
+		has_variable = space_rocket_milestone
+		has_variable = satellite_milestone
+		has_variable = astronaut_milestone
+		has_variable = space_probe_milestone
+		has_variable = moon_mission_milestone
+		has_variable = space_station_milestone
+		has_variable = space_telescope_milestone
+		has_variable = mars_mission_milestone
+		has_variable = moon_base_milestone
+		has_variable = mars_base_milestone
+	}
+	
 }

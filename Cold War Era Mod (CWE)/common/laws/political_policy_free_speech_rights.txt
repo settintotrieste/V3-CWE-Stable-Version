@@ -6,7 +6,26 @@ law_outlawed_dissent = {
 	group = lawgroup_free_speech
 	icon = "gfx/interface/icons/law_icons/outlawed_dissent.dds"
 	
-	progressiveness = -50
+	#progressiveness = -50
+	
+	can_enact = {
+	
+		#Constitutional Laws system (Requires simple majority to amend constitutional laws)
+		government_has_legislative_simple_majority = yes
+		
+		#No restriction by legal union
+		THIS_is_not_restricted_by_confederal_law = yes
+		
+		#Not blocked by constitutional values
+		custom_tooltip = {
+			text = blocked_by_constitutional_value.tt
+			NAND = {
+				has_law = law_type:law_constitutional_supremacy
+				has_variable = liberty_nv_constitutionalised
+			}
+		}
+		
+	}
 	
 	modifier = {
 		country_authority_add = 200
@@ -41,7 +60,26 @@ law_censorship = {
 	group = lawgroup_free_speech
 	icon = "gfx/interface/icons/law_icons/censorship.dds"
 	
-	progressiveness = 0
+	#progressiveness = 0
+	
+	can_enact = {
+	
+		#Constitutional Laws system (Requires simple majority to amend constitutional laws)
+		government_has_legislative_simple_majority = yes
+		
+		#No restriction by legal union
+		THIS_is_not_restricted_by_confederal_law = yes
+		
+		#Not blocked by constitutional values
+		custom_tooltip = {
+			text = blocked_by_constitutional_value.tt
+			NAND = {
+				has_law = law_type:law_constitutional_supremacy
+				has_variable = liberty_nv_constitutionalised
+			}
+		}
+		
+	}
 	
 	modifier = {
 		country_authority_add = 100
@@ -49,19 +87,14 @@ law_censorship = {
 		country_suppression_ig_attraction_mult = -0.3
 		country_tech_spread_mult = -0.125
 		
-		interest_group_ig_industrialists_pol_str_mult = 0.1
-		interest_group_ig_petty_bourgeoisie_pol_str_mult = 0.1
-		interest_group_ig_landowners_pol_str_mult = 0.1
-		interest_group_ig_devout_pol_str_mult = 0.1
+		interest_group_ig_petty_bourgeoisie_pol_str_mult = 0.05
 		
-		country_capitalists_pol_str_mult = 0.1
-		country_academics_pol_str_mult = 0.1
-		country_engineers_pol_str_mult = 0.1
-		country_clerks_pol_str_mult = 0.1
-		country_aristocrats_pol_str_mult = 0.1
-		country_clergymen_pol_str_mult = 0.1
+		country_academics_pol_str_mult = 0.05
+		country_engineers_pol_str_mult = 0.05
+		country_clerks_pol_str_mult = 0.05
+		country_clergymen_pol_str_mult = 0.05
 		
-		#country_voting_power_from_literacy_add = 5
+		state_political_strength_from_wealth_mult = -0.05
 	}
 	
 	possible_political_movements = {
@@ -90,26 +123,40 @@ law_limited_free_speech = {
 	group = lawgroup_free_speech
 	icon = "gfx/interface/icons/law_icons/right_of_assembly.dds"
 	
-	progressiveness = 50
+	#progressiveness = 50
+	
+	can_enact = {
+	
+		#Constitutional Laws system (Requires simple majority to amend constitutional laws)
+		government_has_legislative_simple_majority = yes
+		
+		#No restriction by legal union
+		THIS_is_not_restricted_by_confederal_law = yes
+		
+		#Not blocked by constitutional values
+		custom_tooltip = {
+			text = blocked_by_constitutional_value.tt
+			NAND = {
+				has_law = law_type:law_constitutional_supremacy
+				has_variable = liberty_nv_constitutionalised
+			}
+		}
+		
+	}
 	
 	modifier = {
 		country_authority_add = 50
 		country_promotion_ig_attraction_mult = 0.1
 		country_suppression_ig_attraction_mult = -0.1
 		
-		interest_group_ig_industrialists_pol_str_mult = 0.2
-		interest_group_ig_petty_bourgeoisie_pol_str_mult = 0.2
-		interest_group_ig_landowners_pol_str_mult = 0.2
-		interest_group_ig_devout_pol_str_mult = 0.2
+		interest_group_ig_petty_bourgeoisie_pol_str_mult = 0.1
 		
-		country_capitalists_pol_str_mult = 0.2
-		country_academics_pol_str_mult = 0.2
-		country_engineers_pol_str_mult = 0.2
-		country_clerks_pol_str_mult = 0.2
-		country_aristocrats_pol_str_mult = 0.2
-		country_clergymen_pol_str_mult = 0.2
+		country_academics_pol_str_mult = 0.1
+		country_engineers_pol_str_mult = 0.1
+		country_clerks_pol_str_mult = 0.1
+		country_clergymen_pol_str_mult = 0.1
 		
-		#country_voting_power_from_literacy_add = 10
+		state_political_strength_from_wealth_mult = -0.1
 	}
 	
 	possible_political_movements = {
@@ -138,24 +185,29 @@ law_full_free_speech = {
 	group = lawgroup_free_speech
 	icon = "gfx/interface/icons/law_icons/protected_speech.dds"
 	
-	progressiveness = 100
+	#progressiveness = 100
+	
+	can_enact = {
+	
+		#Constitutional Laws system (Requires simple majority to amend constitutional laws)
+		government_has_legislative_simple_majority = yes
+		
+		#No restriction by legal union
+		THIS_is_not_restricted_by_confederal_law = yes
+		
+	}
 	
 	modifier = {
 		country_tech_spread_mult = 0.25
 		
-		interest_group_ig_industrialists_pol_str_mult = 0.4
-		interest_group_ig_petty_bourgeoisie_pol_str_mult = 0.4
-		interest_group_ig_landowners_pol_str_mult = 0.4
-		interest_group_ig_devout_pol_str_mult = 0.4
+		interest_group_ig_petty_bourgeoisie_pol_str_mult = 0.20
 		
-		country_capitalists_pol_str_mult = 0.4
-		country_academics_pol_str_mult = 0.4
-		country_engineers_pol_str_mult = 0.4
-		country_clerks_pol_str_mult = 0.4
-		country_aristocrats_pol_str_mult = 0.4
-		country_clergymen_pol_str_mult = 0.4
+		country_academics_pol_str_mult = 0.2
+		country_engineers_pol_str_mult = 0.2
+		country_clerks_pol_str_mult = 0.2
+		country_clergymen_pol_str_mult = 0.2
 		
-		#country_voting_power_from_literacy_add = 15
+		state_political_strength_from_wealth_mult = -0.2
 	}
 	
 	possible_political_movements = {

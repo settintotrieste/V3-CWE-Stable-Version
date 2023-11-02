@@ -35,23 +35,23 @@ revolution_system.1 = {
 			
 			#Government system
 			AND = { 
-				any_interest_group = { is_in_government = yes ig_government_power_share > 0.5 has_ideology = ideology:ideology_monarchist }
+				any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_monarchist }
 				NOT = { has_law = law_type:law_HOS_monarch }
 			}
 			AND = { 
-				any_interest_group = { is_in_government = yes ig_government_power_share > 0.5 has_ideology = ideology:ideology_republican }
+				any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_republican }
 				NOT = { has_law = law_type:law_HOS_president }
 			}
 			AND = { 
-				any_interest_group = { is_in_government = yes ig_government_power_share > 0.5 has_ideology = ideology:ideology_theocrat }
+				any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_theocrat }
 				NOT = { has_law = law_type:law_HOS_religious_leader }
 			}
 			AND = { 
-				any_interest_group = { is_in_government = yes ig_government_power_share > 0.5 has_ideology = ideology:ideology_militarist }
+				any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_militarist }
 				NOT = { has_law = law_type:law_HOS_nationalist_leader }
 			}
 			AND = { 
-				any_interest_group = { is_in_government = yes ig_government_power_share > 0.5 has_ideology = ideology:ideology_communist }
+				any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_communist }
 				NOT = { has_law = law_type:law_HOS_communist_leader }
 			}
 			
@@ -61,6 +61,7 @@ revolution_system.1 = {
 
 	immediate = {
 		
+		# Add correct gov for rebels
 		if = {
 			limit = { 
 				ruler = { has_ideology = ideology:ideology_autocratic }
@@ -104,40 +105,388 @@ revolution_system.1 = {
 		
 		if = {
 			limit = { 
-				any_interest_group = { is_in_government = yes ig_government_power_share > 0.5 has_ideology = ideology:ideology_monarchist }
+				any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_monarchist }
 				NOT = { has_law = law_type:law_HOS_monarch }
 			}
 			activate_law = law_type:law_HOS_monarch
 		}
 		if = {
 			limit = { 
-				any_interest_group = { is_in_government = yes ig_government_power_share > 0.5 has_ideology = ideology:ideology_republican }
+				any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_republican }
 				NOT = { has_law = law_type:law_HOS_president }
 			}
 			activate_law = law_type:law_HOS_president
 		}
 		if = {
 			limit = { 
-				any_interest_group = { is_in_government = yes ig_government_power_share > 0.5 has_ideology = ideology:ideology_theocrat }
+				any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_theocrat }
 				NOT = { has_law = law_type:law_HOS_religious_leader }
 			}
 			activate_law = law_type:law_HOS_religious_leader
 		}
 		if = {
 			limit = { 
-				any_interest_group = { is_in_government = yes ig_government_power_share > 0.5 has_ideology = ideology:ideology_militarist }
+				any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_militarist }
 				NOT = { has_law = law_type:law_HOS_nationalist_leader }
 			}
 			activate_law = law_type:law_HOS_nationalist_leader
 		}
 		if = {
 			limit = { 
-				any_interest_group = { is_in_government = yes ig_government_power_share > 0.5 has_ideology = ideology:ideology_communist }
+				any_interest_group = { is_in_government = yes is_strongest_ig_in_government = yes has_ideology = ideology:ideology_communist }
 				NOT = { has_law = law_type:law_HOS_communist_leader }
 			}
 			activate_law = law_type:law_HOS_communist_leader
 		}
 		
+		# Antagonise countries & make friends
+		if = {
+			limit = {
+				is_a_dictatorship = yes
+			}
+			every_country = {
+				limit = { NOT = { is_a_dictatorship = yes } }
+				change_relations = { country = ROOT value = -200 }
+			}
+			every_country = {
+				limit = { is_a_dictatorship = yes }
+				change_relations = { country = ROOT value = 100 }
+			}
+		}
+		if = {
+			limit = {
+				is_a_nationalist_government = yes
+			}
+			every_country = {
+				limit = { NOT = { is_a_nationalist_government = yes } }
+				change_relations = { country = ROOT value = -200 }
+			}
+			every_country = {
+				limit = { is_a_nationalist_government = yes }
+				change_relations = { country = ROOT value = 100 }
+			}
+		}
+		else_if = {
+			limit = {
+				is_a_communist_government = yes
+			}
+			every_country = {
+				limit = { NOT = { is_a_communist_government = yes } }
+				change_relations = { country = ROOT value = -200 }
+			}
+			every_country = {
+				limit = { is_a_communist_government = yes }
+				change_relations = { country = ROOT value = 100 }
+			}
+		}
+		else_if = {
+			limit = {
+				is_a_theocratic_government = yes
+			}
+			every_country = {
+				limit = { NOT = { is_a_theocratic_government = yes } }
+				change_relations = { country = ROOT value = -200 }
+			}
+			every_country = {
+				limit = { is_a_theocratic_government = yes }
+				change_relations = { country = ROOT value = 100 }
+			}
+		}
+		
 	}
 
+}
+
+revolution_system.2 = {
+	type = country_event
+	hidden = yes
+	
+	immediate = {
+		
+		random_country = {
+			limit = { 
+				has_variable = demand_puppet_gov_change_overlord
+			}
+			remove_variable = demand_puppet_gov_change_overlord
+			save_scope_as = demand_puppet_gov_change_overlord
+		}
+		
+		if = {
+			limit = { is_sufficiently_independent = yes }
+			create_diplomatic_play = {
+				type = dp_independence
+				target_country = scope:demand_puppet_gov_change_overlord
+				add_war_goal = {
+					holder = scope:demand_puppet_gov_change_overlord
+					type = make_dominion
+					target_country = ROOT
+				}
+			}
+		}
+		else_if = {
+			limit = { NOT = { is_sufficiently_independent = yes } }
+			create_diplomatic_play = {
+				type = dp_independence
+				target_country = scope:demand_puppet_gov_change_overlord
+				add_war_goal = {
+					holder = scope:demand_puppet_gov_change_overlord
+					type = make_puppet
+					target_country = ROOT
+				}
+			}
+		}
+		
+	}
+	
+}
+
+revolution_system.3 = {
+	type = country_event
+	hidden = yes
+	
+	immediate = {
+		
+		if = {
+			limit = { is_subject = no }
+			random_country = {
+				limit = { 
+					has_variable = demand_puppet_gov_change_overlord
+				}
+				remove_variable = demand_puppet_gov_change_overlord
+				create_diplomatic_play = {
+					type = dp_make_puppet
+					target_country = ROOT
+				}
+			}
+		}
+		else_if = {
+			limit = { is_subject = yes }
+			random_country = {
+				limit = { 
+					has_variable = demand_puppet_gov_change_overlord
+				}
+				remove_variable = demand_puppet_gov_change_overlord
+				create_diplomatic_play = {
+					type = dp_transfer_subject
+					target_country = ROOT
+				}
+			}
+		}
+		
+	}
+	
+}
+
+revolution_system.4 = {
+	type = country_event
+	hidden = yes
+	
+	trigger = {
+	
+		#Country was formerly recognised
+		OR = { 
+			has_variable = revolted_from_recognised_country
+			has_variable = revolted_from_unsc_country
+		}
+	
+		#Only fires for revolutionary countries
+		is_revolutionary = no
+		has_revolution = no
+		is_at_war = no
+		
+	}
+	
+	immediate = {
+		
+		if = {
+			limit = { 
+				has_variable = revolted_from_recognised_country
+				NOT = { is_country_type = recognized } 
+			}
+			set_country_type = recognized
+			add_modifier = { name = unga_member }
+		}
+		if = {
+			limit = { 
+				has_variable = revolted_from_unsc_country
+				NOT = { has_modifier = unsc_permanent_member }
+			}
+			add_modifier = { name = unsc_permanent_member }
+		}
+		
+		remove_variable = revolted_from_recognised_country
+		remove_variable = revolted_from_unsc_country
+		
+	}
+	
+}
+
+#Palace Coup
+revolution_system.5 = {
+	type = country_event
+
+	title = palace_coup.t
+	desc = palace_coup.d
+	flavor = palace_coup.f
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_politicians_arguing.bk2"
+	}
+
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	duration = 1
+	
+	cooldown = { months = very_long_modifier_time }
+
+	trigger = {
+		
+		#Paramilitary group is angry with ruler
+		has_variable = paramilitary_groups_loyalty
+		root.var:paramilitary_groups_loyalty = 0
+		
+		#No clash with another purge or coup mechanic
+		custom_tooltip = {
+			text = je_no_current_plot_against_the_dictator.tt
+			NOT = { has_journal_entry = je_plot_against_the_dictator_system }
+		}
+		NOT = { has_journal_entry = je_coup }
+		
+	}
+
+	immediate = {
+		
+		ruler = { 
+			save_scope_as = palace_coup_ruler
+			interest_group = { save_scope_as = palace_coup_ruler_ig }
+		}
+		
+	}
+
+	option = {
+		name = palace_coup_accept_option 				# Accept the coup
+		default_option = yes
+		
+		#Ruler's IG is weakened
+		scope:palace_coup_ruler_ig = {
+			hidden_effect = { remove_modifier = party_in_chaos_modifier }
+			add_modifier = {
+				name = party_in_chaos_modifier
+				years = 5
+				is_decaying = yes
+			}
+		}
+		
+		#Ruler is removed from office
+		random_list = {
+			1 = { 
+				scope:palace_coup_ruler = { kill_character = yes }
+			}
+			1 = { 
+				scope:palace_coup_ruler = { 
+					convert_IG_ideology_to_agitator_ideology = yes
+					exile_character_with_martyrdom = yes
+				}
+			}
+		}
+		
+		#New Reactionary Ruler is installed
+		create_character = {
+			ruler = yes ig_leader = yes
+			female = no
+			interest_group = scope:palace_coup_ruler_ig
+			ideology = ideology_autocratic
+		}
+
+		#New dictatorship
+		effect_starting_politics_dictatorship = yes
+		every_interest_group = {
+			limit = { NOT = { is_interest_group_type = scope:palace_coup_ruler_ig } }
+			remove_ruling_interest_group = yes
+		}
+		scope:palace_coup_ruler_ig = {
+			add_ruling_interest_group = yes
+		}
+		
+		#Paramilitary becomes loyal again
+		set_variable = { 
+			name = paramilitary_groups_loyalty
+			value = 100
+		}
+		
+		post_notification = new_ruler
+		
+		ai_chance = {
+			base = 50
+			modifier = { trigger = { has_global_variable = historical_railroading_active } add = -100 }
+		}
+		
+	}
+	
+	option = {
+		name = palace_coup_reject_option 		# Reject the coup
+		
+		#Coup leader is killed
+		if = {
+			limit = { 
+				scope:palace_coup_ruler_ig = { 
+					leader = { is_ruler = no }
+				} 
+			}
+			scope:palace_coup_ruler_ig = { 
+				leader = { save_scope_as = coup_leader_character }
+			}
+			random_list = {
+				1 = { 
+					scope:coup_leader_character = { kill_character = yes }
+				}
+				1 = { 
+					scope:coup_leader_character = { exile_character = yes }
+				}
+			}
+		}
+		
+		#Paramilitary becomes loyal again
+		set_variable = { 
+			name = paramilitary_groups_loyalty
+			value = 100
+		}
+		
+		#Armed Forces gains Clout
+		ig:ig_armed_forces = {
+			hidden_effect = { remove_modifier = politically_strengthened_modifier }
+			add_modifier = {
+				name = politically_strengthened_modifier
+				years = 5
+				is_decaying = yes
+			}
+		}
+		
+		#National instability
+		hidden_effect = {
+			remove_modifier = stirrings_of_revolution
+		}
+		add_modifier = {
+			name = stirrings_of_revolution
+			years = 5
+			is_decaying = yes
+		}
+		add_radicals = {
+			value = large_radicals
+		}
+		
+		#Fighting damages the capital
+		random_scope_state = {
+			limit = { is_capital = yes }
+			state_region = { add_devastation = 20 }
+		}
+		
+		ai_chance = {
+			base = 50
+		}
+		
+	}
+	
 }

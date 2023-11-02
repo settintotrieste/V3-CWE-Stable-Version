@@ -420,7 +420,7 @@ building_output_carbon_fibre_add = {
 	percent = no
 }
 
-building_output_fertilizer_add = {
+building_output_industrial_chemicals_add = {
 	good = yes
 	percent = no
 }
@@ -947,7 +947,7 @@ building_output_carbon_fibre_mult = {
 	percent = yes
 }
 
-building_output_fertilizer_mult = {
+building_output_industrial_chemicals_mult = {
 	good = yes
 	percent = yes
 }
@@ -1488,6 +1488,11 @@ building_input_illegal_services_mult = {
 	percent = yes
 }
 
+building_input_domestic_services_mult = {
+	good = no
+	percent = yes
+}
+
 building_input_grain_mult = {
 	good = no
 	percent = yes
@@ -1713,7 +1718,7 @@ building_input_carbon_fibre_mult = {
 	percent = yes
 }
 
-building_input_fertilizer_mult = {
+building_input_industrial_chemicals_mult = {
 	good = no
 	percent = yes
 }
@@ -2010,6 +2015,11 @@ building_input_illegal_services_add = {
 	percent = no
 }
 
+building_input_domestic_services_add = {
+	good = yes
+	percent = no
+}
+
 building_input_grain_add = {
 	good = yes
 	percent = no
@@ -2235,7 +2245,7 @@ building_input_carbon_fibre_add = {
 	percent = no
 }
 
-building_input_fertilizer_add = {
+building_input_industrial_chemicals_add = {
 	good = yes
 	percent = no
 }

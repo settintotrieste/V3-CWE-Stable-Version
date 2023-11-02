@@ -10,6 +10,8 @@ effect_starting_politics_presidential_republic = {
 	activate_law = law_type:law_freedom_of_conscience
 	activate_law = law_type:law_full_womens_rights
 	activate_law = law_type:law_no_pop_growth_policy
+	
+	activate_law = law_type:law_bicameralism
 }
 
 effect_starting_politics_semi_presidential_republic = {
@@ -19,6 +21,8 @@ effect_starting_politics_semi_presidential_republic = {
 	activate_law = law_type:law_freedom_of_conscience
 	activate_law = law_type:law_full_womens_rights
 	activate_law = law_type:law_no_pop_growth_policy
+	
+	activate_law = law_type:law_bicameralism
 }
 
 effect_starting_politics_parliamentary_republic = {
@@ -28,6 +32,8 @@ effect_starting_politics_parliamentary_republic = {
 	activate_law = law_type:law_freedom_of_conscience
 	activate_law = law_type:law_full_womens_rights
 	activate_law = law_type:law_no_pop_growth_policy
+	
+	activate_law = law_type:law_unicameralism
 }
 
 effect_starting_politics_absolute_monarchy = {
@@ -39,6 +45,8 @@ effect_starting_politics_absolute_monarchy = {
 	activate_law = law_type:law_pro_pop_growth_policy
 	
 	activate_law = law_type:law_natural_resource_focus
+	
+	activate_law = law_type:law_unicameralism
 }
 
 effect_starting_politics_semi_constitutional_monarchy = {
@@ -48,6 +56,8 @@ effect_starting_politics_semi_constitutional_monarchy = {
 	activate_law = law_type:law_state_religion
 	activate_law = law_type:law_some_womens_rights
 	activate_law = law_type:law_no_pop_growth_policy
+	
+	activate_law = law_type:law_unicameralism
 }
 
 effect_starting_politics_constitutional_monarchy = {
@@ -57,6 +67,8 @@ effect_starting_politics_constitutional_monarchy = {
 	activate_law = law_type:law_state_religion
 	activate_law = law_type:law_full_womens_rights
 	activate_law = law_type:law_no_pop_growth_policy
+	
+	activate_law = law_type:law_bicameralism
 }
 
 effect_starting_politics_nationalist_republic = {
@@ -68,6 +80,8 @@ effect_starting_politics_nationalist_republic = {
 	activate_law = law_type:law_pro_pop_growth_policy
 	
 	activate_law = law_type:law_manufacturing_focus
+	
+	activate_law = law_type:law_hybrid_chamber
 }
 
 effect_starting_politics_theocratic_republic = {
@@ -79,6 +93,8 @@ effect_starting_politics_theocratic_republic = {
 	activate_law = law_type:law_pro_pop_growth_policy
 	
 	activate_law = law_type:law_natural_resource_focus
+	
+	activate_law = law_type:law_hybrid_chamber
 }
 
 effect_starting_politics_communist_republic = {
@@ -86,10 +102,14 @@ effect_starting_politics_communist_republic = {
 	activate_law = law_type:law_HOG_none
 	
 	activate_law = law_type:law_state_atheism
+	set_state_religion = rel:atheist
+	
 	activate_law = law_type:law_full_womens_rights
 	activate_law = law_type:law_no_pop_growth_policy
 	
 	activate_law = law_type:law_manufacturing_focus
+	
+	activate_law = law_type:law_hybrid_chamber
 }
 
 ### Level of democracy ###
@@ -107,7 +127,10 @@ effect_starting_politics_very_democratic = {
 	activate_law = law_type:law_no_secret_police
 	activate_law = law_type:law_full_free_speech
 	activate_law = law_type:law_multicultural
+	activate_law = law_type:law_slavery_banned
 	activate_law = law_type:law_very_high_anti_corruption
+	
+	activate_law = law_type:law_no_colonial_affairs
 }
 
 effect_starting_politics_democratic = {
@@ -122,13 +145,16 @@ effect_starting_politics_democratic = {
 	activate_law = law_type:law_balanced_policing
 	activate_law = law_type:law_no_secret_police
 	activate_law = law_type:law_full_free_speech
-	activate_law = law_type:law_national_supremacy
+	activate_law = law_type:law_cultural_exclusion
+	activate_law = law_type:law_slavery_banned
 	activate_law = law_type:law_very_high_anti_corruption
+	
+	activate_law = law_type:law_no_colonial_affairs
 }
 
 effect_starting_politics_regime = {
 	activate_law = law_type:law_gerrymandered_voting
-	activate_law = law_type:law_single_party_state
+	activate_law = law_type:law_parties_allowed
 	activate_law = law_type:law_technocratic_legislature
 	activate_law = law_type:law_civil_law
 	activate_law = law_type:law_partially_politicised_judiciary
@@ -138,8 +164,11 @@ effect_starting_politics_regime = {
 	activate_law = law_type:law_strict_policing
 	activate_law = law_type:law_secret_police
 	activate_law = law_type:law_censorship
-	activate_law = law_type:law_national_supremacy
+	activate_law = law_type:law_racial_segregation
+	activate_law = law_type:law_slavery_banned
 	activate_law = law_type:law_medium_anti_corruption
+	
+	activate_law = law_type:law_no_colonial_affairs
 }
 
 effect_starting_politics_dictatorship = {
@@ -154,8 +183,11 @@ effect_starting_politics_dictatorship = {
 	activate_law = law_type:law_draconian_policing
 	activate_law = law_type:law_secret_police
 	activate_law = law_type:law_outlawed_dissent
-	activate_law = law_type:law_ethnostate
+	activate_law = law_type:law_national_supremacy
+	activate_law = law_type:law_slavery_political
 	activate_law = law_type:law_very_low_anti_corruption
+	
+	activate_law = law_type:law_no_colonial_affairs
 }
 
 ### Constitutional System ###
@@ -180,21 +212,29 @@ effect_starting_politics_parliamentary_unitary_state = {
 effect_starting_politics_war_policy_pacifism = {
 	activate_law = law_type:law_peasant_levies
 	activate_law = law_type:law_no_war
+	activate_law = law_type:law_no_espionage
+	activate_law = law_type:law_no_civil_defence_law
 }
 
 effect_starting_politics_war_policy_anti_military = {
 	activate_law = law_type:law_professional_army
 	activate_law = law_type:law_defensive_war
+	activate_law = law_type:law_defensive_espionage
+	activate_law = law_type:law_no_civil_defence_law
 }
 
 effect_starting_politics_war_policy_pro_military = {
 	activate_law = law_type:law_mass_conscription
 	activate_law = law_type:law_defensive_war
+	activate_law = law_type:law_offensive_espionage
+	activate_law = law_type:law_no_civil_defence_law
 }
 
 effect_starting_politics_war_policy_jingoism = {
 	activate_law = law_type:law_mass_conscription
 	activate_law = law_type:law_offensive_war
+	activate_law = law_type:law_offensive_espionage
+	activate_law = law_type:law_no_civil_defence_law
 }
 
 ### Economic Policy ###
@@ -213,6 +253,8 @@ effect_starting_politics_economic_policy_planned_economy = {
 	
 	activate_law = law_type:law_pro_consumer_regulations
 	activate_law = law_type:law_strong_financial_regulations
+	
+	activate_law = law_type:law_no_environment_law
 }
 
 effect_starting_politics_economic_policy_semi_planned_economy = {
@@ -229,6 +271,8 @@ effect_starting_politics_economic_policy_semi_planned_economy = {
 	
 	activate_law = law_type:law_pro_consumer_regulations
 	activate_law = law_type:law_strong_financial_regulations
+	
+	activate_law = law_type:law_no_environment_law
 }
 
 effect_starting_politics_economic_policy_state_capitalism = {
@@ -245,6 +289,8 @@ effect_starting_politics_economic_policy_state_capitalism = {
 	
 	activate_law = law_type:law_pro_consumer_regulations
 	activate_law = law_type:law_strong_financial_regulations
+	
+	activate_law = law_type:law_no_environment_law
 }
 
 effect_starting_politics_economic_policy_interventionism = {
@@ -261,6 +307,8 @@ effect_starting_politics_economic_policy_interventionism = {
 	
 	activate_law = law_type:law_balanced_regulations
 	activate_law = law_type:law_moderate_financial_regulations
+	
+	activate_law = law_type:law_no_environment_law
 }
 
 effect_starting_politics_economic_policy_laissez_faire = {
@@ -277,6 +325,8 @@ effect_starting_politics_economic_policy_laissez_faire = {
 	
 	activate_law = law_type:law_pro_industry_regulations
 	activate_law = law_type:law_weak_financial_regulations
+	
+	activate_law = law_type:law_no_environment_law
 }
 
 ### Trade Policy ###
@@ -304,11 +354,43 @@ effect_starting_politics_trade_policy_autarky = {
 effect_starting_politics_anti_nuclear_policy = {
 	activate_law = law_type:law_no_nuclear_energy
 	activate_law = law_type:law_wmd_banned
+	
+	activate_law = law_type:law_no_space_program
 }
 
 effect_starting_politics_pro_nuclear_policy = {
 	activate_law = law_type:law_nuclear_energy
 	activate_law = law_type:law_wmd_allowed
+	
+	activate_law = law_type:law_space_program_public
+}
+
+### Economic Specialisation ###
+
+effect_starting_politics_specialisation_natural_resource = {
+	activate_law = law_type:law_natural_resource_focus
+}
+
+effect_starting_politics_specialisation_manufacturing = {
+	activate_law = law_type:law_manufacturing_focus
+}
+
+effect_starting_politics_specialisation_services = {
+	activate_law = law_type:law_services_focus
+}
+
+### Currency System ###
+
+effect_starting_politics_gold_system = {
+	activate_law = law_type:law_gold_standard
+}
+
+effect_starting_politics_semi_gold_system = {
+	activate_law = law_type:law_semi_gold_standard
+}
+
+effect_starting_politics_fiat_standard = {
+	activate_law = law_type:law_fiat_standard
 }
 
 ### SPECIAL ###
@@ -336,4 +418,184 @@ effect_socialist_ruling_coalition = {
 		}
 		add_ruling_interest_group = yes
 	}
+}
+
+effect_communist_ruling_coalition = {
+	every_interest_group = {
+		limit = { is_in_government = yes }
+		remove_ruling_interest_group = yes
+	}
+	every_interest_group = {
+		limit = {
+			OR = { 
+				has_ideology = ideology:ideology_far_left_economy
+				has_ideology = ideology:ideology_communist
+			}
+		}
+		add_ruling_interest_group = yes
+	}
+}
+
+effect_conservative_ruling_coalition = {
+	every_interest_group = {
+		limit = { is_in_government = yes }
+		remove_ruling_interest_group = yes
+	}
+	every_interest_group = {
+		limit = {
+			OR = { 
+				has_ideology = ideology:ideology_far_right_economy
+				has_ideology = ideology:ideology_right_economy
+				has_ideology = ideology:ideology_conservative
+			}
+		}
+		add_ruling_interest_group = yes
+	}
+}
+
+effect_traditionalist_ruling_coalition = {
+	every_interest_group = {
+		limit = { is_in_government = yes }
+		remove_ruling_interest_group = yes
+	}
+	every_interest_group = {
+		limit = {
+			OR = { 
+				has_ideology = ideology:ideology_theocrat
+				has_ideology = ideology:ideology_traditionalist
+			}
+		}
+		add_ruling_interest_group = yes
+	}
+}
+
+effect_liberal_ruling_coalition = {
+	every_interest_group = {
+		limit = { is_in_government = yes }
+		remove_ruling_interest_group = yes
+	}
+	every_interest_group = {
+		limit = {
+			leader = { 
+				OR = { 
+					has_ideology = ideology:ideology_democratic
+					has_ideology = ideology:ideology_liberal
+				}
+			}
+		}
+		add_ruling_interest_group = yes
+	}
+}
+
+### Military Junta ###
+
+effect_military_ruling_coalition = {
+	every_interest_group = {
+		limit = { is_in_government = yes }
+		remove_ruling_interest_group = yes
+	}
+	ig:ig_armed_forces = {
+		add_ruling_interest_group = yes
+	}
+}
+
+effect_rightwing_military_ruling_coalition = {
+	every_interest_group = {
+		limit = { is_in_government = yes }
+		remove_ruling_interest_group = yes
+	}
+	ig:ig_industrialists = {
+		add_ruling_interest_group = yes
+	}
+	ig:ig_armed_forces = {
+		add_ruling_interest_group = yes
+		remove_ideology = ideology_left_economy
+		add_ideology = ideology_right_economy
+	}
+}
+
+### Decolonisation ###
+
+set_release_vassal_effects = { 
+	set_country_type = unrecognized 
+}
+
+### Soviet Dissolution ###
+
+soviet_SSR_dissolution_laws = {
+
+	#UN status
+	set_country_type = unrecognized 
+	
+	# Laws
+	if = {
+		limit = { 
+			OR = {
+				c:UKR ?= this
+				c:LIT ?= this
+				c:KAZ ?= this
+				c:AZB ?= this
+			}
+		}
+		effect_starting_politics_semi_presidential_republic = yes
+	}
+	else_if = {
+		limit = { 
+			OR = {
+				c:EST ?= this
+				c:LAT ?= this
+				c:POL ?= this
+				c:CZH ?= this
+				c:HUN ?= this
+				c:BUL ?= this
+				c:MOL ?= this
+				c:ARM ?= this
+				c:GEO ?= this
+			}
+		}
+		effect_starting_politics_parliamentary_republic = yes
+	}
+	else = {
+		effect_starting_politics_presidential_republic = yes
+	}
+	
+	effect_starting_politics_very_democratic = yes
+	effect_starting_politics_constitutional_unitary_state = yes
+	effect_starting_politics_war_policy_anti_military = yes
+	effect_starting_politics_economic_policy_interventionism = yes
+	effect_starting_politics_trade_policy_protectionism = yes
+	effect_starting_politics_anti_nuclear_policy = yes
+	
+	effect_starting_politics_specialisation_natural_resource = yes
+	
+	effect_starting_politics_fiat_standard = yes
+	
+	activate_law = law_type:law_very_low_anti_corruption
+	
+	#Set Relations
+	if = {
+		limit = {
+			NOR = {
+				c:LIT ?= this
+				c:LAT ?= this
+				c:EST ?= this
+				c:MOL ?= this
+			}
+			exists = c:RUS
+		}
+		set_relations = { country = c:RUS value = 100 }
+	}
+	if = {
+		limit = {
+			NOR = {
+				c:LIT ?= this
+				c:LAT ?= this
+				c:EST ?= this
+				c:MOL ?= this
+			}
+			exists = c:SOV
+		}
+		set_relations = { country = c:SOV value = 100 }
+	}
+
 }

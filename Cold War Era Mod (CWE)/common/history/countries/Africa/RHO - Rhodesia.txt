@@ -23,6 +23,13 @@ COUNTRIES = {
 		effect_starting_politics_trade_policy_free_trade = yes
 		effect_starting_politics_anti_nuclear_policy = yes
 		
+		effect_starting_politics_specialisation_natural_resource = yes
+		
+		effect_starting_politics_semi_gold_system = yes
+		
+		#Aparthied
+		activate_law = law_type:law_ethnostate
+		
 		set_institution_investment_level = {
 			institution = institution_schools
 			level = 3

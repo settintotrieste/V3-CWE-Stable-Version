@@ -6,30 +6,8 @@ TUR = {
 	tier = empire
 	
 	cultures = { turkish }
+	religion = sunni
 	capital = STATE_ANKARA
-}
-
-UAE = {
-	color = { 131 139 131 }
-	
-	country_type = recognized
-	
-	tier = principality
-	
-	cultures = { emirati bedouin }
-	capital = STATE_ABU_DHABI
-	is_named_from_capital = yes
-}
-
-IRQ = {
-	color = { 240 230 140 }
-	
-	country_type = recognized
-	
-	tier = kingdom
-	
-	cultures = { iraqi mashriqi }
-	capital = STATE_BAGHDAD
 }
 
 #Arab Federation (IRQ + JOR)
@@ -40,8 +18,33 @@ ARF = {
 	
 	tier = empire
 	
-	cultures = { pan_arab mashriqi bedouin }
+	cultures = { pan_arab iraqi jordanian }
+	religion = sunni
 	capital = STATE_BAGHDAD
+}
+
+IRQ = {
+	color = { 240 230 140 }
+	
+	country_type = recognized
+	
+	tier = kingdom
+	
+	cultures = { iraqi mashriqi }
+	religion = sunni
+	capital = STATE_BAGHDAD
+}
+
+JOR = {
+	color = { 1 100 1 }
+	
+	country_type = recognized
+	
+	tier = principality
+	
+	cultures = { jordanian mashriqi bedouin }
+	religion = sunni
+	capital = STATE_TRANSJORDAN
 }
 
 OMA = {
@@ -49,11 +52,11 @@ OMA = {
 	
 	country_type = recognized
 	
-	tier = principality
+	tier = kingdom
 	
 	cultures = { omani bedouin }
-	religion = shiite
 	capital = STATE_OMAN
+	religion = shiite
 	is_named_from_capital = yes
 }
 
@@ -65,9 +68,11 @@ PER = {
 	tier = empire
 	
 	cultures = { persian }
+	religion = shiite
 	capital = STATE_IRAKAJEMI
 }
 
+#United Yemen (NYE + SYE)
 YEM = {
 	color = { 240 230 140 }
 	
@@ -76,6 +81,7 @@ YEM = {
 	tier = kingdom
 	
 	cultures = { yemenite bedouin }
+	religion = sunni
 	capital = STATE_YEMEN
 	is_named_from_capital = yes
 }
@@ -88,6 +94,7 @@ NYE = { #North Yemen
 	tier = principality
 	
 	cultures = { yemenite bedouin }
+	religion = sunni
 	capital = STATE_YEMEN
 	is_named_from_capital = yes
 }
@@ -100,10 +107,40 @@ SYE = { #South Yemen
 	tier = principality
 	
 	cultures = { yemenite bedouin }
+	religion = sunni
 	capital = STATE_YEMEN
 	is_named_from_capital = yes
 }
 
+# Federation of Arab Emirates (UAE + BHR + QAT)
+FAE = {
+	color = { 100 139 131 }
+	
+	country_type = recognized
+	
+	tier = kingdom
+	
+	cultures = { emirati bahraini qatari }
+	religion = sunni
+	
+	capital = STATE_ABU_DHABI
+}
+
+# United Arab Emirates
+UAE = {
+	color = { 131 139 131 }
+	
+	country_type = recognized
+	
+	tier = principality
+	
+	cultures = { emirati bedouin }
+	capital = STATE_ABU_DHABI
+	religion = sunni
+	is_named_from_capital = yes
+}
+
+# Bahrain
 BHR = {
 	color = { 193 205 193 }
 	
@@ -112,78 +149,8 @@ BHR = {
 	tier = principality
 	
 	cultures = { bahraini bedouin }
+	religion = sunni
 	capital = STATE_ABU_DHABI
-}
-
-# Palestine
-PAL = {
-	color = { 66 140 101 }
-	
-	country_type = recognized
-	
-	tier = principality
-	
-	cultures = { palestinian mashriqi }
-	religion = sunni
-	capital = STATE_PALESTINE
-}
-
-ISR = {
-	color = { 150 212 214 }
-	
-	country_type = recognized
-	
-	tier = principality
-	
-	cultures = { israeli ashkenazi sephardic }
-	religion = jewish
-	capital = STATE_PALESTINE
-}
-
-SYR = {
-	color = { 205 201 201 }
-	
-	country_type = recognized
-	
-	tier = principality
-	
-	cultures = { syrian mashriqi }
-	religion = sunni
-	capital = STATE_SYRIA
-}
-
-JOR = {
-	color = { 1 100 1 }
-	
-	country_type = recognized
-	
-	tier = principality
-	
-	cultures = { jordanian mashriqi bedouin }
-	capital = STATE_TRANSJORDAN
-}
-
-LEB = {
-	color = { 230 230 250 }
-	
-	country_type = recognized
-	
-	tier = principality
-	
-	cultures = { lebanese mashriqi }
-	capital = STATE_LEBANON
-}
-
-#Kurdistan
-KUR = {
-	color = { 160 30 154 }
-	
-	country_type = recognized
-	
-	tier = kingdom
-	
-	cultures = { kurdish }
-	capital = STATE_MOSUL
 }
 
 # Qatar
@@ -195,7 +162,82 @@ QAT = {
 	tier = principality
 	
 	cultures = { qatari bedouin }
+	religion = sunni
 	capital = STATE_ABU_DHABI
+}
+
+# Palestine
+PAL = {
+	color = { 66 140 101 }
+	
+	country_type = recognized
+	
+	tier = kingdom
+	
+	cultures = { palestinian mashriqi }
+	religion = sunni
+	capital = STATE_PALESTINE
+}
+
+ISR = {
+	color = { 150 212 214 }
+	
+	country_type = recognized
+	
+	tier = kingdom
+	
+	cultures = { israeli ashkenazi sephardic }
+	religion = jewish
+	capital = STATE_PALESTINE
+}
+
+GZA = {
+	color = { 138 138 138 }
+	
+	country_type = recognized
+	
+	tier = principality
+	
+	cultures = { palestinian mashriqi }
+	religion = sunni
+	capital = STATE_PALESTINE
+}
+
+SYR = {
+	color = { 205 201 201 }
+	
+	country_type = recognized
+	
+	tier = kingdom
+	
+	cultures = { syrian mashriqi }
+	religion = sunni
+	capital = STATE_SYRIA
+}
+
+LEB = {
+	color = { 230 230 250 }
+	
+	country_type = recognized
+	
+	tier = principality
+	
+	cultures = { lebanese mashriqi }
+	religion = sunni
+	capital = STATE_LEBANON
+}
+
+#Kurdistan
+KUR = {
+	color = { 160 30 154 }
+	
+	country_type = recognized
+	
+	tier = principality
+	
+	cultures = { kurdish }
+	religion = sunni
+	capital = STATE_MOSUL
 }
 
 # Kuwait
@@ -207,6 +249,7 @@ KUW = {
 	tier = principality
 	
 	cultures = { kuwaiti mashriqi bedouin }
+	religion = sunni
 	capital = STATE_BASRA
 }
 
@@ -216,9 +259,10 @@ NEJ = {
 	
 	country_type = recognized
 	
-	tier = principality
+	tier = kingdom
 	
 	cultures = { bedouin }
+	religion = sunni
 	capital = STATE_NEJD
 	is_named_from_capital = yes
 }

@@ -1,0 +1,338 @@
+﻿je_judiciary = {
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+
+	scripted_button = je_judiciary_appoint_judges_button
+	scripted_button = je_judiciary_expand_court_button
+
+	possible = {
+		
+		#Judiciary has power
+		NOT = { has_law = law_type:law_kangaroo_law }
+		
+		#Not in a legal union
+		custom_tooltip = {
+			text = is_not_in_a_legal_union.tt
+			NOT = { any_country = { has_diplomatic_pact = { who = ROOT type = legal_union is_initiator = yes } } }
+		}
+		
+	}
+
+	immediate = {
+		
+		#Default is an even split
+		set_variable = {
+			name = judiciary_progressiveness
+			value = 6
+		}
+		
+		#Default Supreme Court size is 12
+		set_variable = {
+			name = judiciary_size
+			value = 12
+		}
+		
+	}
+	
+	invalid = {
+	
+		OR = {
+		
+			#Judiciary no longer has any power
+			has_law = law_type:law_kangaroo_law
+			
+			#Is in a legal union
+			custom_tooltip = {
+				text = is_in_a_legal_union.tt
+				any_country = { has_diplomatic_pact = { who = ROOT type = legal_union is_initiator = yes } }
+			}
+		
+		}
+		
+	}
+	
+	on_invalid = {
+		
+		#Reset judicial progressiveness
+		if = {
+			limit = { NOT = { any_country = { has_diplomatic_pact = { who = ROOT type = legal_union is_initiator = yes } } } }
+			remove_variable = judiciary_progressiveness
+			remove_variable = judiciary_size
+			remove_variable = judiciary_size_majority
+		}
+		
+		if = {
+			limit = { any_country = { has_diplomatic_pact = { who = ROOT type = legal_union is_initiator = yes } } }
+			add_journal_entry = { type = je_judiciary_foreign }
+		}
+		
+	}
+
+	current_value = {
+		value =	root.var:judiciary_progressiveness
+	}
+
+	goal_add_value = {
+		value = root.var:judiciary_size
+	}
+
+	on_monthly_pulse = {
+		
+		effect = {
+			
+			#Failsafe
+			if = {
+				limit = { NOT = { has_variable = judiciary_size } }
+				#Default Supreme Court size is 12
+				set_variable = {
+					name = judiciary_size
+					value = 12
+				}
+			}
+			
+			#Determine judiciary majority
+			set_variable = { 
+				name = judiciary_size_majority 
+				value = root.var:judiciary_size
+			}
+			change_variable = { 
+				name = judiciary_size_majority 
+				divide = 2
+			}
+			
+		}
+		
+	}
+	
+	on_yearly_pulse = {
+	
+		effect = {
+		
+			#Appoint judges automatically if judiciary is not politicised (gravitate to neutrality)
+			if = {
+				limit = { 
+					root.var:judiciary_progressiveness >= root.var:judiciary_size_majority 
+					root.var:judiciary_progressiveness < root.var:judiciary_size
+					root.var:judiciary_progressiveness >= 1
+					NOR = {
+						has_law = law_type:law_politicised_judiciary
+						has_law = law_type:law_partially_politicised_judiciary
+					}
+					
+					#Not part of a Legal Union
+					NOT = { any_country = { has_diplomatic_pact = { who = ROOT type = legal_union is_initiator = yes } } }
+				}
+				random_list = {
+					2 = {
+						change_variable = { 
+							name = judiciary_progressiveness
+							add = -1
+						}
+					}
+					1 = {
+						change_variable = { 
+							name = judiciary_progressiveness
+							add = 1
+						}
+					}
+					1 = { }
+				}
+			}
+			if = {
+				limit = { 
+					root.var:judiciary_progressiveness <= root.var:judiciary_size_majority 
+					root.var:judiciary_progressiveness < root.var:judiciary_size
+					root.var:judiciary_progressiveness >= 1
+					NOR = {
+						has_law = law_type:law_politicised_judiciary
+						has_law = law_type:law_partially_politicised_judiciary
+					}
+					
+					#Not part of a Legal Union
+					NOT = { any_country = { has_diplomatic_pact = { who = ROOT type = legal_union is_initiator = yes } } }
+				}
+				random_list = {
+					1 = {
+						change_variable = { 
+							name = judiciary_progressiveness
+							add = -1
+						}
+					}
+					2 = {
+						change_variable = { 
+							name = judiciary_progressiveness
+							add = 1
+						}
+					}
+					1 = { }
+				}
+			}
+			
+		}
+		
+		random_events = {
+			15 = 0
+			1 = judiciary_system.1
+			1 = judiciary_system.2
+			1 = judiciary_system.3 
+			1 = judiciary_system.4
+			1 = judiciary_system.5
+			1 = judiciary_system.6
+			1 = judiciary_system.7
+			1 = judiciary_system.8
+			1 = judiciary_system.9
+			1 = judiciary_system.10
+			1 = judiciary_system.11
+			1 = judiciary_system.12
+			1 = judiciary_system.13
+			1 = judiciary_system.14
+			1 = judiciary_system.15
+		}
+		
+	}
+
+	weight = 3
+
+	should_be_pinned_by_default = no
+
+	transferable = no
+
+	progressbar = no
+}
+
+je_judiciary_foreign = {
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+
+	possible = {
+		
+		#Judiciary has power
+		NOT = { has_law = law_type:law_kangaroo_law }
+		
+		#Is in a legal union
+		custom_tooltip = {
+			text = is_in_a_legal_union.tt
+			any_country = { 
+				has_diplomatic_pact = { who = ROOT type = legal_union is_initiator = yes } 
+				has_journal_entry = je_judiciary_foreign
+			}
+		}
+		
+	}
+
+	immediate = {
+		
+		random_country = {
+			limit = { has_diplomatic_pact = { who = ROOT type = legal_union is_initiator = yes } }
+			save_scope_as = legal_union_foreign_supreme_court
+		}
+		
+		if = {
+			limit = { NOT = { has_variable = judiciary_progressiveness } }
+			set_variable = {
+				name = judiciary_progressiveness
+				value = 6
+			}
+		}
+		if = {
+			limit = { NOT = { has_variable = judiciary_size } }
+			set_variable = {
+				name = judiciary_size
+				value = 12
+			}
+		}
+		
+		#Determine judiciary majority
+		set_variable = { 
+			name = judiciary_size_majority 
+			value = root.var:judiciary_size
+		}
+		change_variable = { 
+			name = judiciary_size_majority 
+			divide = 2
+		}
+		
+		
+	}
+	
+	invalid = {
+	
+		OR = { 
+		
+			#Judiciary no longer has any power
+			has_law = law_type:law_kangaroo_law
+		
+			#Not in a legal union
+			custom_tooltip = {
+				text = is_not_in_a_legal_union.tt
+				NOT = { any_country = { has_diplomatic_pact = { who = ROOT type = legal_union is_initiator = yes } } }
+			}
+			
+		}
+		
+	}
+	
+	on_invalid = {
+		
+		#Reset judicial progressiveness
+		remove_variable = judiciary_progressiveness
+		remove_variable = judiciary_size
+		remove_variable = judiciary_size_majority
+		
+	}
+
+	current_value = {
+		value =	root.var:judiciary_progressiveness
+	}
+
+	goal_add_value = {
+		value = root.var:judiciary_size
+	}
+
+	on_monthly_pulse = {
+		
+		effect = {
+			
+			#Determine judiciary majority
+			set_variable = { 
+				name = judiciary_size_majority 
+				value = root.var:judiciary_size
+			}
+			change_variable = { 
+				name = judiciary_size_majority 
+				divide = 2
+			}
+			
+		}
+		
+	}
+	
+	on_yearly_pulse = {
+		
+		random_events = {
+			15 = 0
+			1 = judiciary_system.1
+			1 = judiciary_system.2
+			1 = judiciary_system.3 
+			1 = judiciary_system.4
+			1 = judiciary_system.5
+			1 = judiciary_system.6
+			1 = judiciary_system.7
+			1 = judiciary_system.8
+			1 = judiciary_system.9
+			1 = judiciary_system.10
+			1 = judiciary_system.11
+			1 = judiciary_system.12
+			1 = judiciary_system.13
+			1 = judiciary_system.14
+			1 = judiciary_system.15
+		}
+		
+	}
+
+	weight = 3
+
+	should_be_pinned_by_default = no
+
+	transferable = no
+
+	progressbar = no
+}

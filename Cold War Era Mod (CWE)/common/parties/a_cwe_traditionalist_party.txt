@@ -16,7 +16,7 @@ traditionalist_party = {
 	}
 	
 	icon = {
-		default = "/gfx/interface/icons/political_parties/agrarians.dds"
+		default = "/gfx/interface/icons/political_parties/religious.dds"
 	}
 	
 	# THIS IS RUN ONLY ONCE AT GAME START
@@ -55,7 +55,7 @@ traditionalist_party = {
 		#IG has correct leader political leaning
 		if = {
 			limit = {
-				leader = {
+				exists = leader leader = {
 					OR = { 
 						has_ideology = ideology:ideology_autocratic
 						has_ideology = ideology:ideology_power_hungry

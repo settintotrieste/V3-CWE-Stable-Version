@@ -1,0 +1,220 @@
+je_abolish_filibuster_button = {
+	name = "je_abolish_filibuster_button"
+	desc = "je_abolish_filibuster_button_desc"
+
+	visible = { 
+		
+		has_variable = upper_house_filibuster_rule
+		
+	}
+
+	possible = {
+	
+		#Senate approves
+		custom_tooltip = {
+			text = has_upper_house_support_60.tt
+			has_variable = upper_house_has_filibuster_majority
+		}
+		government_legitimacy > 66
+		
+	}
+
+	effect = {
+		
+		#Remove filibuster
+		remove_variable = upper_house_filibuster_rule
+		
+		#Domestic effect
+		effect_opposition_angry_with_government = yes
+		
+	}
+	
+	ai_chance = {
+		base = 0
+		
+		modifier = { 
+			trigger = { 
+				any_interest_group = { 
+					leader = { 
+						is_ruler = yes 
+						OR = {
+							has_ideology = ideology:ideology_autocratic
+							has_ideology = ideology:ideology_power_hungry
+						}
+					}
+					is_in_government = yes
+					is_strongest_ig_in_government = yes
+				}
+			}
+			add = 10 
+		}
+		
+	}
+	
+}
+
+je_fire_council_chairperson_button = {
+	name = "je_fire_council_chairperson_button"
+	desc = "je_fire_council_chairperson_button_desc"
+
+	visible = { 
+		
+	}
+
+	possible = {
+	
+		#Has a reserve power holder
+		any_scope_character = {
+			has_variable = ceremonial_head_of_state
+			is_ruler = no
+		}
+		
+		#Can only fire once per year
+		custom_tooltip = {
+			text = fire_ceremonial_head_of_state_timer.tt
+			NOT = { has_variable = ceremonial_head_of_state_fire_timer }
+		}
+	
+		#Sufficient government strength
+		government_legitimacy > 66
+		
+	}
+
+	effect = {
+		
+		#Opposition IGs are angry
+		every_interest_group = {
+			limit = { 
+				OR = { 
+					is_in_government = no
+					leader = { has_variable = ceremonial_head_of_state }
+				}
+			}
+			hidden_effect = {
+				remove_modifier = ig_angry_with_government
+			}
+			add_modifier = { name = ig_angry_with_government years = 2 is_decaying = yes }
+		}
+		
+		#Remove character
+		random_scope_character = { 
+			limit = {
+				has_variable = ceremonial_head_of_state
+				is_ruler = no
+			}
+			save_scope_as = ceremonial_head_of_state
+			custom_tooltip = {
+				text = fire_ceremonial_head_of_state.tt
+				kill_character = {
+					hidden = yes
+					value = yes
+				}
+			}
+		}
+		
+	}
+	
+	ai_chance = {
+		base = 0
+		
+		modifier = { 
+			trigger = { 
+				any_interest_group = { 
+					leader = { 
+						is_ruler = yes 
+						OR = {
+							has_ideology = ideology:ideology_autocratic
+							has_ideology = ideology:ideology_power_hungry
+						}
+					}
+					is_in_government = yes
+					is_strongest_ig_in_government = yes
+				}
+			}
+			add = 10 
+		}
+		
+	}
+	
+}
+
+je_seek_bipartisanship_button = {
+	name = "je_seek_bipartisanship_button"
+	desc = "je_seek_bipartisanship_button_desc"
+
+	visible = { 
+		
+		has_variable = upper_house_lower_limit_var
+		
+	}
+
+	possible = {
+	
+		#Timer
+		custom_tooltip = {
+			text = not_has_bipartisan_plan.tt
+			NOT = { has_variable = has_bipartisan_plan }
+		}
+		
+		#Has a potentially cooperative Opposition IG
+		any_interest_group = {
+			is_in_government = no
+			is_marginal = no
+			ig_approval > happy
+			ig_clout >= root.var:upper_house_lower_limit_var
+			custom_tooltip = {
+				text = not_a_bipartisan_participant.tt
+				NOT = { has_variable = bipartisan_participant }
+			}
+		}
+		
+		#Does not have a majority in the UH
+		custom_tooltip = {
+			text = has_no_upper_house_support_50.tt
+			root.var:upper_house_majority_var < 50
+		}
+		
+	}
+
+	effect = {
+		
+		set_variable = { name = has_bipartisan_plan months = 1 }
+		
+		random_interest_group = {
+			limit = { 
+				is_in_government = no
+				is_marginal = no
+				ig_approval > happy
+				ig_clout >= 0.05
+				NOT = { has_variable = bipartisan_participant }
+			}
+			set_variable = { name = bipartisan_participant months = 12 }
+		}
+		
+		calculate_upper_house_composition = yes
+		
+	}
+	
+	ai_chance = {
+		base = 10
+		
+		modifier = { 
+			trigger = { 
+				any_interest_group = { 
+					leader = { 
+						is_ruler = yes 
+						OR = {
+							has_ideology = ideology:ideology_autocratic
+							has_ideology = ideology:ideology_power_hungry
+						}
+					}
+					is_in_government = yes
+					is_strongest_ig_in_government = yes
+				}
+			}
+			add = -10 
+		}
+		
+	}
+	
+}

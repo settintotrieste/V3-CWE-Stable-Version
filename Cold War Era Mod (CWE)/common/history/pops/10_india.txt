@@ -356,6 +356,12 @@
 				size = 75096
 			}
 		}
+		region_state:GBR = {
+			create_pop = {
+				culture = mauritian
+				size = 3000
+			}
+		}
 	}
 	s:STATE_INDIAN_OCEAN_TERRITORY = {
 		region_state:FRA = {
@@ -483,6 +489,12 @@
 				size = 1642908
 			}
 		}
+		region_state:FRA = {
+			create_pop = {
+				culture = tamil
+				size = 16000
+			}
+		}
 	}
 	s:STATE_HYDERABAD = {
 		region_state:HND = {
@@ -537,6 +549,12 @@
 			create_pop = {
 				culture = kannada
 				size = 1749282
+			}
+		}
+		region_state:POR = {
+			create_pop = {
+				culture = marathi
+				size = 547448
 			}
 		}
 	}

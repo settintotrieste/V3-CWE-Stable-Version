@@ -6,6 +6,7 @@ EGY = {
 	tier = kingdom
 	
 	cultures = { egyptian }
+	religion = sunni
 	capital = STATE_LOWER_EGYPT
 }
 
@@ -18,7 +19,8 @@ ALG = {
 	tier = kingdom
 	
 	cultures = { algerian }
-	capital = STATE_LOWER_EGYPT
+	religion = sunni
+	capital = STATE_ALGIERS
 }
 
 #United Arab Republic
@@ -29,7 +31,8 @@ UAR = {
 	
 	tier = empire
 	
-	cultures = { pan_arab }
+	cultures = { pan_arab egyptian syrian }
+	religion = sunni
 	capital = STATE_LOWER_EGYPT
 }
 
@@ -108,6 +111,7 @@ MOR = {
 	tier = kingdom
 	
 	cultures = { moroccan }
+	religion = sunni
 	capital = STATE_FEZ
 }
 
@@ -146,7 +150,7 @@ TUN = {
 
 # Libya
 LBY = {
-	color = { 193 205 193 }
+	color = { 0  75  0 }
 
 	country_type = recognized
 	
@@ -176,7 +180,7 @@ FEZ = {
 	tier = principality
 	
 	cultures = { maghrebi }
-	capital = STATE_TRIPOLI
+	capital = STATE_LIBYAN_DESERT
 	is_named_from_capital = yes
 }
 
@@ -188,7 +192,7 @@ CYR = {
 	tier = principality
 	
 	cultures = { maghrebi }
-	capital = STATE_TRIPOLI
+	capital = STATE_LIBYA
 	is_named_from_capital = yes
 }
 
@@ -228,7 +232,7 @@ NIG = {
 	capital = STATE_NIGER
 }
 
-# Democratic republic of Congo
+# Democratic Republic of Congo
 CNG = {
 	color = { 139 119 101 }
 
@@ -238,6 +242,42 @@ CNG = {
 
 	cultures = { congolese }
 	capital = STATE_BAS_CONGO
+}
+
+# Free Republic of the Congo
+FCG = {
+	color = { 240 128 128 }
+
+	country_type = recognized
+
+	tier = principality
+
+	cultures = { congolese }
+	capital = STATE_BAS_CONGO
+}
+
+# Katanga
+KAT = {
+	color = { 106 90 205 }
+
+	country_type = recognized
+
+	tier = principality
+
+	cultures = { congolese }
+	capital = STATE_KATANGA
+}
+
+# South Kasai
+SKA = {
+	color = { 170 206 95 }
+
+	country_type = recognized
+
+	tier = principality
+
+	cultures = { congolese }
+	capital = STATE_KASAI
 }
 
 # Republic of the Congo
@@ -537,7 +577,7 @@ ERI = {
 	
 	tier = kingdom
 	
-	cultures = { eritrean tigray }
+	cultures = { eritrean djibouti }
 	
 	capital = STATE_ERITREA
 }
@@ -724,19 +764,19 @@ SAF = {
 	
 	tier = kingdom
 	
-	cultures = { boer british }
+	cultures = { boer }
 	capital = STATE_TRANSVAAL
 }
 
 #South Africa Normal
 RSA = {
-	color = { 252 160 0 }
+	color = { 252 160 100 }
 	
 	country_type = recognized
 	
 	tier = kingdom
 	
-	cultures = { south_african boer british }
+	cultures = { south_african boer }
 	capital = STATE_CAPE_COLONY
 }
 
@@ -793,7 +833,7 @@ RHO = {
 	
 	tier = kingdom
 	
-	cultures = { rhodesian british }
+	cultures = { rhodesian }
 	capital = STATE_ZAMBEZIA
 }
 
